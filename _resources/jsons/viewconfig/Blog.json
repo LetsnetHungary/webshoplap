@@ -1,6 +1,8 @@
 {
 	"css" :
 	{
+    "1" : "../../_assets/_css/Blog/blog.css",
+    "2" : "../../_assets/bootstrap/css/bootstrap.min.css"
 	},
 	"js" :
 	{
