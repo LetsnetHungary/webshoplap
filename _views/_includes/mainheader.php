@@ -1,21 +1,13 @@
 
-<div class="col-md-12">
-  <div class="col-lg-8 col-md-12">
-  		<a class="logoImage" href="http://webshoplap.hu/" style="text-align:left; height:100px; ">
-        	<svg id="logoSvg">
-  		  <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/css/logo.svg?v20170221" width="100%" height="100%"></image>
-
-
-  		</svg>
-
-        </a>
-  	</div>
-
-
-
 <nav class="navbar navbar-default">
         <div class="container-fluid">
+          <div class="asd">
+            <img class="logo_img" src="../../_assets/_img/logo.svg" alt="">
+            <input class="search_input" type="text" name="search" placeholder="Keresés">
+          </div>
+
           <div class="navbar-header">
+
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
