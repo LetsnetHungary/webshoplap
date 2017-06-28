@@ -20,13 +20,11 @@
 <body>
   <div class="container">
       <div class="row">
-          <div class="col-lg-12">
-              
-          </div>
-      </div>
-      <div class="row">
         <!-- itt kezdődik a váz -->
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <?php for ($i = 1; $i <= 40; $i++) {
+
+       ?>
+       <div class="boxHolder col-lg-3 col-md-4 col-sm-6 col-xs-12">
           <div class="box">
             <div class="boxTitle">
               <div class="boxTitleTitle">Számítástechnika</div>
@@ -53,6 +51,9 @@
             </div>
           </div>
         </div>
+        <?php
+        }
+        ?>
         <!-- itt végződik a váz -->
       </div>
       <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->

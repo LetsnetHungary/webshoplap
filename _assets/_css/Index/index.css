@@ -3,6 +3,7 @@
     background-color: #f0efed;
     -webkit-box-shadow: 5px 5px 5px 0 rgba(224,224,222,1);
     box-shadow: 5px 5px 5px 0 rgba(224,224,222,1);
+    margin-bottom: 20px;
 }
 
 .boxTitle {
@@ -34,4 +35,53 @@
 
 .boxRow:hover {
     background-color: #d9d8d2;
+}
+
+.boxAbout {
+    height: 280px;
+    -webkit-transition: height 0.3s ease;
+    -moz-transition: height 0.3s ease;
+    -o-transition: height 0.3s ease;
+    transition: height 0.3s ease;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.boxAboutRow {
+    height: 250px;
+}
+
+.boxAboutDataHolder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.boxAboutButton {
+    background-color: #80caa5!important;
+    color: white!important;
+    position: absolute;
+    bottom: 10px;
+    right: 25px;
+}
+
+.boxAboutButton:hover {
+    color: #000!important;
+}
+
+.boxAboutImgHolder {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    height: 0px!important;
+}
+
+.icon {
+    color:black;
+    margin-right: 5px;
 }
