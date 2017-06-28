@@ -1,3 +1,5 @@
+<?php include '_views/_includes/mainheader.php'; ?>
+
 <head>
 <meta charset="utf-8">
 <title>Webshoplap.hu</title>
@@ -10,12 +12,12 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://webshoplap.hu/" />
 <meta property="og:image" content="http://webshoplap.hu/img/logo.png" />
-<meta property="og:description" content="Magyarország összes webshopja egy helyen" /> 
+<meta property="og:description" content="Magyarország összes webshopja egy helyen" />
 <meta property="fb:admins" content="1261262102,100000893412243" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="/_assets/_css/Index/index.css">
 
-   
+
 </head>
 <body>
   <div class="container">
