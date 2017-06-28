@@ -3,7 +3,12 @@
         <div class="container-fluid">
           <div class="upper_img">
             <img class="logo_img" src="../../_assets/_img/logo.svg" alt="">
-            <input class="search_input" type="text" name="search" placeholder="Keresés">
+
+            <form class="search_bar" action="/_views/Index/index.php" method="post">
+              <input class="search_input" type="text" name="search" placeholder="Keresés">
+              <button type="submit" class = "search_button" name="search_button"></button>
+            </form>
+
           </div>
 
           <div class="navbar-header">
