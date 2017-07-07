@@ -38,8 +38,8 @@
                 </ul>
               </li>
             <!--  <li class="active"><a href="#">Home</a></li> -->
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Kapcsolat</a></li>
+              <li><a href="/Blog">Blog</a></li>
+              <li><a href="/Kapcsolat">Kapcsolat</a></li>
 
             </ul>
 

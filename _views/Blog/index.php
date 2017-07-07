@@ -1,4 +1,33 @@
-<?php include '_views/_includes/mainheader.php'; ?>
+<?
+ // $blog_post = $this->blog_post;   a databaseből kiszedett postok (szerző, dátum, cím, tartalom...)
+ 
+ $blog_post =
+ $b_count = count($blog_post);
+?>
+<main>
+  <div class="postholder">
+    <?
+      for ($i=0; $i < $b_count ; $i++) {
+
+        ?>
+        <div class="col-md-6">
+          <div class="imageholder">
+            <img src="../../_assets/_img/placeholder_pic.p" alt="">
+          </div>
+        </div>
+        <?
+      }
+      ?>
+
+  </div>
+</main>
+
+
+
+
+
+<?php //include '_views/_includes/mainheader.php'; ?>
+<!--
 
 
     <div class="container">
@@ -32,3 +61,4 @@
         </div>
       </div>
     </div>
+  -->
