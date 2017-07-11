@@ -14,4 +14,9 @@
           $this->model->removeShop($id);
           return;
         }
+        public function removeCategory() {
+          $id = $_POST["id"];
+          $this->model->removeCategory($id);
+          return;
+        }
     }
