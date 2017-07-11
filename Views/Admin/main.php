@@ -1,4 +1,6 @@
-<?php $categories = $this->categories; ?>
+<?php
+ob_start();
+$categories = $this->categories; ?>
 <body>
     <div class="container">
         <div class="row">
@@ -41,3 +43,4 @@
         </div>
     </div>
 </body>
+<?php ob_end_flush(); ?>

@@ -8,6 +8,6 @@
 
 		}
 		public function userAuth(){
-			$this->model->logIn($_POST['email'], $_POST['password']);
+			$this->model->logIn($_POST['email'], $_POST['password']);			
 		}
   }

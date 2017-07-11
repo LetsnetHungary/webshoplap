@@ -2,6 +2,7 @@
 	class Admin extends CoreApp\Controller {
 
 		public function __construct() {
+			ob_start();
 			session_start();
 			parent::__construct(__CLASS__);
 			$this->loadModel(__CLASS__);
@@ -11,10 +12,8 @@
 			$this->isLoggedIn();
 		}
 		public function isLoggedIn(){
-			if ((time() - $_SESSION['time_logged_in']) > 3600) {
-				echo "You are timed out";
-				session_destroy();
-				header("Location: Index");
+			if ((time() - $_SESSION['time_logged_in']) > 5) {
+				header('Location: Login?message=server_timeout');
 			}
 			else {
 				echo "Sikeresen bejelentkeztél, mint admin. Email cím: </br>" . $_SESSION['email'];
