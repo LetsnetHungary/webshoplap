@@ -10,8 +10,14 @@
         ?>
         <div class="col-md-6">
           <div class="imageholder">
-            <img src="../../_assets/_img/placeholder_pic.p" alt="">
+            <img src="assets/img/placeholder_pic.png" alt="">
           </div>
+          <div class="blog_details">
+            <p> <?php print_r($blog_post['blog_title']); ?></p>
+          </div>
+           <!--
+          <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=80&layout=button_count&action=like&size=small&show_faces=false&share=false&height=21&appId" width="80" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+          https://developers.facebook.com/docs/plugins/like-button# <- facebook like gomb -->
         </div>
         <?
       }
