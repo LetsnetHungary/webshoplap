@@ -20,10 +20,13 @@
 			else { //létezik a felhasználó
 				if (password_verify($pw, $result[0]['password'])) { //megfelelő a jelszó
 					if ($result[0]['is_admin'] == 1) {
-						echo "Sikeres admin bejelentkezés!";
+						$this->sessionFun($email, 1);
+						// echo "Sikeresen bejelentkeztél, " . $_SESSION['email'];
 						header("Location: Admin");
+
 					}
 					else {
+						$this->sessionFun($email, 0);
 						echo "Sikeres felhasználó bejelentkezés";
 						header("Location: Profile");
 						return;
@@ -36,11 +39,12 @@
 			// return $result;
 		} //logIn fun vége
 
-		public function sessionFun($email, $pw, $is_admin){
+		public function sessionFun($email, $is_admin){
 			session_start();
+			$_SESSION = [];
 			$_SESSION['email'] = $email;
-			$_SESSION['password'] = $pw;
-			$_SESSION['is_admin'] = $is_admin; 
+			$_SESSION['is_admin'] = $is_admin;
+			$_SESSION['time_logged_in'] = time();
 		}
 
 		public function addUser(){
