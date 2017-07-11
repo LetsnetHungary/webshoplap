@@ -1,0 +1,29 @@
+{
+	"css" :[
+		"../../assets/bootstrap/css/bootstrap.min.css",
+		"../../assets/css/Login.css"
+    ],
+	"js" :[
+		"../../assets/js/jquery-3.2.1.min.js",
+		"../../assets/js/fingerprint/fingerprint2.min.js",
+		"../../assets/js/admin/login.js"
+    ],
+    "fonts" : [
+		"https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+	],
+	"seo" :
+	{
+		"title" : "Login to admin",
+		"charset" : "UTF-8",
+
+		"meta" :
+		{
+			"description" : "Login to Admin"
+		},
+
+		"og" :
+		{
+
+		}
+	}
+}
