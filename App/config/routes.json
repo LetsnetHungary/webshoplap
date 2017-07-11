@@ -8,5 +8,8 @@
     {"href" : "Category", "closure" : "mvc", "controller" : "Category", "order" : ["{method}"]},
     {"href" : "Contact", "closure" : "mvc", "controller" : "Contact", "order" : ["{method}"]},
     {"href" : "Shop", "closure" : "mvc", "controller" : "Shop", "order" : ["{method}"]},
-    {"href" : "Shop_API", "closure" : "mvc", "controller" : "Shop_API", "order" : ["{method}"]}
+    {"href" : "Shop_API", "closure" : "mvc", "controller" : "Shop_API", "order" : ["{method}"]},
+    {"href" : "Admin", "closure" : "mvc", "controller" : "Admin", "order" : ["{method}"]},
+    {"href" : "Admin_API", "closure" : "mvc", "controller" : "Admin_API", "order" : ["{method}"]}
+
 ]

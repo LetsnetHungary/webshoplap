@@ -1,0 +1,30 @@
+{
+	"css" :
+	{
+    "1" : "/assets/css/admin.css",
+	"2" : "/assets/font-awesome/css/font-awesome.css",
+    "3" : "/assets/bootstrap/css/bootstrap.min.css"
+	},
+	"js" :
+	{
+		"1" : "/assets/js/jquery.min.js",
+		"2" : "/assets/bootstrap/js/bootstrap.min.js",
+		"3" : "/assets/js/admin.js"
+	},
+    "fonts" : {},
+	"seo" :
+	{
+		"lang" : "hu",
+		"title" : "Index",
+		"charset" : "UTF-8",
+
+		"meta" :
+		{
+		},
+
+		"og" :
+		{
+
+		}
+	}
+}

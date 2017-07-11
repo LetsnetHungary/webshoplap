@@ -154,7 +154,7 @@ $(function() {
      self = $(this)
          $.ajax({
             type        : 'POST',
-            url         : '../../ShopAPI/getShop',
+            url         : 'Shop_API/getShop',
             data        : {
                 id: self.data('id')
             },
