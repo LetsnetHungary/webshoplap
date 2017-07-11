@@ -3,9 +3,12 @@
         <div class="row login">
             <div class="col-sm-6 col-md-4 col-md-offset-4 text-center">
                 <h1 class="text-center login-title">SIGN IN</h1>
-                <?php if (isset($_GET['message']) && $_GET['message'] == "server_timeout") {
+                <?php
+                  ob_start();
+                  if (isset($_GET['message']) && $_GET['message'] == "server_timeout") {
                   echo "Server timeout!";
-                } ?>
+                }
+                ob_end_flush(); ?>
                 <div class="account-wall">
                     <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
                         alt="">

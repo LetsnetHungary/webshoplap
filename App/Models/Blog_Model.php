@@ -6,7 +6,7 @@
 			parent::__construct();
 		}
 		public function blogLekeres(){
-           $db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
+      $db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
 			$stmt = $db->prepare("SELECT * FROM blog");
 			$stmt->execute(array());
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
