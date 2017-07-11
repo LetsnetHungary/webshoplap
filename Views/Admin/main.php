@@ -11,12 +11,16 @@
                         </div>
                     </div>
                     <div class="boxContent">
+                        <div class="boxRowAdd">
+                            <input type="text" class="form-control" id="catname" placeholder="Új kategória neve">
+                            <button type="button" class="btn btn-success" id="addcat">Hozzáadás</button>
+                        </div>
                         <?php foreach($categories as $cat) { ?>
                             <div class="boxRow" data-id="<?php echo $cat['id'] ?>">
-                            <?php echo $cat["name"]; ?>
-                            <div class="delete-row" style="display: none">
-                                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-                            </div>
+                                <?php echo $cat["name"]; ?>
+                                <div class="delete-row" style="display: none">
+                                    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                                </div>
                             </div>
                         <?php } ?>
                     </div>

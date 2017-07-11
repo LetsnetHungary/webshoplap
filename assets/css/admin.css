@@ -25,6 +25,17 @@ body {
     color: #000;
 }
 
+.boxRowAdd {
+    width: 100%;
+    height: 44px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #d9d8d2;
+    padding: 5px;
+    position: relative;
+}
+
 .boxRow {
     width: 100%;
     height: 44px;
@@ -60,3 +71,6 @@ body {
     color:red;
 }
 
+#addcat {
+    margin-left: 10px;
+}

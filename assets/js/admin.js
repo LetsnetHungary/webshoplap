@@ -10,6 +10,22 @@ function prepareCat(res, catname){
     $('.rightColumn .boxTitleTitle').text(catname)
     $('.rightColumn').show();
 }
+function addCategory(nm) {
+    $.ajax({
+                type        : 'POST',
+                url         : 'Admin_API/addCategory',
+                data        : {
+                    name: nm
+                },
+                encode          : true,
+                success: function(result){
+                    res = JSON.parse(result)
+                    prepareCat(res, self.text());
+                },
+                error: function(xhr, status, error){
+                }
+            });
+}
 $(function() {
     $('.leftColumn .boxRow').on('click', function(e) {
         if(!$(e.target).hasClass('delete-row') && !$(e.target).hasClass('fa')) {
@@ -29,6 +45,44 @@ $(function() {
                 }
             });
         } else {
+            self = $(this)
+            console.log('del')
+            $.ajax({
+                type        : 'POST',
+                url         : 'Admin_API/removeCategory',
+                data        : {
+                    id: self.data('id')
+                },
+                encode          : true,
+                success: function(result){
+                    console.log(result)
+                    self.closest('.boxRow').remove();
+                },
+                error: function(xhr, status, error){
+                }
+            });
+        }
+    });
+    
+    $('.container').on('click', '.rightColumn .boxRow', function(e) {
+        if(!$(e.target).hasClass('delete-row') && !$(e.target).hasClass('fa')) {
+            self = $(this)
+            $.ajax({
+                type        : 'POST',
+                url         : 'Admin_API/getShop',
+                data        : {
+                    id: self.data('id')
+                },
+                encode          : true,
+                success: function(result){
+                    res = JSON.parse(result)
+                    prepareCat(res, self.text());
+                },
+                error: function(xhr, status, error){
+                }
+            });
+        } else {
+            console.log('del')
             self = $(this)
             $.ajax({
                 type        : 'POST',
