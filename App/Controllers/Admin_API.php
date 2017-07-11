@@ -19,4 +19,9 @@
           $this->model->removeCategory($id);
           return;
         }
+        public function addCategory() {
+            $name = $_POST["name"];
+            $this->model->addCategory($name);
+            return;
+        }
     }

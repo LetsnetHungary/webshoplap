@@ -36,4 +36,15 @@
           ]);
           return;
       }
+      public function addCategory($name) {
+          $stmt = $this->db->prepare('INSERT INTO categories (name) VALUES (\''.$name.'\')');
+          $stmt->execute([]);
+          $stmt = $this->db->prepare('SELECT id FROM `categories` WHERE name = :name');
+          $stmt->execute([
+              ":name" => $name
+          ]);
+          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          echo('{ "name" : "'.$name.'", "id" : "'.$result[0]["id"].'"}');
+          return;
+      }
     }

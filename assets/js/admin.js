@@ -1,6 +1,9 @@
 function prepareCat(res, catname){
     content = $('.rightColumn .boxContent');
     content.empty();
+    $(`<div class="boxRowAdd">
+                            <button type="button" class="btn btn-success" id="addshop">Új bolt hozzáadása</button>
+                        </div>`).appendTo(content);
     for(shop in res) {
         $(`<div class="boxRow" data-id="`+ res[shop]['id'] +`">`+ res[shop]['name'] +`
                             <div class="delete-row" style="display: none;">
@@ -10,24 +13,38 @@ function prepareCat(res, catname){
     $('.rightColumn .boxTitleTitle').text(catname)
     $('.rightColumn').show();
 }
-function addCategory(nm) {
-    $.ajax({
-                type        : 'POST',
-                url         : 'Admin_API/addCategory',
-                data        : {
-                    name: nm
-                },
-                encode          : true,
-                success: function(result){
-                    res = JSON.parse(result)
-                    prepareCat(res, self.text());
-                },
-                error: function(xhr, status, error){
-                }
-            });
+function addCategory() {
+    if($('#catname').val() != ''){
+        $.ajax({
+                    type        : 'POST',
+                    url         : 'Admin_API/addCategory',
+                    data        : {
+                        name: $('#catname').val()
+                    },
+                    encode          : true,
+                    success: function(result){
+                        result = JSON.parse(result);
+                        $('#catname').val('');
+                        $(`<div class="boxRow" data-id="`+ result['id'] +`">
+                                ` + result['name'] +`
+                                <div class="delete-row" style="display: none">
+                                    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                                </div>
+                            </div>`).appendTo('.leftColumn .boxContent');
+                    },
+                    error: function(xhr, status, error){
+                    }
+                });
+    }
+}
+function addLabel() {
+    if($('#labelname').val() != ''){
+        $('<li class="list-group-item">'+ $('#labelname').val() +'</li>').appendTo('#labelholder');
+        $('#labelname').val('');
+    }
 }
 $(function() {
-    $('.leftColumn .boxRow').on('click', function(e) {
+    $('.container').on('click','.leftColumn .boxRow', function(e) {
         if(!$(e.target).hasClass('delete-row') && !$(e.target).hasClass('fa')) {
             self = $(this)
             $.ajax({
@@ -46,7 +63,6 @@ $(function() {
             });
         } else {
             self = $(this)
-            console.log('del')
             $.ajax({
                 type        : 'POST',
                 url         : 'Admin_API/removeCategory',
@@ -82,7 +98,6 @@ $(function() {
                 }
             });
         } else {
-            console.log('del')
             self = $(this)
             $.ajax({
                 type        : 'POST',
@@ -99,16 +114,38 @@ $(function() {
             });
         }
     });
-    $('.boxTitleEdit').on('click', function() {
+    $('.boxTitle').on('click', function() {
         parent = $(this).closest('.col-md-6');
         if(parent.data('edit')){
             parent.find('.delete-row').hide();
             parent.data('edit', false);
-            $(this).text('Szerkesztés');
+            $(this).find('.boxTitleEdit').text('Szerkesztés');
         } else {
             parent.find('.delete-row').show();
             parent.data('edit', true);
-            $(this).text('Kész');
+            $(this).find('.boxTitleEdit').text('Kész');
+        }
+    });
+    $('#addcat').on('click', function() {
+        addCategory();
+    });
+    $('#catname').keypress(function(e) {
+        if(e.which == 13) {
+            $(this).blur();
+            $('#addcat').focus().click();
+        }
+    });
+    $('.container').on('click', '#addshop', function() {
+        $('#newshop').show();
+    });
+    
+    $('#addlabel').on('click', function() {
+        addLabel();
+    });
+    $('#labelname').keypress(function(e) {
+        if(e.which == 13) {
+            $(this).blur();
+            $('#addlabel').focus().click();
         }
     });
 });
