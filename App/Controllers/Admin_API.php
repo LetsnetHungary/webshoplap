@@ -24,4 +24,16 @@
             $this->model->addCategory($name);
             return;
         }
+        public function addShop() {
+            $shop = $_POST["shop"];
+            $shop = json_decode($shop);
+            $this->model->addShop($shop);
+            return;
+        }
+        public function pinShop() {
+            $id = $_POST["id"];
+            $pin = $_POST["pin"];
+            $this->model->pinShop($id,$pin);
+            return;
+        }
     }

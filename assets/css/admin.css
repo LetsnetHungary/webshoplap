@@ -70,6 +70,36 @@ body {
 .delete-row:hover {
     color:red;
 }
+.pin-row {
+    position:absolute;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top:0px;
+    right: 54px;
+}
+
+.pin-row:hover {
+    color: blue;
+}
+
+.pinned {
+    color:blue;
+}
+
+.pinned:hover {
+    color:black;
+}
+
+.pinned-row {
+    background-color: orange;
+}
+
+.pinned-row:hover {
+    background-color: darkgoldenrod; 
+}
 
 #addcat {
     margin-left: 10px;

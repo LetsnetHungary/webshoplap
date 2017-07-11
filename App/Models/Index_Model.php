@@ -10,12 +10,24 @@
           $stmt->execute(array());
           $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
           foreach ($categories as $cat) {
-            $stmt = $db->prepare('SELECT name, id FROM `shops` WHERE category= :id ORDER BY RAND() LIMIT 5');
+              $shops[$cat["name"]]["pinned"] = [];
+              $shops[$cat["name"]]["unpinned"] = [];
+            $rem = 5;
+            $stmt = $db->prepare('SELECT name, id FROM `shops` WHERE category= :id AND pinned=1 ORDER BY RAND() LIMIT 5');
             $stmt->execute([
                 ":id" => $cat["id"]
             ]);
             $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $shops[$cat["name"]] = $shop;
+            $rem = $rem - count($shop);
+            $shops[$cat["name"]]["pinned"] = $shop;
+            if($rem > 0) {
+                $stmt = $db->prepare('SELECT name, id FROM `shops` WHERE category= :id AND pinned=0 ORDER BY RAND() LIMIT '.$rem);
+                $stmt->execute([
+                    ":id" => $cat["id"]
+                ]);
+                $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $shops[$cat["name"]]["unpinned"] = $shop;
+            }
           }
           return $shops;
       }

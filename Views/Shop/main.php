@@ -6,14 +6,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7 col-xs-12">
-                <div class="box" style="padding-bottom: 20px;">
+                <div class="box leftColumn" style="padding-bottom: 20px;">
                     <div class="boxTitle">
                         <div class="boxTitleTitle"><?php echo $shop["name"]; ?></div>
                         <div class="boxTitleArrow">
                             <i class="fa fa-arrow-left"></i>
                         </div>
                     </div>
-                    <div class="boxAboutRow row">
+                    <div class="boxAboutRow row ">
                         <div class="col-xs-6 boxAboutImgHolder">
                             <img class="boxAboutIcon img-responsive" src="http://via.placeholder.com/160x160">
                         </div>

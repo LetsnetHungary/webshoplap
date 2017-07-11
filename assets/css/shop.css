@@ -114,8 +114,12 @@
 }
 @media (min-width: 992px) {
     .rightColumn {
-        max-height: calc(100vh - 35px);
         overflow-y: scroll;
+    }
+}
+@media (max-width: 992px) {
+    .rightColumn {
+        max-height: none!important;
     }
 }
 .shopHolder {

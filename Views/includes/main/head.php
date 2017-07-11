@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" href="/assets/css/main.css">
 	<? if($this->SEO) {?>
 		<meta charset = "<?php echo $this->SEO->seo->charset; ?>">
 		<title><?php echo $this->SEO->seo->title; ?></title>

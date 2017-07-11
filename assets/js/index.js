@@ -21,6 +21,7 @@ function removeBox() {
     old.css('margin-bottom',0)
     old.animate({height: 0}, 500, 'swing', function() {
         old.remove();
+        curr = 100;
     });
 }
 var waitForFinalEvent = function(){var b={};return function(c,d,a){a||(a="I'm a banana!");b[a]&&clearTimeout(b[a]);b[a]=setTimeout(c,d)}}();
@@ -151,7 +152,8 @@ $(function() {
     })
     readyCarousel();
     $('.boxRow').on('click', function() {
-     self = $(this)
+     self = $(this);
+     if(self.data('id') != $('.boxAbout').data('id')){
          $.ajax({
             type        : 'POST',
             url         : 'Shop_API/getShop',
@@ -168,14 +170,16 @@ $(function() {
             error: function(xhr, status, error){
             }
         })
+     } else {
+         removeBox();
+     }
     });
     $('.container').on('click','.boxAbout .boxTitle', function() {
         removeBox();
-        curr = 100;
     })
     $('.container').on('click','.boxAboutButton', function() {
         id = $(this).closest('.boxAbout').data('id');
-        f = $('<form action="Bolt" name="vote" method="get" style="display:none;"><input type="text" name="id" value="' + id + '" /></form>').appendTo('body');
+        f = $('<form action="Shop" name="vote" method="get" style="display:none;"><input type="text" name="id" value="' + id + '" /></form>').appendTo('body');
         f.submit();
     })
 })

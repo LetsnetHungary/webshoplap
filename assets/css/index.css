@@ -1,6 +1,4 @@
-body {
-    position: relative;
-}
+
 .box {
     width: 100%;
     background-color: #f0efed;
@@ -139,6 +137,15 @@ body {
     align-items: center;
     background-color: #d9d8d2;
 }
+
+.pinned-row {
+    background-color: orange;
+}
+
+.pinned-row:hover {
+    background-color: darkgoldenrod; 
+}
+
 .spinner {
   margin: 100px auto;
   width: 50px;

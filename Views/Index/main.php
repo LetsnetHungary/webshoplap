@@ -1,7 +1,3 @@
-
-
-<?php header("Content-type: text/html; charset=utf-8"); ?>
-
 <?php $shops = $this->shops;?>
 <head>
 <meta charset="utf-8">
@@ -37,7 +33,12 @@
               </div>
             </div>
             <div class="boxContent">
-              <?php foreach($value as $shop) { ?>
+              <?php foreach($value["pinned"] as $shop) { ?>
+                <div class="boxRow pinned-row" data-id="<?php echo $shop['id'] ?>">
+                  <?php echo $shop["name"]; ?>
+                </div>
+            <?php } ?>
+            <?php foreach($value["unpinned"] as $shop) { ?>
                 <div class="boxRow" data-id="<?php echo $shop['id'] ?>">
                   <?php echo $shop["name"]; ?>
                 </div>

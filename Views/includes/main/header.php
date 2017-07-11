@@ -1,54 +1,94 @@
 <link rel="stylesheet" href="/assets/css/mainheader.css">
-<nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="upper_img">
-            <img class="logo_img" src="/assets/images/logo.svg" alt="">
+<div class="container">
+<section class="row" >
+	<div class="col-lg-8 col-md-12">
+		<a class="logoImage" href="http://webshoplap.hu/" style="text-align:left; height:100px; ">
+      	<svg id="logoSvg">
+		  <image href="/assets/images/logo.svg"  width="100%" height="100%" />
+		   
 
-            <form class="search_bar" action="/Views/Index/index.php" method="post">
-              <input class="search_input" type="text" name="search" placeholder="Keresés">
-              <button type="submit" class = "search_button" name="search_button"></button>
-            </form>
+		</svg>
 
-          </div>
+      </a>
+	</div>
+	<div class="col-lg-4 col-md-12">
+	<form  role="search" class="keresoForm2" action="http://webshoplap.hu/kereso" method="post">
+           
+            <button type="submit" class="keresoGomb"><i class="glyphicon glyphicon-search"></i></button>
+            <input type="text" class="kereso2" placeholder="Keresés" name="search">
+            <div class="cb"></div>
+	   </form>
+	</div>
+</section>
 
-          <div class="navbar-header">
+<nav class="navbar menuBar menuBar2" role="navigation">
+   
+   <div class="navbar-header menuBar2">
+      <button type="button" class="navbar-toggle" 
+         data-toggle="collapse" data-target="#mainMenu">
+         <span class="sr-only">Menu</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+      </button>
+		
+      
+   </div>
+   
+   <div class="collapse navbar-collapse"  id="mainMenu">
+	
+      <ul class="nav navbar-nav navNew20170213 menuBar2">
 
-            <!-- ha összemegy a screen, akkor létrehozza a leugró részt -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <!--<a class="navbar-brand" href="#">Project name</a> -->
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kategóriák <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <!-- <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li> -->
+ 				<li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+               		kategóriák <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu menuBar2" >
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/szamitastechnika">Számítástechnika</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/elektronika">Elektronika</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/ruhazat">Ruházat</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/ruhazatikiegeszito">Ruházati kiegészítő</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/egeszseg">Egészség</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/szepsegapolas">Szépségápolás</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/otthon">Otthon</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/haziallat">Háziállat</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/jarmu">Jármű</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/sport">Sport</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/kerteszet">Kertészet</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/kreativ-hobbi">Kreatív hobbi</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/jatek">Játék</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/gep">Gép</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/kultura">Kultúra</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/jegyvasarlas">Jegyvásárlás</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/elelmiszer">Élelmiszer</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/etelkiszallitas">Ételkiszállítás</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/italkiszallitas">Italkiszállítás</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/irodaszer">Irodaszer</a></li>
+                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/szolgaltatas">Szolgáltatás</a></li>
+                                    
                 </ul>
               </li>
-            <!--  <li class="active"><a href="#">Home</a></li> -->
-              <li><a href="/Blog">Blog</a></li>
-              <li><a href="/Contact">Kapcsolat</a></li>
+         
+         <li><a href="/blog" class="navbar-nav menuBar2">blog</a></li>
+		 <li><a href="/kapcsolat" class="navbar-nav menuBar2">kapcsolat</a></li>         
+      </ul>
 
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="./">Facebook logo <span class="sr-only">(current)</span></a></li>
-              <li><a href="../navbar-static-top/">Insta logo</a></li>
-              <li><a href="../navbar-fixed-top/">YT logo</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
+       
+       <div class=" navbar-right socialIcon">
+       		<a href="https://www.facebook.com/webshoplap/" target="_blank">
+            	<i style="color:#FFF;" class="fa fa-facebook-official"></i>
+            </a>
+			<span style="display:inline-block; margin-top:-5px">
+			<div class="fb-like" data-href="https://www.facebook.com/webshoplap/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+			</span>
+      		<a href="https://www.instagram.com/webshoplap/"  target="_blank">
+            	<i style="color:#FFF;" class="fa fa-instagram"></i>
+            </a>
+       		<a href="https://www.youtube.com/channel/UCPRsu_U29cLsQnLw8XD-ggw">
+            	<i style="color:#FFF;"  target="_blank" class="fa fa-youtube"></i>
+            </a>            
+       </div>
+   </div>
+  
+</nav>
 </div>
