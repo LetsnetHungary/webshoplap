@@ -7,7 +7,7 @@ $categories = $this->categories; ?>
             <div id="newshop" class="col-xs-12" style="display: none;">
                 <div class="box">
                     <div class="boxTitle">
-                        <div class="boxTitleTitle">Új bolt hozzáadása</div>
+                        <div id="newshoptitle" class="boxTitleTitle"></div>
                     </div>
                     <div class="boxContent" style="padding: 20px;">
                         <div class="form-group">
@@ -40,7 +40,8 @@ $categories = $this->categories; ?>
                             </div>
                         </div>
                         <div class="newLabel">
-                            <button type="button" class="btn btn-success" id="doneshop">Kész</button>
+                            <button style="display:none;" type="button" class="btn btn-success" id="doneshop">Kész</button>
+                            <button style="display:none;" type="button" class="btn btn-success" id="editshop">Kész</button>
                         </div>
                     </div>
                 </div>

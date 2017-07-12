@@ -41,4 +41,9 @@
             $this->model->pinShop($id,$pin);
             return;
         }
+        public function updateShop() {
+            $shop = $_POST["shop"];
+            $this->model->updateShop($shop);
+            return;
+        }
     }

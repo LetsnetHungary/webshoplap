@@ -4,16 +4,27 @@
           parent::__construct();
           $this->db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
       }
+      public function getLabels($id) {
+                $stmt = $this->db->prepare('SELECT name FROM `labels` WHERE shop='.$id);
+                $stmt->execute(array());
+                $labels = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $labels;
+        }
       public function getShops($id) {
+          $stmt = $this->db->prepare('SELECT id,name,pinned FROM `shops` WHERE category='.$id.' AND pinned=1 ORDER BY name');
+          $stmt->execute(array());
+          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          $stmt = $this->db->prepare('SELECT id,name,pinned FROM `shops` WHERE category='.$id.' AND pinned=0 ORDER BY name');
+          $stmt->execute(array());
+          $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          return(json_encode(array_merge($result,$result2)));
+      }
+      public function getShop($id) {
           $stmt = $this->db->prepare('SELECT * FROM `shops` WHERE id='.$id);
           $stmt->execute(array());
           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-          return(json_encode($result));
-      }
-      public function getShop($id) {
-          $stmt = $this->db->prepare('SELECT id,name,pinned FROM `shops` WHERE category='.$id.' ORDER BY name');
-          $stmt->execute(array());
-          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          $result = $result[0];
+          $result["labels"] = $this->getLabels($id);
           return(json_encode($result));
       }
       public function removeShop($id) {
@@ -98,5 +109,11 @@
           $stmt = $this->db->prepare('UPDATE `shops` SET pinned='.$pin.' WHERE id='.$id);
           $stmt->execute([]);
         return;
+      }
+      public function updateShop($shop) {
+          $shop = json_decode($shop);
+          $this->removeShop($shop->id);
+          $this->addShop($shop);
+          return;
       }
     }

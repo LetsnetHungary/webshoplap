@@ -1,3 +1,29 @@
+function showShop(res) {
+    emptyShop();
+    $('#newshoptitle').text('Bolt szerkesztése');
+    $('#doneshop').hide();
+    $('#editshop').show();
+    console.log(res)
+    $('#shopname').val(res.name);
+    $('#adress').val(res.adress);
+    $('#phone').val(res.phone);
+    $('#bio').val(res.bio);
+    $('#labelholder li:not(.active)').remove();
+    for(label in res.labels) {
+        $('<li class="list-group-item"><div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>'+ res.labels[label]["name"] +'</li>').appendTo('#labelholder');
+    }
+    $('#labelname').val('');
+    $('#newshop').show();
+    $("html, body").animate({ scrollTop: 0}, 500, 'swing'); 
+}
+function emptyShop() {
+    $('#shopname').val('');
+    $('#adress').val('');
+    $('#phone').val('');
+    $('#bio').val('');
+    $('#labelholder li:not(.active)').remove();
+    $('#labelname').val('');
+}
 function prepareCat(res, self){
     content = $('.rightColumn .boxContent');
     content.empty();
@@ -46,7 +72,7 @@ function addCategory() {
 }
 function addLabel() {
     if($('#labelname').val() != ''){
-        $('<li class="list-group-item">'+ $('#labelname').val() +'</li>').appendTo('#labelholder');
+        $('<li class="list-group-item"><div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>'+ $('#labelname').val() +'</li>').appendTo('#labelholder');
         $('#labelname').val('');
     }
     $('#labelname').focus();
@@ -59,12 +85,7 @@ function addShop(name, id) {
                             </div><div class="pin-row" style="display: none;">
                                 <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
                             </div></div>`).appendTo($('.rightColumn .boxContent'));
-    $('#shopname').val('');
-    $('#adress').val('');
-    $('#phone').val('');
-    $('#bio').val('');
-    $('#labelholder li:not(.active)').remove();
-    $('#labelname').val('');
+    emptyShop();
     $('#newshop').hide();
 }
 $(function() {
@@ -119,7 +140,8 @@ $(function() {
                 encode          : true,
                 success: function(result){
                     res = JSON.parse(result)
-                    prepareCat(res, self.text());
+                    showShop(res)
+                    $('#newshop').data('id',self.data('id'))
                 },
                 error: function(xhr, status, error){
                 }
@@ -141,6 +163,7 @@ $(function() {
             });
         } else {
             self = $(this)
+            
             $.ajax({
                 type        : 'POST',
                 url         : 'Admin_API/pinShop',
@@ -153,7 +176,13 @@ $(function() {
                     console.log(result)
                     el = self.closest('.boxRow').find('.pin-row');
                     console.log(el.hasClass('pinned'))
-                    el.hasClass('pinned') ? self.closest('.boxRow').removeClass('pinned-row').find('.pin-row').removeClass('pinned') : self.closest('.boxRow').addClass('pinned-row').find('.pin-row').addClass('pinned');
+                    if(el.hasClass('pinned')) {
+                        self.closest('.boxRow').removeClass('pinned-row').find('.pin-row').removeClass('pinned')
+                    } else {
+                         self.closest('.boxRow').addClass('pinned-row').find('.pin-row').addClass('pinned');
+                         self.closest('.boxRow').clone().insertAfter('.rightColumn .boxRowAdd');
+                         self.closest('.boxRow').remove();
+                    }
                 },
                 error: function(xhr, status, error){
                 }
@@ -184,7 +213,12 @@ $(function() {
         }
     });
     $('.container').on('click', '#addshop', function() {
+        emptyShop();
+        $('#newshoptitle').text('Új bolt hozzáadása');
+        $('#doneshop').show();
+        $('#editshop').hide();
         $('#newshop').show();
+        $("html, body").animate({ scrollTop: 0}, 500, 'swing');
     });
     
     $('#addlabel').on('click', function() {
@@ -195,6 +229,44 @@ $(function() {
             $(this).blur();
             $('#addlabel').focus().click();
         }
+    });
+    $('.container').on('click', 'li .delete-row', function() {
+        $(this).closest('li').remove();
+    });
+    $('#editshop').on('click', function() {
+        shop = new Object();
+        shop.name = $('#shopname').val();
+        shop.adress = $('#adress').val();
+        shop.phone = $('#phone').val();
+        shop.bio = $('#bio').val();
+        shop.id = $('#newshop').data('id');
+        shop.category = $('.rightColumn').data('id');
+        shop.labels = new Array();
+        $('#labelholder li:not(.active)').each(function(index,elem) {
+            shop.labels.push($(this).text());
+        });
+        $.ajax({
+            url: 'Admin_API/updateShop',
+            type: 'POST',
+            data: { shop: JSON.stringify(shop)},
+            dataType: 'json',
+            encode: true,
+            success: function(result){
+                console.log(result)
+                $('.rightColumn .boxRow').each(function() {
+                    console.log('as')
+                    if($(this).data('id') == $('#newshop').data('id')){
+                        console.log($(this).data('id') + ' ?= ' + $('#newshop').data('id'))
+                        $(this).remove();
+                    }
+                })
+                addShop(result["name"], result["id"]);
+
+            },
+            error: function(xhr, status, error){
+                console.log(xhr)
+            }
+        });
     });
     $('#doneshop').on('click', function() {
         shop = new Object();

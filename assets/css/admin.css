@@ -118,3 +118,7 @@ body {
     padding: 5px;
     position: relative;
 }
+
+li {
+    position: relative;
+}
