@@ -1,0 +1,42 @@
+.input-group-addon{
+  border-radius: 0!important;
+  line-height: 1!important;
+}
+box-sizing{
+  border-box;
+}
+
+.box{
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+}
+.contact-info p{
+  text-align: center!important;
+}
+.btn-div{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.btn-group-vertical{
+  width: 100%!important;
+
+}
+.btn{
+  margin-top: 10px!important;
+  margin-bottom: 10px!important;
+}
+
+.send-button{
+  display: flex!important;
+  justify-content: flex-end!important;
+}
+.left-div{
+  width: 100%;
+}
+.left-column{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

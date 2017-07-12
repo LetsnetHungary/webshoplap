@@ -1,11 +1,19 @@
 <link rel="stylesheet" href="/assets/css/mainheader.css">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/hu_HU/sdk.js#xfbml=1&version=v2.9";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div class="container">
 <section class="row" >
 	<div class="col-lg-8 col-md-12">
 		<a class="logoImage" href="Index" style="text-align:left; height:100px; ">
       	<svg id="logoSvg">
 		  <image href="/assets/images/logo.svg"  width="100%" height="100%" />
-		   
+
 
 		</svg>
 
@@ -13,7 +21,7 @@
 	</div>
 	<div class="col-lg-4 col-md-12">
 	<form  role="search" class="keresoForm2" action="http://webshoplap.hu/kereso" method="post">
-           
+
             <button type="submit" class="keresoGomb"><i class="glyphicon glyphicon-search"></i></button>
             <input type="text" class="kereso2" placeholder="Keresés" name="search">
             <div class="cb"></div>
@@ -22,21 +30,21 @@
 </section>
 
 <nav class="navbar menuBar menuBar2" role="navigation">
-   
+
    <div class="navbar-header menuBar2">
-      <button type="button" class="navbar-toggle" 
+      <button type="button" class="navbar-toggle"
          data-toggle="collapse" data-target="#mainMenu">
          <span class="sr-only">Menu</span>
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
       </button>
-		
-      
+
+
    </div>
-   
+
    <div class="collapse navbar-collapse"  id="mainMenu">
-	
+
       <ul class="nav navbar-nav navNew20170213 menuBar2">
 
  				<li class="dropdown">
@@ -65,15 +73,15 @@
                                     <li><a style="color:#FFF;" href="http://webshoplap.hu/italkiszallitas">Italkiszállítás</a></li>
                                     <li><a style="color:#FFF;" href="http://webshoplap.hu/irodaszer">Irodaszer</a></li>
                                     <li><a style="color:#FFF;" href="http://webshoplap.hu/szolgaltatas">Szolgáltatás</a></li>
-                                    
+
                 </ul>
               </li>
-         
-         <li><a href="/blog" class="navbar-nav menuBar2">blog</a></li>
-		 <li><a href="/kapcsolat" class="navbar-nav menuBar2">kapcsolat</a></li>         
+
+         <li><a href="/Blog" class="navbar-nav menuBar2">blog</a></li>
+		 <li><a href="/Contact" class="navbar-nav menuBar2">kapcsolat</a></li>
       </ul>
 
-       
+
        <div class=" navbar-right socialIcon">
        		<a href="https://www.facebook.com/webshoplap/" target="_blank">
             	<i style="color:#FFF;" class="fa fa-facebook-official"></i>
@@ -86,9 +94,9 @@
             </a>
        		<a href="https://www.youtube.com/channel/UCPRsu_U29cLsQnLw8XD-ggw">
             	<i style="color:#FFF;"  target="_blank" class="fa fa-youtube"></i>
-            </a>            
+            </a>
        </div>
    </div>
-  
+
 </nav>
 </div>
