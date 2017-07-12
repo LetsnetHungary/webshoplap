@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7 col-xs-12">
-                <div class="box leftColumn" style="padding-bottom: 20px;">
+                <div class="box leftColumn" style="padding-bottom: 20px;" data-id="<?php echo $shop["id"]; ?>">
                     <div class="boxTitle">
                         <div class="boxTitleTitle"><?php echo $shop["name"]; ?></div>
                         <div class="boxTitleArrow">

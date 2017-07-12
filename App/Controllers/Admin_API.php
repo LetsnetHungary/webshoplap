@@ -9,6 +9,11 @@
           echo $this->model->getShops($id);
           return;
         }
+        public function getShop() {
+            $id = $_POST["id"];
+            echo $this->model->getShop($id);
+            return;
+        }
         public function removeShop() {
           $id = $_POST["id"];
           $this->model->removeShop($id);

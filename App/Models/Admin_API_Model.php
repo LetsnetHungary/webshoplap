@@ -5,7 +5,13 @@
           $this->db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
       }
       public function getShops($id) {
-          $stmt = $this->db->prepare('SELECT id,name,pinned FROM `shops` WHERE category='.$id);
+          $stmt = $this->db->prepare('SELECT * FROM `shops` WHERE id='.$id);
+          $stmt->execute(array());
+          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          return(json_encode($result));
+      }
+      public function getShop($id) {
+          $stmt = $this->db->prepare('SELECT id,name,pinned FROM `shops` WHERE category='.$id.' ORDER BY name');
           $stmt->execute(array());
           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           return(json_encode($result));
