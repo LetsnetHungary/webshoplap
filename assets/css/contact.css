@@ -2,9 +2,6 @@
   border-radius: 0!important;
   line-height: 1!important;
 }
-box-sizing{
-  border-box;
-}
 
 .box{
   padding-top: 15px;
@@ -26,8 +23,19 @@ box-sizing{
 .btn{
   margin-top: 10px!important;
   margin-bottom: 10px!important;
+  background-color: #80caa5!important;
+  color:white!important;
 }
 
+.btn:hover {
+  color: black!important;
+}
+.input-group-addon {
+  min-width: 90px;
+}
+.input-group {
+  margin-bottom: 10px!important;
+}
 .send-button{
   display: flex!important;
   justify-content: flex-end!important;
@@ -39,4 +47,5 @@ box-sizing{
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 30px;
 }

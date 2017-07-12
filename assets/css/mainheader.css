@@ -116,7 +116,17 @@
 	
 	.socialIcon{
 		margin:0 auto;
-		margin-top:2px;		
+		height: 50px!important;
+		display:flex;
+		align-items: center;	
+	}
+
+	.socialIcon a {
+		margin-right: 5px;
+	}
+
+	.socialIcon div {
+		margin-right: 5px;
 	}
 
   .cb{
@@ -145,7 +155,7 @@
 	
 	/*
 		Navbar Módosítás
-	*/
+	
 
 	@media (min-width: 1000px){
 		.navbar-nav>li>a {
@@ -173,7 +183,7 @@
 		
 		
 	}
-	
+	*/
 	@media (max-width: 768px){
 	/*	#mainMenu{
 			margin-top:15px;
@@ -255,9 +265,10 @@
 	  overflow: hidden;
 	  text-overflow: ellipsis;   
 	}
-	
-	.fb_iframe_widget{
-		    margin-top: -22px;
-			position: absolute !important;
-			margin-left: -115px;
+
+	.navbar-toggle {
+		border-color: white!important;
+	}
+	.icon-bar {
+		background-color: white!important;
 	}

@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row box" style="margin:0;">
 
@@ -5,7 +6,7 @@
       <div class="left-div">
         <div class="contact-info">
           <p>info@webshoplap.hu</p>
-          <p>12345678</p>
+          <p>06-30-611-8855</p>
         </div>
         <div class="btn-div">
 
@@ -24,7 +25,7 @@
             <input id="msg" type="text" class="form-control" name="msg">
           </div>
           <div class="input-group">
-            <span class="input-group-addon">email cím</span>
+            <span class="input-group-addon">e-mail cím</span>
             <input id="msg" type="text" class="form-control" name="msg">
           </div>
           <div class="input-group">

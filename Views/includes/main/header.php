@@ -77,18 +77,17 @@ fjs.parentNode.insertBefore(js, fjs);
                 </ul>
               </li>
 
-         <li><a href="/Blog" class="navbar-nav menuBar2">blog</a></li>
-		 <li><a href="/Contact" class="navbar-nav menuBar2">kapcsolat</a></li>
+         <li><a href="/Blog" class=" menuBar2" role="button" aria-haspopup="true" aria-expanded="false">blog</a></li>
+		 <li><a href="/Contact" class="  menuBar2" role="button" aria-haspopup="true" aria-expanded="false">kapcsolat</a></li>
       </ul>
 
 
        <div class=" navbar-right socialIcon">
+         		<div class="fb-like" data-href="https://www.facebook.com/webshoplap/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+
        		<a href="https://www.facebook.com/webshoplap/" target="_blank">
             	<i style="color:#FFF;" class="fa fa-facebook-official"></i>
             </a>
-			<span style="display:inline-block; margin-top:-5px">
-			<div class="fb-like" data-href="https://www.facebook.com/webshoplap/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
-			</span>
       		<a href="https://www.instagram.com/webshoplap/"  target="_blank">
             	<i style="color:#FFF;" class="fa fa-instagram"></i>
             </a>
