@@ -51,17 +51,17 @@
                         <div class="boxTitleTitle">Kategória további linkjei</div>
                     </div>
                     <div class="row rightColumn">
-                        <?php for ($i = 1; $i <= 41; $i++) { ?>
-                            <div class="col-xs-12 shopHolder">
+                        <?php foreach ($shop["others"] as $other) { ?>
+                            <div class="col-xs-12 shopHolder" data-id="<?php echo $other['id']; ?>">
                                 <div class="boxAboutRow row">
                                     <div class="col-xs-6 boxAboutImgHolder">
                                         <img class="boxAboutIcon img-responsive" src="http://via.placeholder.com/160x160">
                                     </div>
                                     <div class="col-xs-6 boxAboutDataHolder">
                                         <div class="">
-                                        <h3 style="margin-bottom: 30px;">Boltnev</h3>
-                                        <a href="www.bolt.hu"><h4><i class="fa fa-wifi icon"></i>www.bolt.hu</h4></a>
-                                        <h4><i class="fa fa-phone icon"></i>+36306665544</h4>
+                                        <h3 style="margin-bottom: 30px;"><?php echo $other["name"]; ?></h3>
+                                        <a href="http://<?php echo $other['adress']; ?>"><h4><i class="fa fa-wifi icon"></i><?php echo $other["adress"]; ?></h4></a>
+                                        <h4><i class="fa fa-phone icon"></i><?php echo $other["phone"]; ?></h4>
                                         </div>
                                         </div>
                                     </div>

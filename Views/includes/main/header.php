@@ -2,7 +2,7 @@
 <div class="container">
 <section class="row" >
 	<div class="col-lg-8 col-md-12">
-		<a class="logoImage" href="http://webshoplap.hu/" style="text-align:left; height:100px; ">
+		<a class="logoImage" href="Index" style="text-align:left; height:100px; ">
       	<svg id="logoSvg">
 		  <image href="/assets/images/logo.svg"  width="100%" height="100%" />
 		   

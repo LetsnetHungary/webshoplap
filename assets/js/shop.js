@@ -35,4 +35,8 @@ $(function() {
         $(window).resize(function() {
             $('.rightColumn').css('max-height', $('.leftColumn').height()-10);
         });
+        $('.shopHolder').on('click', function() {
+            id = $(this).data('id');
+            window.location = 'Shop?id='+id
+        });
 })

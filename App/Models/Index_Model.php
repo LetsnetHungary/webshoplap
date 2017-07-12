@@ -12,6 +12,7 @@
           foreach ($categories as $cat) {
               $shops[$cat["name"]]["pinned"] = [];
               $shops[$cat["name"]]["unpinned"] = [];
+              $shops[$cat["name"]]["id"] = $cat["id"];
             $rem = 5;
             $stmt = $db->prepare('SELECT name, id FROM `shops` WHERE category= :id AND pinned=1 ORDER BY RAND() LIMIT 5');
             $stmt->execute([

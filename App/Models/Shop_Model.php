@@ -16,14 +16,28 @@
         public function getShop() {
             if(isset($_GET['id'])) {
                 $id = $_GET["id"];
-                $stmt = $this->db->prepare('SELECT name,adress,phone,bio FROM `shops` WHERE id='.$id);
+                $stmt = $this->db->prepare('SELECT name,adress,phone,bio,category FROM `shops` WHERE id='.$id);
                 $stmt->execute(array());
                 $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                $shop = $shop[0];
-                $shop["labels"] = $this->getLabels($id);
+                if(count($shop) > 0){
+                    $shop = $shop[0];
+                    $shop["labels"] = $this->getLabels($id);
+                    $shop["others"] = $this->getOtherShops($id,$shop["category"]);
+                } else {
+                    header('Location: Error');
+                    exit();
+                }
             } else {
-                $shop = array("name" => "aaaaaaa", "phone" => "00-00-000-0000", "bio" => "", "adress" => "www.aaa.aaa");
+                header('Location: Error');
+                exit();
             }
             return $shop;
+        }
+
+        public function getOtherShops($id,$cat) {
+                $stmt = $this->db->prepare('SELECT id,name,adress,phone FROM `shops` WHERE category='.$cat.' AND id<>'.$id);
+                $stmt->execute(array());
+                $shops = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $shops;
         }
 	}

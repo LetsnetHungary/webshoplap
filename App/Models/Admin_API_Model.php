@@ -63,7 +63,7 @@
           echo('{ "name" : "'.$shop->name.'", "id" : "'.$id.'"}');
           return;
       }
-      public function generateRandomString($length = 10) {
+      /*public function generateRandomString($length = 10) {
             $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $charactersLength = strlen($characters);
             $randomString = '';
@@ -87,11 +87,10 @@
                 $this->addShop($shop);
             }
           }
-      }
+      }*/
       public function pinShop($id,$pin) { 
           $stmt = $this->db->prepare('UPDATE `shops` SET pinned='.$pin.' WHERE id='.$id);
           $stmt->execute([]);
-          $this->generate();
         return;
       }
     }
