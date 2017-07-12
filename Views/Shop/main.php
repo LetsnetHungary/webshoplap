@@ -15,7 +15,7 @@
                     </div>
                     <div class="boxAboutRow row ">
                         <div class="col-xs-6 boxAboutImgHolder">
-                            <img class="boxAboutIcon img-responsive" src="http://via.placeholder.com/160x160">
+                            <img class="boxAboutIconTop img-responsive" src="http://via.placeholder.com/160x160">
                         </div>
                         <div class="col-xs-6 boxAboutDataHolder">
                             <div class="">

@@ -35,12 +35,12 @@
             <div class="boxContent">
               <?php foreach($value["pinned"] as $shop) { ?>
                 <div class="boxRow pinned-row" data-id="<?php echo $shop['id'] ?>">
-                  <?php echo $shop["name"]; ?>
+                  <p><?php echo $shop["name"]; ?></p>
                 </div>
             <?php } ?>
             <?php foreach($value["unpinned"] as $shop) { ?>
                 <div class="boxRow" data-id="<?php echo $shop['id'] ?>">
-                  <?php echo $shop["name"]; ?>
+                  <p><?php echo $shop["name"]; ?></p>
                 </div>
             <?php } ?>
             </div>

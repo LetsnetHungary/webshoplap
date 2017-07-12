@@ -27,12 +27,12 @@ $categories = $this->categories; ?>
                             <textarea class="form-control" rows="5" id="bio"></textarea>
                         </div>
                         <div class="row">
-                            <div class="col-xs-6">
+                            <div class="col-xs-12 col-sm-6">
                                 <ul id="labelholder" class="list-group">
                                     <li class="list-group-item active">Címkék</li>
                                 </ul>
                             </div>
-                            <div class="col-xs-6">
+                            <div class="col-xs-12 col-sm-6">
                                 <div class="newLabel">
                                     <input type="text" class="form-control" id="labelname" placeholder="Új címke neve">
                                     <button type="button" class="btn btn-success" id="addlabel">Hozzáadás</button>

@@ -38,6 +38,12 @@ body {
     cursor: pointer;
 }
 
+.boxRow p {
+    overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow: ellipsis;
+}
+
 .boxRow:hover {
     background-color: #d9d8d2;
 }

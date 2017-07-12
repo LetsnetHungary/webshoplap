@@ -35,7 +35,7 @@
         }
 
         public function getOtherShops($id,$cat) {
-                $stmt = $this->db->prepare('SELECT id,name,adress,phone FROM `shops` WHERE category='.$cat.' AND id<>'.$id);
+                $stmt = $this->db->prepare('SELECT id,name,adress,phone FROM `shops` WHERE category='.$cat.' AND id<>'.$id.' ORDER BY RAND()');
                 $stmt->execute(array());
                 $shops = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $shops;

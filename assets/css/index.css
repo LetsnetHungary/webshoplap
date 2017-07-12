@@ -160,19 +160,6 @@
     -webkit-transform: scaleY(1.0);
   }
 }
-
-@media all and (max-width: 1200px) { /* screen size until 1200px */
     body {
-        font-size: 1.5em; /* 1.5x default size */
-    }
-}
-@media all and (max-width: 1000px) { /* screen size until 1000px */
-    body {
-        font-size: 1.2em; /* 1.2x default size */
-        }
-    }
-@media all and (max-width: 500px) { /* screen size until 500px */
-    body {
-        font-size: 0.8em; /* 0.8x default size */
-        }
+        font-size: 1.7em; /* 1.5x default size */
     }

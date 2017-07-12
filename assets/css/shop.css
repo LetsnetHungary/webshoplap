@@ -29,6 +29,10 @@
     align-items: center;
 }
 
+.boxAboutIconTop {
+    margin-left: 15px;
+}
+
 .icon {
     color:black;
     margin-right: 5px;
