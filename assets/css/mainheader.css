@@ -129,7 +129,19 @@
 		margin-right: 5px;
 	}
 
-  .cb{
+	.socialIcon i{
+	color:white;
+	}
+
+	.socialIcon :hover {
+		color: black!important;
+	}
+
+	.nav :hover {
+		color: black!important;
+	}
+
+    .cb{
 		clear:both;
 	}
 	
