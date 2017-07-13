@@ -16,7 +16,9 @@
                 self::$PDO->exec("set names utf8");
                 return self::$PDO;
             }
-            return NULL;
+            else {
+              return self::$PDO;
+            }
         }
 
         public static function restore() {
