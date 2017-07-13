@@ -1,3 +1,12 @@
+<?php
+	$db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
+	//print_r(CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap")));
+	//die();
+	print_r(is_null($db));
+	$stmt = $db->prepare("SELECT * FROM `categories` WHERE 1");
+	$stmt->execute([]);
+	$category = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <link rel="stylesheet" href="/assets/css/mainheader.css">
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -52,33 +61,17 @@ fjs.parentNode.insertBefore(js, fjs);
                		kategóriák <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu menuBar2" >
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/szamitastechnika">Számítástechnika</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/elektronika">Elektronika</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/ruhazat">Ruházat</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/ruhazatikiegeszito">Ruházati kiegészítő</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/egeszseg">Egészség</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/szepsegapolas">Szépségápolás</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/otthon">Otthon</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/haziallat">Háziállat</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/jarmu">Jármű</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/sport">Sport</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/kerteszet">Kertészet</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/kreativ-hobbi">Kreatív hobbi</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/jatek">Játék</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/gep">Gép</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/kultura">Kultúra</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/jegyvasarlas">Jegyvásárlás</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/elelmiszer">Élelmiszer</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/etelkiszallitas">Ételkiszállítás</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/italkiszallitas">Italkiszállítás</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/irodaszer">Irodaszer</a></li>
-                                    <li><a style="color:#FFF;" href="http://webshoplap.hu/szolgaltatas">Szolgáltatás</a></li>
+									<?php
+									for ($i=0; $i < count($category); $i++) { ?>
+										<li><a style="color:#FFF;" href="Category?id=<?php print_r($category[$i]['id']); ?>"><?php print_r($category[$i]['name']); ?></a></li>
+									<?php }
+									?>
 
                 </ul>
-              </li>
+        </li>
 
-         <li><a href="/Blog" class=" menuBar2" role="button" aria-haspopup="true" aria-expanded="false">blog</a></li>
-		 <li><a href="/Contact" class="  menuBar2" role="button" aria-haspopup="true" aria-expanded="false">kapcsolat</a></li>
+        <li><a href="/Blog" class=" menuBar2" role="button" aria-haspopup="true" aria-expanded="false">blog</a></li>
+		 		<li><a href="/Contact" class="  menuBar2" role="button" aria-haspopup="true" aria-expanded="false">kapcsolat</a></li>
       </ul>
 
 
