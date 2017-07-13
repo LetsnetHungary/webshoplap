@@ -302,5 +302,10 @@ $(function() {
         error: function(xhr, status, error){
         }
     });
-    })
+})
+$('#addnewusr').click(function() {
+    $('#newusrform .form-group').toggle();
+    $(this).hide();
+    $('#doneusr').show();
+});
 });

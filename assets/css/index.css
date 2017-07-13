@@ -1,4 +1,6 @@
-
+.container p{
+    margin-bottom: 0!important;
+}
 
 .boxAbout {
     margin-bottom: 20px;

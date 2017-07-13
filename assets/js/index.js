@@ -1,4 +1,5 @@
 curr = 100;
+oldscroll = 0;
 breakpoint = '';
 function readyCarousel() {
 }
@@ -22,7 +23,7 @@ function removeBox() {
     old.animate({height: 0}, 500, 'swing', function() {
         old.remove();
         curr = 100;
-    });
+    }); 
 }
 var waitForFinalEvent = function(){var b={};return function(c,d,a){a||(a="I'm a banana!");b[a]&&clearTimeout(b[a]);b[a]=setTimeout(c,d)}}();
 function isBreakpoint( alias ) {
@@ -47,6 +48,7 @@ function setBreakpoint() {
     breakpoint = newbreakpoint;
 }
 function initShop(self,shop) {
+    oldscroll = $(window).scrollTop();
     removeBox();
     elem = $(`<div class="col-xs-12 boxAbout" style="height: 0px">
     <div class="box">
@@ -184,10 +186,12 @@ $(function() {
         })
      } else {
          removeBox();
+         $("html, body").animate({ scrollTop: oldscroll}, 500, 'swing');
      }
     });
     $('.container').on('click','.boxAbout .boxTitle', function() {
         removeBox();
+        $("html, body").animate({ scrollTop: oldscroll}, 500, 'swing');
     })
     $('.container').on('click','.boxAboutButton', function() {
         id = $(this).closest('.boxAbout').data('id');

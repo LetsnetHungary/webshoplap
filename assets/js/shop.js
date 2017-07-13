@@ -33,7 +33,7 @@ $(function() {
             ]
         });
         $(window).resize(function() {
-            $('.rightColumn').css('max-height', $('.leftColumn').height()-10);
+            $('.rightColumn').css('max-height', $('.leftColumn').height()-30);
         });
         $('.shopHolder').on('click', function() {
             id = $(this).data('id');
