@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/assets/css/mainheader.css">
 <div id="fb-root"></div>
+<link rel="icon" href="/assets/images/favicon.ico">
 <script>(function(d, s, id) {
 var js, fjs = d.getElementsByTagName(s)[0];
 if (d.getElementById(id)) return;
@@ -49,7 +50,7 @@ fjs.parentNode.insertBefore(js, fjs);
 
  				<li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-               		kategóriák <span class="caret"></span>
+               		Kategóriák <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu menuBar2" >
                                     <li><a style="color:#FFF;" href="http://webshoplap.hu/szamitastechnika">Számítástechnika</a></li>
@@ -77,8 +78,8 @@ fjs.parentNode.insertBefore(js, fjs);
                 </ul>
               </li>
 
-         <li><a href="/Blog" class=" menuBar2" role="button" aria-haspopup="true" aria-expanded="false">blog</a></li>
-		 <li><a href="/Contact" class="  menuBar2" role="button" aria-haspopup="true" aria-expanded="false">kapcsolat</a></li>
+         <li><a href="/Blog" class=" menuBar2" role="button" aria-haspopup="true" aria-expanded="false">Blog</a></li>
+		 <li><a href="/Contact" class="  menuBar2" role="button" aria-haspopup="true" aria-expanded="false">Kapcsolat</a></li>
       </ul>
 
 
@@ -86,13 +87,13 @@ fjs.parentNode.insertBefore(js, fjs);
          		<div class="fb-like" data-href="https://www.facebook.com/webshoplap/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
 
        		<a href="https://www.facebook.com/webshoplap/" target="_blank">
-            	<i style="color:#FFF;" class="fa fa-facebook-official"></i>
+            	<i class="fa fa-facebook-official"></i>
             </a>
       		<a href="https://www.instagram.com/webshoplap/"  target="_blank">
-            	<i style="color:#FFF;" class="fa fa-instagram"></i>
+            	<i class="fa fa-instagram"></i>
             </a>
        		<a href="https://www.youtube.com/channel/UCPRsu_U29cLsQnLw8XD-ggw">
-            	<i style="color:#FFF;"  target="_blank" class="fa fa-youtube"></i>
+            	<i target="_blank" class="fa fa-youtube"></i>
             </a>
        </div>
    </div>

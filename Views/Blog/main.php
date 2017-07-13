@@ -3,6 +3,8 @@
  $b_count = count($blog_post);
 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
 <main>
 
   <div class="container"> <!-- minden, amibe bootstrapes elem kerül -->
