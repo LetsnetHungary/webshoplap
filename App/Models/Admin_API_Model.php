@@ -121,7 +121,7 @@
           return;
       }
       public function addUser($email, $pw, $new_shop_id){
-        $pw = password_hash($pw , PASSWORD_BCRYPT);
+        $pw = password_hash($pw, PASSWORD_BCRYPT);
         $stmt = $this->db->prepare("INSERT INTO `users`(`email`, `password`, `is_admin`, `shop_id`) VALUES (:email, :password, '0', :shop_id)");
         $stmt->execute([
           ":email"=>$email,
