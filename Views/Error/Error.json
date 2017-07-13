@@ -1,7 +1,8 @@
 {
 	"css" :[
 		"../../assets/bootstrap/css/bootstrap.min.css",
-		"../../assets/css/Error.css"
+		"../../assets/css/Error.css",
+		"../../assets/font-awesome/css/font-awesome.css"
     ],
 	"js" :[
     ],
