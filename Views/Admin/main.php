@@ -4,17 +4,33 @@ $categories = $this->categories; ?>
 <body>
     <div class="container">
         <div class="row">
-          <form class="form-inline" action="/action_page.php">
-            <button type="submit" class="new-user-btn btn btn-default">Új felhasználó</button>
-            <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="email" class="form-control" id="email" placeholder="" name="new_mail">
-            </div>
-            <div class="form-group">
-              <label for="pwd">Password:</label>
-              <input type="password" class="form-control" id="pwd" placeholder="" name="new_pw">
-            </div>
-          </form>
+          <?php
+          if (isset($_GET['user_added'])) {
+            echo "Sikeresen hozzáadtad a felhasználót";
+            ?>
+            <form class="newerUser" action="Admin" method="post">
+              <button type="submit">További felhasználó hozzáadása</button>
+            </form>
+            <?php
+          }
+          else {?>
+            <form class="form-inline" action="../Admin_API/addUser" method="post">
+              <button type="submit" class="new-user-btn btn btn-default">Új felhasználó</button>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="" name="new_mail">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Jelszó:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="" name="new_pw">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Bolt neve:</label>
+                <input type="text" class="form-control" id="pwd" placeholder="" name="new_shop_name">
+              </div>
+            </form> <?php
+          }?>
+
             <div id="newshop" class="col-xs-12" style="display: none;" data-pinned="0">
                 <div class="box">
                     <div class="boxTitle">

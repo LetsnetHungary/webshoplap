@@ -109,7 +109,7 @@
             }
           }
       }*/
-      public function pinShop($id,$pin) { 
+      public function pinShop($id,$pin) {
           $stmt = $this->db->prepare('UPDATE `shops` SET pinned='.$pin.' WHERE id='.$id);
           $stmt->execute([]);
         return;
@@ -119,5 +119,15 @@
           $this->removeShop($shop->id);
           $this->addShop($shop);
           return;
+      }
+      public function addUser($email, $pw, $new_shop_id){
+        $pw = password_hash($pw , PASSWORD_BCRYPT);
+        $stmt = $this->db->prepare("INSERT INTO `users`(`email`, `password`, `is_admin`, `shop_id`) VALUES (:email, :password, '0', :shop_id)");
+        $stmt->execute([
+          ":email"=>$email,
+          ":password"=>$pw,
+          ":shop_id"=>$new_shop_id
+        ]);
+        return;
       }
     }

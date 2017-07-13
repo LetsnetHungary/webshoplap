@@ -46,4 +46,11 @@
             $this->model->updateShop($shop);
             return;
         }
+        public function addUser(){
+          $email = $_POST['new_mail'];
+          $pw = $_POST['new_pw'];
+          $new_shop_name = $_POST['new_shop_name'];
+          $this->model->addUser($email, $pw, $new_shop_name);
+          header("Location: ../Admin?user_added");
+        }
     }
