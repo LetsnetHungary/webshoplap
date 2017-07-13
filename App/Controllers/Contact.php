@@ -5,4 +5,4 @@
 			parent::__construct(__CLASS__);
 			$this->viewInit("Contact");
 		}
-    }
+}

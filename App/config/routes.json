@@ -12,6 +12,8 @@
     {"href" : "Admin", "closure" : "mvc", "controller" : "Admin", "order" : ["{method}"]},
     {"href" : "Admin_API", "closure" : "mvc", "controller" : "Admin_API", "order" : ["{method}"]},
     {"href" : "Login", "closure" : "mvc", "controller" : "Login", "order" : ["{method}"]},
-    {"href" : "Login_API", "closure" : "mvc", "controller" : "Login_API", "order" : ["{method}"]}
+    {"href" : "Login_API", "closure" : "mvc", "controller" : "Login_API", "order" : ["{method}"]},
+    {"href" : "Contact_API", "closure" : "mvc", "controller" : "Contact_API", "order" : ["{method}"]}
+
 
 ]
