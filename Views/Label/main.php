@@ -1,10 +1,10 @@
 <?php $shops = $this->shops; ?>
-<?php $catname = $this->catname ?>
+<?php $labelname = $this->labelname ?>
 <body>
     <div class="container">
           <div class="box">
             <div class="boxTitle">
-              <div class="boxTitleTitle"><?php echo $catname["name"]; ?></div>
+              <div class="boxTitleTitle"><?php echo $labelname; ?></div>
               <div class="boxTitleArrow">
                 <i class="fa fa-arrow-left"></i>
               </div>
