@@ -19,7 +19,7 @@
 </head>
 <body>
   <div class="container">
-      <div class="row">
+      <div class="row" id="mainrow">
         <!-- itt kezdődik a váz -->
         <?php foreach($shops as $key => $value) {
 

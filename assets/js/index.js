@@ -84,27 +84,40 @@ function initShop(self,shop) {
         ind = $('.boxHolder').index(parent) + 1;
         pos = (ind) % cc;
         if(pos == 0) { pos = cc; }
-        if($('.slider').length > 0) {
-            $('.slider').slick('unslick');
-        }
         elem.insertBefore($('.boxHolder').eq(ind-pos));
-        elem.animate({height: 550}, 500, 'swing' );
-        tt = elem.offset().top
-        if(curr > ind-pos) {
+        hely = ind-pos;
+        cucc = hely / cc;
+        scrol = 520;
+        if(shop['products'].length == 0) {
+            scrol = 300;
+            elem.find('.boxAboutRow').eq(1).remove();
+        }
+        elem.animate({height: scrol}, 500, 'swing', function() {
+        } );
+        $("html, body").animate({ scrollTop: $('#mainrow').offset().top + (270*cucc)}, 500, 'swing', function() {
+                
+            });
+        //tt = elem.offset().top
+        /*if(curr > hely) {
+            console.log('ez')
             $("html, body").animate({ scrollTop: tt}, 500, 'swing', function() {
-                curr = ind-pos;
+                curr = hely;
+                console.log(curr)
             });
         } else {
-            $("html, body").animate({ scrollTop: tt-550}, 500, 'swing', function() {
-                curr = ind-pos;
+            $("html, body").animate({ scrollTop: tt-scrol}, 500, 'swing', function() {
+                curr = hely;
+                console.log(curr)
             });
-        }
-        for(i=0; i < 8; i++) {
-            asd = $('<div class="slide"><div class="slide-inner"><div class="product"><div class="price"><h2>1230Ft<h2></div></div></div></div>');
-            $('.slider').append(asd);
+        }*/
+        for(ind in shop['products']) {
+            prod = shop['products'][ind];
+            asd = $('<div class="slide"><div class="slide-inner"><div class="product" style="background-image: url(\'assets/images/products/'+ prod['imageid'] +'.jpg\');"><div class="price"><h2>'+ prod['price'] +'Ft<h2></div></div></div></div>');
+            elem.find('.slider').append(asd);
             asd = '';
         }
-        $('.slider').slick({
+        if(shop['products'].length > 0) {
+        elem.find('.slider').slick({
             dots: true,
             infinite: true,
             speed: 300,
@@ -136,7 +149,8 @@ function initShop(self,shop) {
                 }
                 }
             ]
-            });
+        });
+        }
 }
 $(function() {
     setBreakpoint();
@@ -163,9 +177,7 @@ $(function() {
             encode          : true,
             success: function(result){
                 res = JSON.parse(result)
-                shop = res[0];
-                initShop(self,shop)
-                
+                initShop(self,res)
             },
             error: function(xhr, status, error){
             }
