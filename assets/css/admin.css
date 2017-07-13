@@ -98,7 +98,7 @@ body {
 }
 
 .pinned-row:hover {
-    background-color: darkgoldenrod; 
+    background-color: darkgoldenrod;
 }
 
 #addcat {
@@ -121,4 +121,12 @@ body {
 
 li {
     position: relative;
+}
+.form-inline{
+  margin-bottom: 20px;
+}
+.new-user-btn{
+  margin-right: 20px!important;
+
+  margin-left: 15px!important;
 }

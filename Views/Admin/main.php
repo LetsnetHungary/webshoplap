@@ -4,6 +4,17 @@ $categories = $this->categories; ?>
 <body>
     <div class="container">
         <div class="row">
+          <form class="form-inline" action="/action_page.php">
+            <button type="submit" class="new-user-btn btn btn-default">Új felhasználó</button>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" placeholder="" name="new_mail">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input type="password" class="form-control" id="pwd" placeholder="" name="new_pw">
+            </div>
+          </form>
             <div id="newshop" class="col-xs-12" style="display: none;" data-pinned="0">
                 <div class="box">
                     <div class="boxTitle">
