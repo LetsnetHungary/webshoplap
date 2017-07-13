@@ -1,5 +1,6 @@
 function showShop(res) {
     emptyShop();
+    $('#newshop').data('pinned',res.pinned);
     $('#newshoptitle').text('Bolt szerkesztése');
     $('#doneshop').hide();
     $('#editshop').show();
@@ -241,6 +242,7 @@ $(function() {
         shop.bio = $('#bio').val();
         shop.id = $('#newshop').data('id');
         shop.category = $('.rightColumn').data('id');
+        shop.pinned = $('#newshop').data('pinned');
         shop.labels = new Array();
         $('#labelholder li:not(.active)').each(function(index,elem) {
             shop.labels.push($(this).text());
@@ -252,15 +254,22 @@ $(function() {
             dataType: 'json',
             encode: true,
             success: function(result){
-                console.log(result)
                 $('.rightColumn .boxRow').each(function() {
-                    console.log('as')
                     if($(this).data('id') == $('#newshop').data('id')){
-                        console.log($(this).data('id') + ' ?= ' + $('#newshop').data('id'))
+                        e = $(`<div class="boxRow" data-id="`+ result["id"] +`">`+ result["name"] +`
+                                    <div class="delete-row" style="display: none;">
+                                        <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                                    </div><div class="pin-row" style="display: none;">
+                                        <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
+                                    </div></div>`).insertAfter($(this));
+                                    if($('#newshop').data('pinned') == 1) {
+                                        e.addClass('pinned-row').find('.pin-row').addClass('pinned');
+                                    }
                         $(this).remove();
                     }
                 })
-                addShop(result["name"], result["id"]);
+                emptyShop();
+                $('#newshop').hide();
 
             },
             error: function(xhr, status, error){

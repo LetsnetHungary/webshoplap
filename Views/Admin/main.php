@@ -4,7 +4,7 @@ $categories = $this->categories; ?>
 <body>
     <div class="container">
         <div class="row">
-            <div id="newshop" class="col-xs-12" style="display: none;">
+            <div id="newshop" class="col-xs-12" style="display: none;" data-pinned="0">
                 <div class="box">
                     <div class="boxTitle">
                         <div id="newshoptitle" class="boxTitleTitle"></div>

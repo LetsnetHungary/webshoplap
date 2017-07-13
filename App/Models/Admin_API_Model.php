@@ -65,7 +65,11 @@
           return $result[0]["id"];
       }
       public function addShop($shop) {
-          $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\')');
+          if(property_exists($shop, 'pinned')) {
+                $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category,pinned) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->pinned.'\')');
+          } else {
+                $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\')');
+          }
           $stmt->execute([]);
           $stmt = $this->db->prepare('SELECT id FROM `shops` WHERE name = :name');
           $stmt->execute([
