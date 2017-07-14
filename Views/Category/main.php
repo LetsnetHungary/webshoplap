@@ -9,10 +9,10 @@
                 <i class="fa fa-arrow-left"></i>
               </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin: 0;">
                 <?php foreach ($shops as $shop) { ?>
                     <div class="col-lg-4 col-md-6 col-xs-12 shopHolder" data-id="<?php echo $shop["id"]; ?>">
-                        <div class="boxAboutRow row" style="margin-left:0px;">
+                        <div class="boxAboutRow row">
                             <div class="col-xs-6 boxAboutImgHolder">
                                 <img class="boxAboutIcon img-responsive" src="http://via.placeholder.com/160x160">
                             </div>
