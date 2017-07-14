@@ -16,7 +16,9 @@
                     $stmt = $this->db->prepare('SELECT id,name,adress,phone FROM `shops` WHERE id='.$id);
                     $stmt->execute(array());
                     $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    array_push($shops, $shop[0]);
+                    if(count($shop) > 0) {
+                        array_push($shops, $shop[0]);
+                    }
                 }
                 if(count($shops) > 0){
                     return $shops;

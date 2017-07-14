@@ -55,10 +55,12 @@
     display: flex;
     align-items: center;
     align-content: center;
+    flex-wrap: wrap;
 }
 
 .labelHolder a {
     margin-right: 10px;
+    margin-bottom: 10px;
     background-color: #80caa5;
     color: white!important;
     border-radius: 15%;
@@ -74,8 +76,9 @@
 .product {
     width: 190px;
     height: 190px;
-    background-image: url("http://i.imgur.com/Hyi2stK.jpg");
     background-size: contain;
+    background-repeat:   no-repeat;
+    background-position: center center;    
     position: relative;
 }
 
@@ -86,7 +89,6 @@
     align-items: center;
     bottom: 0px;
     right: 0px;
-    width: 100px;
     height: 40px;
     background-color:rgba(0, 0, 0, 0.5);
 }

@@ -25,7 +25,14 @@
           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           $result = $result[0];
           $result["labels"] = $this->getLabels($id);
+          $result["products"] = $this->getProducts($id);
           return(json_encode($result));
+      }
+        public function getProducts($id) {
+          $stmt = $this->db->prepare('SELECT id,imageid, price FROM `products` WHERE shop='.$id.' ORDER BY position');
+          $stmt->execute(array());
+          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          return $result;
       }
       public function removeShop($id) {
           $stmt = $this->db->prepare('DELETE FROM `shops` WHERE id= :id');
@@ -64,11 +71,19 @@
           echo('{ "name" : "'.$name.'", "id" : "'.$result[0]["id"].'"}');
           return $result[0]["id"];
       }
-      public function addShop($shop) {
-          if(property_exists($shop, 'pinned')) {
-                $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category,pinned) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->pinned.'\')');
+      public function addShop($shop,$bool) {
+          if($bool){
+            if(property_exists($shop, 'pinned')) {
+                    $stmt = $this->db->prepare('INSERT INTO shops (id,name,adress,phone,bio,category,pinned) VALUES (\''.$shop->id.'\',\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->pinned.'\')');
+            } else {
+                    $stmt = $this->db->prepare('INSERT INTO shops (id,name,adress,phone,bio,category) VALUES (\''.$shop->id.'\',\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\')');
+            }
           } else {
-                $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\')');
+            if(property_exists($shop, 'pinned')) {
+                    $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category,pinned) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->pinned.'\')');
+            } else {
+                    $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\')');
+            }
           }
           $stmt->execute([]);
           $stmt = $this->db->prepare('SELECT id FROM `shops` WHERE name = :name');
@@ -80,6 +95,29 @@
           foreach($shop->labels as $label) {
               $stmt = $this->db->prepare('INSERT INTO labels (name,shop) VALUES (\''.$label.'\',\''.$id.'\')');
               $stmt->execute([]);
+          }
+              $i = 1;
+          foreach($shop->products as $product) {
+              if($product->type == 'old') {
+                $stmt = $this->db->prepare('UPDATE `products` SET position='.$i.' WHERE id='.$product->id);
+                $stmt->execute([]);
+              } else {
+                $stmt = $this->db->prepare('SELECT imageid FROM `products` ORDER BY imageid DESC LIMIT 1');
+                $stmt->execute([]);
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $prodmaxid = $result[0]['imageid'];
+                $uriPhp = 'data://' . substr($product->image, 5);
+                $binary = file_get_contents($uriPhp);
+                file_put_contents('assets/images/products/'.($prodmaxid+1).'.jpg',$binary);
+                $stmt = $this->db->prepare('INSERT INTO products (imageid,position,shop,price) VALUES (:imageid, :position, :shop, :price)');
+                $stmt->execute([
+                    ":imageid" => $prodmaxid+1,
+                    ":position" => $i,
+                    ":shop" => $id,
+                    ":price" => $product->price
+                ]);
+              }
+              $i++;
           }
           echo('{ "name" : "'.$shop->name.'", "id" : "'.$id.'"}');
           return;
@@ -117,7 +155,7 @@
       public function updateShop($shop) {
           $shop = json_decode($shop);
           $this->removeShop($shop->id);
-          $this->addShop($shop);
+          $this->addShop($shop,true);
           return;
       }
       public function addUser($email, $pw, $new_shop_id){

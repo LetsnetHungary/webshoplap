@@ -28,7 +28,7 @@ $categories = $this->categories; ?>
                 <label for="pwd">Bolt neve:</label>
                 <input type="text" class="form-control" id="pwd" placeholder="" name="new_shop_name">
               </div>
-                <button id="addnewusr" type="button" class="new-user-btn btn btn-default">Új felhasználó</button>
+                <button id="addnewusr" type="button" class="new-user-btn btn btn-default">Új felhasználó hozzáadása</button>
                 <button id="doneusr"  style="display:none;" type="submit" class="new-user-btn btn btn-success">Kész</button>
 
             </form> <?php
@@ -63,11 +63,33 @@ $categories = $this->categories; ?>
                                     <li class="list-group-item active">Címkék</li>
                                 </ul>
                             </div>
-                            <div class="col-xs-12 col-sm-6">
+                            <div class="col-xs-12 col-sm-6" style="margin-bottom: 10px;">
                                 <div class="newLabel">
                                     <input type="text" class="form-control" id="labelname" placeholder="Új címke neve">
                                     <button type="button" class="btn btn-success" id="addlabel">Hozzáadás</button>
                                 </div>
+                            </div>
+                            <div class="col-xs-12" id="uploadcontainer" style="margin-bottom: 10px; display: none;">
+                                <label class="control-label">Kép feltöltése</label>
+                                <img class="img-responsive" id="preview-img" src="#" alt="" />
+                                <input class="file" id="prod-imginput" type="file" accept="image/*">
+                                <div class="newLabel">
+                                        <input type="text" class="form-control" id="prodprice" placeholder="Termék ára (Ft)">
+                                        <button type="button" class="btn btn-success" id="addproduct">Hozzáadás</button>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <ul id="prodholder" class="list-group">
+                                    <li class="list-group-item active">
+                                        <div class="add-row">
+                                            <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                                        </div>
+                                    Termékek</li>
+                                    <li class="list-group-item">
+                                        <ul class="row noselect" id="productsHolder">
+                                        </ul>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <div class="newLabel">
