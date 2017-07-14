@@ -23,6 +23,7 @@
                     $shop = $shop[0];
                     $shop["labels"] = $this->getLabels($id);
                     $shop["others"] = $this->getOtherShops($id,$shop["category"]);
+                    $shop["products"] = $this->getProducts($id);
                 } else {
                     header('Location: Error');
                     exit();
@@ -40,4 +41,10 @@
                 $shops = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $shops;
         }
+        public function getProducts($id) {
+          $stmt = $this->db->prepare('SELECT imageid, price FROM `products` WHERE shop='.$id.' ORDER BY position');
+          $stmt->execute(array());
+          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          return $result;
+      }
 	}

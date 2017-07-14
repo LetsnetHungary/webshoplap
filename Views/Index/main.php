@@ -51,12 +51,29 @@
         ?>
         <!-- itt végződik a váz -->
       </div>
-      <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
-      <script type="text/javascript">
-    window.cookieconsent_options = {"message":"Ez a weboldal cookie-kat (s&#xFC;tiket) haszn&#xE1;l az&#xE9;rt, hogy weboldalunk haszn&#xE1;lata sor&#xE1;n a lehet&#x151; legjobb &#xE9;lm&#xE9;nyt tudjuk biztos&#xED;tani.  A weboldalunkon t&#xF6;rt&#xE9;n&#x151; tov&#xE1;bbi b&#xF6;ng&#xE9;sz&#xE9;ssel hozz&#xE1;j&#xE1;rul a cookie-k haszn&#xE1;lat&#xE1;hoz.","dismiss":"Meg&#xE9;rtettem","learnMore":"Tov&#xE1;bbi inf&#xF3;","link":"http://webshoplap.hu/docs/adatvedelmi_szabalyzat.pdf","theme":"dark-top"};
+      <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent 
+      <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  },
+  "content": {
+    "message": "Ez a weboldal cookie-kat (sütiket) használ azért, hogy weboldalunk használata során a lehető legjobb élményt tudjuk biztosítani. A weboldalunkon történő további böngészéssel hozzájárul a cookie-k használatához.",
+    "dismiss": "Megértettem!",
+    "link": "További információ.",
+    "href": "http://webshoplap.hu/docs/adatvedelmi_szabalyzat.pdf"
+  }
+})});
 </script>
-      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
-      <!-- End Cookie Consent plugin -->
+      End Cookie Consent plugin Basszátok meg:(((((((-->
       <div class="device-xs visible-xs"></div>
   <div class="device-sm visible-sm"></div>
   <div class="device-md visible-md"></div>

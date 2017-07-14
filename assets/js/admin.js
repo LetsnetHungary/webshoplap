@@ -13,9 +13,18 @@ function showShop(res) {
     for(label in res.labels) {
         $('<li class="list-group-item"><div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>'+ res.labels[label]["name"] +'</li>').appendTo('#labelholder');
     }
+    console.log(res.products);
+    for(ind in res.products) {
+        product = res.products[ind];
+        $(`<li data-old="true" data-id="`+ product['id'] +`" class="col-xs-6 col-sm-4 col-md-3"><div class="slide-inner"><img class='image-responsive' src = "assets/images/products/`+ product['imageid'] +`.jpg"><div class="product"> 
+                            <div class="price"><h2>` + product['price'] + `Ft<h2></div></div>
+                            </div></li>`).appendTo('#productsHolder');
+        
+    }
     $('#labelname').val('');
     $('#newshop').show();
-    $("html, body").animate({ scrollTop: 0}, 500, 'swing'); 
+    console.log('asd');
+    $("html, body").animate({ scrollTop: $('#newshop').offset().top}, 500, 'swing'); 
 }
 function emptyShop() {
     $('#shopname').val('');
@@ -26,6 +35,8 @@ function emptyShop() {
     $('#labelname').val('');
 }
 function prepareCat(res, self){
+    
+    
     content = $('.rightColumn .boxContent');
     content.empty();
     $(`<div class="boxRowAdd">
@@ -46,6 +57,10 @@ function prepareCat(res, self){
     }
     $('.rightColumn .boxTitleTitle').text(self.text())
     $('.rightColumn').show().data('id',self.data('id')) ;
+    if($(window).width() <992) {
+        console.log( $('.rightColumn').offset().top);
+        $("html, body").animate({ scrollTop: $('.rightColumn').offset().top}, 500, 'swing'); 
+    }
 }
 function addCategory() {
     if($('#catname').val() != ''){
@@ -89,7 +104,56 @@ function addShop(name, id) {
     emptyShop();
     $('#newshop').hide();
 }
+    function readFile(file) {
+    reader = new FileReader();
+    reader.onload = function(e) {
+        text = e.target.result;
+        img = new Image();
+        img.onload = function() {
+          if(img.width > img.height) {
+              ratio = 500/ img.width
+          } else {
+              ratio = 500/img.height;
+          }
+          rw = ratio*img.width; rh = ratio*img.height;
+          canvas = $('<canvas width="500" height="500" style="display: none;"></canvas>');
+          ctx = canvas[0].getContext('2d');
+          ctx.fillStyle = 'white';
+          ctx.fillRect(0, 0, 500, 500);
+          console.log('rw: ' + rw +', rh: ' + rh + ', cuc: ' )
+          console.log( 250 - (rw / 2))
+          console.log( 250 + (rw / 2))
+          ctx.drawImage(this,250 - (rw / 2),250 - (rh / 2),rw,rh);
+          dataurl = canvas[0].toDataURL('image/jpeg');
+          $('#preview-img').attr('src', dataurl);
+        }
+        img.src = text;
+    }
+    reader.readAsDataURL(file);
+  }
+  function clearImage() {
+      $('#preview-img').attr('src','#');
+      $('#prodprice').val('')
+  }
 $(function() {
+    $('.add-row').click(function() {
+        clearImage();
+        $('#uploadcontainer').toggle()
+    })
+    $('#addproduct').click(function() {
+        $(`<li class="col-xs-6 col-sm-4 col-md-3"><div class="slide-inner"><img class='image-responsive' src = "` +
+        $('#preview-img').attr('src') +`"><div class="product"> 
+                            <div class="price"><h2>` + $('#prodprice').val() + `Ft<h2></div></div>
+                            </div></li>`).data('price', $('#prodprice').val()).appendTo('#productsHolder');
+                            clearImage();
+    });
+  $('#prod-imginput').change(function() {
+    files = this.files;
+      readFile(files[0]);
+  });
+    $('#productsHolder').sortable({
+        placeholder: "ui-state-highlight slide-inner placeholder col-xs-6 col-sm-4 col-md-3"
+    });
     $('.container').on('click','.leftColumn .boxRow', function(e) {
         if(!$(e.target).hasClass('delete-row') && !$(e.target).hasClass('fa-times')) {
             self = $(this)
@@ -219,7 +283,8 @@ $(function() {
         $('#doneshop').show();
         $('#editshop').hide();
         $('#newshop').show();
-        $("html, body").animate({ scrollTop: 0}, 500, 'swing');
+        console.log('bsd')
+        $("html, body").animate({ scrollTop: $('#newshop').offset().top}, 500, 'swing');
     });
     
     $('#addlabel').on('click', function() {
@@ -247,6 +312,18 @@ $(function() {
         $('#labelholder li:not(.active)').each(function(index,elem) {
             shop.labels.push($(this).text());
         });
+        shop.products = new Array();
+        i = 0;
+        $('#productsHolder li').each(function() {
+            prod = new Object();
+            if($(this).attr('data-old')){ prod.type = 'old'; prod.id = $(this).data('id') }else{ prod.type = 'new'}
+            prod.image = $(this).find('img').attr('src');
+            prod.price = $(this).data('price')
+            prod.position = i;
+            i+=1;
+            shop.products.push($.extend(true, {}, prod));
+            prod="";
+        })
         $.ajax({
             url: 'Admin_API/updateShop',
             type: 'POST',
@@ -289,6 +366,18 @@ $(function() {
             shop.labels.push($(this).text());
         });
         shop.category = $('.rightColumn').data('id');
+        shop.products = new Array();
+        i = 0;
+        $('#productsHolder li').each(function() {
+            prod = new Object();
+            $(this).attr('data-old') ? prod.type = 'old' : prod.type = 'new';
+            prod.image = $(this).find('img').attr('src');
+            prod.price = $(this).data('price')
+            prod.position = i;
+            i+=1;
+            shop.products.push($.extend(true, {}, prod));
+            prod="";
+        })
         console.log('eddik ok')
         $.ajax({
         url: 'Admin_API/addShop',

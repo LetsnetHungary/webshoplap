@@ -33,13 +33,18 @@
                         </p>
                     </div>
                     <div class="labelHolder"><?php foreach($shop["labels"] as $label) { ?>
-                        <a><?php echo $label["name"]; ?></a>
+                        <a href="Label?name=<?php echo $label["name"]; ?>"><?php echo $label["name"]; ?></a>
                     <?php } ?>
                     </div>
 
             <div class="boxAboutRow row">
                     <div class="col-xs-12 slider-container">
-                        <div class="slider">
+                        <div class="slider"><?php foreach($shop["products"] as $product) { ?>
+                            <div class="slide"><div class="slide-inner"><div class="product" 
+                            style="background-image: url('assets/images/products/<?php print_r($product['imageid']); ?>.jpg');">
+                            <div class="price"><h2><?php print_r($product['price']);?> Ft<h2></div></div>
+                            </div></div>
+                            <?php } ?> 
                         </div>
                     </div>
                   </div>

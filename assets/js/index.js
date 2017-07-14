@@ -65,7 +65,9 @@ function initShop(self,shop) {
                         <div class="col-xs-6 boxAboutDataHolder">
                             <div class="">
                             <h3 style="margin-bottom: 30px;">` + shop['name'] +`</h3>
-                            <a href="` + shop['adress'] +`"><h4><i class="fa fa-wifi icon"></i>` + shop['adress'] +`</h4></a>
+
+                            <a target="_blank" href="` + shop['adress'] +`"><h4><i class="fa fa-wifi icon"></i>` + shop['adress'] +`</h4></a>
+
                             <h4><i class="fa fa-phone icon"></i>` + shop['phone'] +`</h4>
                             <iframe src="https://www.facebook.com/plugins/like.php?href=` + shop['adress'] +`&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
                             </div>

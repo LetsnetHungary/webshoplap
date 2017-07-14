@@ -32,7 +32,7 @@
         public function addShop() {
             $shop = $_POST["shop"];
             $shop = json_decode($shop);
-            $this->model->addShop($shop);
+            $this->model->addShop($shop,false);
             return;
         }
         public function pinShop() {
