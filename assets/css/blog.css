@@ -1,5 +1,8 @@
-.box {
-  height: 250px;
+.box-outer {
+  height: 300px;
+  padding: 10px;
+}
+.box-inner{
   padding: 10px;
 }
 h1 {

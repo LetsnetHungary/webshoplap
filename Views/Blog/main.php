@@ -1,3 +1,11 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/hu_HU/sdk.js#xfbml=1&version=v2.9";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <?
  $blog_post = $this->blog_post;   //a databaseből kiszedett postok (szerző, dátum, cím, tartalom...)
  $b_count = count($blog_post);
@@ -11,16 +19,32 @@
 
 
   <div class="postholder row">
-    <?
-      for ($i=0; $i < $b_count ; $i++) {
+    <?php
+    if (isset($_GET['post_id'])) {?>
+      <div class="col-xs-12">
+        <div class="box box-inner">
+          <h1><?php echo $blog_post[$_GET['post_id']-1]['blog_title'] ?></h1>
+          <h4>Írta: <?php echo $blog_post[$_GET['post_id']-1]['blog_author'] ?></h4>
+          <h5><span class="glyphicon glyphicon-time"></span> Közzétéve: <?php print_r($blog_post[$_GET['post_id']-1]['blog_date']); ?></h5>
+          <h5><?php print_r($blog_post[$_GET['post_id']-1]['blog_subtitle']); ?></h5>
+          <?php print_r($blog_post[$_GET['post_id']-1]['blog_content']); ?>
+
+        </div>
+      </div>
+    <?php }
+    else{
+      for ($i=$b_count-1; $i >= 0; $i--) {
+        $title = $blog_post[$i]['blog_title'];
+        $url = "Blog address";
 
         ?>
         <div class="col-md-6">
-          <div class="box">
+          <div class="box box-outer" data-id="<?php echo $blog_post[$i]['blog_id']; ?>">
             <script type="text/javascript">
               $(".box").click(function(l){
+                self = $(this);
                 if (!$(l.target).hasClass("fb-share-button")) {
-                  window.location = "Index"
+                  window.location = "Blog?post_id=" + self.data('id')
                 }
               })
             </script>
@@ -29,7 +53,9 @@
             <h4>Írta: <?php print_r($blog_post[$i]['blog_author']); ?></h4>
             <h5><span class="glyphicon glyphicon-time"></span> Közzétéve: <?php print_r($blog_post[$i]['blog_date']); ?></h5>
             <h5><?php print_r($blog_post[$i]['blog_subtitle']);  ?></h5>
-            <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Megosztás</a></div>          </div>
+            <div class="fb-share-button" data-href="<?php echo $blog_post[$i]['blog_url'] ?>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Findex.hu%2F&amp;src=sdkpreparse">Megosztás</a></div>
+
+          </div>
            <!--
           <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=80&layout=button_count&action=like&size=small&show_faces=false&share=false&height=21&appId" width="80" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
           https://developers.facebook.com/docs/plugins/like-button# <- facebook like gomb -->
@@ -37,6 +63,7 @@
       </div>
         <?
       }
+    }
       ?>
   </div>
   </div>

@@ -23,7 +23,7 @@ function removeBox() {
     old.animate({height: 0}, 500, 'swing', function() {
         old.remove();
         curr = 100;
-    }); 
+    });
 }
 var waitForFinalEvent = function(){var b={};return function(c,d,a){a||(a="I'm a banana!");b[a]&&clearTimeout(b[a]);b[a]=setTimeout(c,d)}}();
 function isBreakpoint( alias ) {
@@ -65,8 +65,9 @@ function initShop(self,shop) {
                         <div class="col-xs-6 boxAboutDataHolder">
                             <div class="">
                             <h3 style="margin-bottom: 30px;">` + shop['name'] +`</h3>
-                            <a href="http://` + shop['adress'] +`"><h4><i class="fa fa-wifi icon"></i>` + shop['adress'] +`</h4></a>
+                            <a href="` + shop['adress'] +`"><h4><i class="fa fa-wifi icon"></i>` + shop['adress'] +`</h4></a>
                             <h4><i class="fa fa-phone icon"></i>` + shop['phone'] +`</h4>
+                            <iframe src="https://www.facebook.com/plugins/like.php?href=` + shop['adress'] +`&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
                             </div>
                             </div>
                         <button class="boxAboutButton btn">Több info</button>
@@ -74,7 +75,7 @@ function initShop(self,shop) {
                         <div class="boxAboutRow row">
                             <div class="col-xs-12 slider-container">
                                 <div class="slider">
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -97,7 +98,7 @@ function initShop(self,shop) {
         elem.animate({height: scrol}, 500, 'swing', function() {
         } );
         $("html, body").animate({ scrollTop: $('#mainrow').offset().top + (270*cucc)}, 500, 'swing', function() {
-                
+
             });
         //tt = elem.offset().top
         /*if(curr > hely) {

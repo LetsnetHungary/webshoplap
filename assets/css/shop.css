@@ -140,7 +140,7 @@
     background-color: #d9d9d9;
 }
 
-.fa {
+.leftColumn .fa, .rightColumn .fa{
     width: 21px;
     height:21px;
 }

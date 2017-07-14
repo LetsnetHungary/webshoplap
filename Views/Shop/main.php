@@ -20,7 +20,7 @@
                         <div class="col-xs-6 boxAboutDataHolder">
                             <div class="">
                                 <h3 style="margin-bottom: 30px;"><?php echo $shop["name"]; ?></h3>
-                                <a href="http://<?php echo $shop["adress"]; ?>">
+                                <a target="_blank" href="<?php echo $shop["adress"]; ?>">
                                     <h4><i class="fa fa-wifi icon"></i><?php echo $shop["adress"]; ?></h4>
                                 </a>
                                 <h4><i class="fa fa-phone icon"></i><?php echo $shop["phone"]; ?></h4>
@@ -36,7 +36,7 @@
                         <a><?php echo $label["name"]; ?></a>
                     <?php } ?>
                     </div>
-                    
+
             <div class="boxAboutRow row">
                     <div class="col-xs-12 slider-container">
                         <div class="slider">
