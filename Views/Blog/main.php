@@ -29,7 +29,7 @@
             <h4>Írta: <?php print_r($blog_post[$i]['blog_author']); ?></h4>
             <h5><span class="glyphicon glyphicon-time"></span> Közzétéve: <?php print_r($blog_post[$i]['blog_date']); ?></h5>
             <h5><?php print_r($blog_post[$i]['blog_subtitle']);  ?></h5>
-            <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Megosztás</a></div>          </div>
+            <div class="fb-share-button" data-href="https://webshoplap.hu" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Megosztás</a></div>          </div>
            <!--
           <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=80&layout=button_count&action=like&size=small&show_faces=false&share=false&height=21&appId" width="80" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
           https://developers.facebook.com/docs/plugins/like-button# <- facebook like gomb -->

@@ -2,7 +2,6 @@
     <div class="container">
         <div class="row login">
             <div class="col-sm-6 col-md-4 col-md-offset-4 text-center">
-                <h1 class="text-center login-title">Belépés</h1>
                 <?php
                   ob_start();
                   if (isset($_GET['message']) && $_GET['message'] == "server_timeout") {
@@ -10,6 +9,7 @@
                 }
                 ob_end_flush(); ?>
                 <div class="account-wall box">
+                <h1 class="text-center login-title">Belépés</h1>
                     <div class="form-signin" id = "loginform">
                       <form class="signing-form" action="Login_API" method="post">
 

@@ -8,7 +8,7 @@
     public function search($key_word){
       $key_word = "%" . $key_word . "%";
       $db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
-      $stmt = $db->prepare("SELECT `id` FROM `shop` WHERE name LIKE :key_word");
+      $stmt = $db->prepare("SELECT `id` FROM `shops` WHERE name LIKE :key_word");
       $stmt->execute([
         ":key_word"=>$key_word
       ]);

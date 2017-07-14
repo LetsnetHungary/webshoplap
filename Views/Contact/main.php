@@ -10,9 +10,10 @@
         <div class="btn-div">
 
           <div class="btn-group-vertical">
-            <button type="button" class="btn">Felhasználási feltételek</button>
-            <button type="button" class="btn">Adatvédelmi szabályzat</button>
-            <button type="button" class="btn">Médiaajánlat </button>
+          
+            <button onclick="window.location='/assets/documents/felhasznalasi_feltetelek.pdf'" type="button" class="btn">Felhasználási feltételek</button>
+            <button onclick="window.location='/assets/documents/adatvedelmi_szabalyzat.pdf'" type="button" class="btn">Adatvédelmi szabályzat</button>
+            <button onclick="window.location='/assets/documents/mediaajanlat.pdf'" type="button" class="btn">Médiaajánlat </button>
           </div>
         </div>
       </div>
