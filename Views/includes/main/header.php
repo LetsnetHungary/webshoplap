@@ -30,12 +30,11 @@ fjs.parentNode.insertBefore(js, fjs);
       </a>
 	</div>
 	<div class="col-lg-4 col-md-12">
-	<form  role="search" class="keresoForm2" action="http://webshoplap.hu/kereso" method="post">
-
+		<form class="keresoForm2" action="../Search" method="get">
             <button type="submit" class="keresoGomb"><i class="glyphicon glyphicon-search"></i></button>
-            <input type="text" class="kereso2" placeholder="Keresés" name="search">
+            <input type="text" class="kereso2" placeholder="Keresés" name="search_word">
             <div class="cb"></div>
-	   </form>
+	  </form>
 	</div>
 </section>
 
