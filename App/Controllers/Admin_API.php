@@ -2,7 +2,7 @@
     class Admin_API extends CoreApp\Controller {
         public function __construct() {
             parent::__construct(__CLASS__);
-			$this->loadModel(__CLASS__);
+			      $this->loadModel(__CLASS__);
         }
         public function getShops() {
           $id = $_POST["id"];
@@ -53,4 +53,5 @@
           $this->model->addUser($email, $pw, $new_shop_name);
           header("Location: ../Admin?user_added");
         }
+
     }

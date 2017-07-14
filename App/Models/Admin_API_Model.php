@@ -108,7 +108,25 @@
                 $this->addShop($shop);
             }
           }
+      }
+      public function getLabels(){ <-- label feltöltés db-bes
+        $labels = [];
+        $stmt = $this->db->prepare("SELECT * FROM `teszt` WHERE 1");
+        $stmt->execute([]);
+        $labels = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($labels as $label) {
+          $multiple = explode(", ", $label["label"]);
+          for ($i=0; $i < count($multiple); $i++) {
+            $stmt = $this->db->prepare("INSERT INTO `labels`(`name`, `shop`) VALUES (:name, :shop)");
+            $stmt->execute([
+              ":name"=>$multiple[$i],
+              ":shop"=>$label["id"]
+            ]);
+          }
+        }
+        return;
       }*/
+
       public function pinShop($id,$pin) {
           $stmt = $this->db->prepare('UPDATE `shops` SET pinned='.$pin.' WHERE id='.$id);
           $stmt->execute([]);
