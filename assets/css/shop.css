@@ -146,3 +146,11 @@
     width: 21px;
     height:21px;
 }
+
+.pinned {
+    background-color: orange;
+}
+
+.pinned:hover {
+    background-color: darkgoldenrod;
+}

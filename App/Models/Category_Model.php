@@ -7,7 +7,7 @@
       public function getShops() {
             if(isset($_GET['id'])) {
                 $id = $_GET["id"];
-                $stmt = $this->db->prepare('SELECT id,name,adress,phone FROM `shops` WHERE category='.$id);
+                $stmt = $this->db->prepare("SELECT id,name,adress,phone FROM `shops` WHERE ((category = '".$id."') OR (category LIKE '".$id."; %') OR (category LIKE '%; ".$id."') OR (category LIKE '%; ".$id."; %'))");
                 $stmt->execute(array());
                 $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 if(count($shop) > 0){

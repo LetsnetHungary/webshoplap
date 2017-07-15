@@ -10,7 +10,11 @@
 			$stmt = $db->prepare("SELECT * FROM categories");
 			$stmt->execute(array());
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-			return $result;
+			$cats = array();
+			foreach($result as $res) {
+				$cats[$res['id']] = $res['name'];
+			}
+			return $cats;
 		}
 
 

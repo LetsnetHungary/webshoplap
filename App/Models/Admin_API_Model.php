@@ -11,11 +11,17 @@
                 return $labels;
         }
       public function getShops($id) {
-          $stmt = $this->db->prepare('SELECT id,name,pinned FROM `shops` WHERE category='.$id.' AND pinned=1 ORDER BY name');
-          $stmt->execute(array());
+          $stmt = $this->db->prepare("SELECT id,name,pinned FROM `shops` WHERE ((category = '".$id."') OR (category LIKE '".$id."; %') OR (category LIKE '%; ".$id."') OR (category LIKE '%; ".$id."; %')) AND ((pinned = '".$id."') OR (pinned LIKE '".$id."; %') OR (pinned LIKE '%; ".$id."') OR (pinned LIKE '%; ".$id."; %')) ORDER BY name");
+          $stmt->execute(array(
+              ":cat" => $id,
+              ":pin" => $id
+          ));
           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-          $stmt = $this->db->prepare('SELECT id,name,pinned FROM `shops` WHERE category='.$id.' AND pinned=0 ORDER BY name');
-          $stmt->execute(array());
+          $stmt = $this->db->prepare("SELECT id,name,pinned FROM `shops` WHERE ((category = '".$id."') OR (category LIKE '".$id."; %') OR (category LIKE '%; ".$id."') OR (category LIKE '%; ".$id."; %')) AND ((pinned <> '".$id."') AND (pinned NOT LIKE '".$id."; %') AND (pinned NOT LIKE '%; ".$id."') AND (pinned NOT LIKE '%; ".$id."; %')) ORDER BY name");
+          $stmt->execute(array(
+              ":cat" => $id,
+              ":pin" => $id
+          ));
           $result2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
           return(json_encode(array_merge($result,$result2)));
       }
@@ -46,14 +52,6 @@
           return;
       }
       public function removeCategory($id) {
-          $stmt = $this->db->prepare('SELECT id FROM `shops` WHERE category = :id');
-          $stmt->execute([
-              ":id" => $id
-          ]);
-          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-          foreach($result as $res) {
-              $this->removeShop($res["id"]);
-          }
           $stmt = $this->db->prepare('DELETE FROM `categories` WHERE id = :id');
           $stmt->execute([
               ":id" => $id
@@ -95,6 +93,16 @@
           foreach($shop->labels as $label) {
               $stmt = $this->db->prepare('INSERT INTO labels (name,shop) VALUES (\''.$label.'\',\''.$id.'\')');
               $stmt->execute([]);
+          }
+          if($bool) {
+              foreach($shop->deleted as $delid) {
+                $stmt = $this->db->prepare('SELECT imageid FROM `products` WHERE id='.$delid);
+                $stmt->execute([]);
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $stmt = $this->db->prepare('DELETE FROM `products` WHERE id='.$delid);
+                $stmt->execute([]);
+                unlink('assets/images/products/'.$result[0]['imageid'].'.jpg');
+              }
           }
               $i = 1;
           foreach($shop->products as $product) {
@@ -165,8 +173,22 @@
         return;
       }*/
 
-      public function pinShop($id,$pin) {
-          $stmt = $this->db->prepare('UPDATE `shops` SET pinned='.$pin.' WHERE id='.$id);
+      public function pinShop($id,$pin,$cat) {
+          $stmt = $this->db->prepare('SELECT pinned FROM `shops` WHERE id='.$id);
+        $stmt->execute([]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $result[0]['pinned'];
+        
+            if($pin == 1) {
+                if($result == 0) {
+                    $newpin = $cat;
+                } else {
+                    $newpin = $result.'; '.$cat;
+                }
+            } else {
+                $newpin = str_replace('-1', $cat, $result);
+            }
+          $stmt = $this->db->prepare('UPDATE `shops` SET pinned='.$newpin.' WHERE id='.$id);
           $stmt->execute([]);
         return;
       }

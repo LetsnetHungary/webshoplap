@@ -12,7 +12,7 @@
 			$this->isLoggedIn();
 		}
 		public function isLoggedIn(){
-			if ((time() - $_SESSION['time_logged_in']) > 3600) {
+			if ((time() - $_SESSION['time_logged_in']) > 600) {
 				header('Location: Login?message=server_timeout');
 			}
 			else {

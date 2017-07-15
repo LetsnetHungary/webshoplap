@@ -36,10 +36,13 @@
         }
 
         public function getOtherShops($id,$cat) {
-                $stmt = $this->db->prepare('SELECT id,name,adress,phone FROM `shops` WHERE category='.$cat.' AND id<>'.$id.' ORDER BY RAND()');
+                $stmt = $this->db->prepare("SELECT id,name,adress,phone,pinned FROM `shops` WHERE ((category = '".$cat."') OR (category LIKE '".$cat."; %') OR (category LIKE '%; ".$cat."') OR (category LIKE '%; ".$cat."; %')) AND ((pinned = '".$cat."') OR (pinned LIKE '".$cat."; %') OR (pinned LIKE '%; ".$cat."') OR (pinned LIKE '%; ".$cat."; %')) AND id<>".$id." ORDER BY RAND()");
                 $stmt->execute(array());
                 $shops = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                return $shops;
+                $stmt = $this->db->prepare("SELECT id,name,adress,phone,pinned FROM `shops` WHERE ((category = '".$cat."') OR (category LIKE '".$cat."; %') OR (category LIKE '%; ".$cat."') OR (category LIKE '%; ".$cat."; %')) AND ((pinned <> '".$cat."') AND (pinned NOT LIKE '".$cat."; %') AND (pinned NOT LIKE '%; ".$cat."') AND (pinned NOT LIKE '%; ".$cat."; %')) AND id<>".$id." ORDER BY RAND()");
+                $stmt->execute(array());
+                $shops2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return array_merge($shops,$shops2);
         }
         public function getProducts($id) {
           $stmt = $this->db->prepare('SELECT imageid, price FROM `products` WHERE shop='.$id.' ORDER BY position');

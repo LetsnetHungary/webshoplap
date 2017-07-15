@@ -15,7 +15,7 @@
 
 			$owner_mail = "kovioli@gmail.com";
 			//$content = str_replace("\n", " ", $content); // ide 3 paraméter kell, hogy mire cseréljen, az is ;)
-			$ending = "\n\n" . "Sent by " $email . "\n" . "Időpont: " . $time_sent;
+			$ending = "\n\n" . "Sent by " .$mail . "\n" . "Időpont: " . $time_sent;
 			$msg = $text . $ending;
 			mail($owner_mail, $subject, $msg);
 		}

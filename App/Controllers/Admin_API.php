@@ -38,7 +38,8 @@
         public function pinShop() {
             $id = $_POST["id"];
             $pin = $_POST["pin"];
-            $this->model->pinShop($id,$pin);
+            $cat = $_POST["cat"];
+            $this->model->pinShop($id,$pin,$cat);
             return;
         }
         public function updateShop() {

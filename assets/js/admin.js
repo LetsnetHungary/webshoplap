@@ -13,10 +13,17 @@ function showShop(res) {
     for(label in res.labels) {
         $('<li class="list-group-item"><div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>'+ res.labels[label]["name"] +'</li>').appendTo('#labelholder');
     }
+    catsarray = res.category.split('; ')
+    for(cat in catsarray){
+        name = $('.leftColumn .boxRow[data-id='+ catsarray[cat] +']').text();
+        $('<li data-id="'+ catsarray[cat] +'" class="list-group-item"><div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>'+ name +'</li>').appendTo('#categoryholder');
+    }
     console.log(res.products);
     for(ind in res.products) {
         product = res.products[ind];
-        $(`<li data-old="true" data-id="`+ product['id'] +`" class="col-xs-6 col-sm-4 col-md-3"><div class="slide-inner"><img class='image-responsive' src = "assets/images/products/`+ product['imageid'] +`.jpg"><div class="product"> 
+        $(`<li data-old="true" data-id="`+ product['id'] +`" class="col-xs-6 col-sm-4 col-md-3"><div class="delete-product">
+                                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                            </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "assets/images/products/`+ product['imageid'] +`.jpg">
                             <div class="price"><h2>` + product['price'] + `Ft<h2></div></div>
                             </div></li>`).appendTo('#productsHolder');
         
@@ -32,11 +39,11 @@ function emptyShop() {
     $('#phone').val('');
     $('#bio').val('');
     $('#labelholder li:not(.active)').remove();
+    $('#categoryholder li:not(.active)').remove();
+    $('#productsHolder').empty();
     $('#labelname').val('');
 }
 function prepareCat(res, self){
-    
-    
     content = $('.rightColumn .boxContent');
     content.empty();
     $(`<div class="boxRowAdd">
@@ -49,7 +56,9 @@ function prepareCat(res, self){
                             </div><div class="pin-row" style="display: none;">
                                 <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
                             </div></div>`); 
-                            if(res[shop]['pinned'] == 1) {
+                            
+                            arr = res[shop]['pinned'].split('; ');
+                            if(arr.indexOf($('.rightColumn').data('cat')) != -1) {
                                 e.addClass('pinned-row');
                                 e.find('.pin-row').addClass('pinned');
                             }
@@ -72,6 +81,7 @@ function addCategory() {
                     },
                     encode          : true,
                     success: function(result){
+                        console.log(result)
                         result = JSON.parse(result);
                         $('#catname').val('').focus();
                         $(`<div class="boxRow" data-id="`+ result['id'] +`">
@@ -136,13 +146,19 @@ function addShop(name, id) {
       $('#prodprice').val('')
   }
 $(function() {
+    $('#addCat').click(function() {
+        $('<li data-id="'+ $('#catselect').val() +'" class="list-group-item"><div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>'+ $('#catselect option:selected').text() +'</li>').appendTo('#categoryholder');
+    });
+    $('#productsHolder').data('deleted', []);
     $('.add-row').click(function() {
         clearImage();
         $('#uploadcontainer').toggle()
     })
     $('#addproduct').click(function() {
-        $(`<li class="col-xs-6 col-sm-4 col-md-3"><div class="slide-inner"><img class='image-responsive' src = "` +
-        $('#preview-img').attr('src') +`"><div class="product"> 
+        $(`<li class="col-xs-6 col-sm-4 col-md-3"><div class="delete-product">
+                                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                            </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "` +
+        $('#preview-img').attr('src') +`">
                             <div class="price"><h2>` + $('#prodprice').val() + `Ft<h2></div></div>
                             </div></li>`).data('price', $('#prodprice').val()).appendTo('#productsHolder');
                             clearImage();
@@ -165,7 +181,9 @@ $(function() {
                 },
                 encode          : true,
                 success: function(result){
+                    console.log(result)
                     res = JSON.parse(result)
+                    $('.rightColumn').data('cat', self.data('id'));
                     prepareCat(res, self);
                 },
                 error: function(xhr, status, error){
@@ -234,7 +252,8 @@ $(function() {
                 url         : 'Admin_API/pinShop',
                 data        : {
                     id: self.data('id'),
-                    pin: self.closest('.boxRow').find('.pin-row').hasClass('pinned') ? 0 : 1
+                    pin: self.closest('.boxRow').find('.pin-row').hasClass('pinned') ? 0 : 1,
+                    cat: $('.rightColumn').data('cat')
                 },
                 encode          : true,
                 success: function(result){
@@ -306,12 +325,18 @@ $(function() {
         shop.phone = $('#phone').val();
         shop.bio = $('#bio').val();
         shop.id = $('#newshop').data('id');
-        shop.category = $('.rightColumn').data('id');
+        cats = [];
+        $('#categoryholder li:not(:first)').each(function() {
+            cats.push($(this).data('id'))
+        })
+        shop.category = cats.join('; ');
         shop.pinned = $('#newshop').data('pinned');
         shop.labels = new Array();
         $('#labelholder li:not(.active)').each(function(index,elem) {
             shop.labels.push($(this).text());
         });
+        console.log(shop)
+        shop.deleted = $('#productsHolder').data('deleted');
         shop.products = new Array();
         i = 0;
         $('#productsHolder li').each(function() {
@@ -339,7 +364,8 @@ $(function() {
                                     </div><div class="pin-row" style="display: none;">
                                         <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
                                     </div></div>`).insertAfter($(this));
-                                    if($('#newshop').data('pinned') == 1) {
+                                    arr = $('#newshop').data('pinned').split('; ');
+                                    if(arr.indexOf($('.rightColumn').data('cat')) != -1) {
                                         e.addClass('pinned-row').find('.pin-row').addClass('pinned');
                                     }
                         $(this).remove();
@@ -365,7 +391,11 @@ $(function() {
             console.log($(this))
             shop.labels.push($(this).text());
         });
-        shop.category = $('.rightColumn').data('id');
+        cats = [];
+        $('#categoryholder li:not(:first)').each(function() {
+            cats.push($(this).data('id'))
+        })
+        shop.category = cats.join('; ');
         shop.products = new Array();
         i = 0;
         $('#productsHolder li').each(function() {
@@ -387,6 +417,7 @@ $(function() {
         encode: true,
         success: function(result){
             addShop(result["name"], result["id"]);
+            
         },
         error: function(xhr, status, error){
         }
@@ -397,4 +428,12 @@ $('#addnewusr').click(function() {
     $(this).hide();
     $('#doneusr').show();
 });
+$('.container').on('click', '.delete-product', function() {
+    parent = $(this).closest('li')
+    if(parent.data('old')){
+        $('#productsHolder').data('delted', $('#productsHolder').data('deleted').push(parent.data('id')))
+    }
+    parent.remove();
+    console.log($('#productsHolder').data('deleted'))
+})
 });

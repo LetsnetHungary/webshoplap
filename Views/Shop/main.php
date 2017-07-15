@@ -53,11 +53,11 @@
             <div class="col-md-5 col-xs-12">
                 <div class="box" style="margin-bottom: 0px;">
                     <div class="boxTitle">
-                        <div class="boxTitleTitle">Kategória további linkjei</div>
+                        <div class="boxTitleTitle">Hasonló linkek</div>
                     </div>
                     <div class="row rightColumn">
                         <?php foreach ($shop["others"] as $other) { ?>
-                            <div class="col-xs-12 shopHolder" data-id="<?php echo $other['id']; ?>">
+                            <div class="col-xs-12 shopHolder <? if($other['pinned'] != 0){echo "pinned";} ?>" data-id="<?php echo $other['id']; ?>">
                                 <div class="boxAboutRow row">
                                     <div class="col-xs-6 boxAboutImgHolder">
                                         <img class="boxAboutIcon img-responsive" src="http://via.placeholder.com/160x160">
