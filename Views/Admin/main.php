@@ -45,7 +45,7 @@ $categories = $this->categories; ?>
             }
             else{ ?>
             <!-- blog section -->
-            <button onclick="$('#blogform').show(); $('#addnewpost').hide()" id="addnewpost" type="button" class="new-user-btn btn btn-default">Új blogbejegyzés hozzásadása</button>
+            <button onclick="$('#blogform').show(); $('#addnewpost').hide()" id="addnewpost" type="button" class="new-user-btn blog-btn btn btn-default">Új blogbejegyzés hozzásadása</button>
             <form id="blogform" style="display:none" class="form-horizontal" action="../Admin_API/addBlog" method="post">
               <div class="form-group">
                 <label for="blog-title">Bejegyzés címe</label>
@@ -61,7 +61,7 @@ $categories = $this->categories; ?>
               </div>
               <div class="form-group">
                 <label for="blog-content">Bejegyzés tartalma</label>
-                <textarea name="blog-content" rows="8" cols="40"required></textarea>
+                <textarea name="blog-content" rows="10" cols="50"required></textarea>
               </div>
               <button type="submit" class="new-user-btn btn btn-success">Kész</button>
 
