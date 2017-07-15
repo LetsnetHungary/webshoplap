@@ -23,23 +23,23 @@
     if (isset($_GET['post_id'])) {?>
       <div class="col-xs-12">
         <div class="box box-inner">
-          <h1><?php echo $blog_post[$_GET['post_id']-1]['blog_title'] ?></h1>
-          <h4>Írta: <?php echo $blog_post[$_GET['post_id']-1]['blog_author'] ?></h4>
-          <h5><span class="glyphicon glyphicon-time"></span> Közzétéve: <?php print_r($blog_post[$_GET['post_id']-1]['blog_date']); ?></h5>
-          <h5><?php print_r($blog_post[$_GET['post_id']-1]['blog_subtitle']); ?></h5>
-          <?php print_r($blog_post[$_GET['post_id']-1]['blog_content']); ?>
+          <h1><?php echo $blog_post[0]["blog_title"]; ?></h1>
+          <h4>Írta: <?php echo $blog_post[0]['blog_author'] ?></h4>
+          <h5><span class="glyphicon glyphicon-time"></span> Közzétéve: <?php print_r($blog_post[0]['blog_date']); ?></h5>
+          <h5><?php print_r($blog_post[0]['blog_subtitle']); ?></h5>
+          <?php print_r($blog_post[0]['blog_content']); ?>
 
         </div>
       </div>
     <?php }
     else{
-      for ($i=$b_count-1; $i >= 0; $i--) {
-        $title = $blog_post[$i]['blog_title'];
+      foreach ($blog_post as $value) {
+        $title = $value['blog_title'];
         $url = "Blog address";
 
         ?>
         <div class="col-md-6">
-          <div class="box box-outer" data-id="<?php echo $blog_post[$i]['blog_id']; ?>">
+          <div class="box box-outer" data-id="<?php echo $value['blog_id']; ?>">
             <script type="text/javascript">
               $(".box").click(function(l){
                 self = $(this);
@@ -49,11 +49,11 @@
               })
             </script>
           <div class="blog_details">
-            <h1> <?php print_r($blog_post[$i]['blog_title']); ?></h1>
-            <h4>Írta: <?php print_r($blog_post[$i]['blog_author']); ?></h4>
-            <h5><span class="glyphicon glyphicon-time"></span> Közzétéve: <?php print_r($blog_post[$i]['blog_date']); ?></h5>
-            <h5><?php print_r($blog_post[$i]['blog_subtitle']);  ?></h5>
-            <div class="fb-share-button" data-href="<?php echo $blog_post[$i]['blog_url'] ?>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Findex.hu%2F&amp;src=sdkpreparse">Megosztás</a></div>
+            <h1> <?php print_r($value['blog_title']); ?></h1>
+            <h4>Írta: <?php print_r($value['blog_author']); ?></h4>
+            <h5><span class="glyphicon glyphicon-time"></span> Közzétéve: <?php print_r($value['blog_date']); ?></h5>
+            <h5><?php print_r($value['blog_subtitle']);  ?></h5>
+            <div class="fb-share-button" data-href="<?php echo $value['blog_url'] ?>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Findex.hu%2F&amp;src=sdkpreparse">Megosztás</a></div>
 
           </div>
 
