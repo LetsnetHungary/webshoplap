@@ -23,7 +23,9 @@
 
 		"og" :
 		{
-
+			"url" : "www.webshoplap.graphed.hu",
+			"type" : "article",
+			"title" : "Webshoplap blog"
 		}
 	}
 }

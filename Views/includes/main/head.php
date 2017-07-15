@@ -6,11 +6,6 @@
 	<? if($this->SEO) {?>
 		<meta charset = "<?php echo $this->SEO->seo->charset; ?>">
 		<title><?php echo $this->SEO->seo->title; ?></title>
-		<meta property="og:url"                content="<?php echo "www.index.hu"?>" />
-		<meta property="og:type"               content="article" />
-		<meta property="og:title"              content="<?php echo $blog_post[$i]['blog_title'] ?>" />
-		<meta property="og:description"        content="How much does culture influence creative thinking?" />
-		<meta property="og:image"              content="../favicon.ico" />
 
 <?php
 if($this->SEO->seo->meta != null)
