@@ -108,7 +108,7 @@
 }
 
 .pinned-row {
-    background-color: orange;
+    background-color: rgb(255, 176, 100);
 }
 
 .pinned-row:hover {
