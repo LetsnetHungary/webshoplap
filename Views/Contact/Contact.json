@@ -1,0 +1,29 @@
+{
+	"css" :
+	{
+        "1" : "../../assets/bootstrap/css/bootstrap.min.css",
+		"2" : "../../assets/css/contact.css",
+		"3" : "/assets/font-awesome/css/font-awesome.css"
+	},
+	"js" :
+	{
+		"1" : "../../assets/js/jquery.min.js",
+		"2" : "../../assets/bootstrap/js/bootstrap.min.js"
+	},
+    "fonts": {},
+	"seo" :
+	{
+		"lang" : "hu",
+		"title" : "Kapcsolat",
+		"charset" : "UTF-8",
+
+		"meta" :
+		{
+		},
+
+		"og" :
+		{
+
+		}
+	}
+}
