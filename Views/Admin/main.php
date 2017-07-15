@@ -30,9 +30,44 @@ $categories = $this->categories; ?>
               </div>
                 <button id="addnewusr" type="button" class="new-user-btn btn btn-default">Új felhasználó hozzáadása</button>
                 <button id="doneusr"  style="display:none;" type="submit" class="new-user-btn btn btn-success">Kész</button>
-
             </form> <?php
           }?>
+          </div>
+          <div class="col-xs-12"> <!-- blog -->
+            <?php
+            if (isset($_GET['blog_added'])) {
+              ?>
+              <form class="newerUser form-inline" action="Admin" method="post">
+              <? echo "Sikeresen hozzáadtad a blogbejegyzést"; ?>
+                <button class="btn btn-default" type="submit">Vissza</button>
+              </form>
+              <?php
+            }
+            else{ ?>
+            <!-- blog section -->
+            <button onclick="$('#blogform').show(); $('#addnewpost').hide()" id="addnewpost" type="button" class="new-user-btn btn btn-default">Új blogbejegyzés hozzásadása</button>
+            <form id="blogform" style="display:none" class="form-horizontal" action="../Admin_API/addBlog" method="post">
+              <div class="form-group">
+                <label for="blog-title">Bejegyzés címe</label>
+                <input type="text" name="blog-title" required>
+              </div>
+              <div class="form-group">
+                <label for="blog-subtitle">Bejegyzés alcíme</label>
+                <input type="text" name="blog-subtitle" required>
+              </div>
+              <div class="form-group">
+                <label for="blog-author">Bejegyzés szerzője</label>
+                <input type="text" name="blog-author" required>
+              </div>
+              <div class="form-group">
+                <label for="blog-content">Bejegyzés tartalma</label>
+                <textarea name="blog-content" rows="8" cols="40"required></textarea>
+              </div>
+              <button type="submit" class="new-user-btn btn btn-success">Kész</button>
+
+            </form>
+            <!-- blog section end -->
+              <?php } ?>
           </div>
 
             <div id="newshop" class="col-xs-12" style="display: none;" data-pinned="0">

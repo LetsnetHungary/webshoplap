@@ -177,12 +177,31 @@
           return;
       }
       public function addUser($email, $pw, $new_shop_id){
+        $stmt = $this->db->prepare("SELECT id FROM users WHERE email = :email LIMIT 1");
+        $stmt->execute([
+          ":email"=>$email
+        ]);
+        if (count($stmt->fetchAll(PDO::FETCH_ASSOC)) > 0) {
+          echo "Az email cím már használatban van";
+          return false;
+        }
         $pw = password_hash($pw, PASSWORD_BCRYPT);
         $stmt = $this->db->prepare("INSERT INTO `users`(`email`, `password`, `is_admin`, `shop_id`) VALUES (:email, :password, '0', :shop_id)");
         $stmt->execute([
           ":email"=>$email,
           ":password"=>$pw,
           ":shop_id"=>$new_shop_id
+        ]);
+        return true;
+      }
+      public function addBlog($blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle){
+        $stmt = $this->db->prepare("INSERT INTO blog (blog_title, blog_author, blog_content, blog_date, blog_subtitle) VALUES (:blog_title, :blog_author, :blog_content, :blog_date, :blog_subtitle)");
+        $stmt->execute([
+          ":blog_title"=>$blog_title,
+          ":blog_author"=>$blog_author,
+          ":blog_content"=>$blog_content,
+          ":blog_date"=>$blog_date,
+          ":blog_subtitle"=>$blog_subtitle
         ]);
         return;
       }
