@@ -60,7 +60,7 @@ function initShop(self,shop) {
                         </div>
                         <div class="boxAboutRow row">
                         <div class="col-xs-6 boxAboutImgHolder">
-                            <img class="boxAboutIcon img-responsive" src="http://via.placeholder.com/200x200">
+                            <img class="boxAboutIcon img-responsive" src="`+ ((shop['image'] == '') ? 'assets/images/placeholder.jpg' : shop['image']) +`">
                         </div>
                         <div class="col-xs-6 boxAboutDataHolder">
                             <div class="">

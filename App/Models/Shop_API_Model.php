@@ -5,7 +5,7 @@
           $this->db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
       }
       public function getShop($id) {
-          $stmt = $this->db->prepare('SELECT name, adress, phone FROM `shops` WHERE id='.$id);
+          $stmt = $this->db->prepare('SELECT name, adress, phone, image FROM `shops` WHERE id='.$id);
           $stmt->execute(array());
           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           $result = $result[0];

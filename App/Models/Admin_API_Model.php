@@ -72,15 +72,15 @@
       public function addShop($shop,$bool) {
           if($bool){
             if(property_exists($shop, 'pinned')) {
-                    $stmt = $this->db->prepare('INSERT INTO shops (id,name,adress,phone,bio,category,pinned) VALUES (\''.$shop->id.'\',\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->pinned.'\')');
+                    $stmt = $this->db->prepare('INSERT INTO shops (id,name,adress,phone,bio,category,pinned, image) VALUES (\''.$shop->id.'\',\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->pinned.'\',\''.$shop->image.'\')');
             } else {
-                    $stmt = $this->db->prepare('INSERT INTO shops (id,name,adress,phone,bio,category) VALUES (\''.$shop->id.'\',\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\')');
+                    $stmt = $this->db->prepare('INSERT INTO shops (id,name,adress,phone,bio,category, image) VALUES (\''.$shop->id.'\',\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->image.'\')');
             }
           } else {
             if(property_exists($shop, 'pinned')) {
-                    $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category,pinned) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->pinned.'\')');
+                    $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category,pinned, image) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->pinned.'\',\''.$shop->image.'\')');
             } else {
-                    $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\')');
+                    $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category, image) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->image.'\')');
             }
           }
           $stmt->execute([]);
@@ -101,7 +101,9 @@
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $stmt = $this->db->prepare('DELETE FROM `products` WHERE id='.$delid);
                 $stmt->execute([]);
+                if(file_exists('assets/images/products/'.$result[0]['imageid'].'.jpg')) {
                 unlink('assets/images/products/'.$result[0]['imageid'].'.jpg');
+                }
               }
           }
               $i = 1;
@@ -178,17 +180,22 @@
         $stmt->execute([]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $result = $result[0]['pinned'];
-        
+            //print_r($result.', '.$pin.', '.$cat.'\n');
             if($pin == 1) {
                 if($result == 0) {
                     $newpin = $cat;
                 } else {
-                    $newpin = $result.'; '.$cat;
+                    $a = explode('; ', $result);
+                    array_push($a,$cat);
+                    $newpin = implode('; ',$a);
                 }
             } else {
-                $newpin = str_replace('-1', $cat, $result);
+                $a = explode('; ', $result);
+                $a = array_diff( $a, [$cat] );
+                $newpin = implode('; ',$a);
             }
-          $stmt = $this->db->prepare('UPDATE `shops` SET pinned='.$newpin.' WHERE id='.$id);
+            //print_r($newpin.', '.$id);
+          $stmt = $this->db->prepare("UPDATE `shops` SET pinned='".$newpin."' WHERE id=".$id);
           $stmt->execute([]);
         return;
       }

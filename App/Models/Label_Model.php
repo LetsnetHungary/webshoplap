@@ -13,7 +13,7 @@
                 $shops = [];
                 foreach($shopids as $shop) {
                     $id = $shop["shop"];
-                    $stmt = $this->db->prepare('SELECT id,name,adress,phone FROM `shops` WHERE id='.$id);
+                    $stmt = $this->db->prepare('SELECT id,name,adress,phone,image FROM `shops` WHERE id='.$id);
                     $stmt->execute(array());
                     $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     if(count($shop) > 0) {

@@ -47,3 +47,24 @@ body {
 .boxRow:hover {
     background-color: #d9d8d2;
 }
+
+.boxAboutIcon{
+    max-width: 80%!important;
+    max-height: 80%!important;
+}
+
+.aboutholder {
+    width: 100%;
+}
+.datatext{
+    white-space: nowrap!important;
+    text-overflow: ellipsis!important;
+    overflow: hidden!important;
+}
+.datatitle {
+    text-overflow: ellipsis!important;
+    overflow: hidden!important;
+}
+.dataholder {
+    width: 100%;
+}

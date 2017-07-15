@@ -89,6 +89,10 @@ $categories = $this->categories; ?>
                             <input type="text" class="form-control" id="phone">
                         </div>
                         <div class="form-group">
+                            <label for="pwd">Kép url:</label>
+                            <input type="text" class="form-control" id="image">
+                        </div>
+                        <div class="form-group">
                             <label for="comment">Bio:</label>
                             <textarea class="form-control" rows="5" id="bio"></textarea>
                         </div>

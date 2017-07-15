@@ -30,6 +30,14 @@
 }
 
 .boxAboutIconTop {
+    max-width: 80%!important;
+    max-height: 80%!important;
+    margin-left: 15px;
+}
+
+.boxAboutIcon{
+    max-width: 80%!important;
+    max-height: 80%!important;
     margin-left: 15px;
 }
 
@@ -61,7 +69,7 @@
 .labelHolder a {
     margin-right: 10px;
     margin-bottom: 10px;
-    background-color: #80caa5;
+    background-color: #80caa5!important;
     color: white!important;
     border-radius: 15%;
     padding: 3px;
@@ -153,4 +161,17 @@
 
 .pinned:hover {
     background-color: darkgoldenrod;
+}
+
+.aboutholder {
+    width: 100%;
+}
+.datatext{
+    white-space: nowrap!important;
+    text-overflow: ellipsis!important;
+    overflow: hidden!important;
+}
+.datatitle {
+    text-overflow: ellipsis!important;
+    overflow: hidden!important;
 }

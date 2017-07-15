@@ -8,6 +8,7 @@ function showShop(res) {
     $('#shopname').val(res.name);
     $('#adress').val(res.adress);
     $('#phone').val(res.phone);
+    $('#image').val(res.image);
     $('#bio').val(res.bio);
     $('#labelholder li:not(.active)').remove();
     for(label in res.labels) {
@@ -37,6 +38,7 @@ function emptyShop() {
     $('#shopname').val('');
     $('#adress').val('');
     $('#phone').val('');
+    $('#image').val('');
     $('#bio').val('');
     $('#labelholder li:not(.active)').remove();
     $('#categoryholder li:not(.active)').remove();
@@ -44,6 +46,9 @@ function emptyShop() {
     $('#labelname').val('');
 }
 function prepareCat(res, self){
+    r = $('.rightColumn');
+    r.data('edit', false);
+    r.find('.boxTitleEdit').text('Szerkesztés');
     content = $('.rightColumn .boxContent');
     content.empty();
     $(`<div class="boxRowAdd">
@@ -58,7 +63,7 @@ function prepareCat(res, self){
                             </div></div>`); 
                             
                             arr = res[shop]['pinned'].split('; ');
-                            if(arr.indexOf($('.rightColumn').data('cat')) != -1) {
+                            if(arr.indexOf($('.rightColumn').data('cat') + "") != -1) {
                                 e.addClass('pinned-row');
                                 e.find('.pin-row').addClass('pinned');
                             }
@@ -181,7 +186,6 @@ $(function() {
                 },
                 encode          : true,
                 success: function(result){
-                    console.log(result)
                     res = JSON.parse(result)
                     $('.rightColumn').data('cat', self.data('id'));
                     prepareCat(res, self);
@@ -259,7 +263,6 @@ $(function() {
                 success: function(result){
                     console.log(result)
                     el = self.closest('.boxRow').find('.pin-row');
-                    console.log(el.hasClass('pinned'))
                     if(el.hasClass('pinned')) {
                         self.closest('.boxRow').removeClass('pinned-row').find('.pin-row').removeClass('pinned')
                     } else {
@@ -302,7 +305,6 @@ $(function() {
         $('#doneshop').show();
         $('#editshop').hide();
         $('#newshop').show();
-        console.log('bsd')
         $("html, body").animate({ scrollTop: $('#newshop').offset().top}, 500, 'swing');
     });
     
@@ -323,6 +325,7 @@ $(function() {
         shop.name = $('#shopname').val();
         shop.adress = $('#adress').val();
         shop.phone = $('#phone').val();
+        shop.image = $('#image').val();
         shop.bio = $('#bio').val();
         shop.id = $('#newshop').data('id');
         cats = [];
@@ -335,7 +338,6 @@ $(function() {
         $('#labelholder li:not(.active)').each(function(index,elem) {
             shop.labels.push($(this).text());
         });
-        console.log(shop)
         shop.deleted = $('#productsHolder').data('deleted');
         shop.products = new Array();
         i = 0;
@@ -365,7 +367,7 @@ $(function() {
                                         <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
                                     </div></div>`).insertAfter($(this));
                                     arr = $('#newshop').data('pinned').split('; ');
-                                    if(arr.indexOf($('.rightColumn').data('cat')) != -1) {
+                                    if(arr.indexOf($('.rightColumn').data('cat') + "") != -1) {
                                         e.addClass('pinned-row').find('.pin-row').addClass('pinned');
                                     }
                         $(this).remove();
@@ -380,15 +382,60 @@ $(function() {
             }
         });
     });
+    $('#editshop2').on('click', function() {
+        shop = new Object();
+        shop.name = $('#shopname').val();
+        shop.adress = $('#adress').val();
+        shop.phone = $('#phone').val();
+        shop.image = $('#image').val();
+        shop.bio = $('#bio').val();
+        shop.id = $('#newshop').data('id');
+        cats = [];
+        $('#categoryholder li:not(:first)').each(function() {
+            cats.push($(this).data('id'))
+        })
+        shop.category = cats.join('; ');
+        shop.pinned = $('#newshop').data('pinned');
+        shop.labels = new Array();
+        $('#labelholder li:not(.active)').each(function(index,elem) {
+            shop.labels.push($(this).text());
+        });
+        shop.deleted = $('#productsHolder').data('deleted');
+        shop.products = new Array();
+        i = 0;
+        $('#productsHolder li').each(function() {
+            prod = new Object();
+            if($(this).attr('data-old')){ prod.type = 'old'; prod.id = $(this).data('id') }else{ prod.type = 'new'}
+            prod.image = $(this).find('img').attr('src');
+            prod.price = $(this).data('price')
+            prod.position = i;
+            i+=1;
+            shop.products.push($.extend(true, {}, prod));
+            prod="";
+        })
+        $.ajax({
+            url: 'Admin_API/updateShop',
+            type: 'POST',
+            data: { shop: JSON.stringify(shop)},
+            dataType: 'json',
+            encode: true,
+            success: function(result){
+                
+            },
+            error: function(xhr, status, error){
+                console.log(xhr)
+            }
+        });
+    });
     $('#doneshop').on('click', function() {
         shop = new Object();
         shop.name = $('#shopname').val();
         shop.adress = $('#adress').val();
         shop.phone = $('#phone').val();
+        shop.image = $('#image').val();
         shop.bio = $('#bio').val();
         shop.labels = new Array();
         $('#labelholder li:not(.active)').each(function(index,elem) {
-            console.log($(this))
             shop.labels.push($(this).text());
         });
         cats = [];

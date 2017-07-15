@@ -6,7 +6,7 @@ $categories = $this->categories; ?>
 <body>
     <div class="container">
         <div class="row">
-            <div id="newshop" class="col-xs-12" data-id="<? echo $shop['id']; ?>">
+            <div id="newshop" class="col-xs-12" data-id="<? echo $shop['id']; ?>" data-pinned="<? echo $shop['pinned']; ?>">
                 <div class="box">
                     <div class="boxTitle">
                         <div id="newshoptitle" class="boxTitleTitle">Bolt szerkesztése</div>
@@ -23,6 +23,10 @@ $categories = $this->categories; ?>
                         <div class="form-group">
                             <label for="pwd">Telefon:</label>
                             <input type="text" class="form-control" id="phone" value="<? print_r($shop['phone']); ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Kép url:</label>
+                            <input type="text" class="form-control" id="image">
                         </div>
                         <div class="form-group">
                             <label for="comment">Bio:</label>
@@ -81,13 +85,20 @@ $categories = $this->categories; ?>
                                     Termékek</li>
                                     <li class="list-group-item">
                                         <ul class="row noselect" id="productsHolder">
+                                            <? foreach($shop['products'] as $product) { ?>
+                                            <li data-old="true" data-id="<? echo $product['id']; ?>" class="col-xs-6 col-sm-4 col-md-3"><div class="delete-product">
+                                                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                                            </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "assets/images/products/<? echo $product['imageid']; ?>.jpg">
+                                            <div class="price"><h2><? echo $product['price']; ?> Ft<h2></div></div>
+                                            </div></li>
+                                            <?}?>
                                         </ul>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="newLabel">
-                            <button type="button" class="btn btn-success" id="editshop">Kész</button>
+                            <button type="button" class="btn btn-success" id="editshop2">Kész</button>
                         </div>
                     </div>
                 </div>

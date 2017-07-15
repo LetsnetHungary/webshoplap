@@ -15,13 +15,13 @@
                     </div>
                     <div class="boxAboutRow row ">
                         <div class="col-xs-6 boxAboutImgHolder">
-                            <img class="boxAboutIconTop img-responsive" src="http://via.placeholder.com/160x160">
+                            <img class="boxAboutIconTop img-responsive" src="<? if($shop["image"] == ""){echo "assets/images/placeholder.jpg";  }else{echo $shop["image"];}?>">
                         </div>
                         <div class="col-xs-6 boxAboutDataHolder">
-                            <div class="">
-                                <h3 style="margin-bottom: 30px;"><?php echo $shop["name"]; ?></h3>
+                            <div class="aboutholder">
+                                <h3 class="datatitle" style="margin-bottom: 30px;"><?php echo $shop["name"]; ?></h3>
                                 <a target="_blank" href="<?php echo $shop["adress"]; ?>">
-                                    <h4><i class="fa fa-wifi icon"></i><?php echo $shop["adress"]; ?></h4>
+                                    <h4 class="datatext"><i class="fa fa-wifi icon"></i><?php echo $shop["adress"]; ?></h4>
                                 </a>
                                 <h4><i class="fa fa-phone icon"></i><?php echo $shop["phone"]; ?></h4>
                             </div>
@@ -60,13 +60,13 @@
                             <div class="col-xs-12 shopHolder <? if($other['pinned'] != 0){echo "pinned";} ?>" data-id="<?php echo $other['id']; ?>">
                                 <div class="boxAboutRow row">
                                     <div class="col-xs-6 boxAboutImgHolder">
-                                        <img class="boxAboutIcon img-responsive" src="http://via.placeholder.com/160x160">
+                                        <img class="boxAboutIcon img-responsive" src="<? if($other["image"] == ""){echo "assets/images/placeholder.jpg"; }else{echo $other["image"];}?>">
                                     </div>
                                     <div class="col-xs-6 boxAboutDataHolder">
-                                        <div class="">
-                                        <h3 style="margin-bottom: 30px;"><?php echo $other["name"]; ?></h3>
-                                        <a href="http://<?php echo $other['adress']; ?>"><h4><i class="fa fa-wifi icon"></i><?php echo $other["adress"]; ?></h4></a>
-                                        <h4><i class="fa fa-phone icon"></i><?php echo $other["phone"]; ?></h4>
+                                        <div class="aboutholder">
+                                        <h3 class="datatitle" style="margin-bottom: 30px;"><?php echo $other["name"]; ?></h3>
+                                        <a href="http://<?php echo $other['adress']; ?>"><h4 class="datatext"><i class="fa fa-wifi icon"></i><?php echo $other["adress"]; ?></h4></a>
+                                        <h4 class="datatext"><i class="fa fa-phone icon"></i><?php echo $other["phone"]; ?></h4>
                                         </div>
                                         </div>
                                     </div>
