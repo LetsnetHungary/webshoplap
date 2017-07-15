@@ -9,7 +9,14 @@
               </div>
             </div>
             <div class="row">
-                <?php foreach ($shops as $shop) { ?>
+                <?php
+                if (count($shops) < 1) {?>
+                  <p class="no-search-result"><?php echo "Nincs a keresésnek megfelelő elem"; ?></p>
+                  <?php
+          				return;
+          			}
+          			else{
+                foreach ($shops as $shop) { ?>
                     <div class="col-lg-4 col-md-6 col-xs-12 shopHolder" data-id="<?php echo $shop["id"]; ?>">
                         <div class="boxAboutRow row" style="margin-left:0px;">
                             <div class="col-xs-6 boxAboutImgHolder">
@@ -26,6 +33,7 @@
                     </div>
                         <?php
                         }
+                      }
                         ?>
             </div>
           </div>

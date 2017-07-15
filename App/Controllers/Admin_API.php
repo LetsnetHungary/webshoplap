@@ -51,8 +51,19 @@
           $email = $_POST['new_mail'];
           $pw = $_POST['new_pw'];
           $new_shop_name = $_POST['new_shop_name'];
-          $this->model->addUser($email, $pw, $new_shop_name);
-          header("Location: ../Admin?user_added");
+          if ($this->model->addUser($email, $pw, $new_shop_name)) {
+            header("Location: ../Admin?user_added");
+          }
+
+        }
+        public function addBlog(){
+          $blog_title = $_POST['blog-title'];
+          $blog_author = $_POST['blog-author'];
+          $blog_content = $_POST['blog-content'];
+          $blog_date = date("Y-m-d");
+          $blog_subtitle = $_POST['blog-subtitle'];
+          $this->model->addBlog($blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle);
+          header("Location: ../Admin?blog_added");
         }
 
     }

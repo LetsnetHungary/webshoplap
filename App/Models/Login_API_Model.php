@@ -46,8 +46,8 @@
 			$_SESSION['is_admin'] = $is_admin;
 			$_SESSION['time_logged_in'] = time();
 		}
-
-		public function addUser(){
+/*
+		public function addUser(){ //user generator
 			$db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
 			for ($i=1; $i < 10; $i++) {
 				$email = "valaki" . $i . "@test.com";
@@ -60,7 +60,7 @@
 					":is_admin" => ($i%2)
 				));
 			}
-		}
+		}*/
 
 
 	}
