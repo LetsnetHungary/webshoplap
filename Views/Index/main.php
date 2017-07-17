@@ -40,6 +40,58 @@
         <?php foreach($shops as $key => $value) {
 
        ?>
+       <!-- itt van a cucc -->
+ <div class="col-xs-12 boxAbout" style="height: 520px">
+   <div class="box">
+      <div class="boxTitle">
+         <div class="boxTitleTitle">adshsadkj</div>
+         <div class="boxTitleArrow">
+            <i class="fa fa-arrow-left"></i>
+         </div>
+      </div>
+      <div class="boxAboutRow row hidden-xs">
+         <div class="col-xs-6 boxAboutImgHolder">
+            <img class="boxAboutIcon img-responsive" src="`+ ((shop['image'] == '') ? 'assets/images/placeholder.jpg' : shop['image']) +`">
+         </div>
+         <div class="col-xs-6 boxAboutDataHolder">
+            <div class="">
+               <h3 style="margin-bottom: 30px;">salkdjlkd</h3>
+               <a target="_blank" href="` + shop['adress'] +`">
+                  <h4><i class="fa fa-wifi icon"></i>www.index.hu</h4>
+               </a>
+               <h4><i class="fa fa-phone icon"></i>06-20-123-456, 06-20-123-456</h4>
+               <iframe src="https://www.facebook.com/plugins/like.php?href=` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) +`&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+            </div>
+         </div>
+         <button class="boxAboutButton btn">Több info</button>
+      </div>
+      <div class="boxAboutRow row hidden-sm hidden-md hidden-lg">
+      <div class="col-xs-12" style="text-align:center;">
+               <h3 style="margin-bottom: 30px;">salkdjlkd</h3>
+      </div>
+         <div class="col-xs-12 boxAboutImgHolder" style="text-align:center;">
+            <img class="boxAboutIcon img-responsive" src="http://drlupo.hu/Content/images/products/p_18305/18305_1_thumb.jpg">
+         </div>
+         <div class="col-xs-12 boxAboutDataHolder">
+            <div class="dataholder">
+               <a target="_blank" href="` + shop['adress'] +`">
+                  <h4 class="datatext"><i class="fa fa-wifi icon"></i>www.index.hu</h4>
+               </a>
+               <h4 class="datatext"><i class="fa fa-phone icon"></i>06-20-123-456</h4>
+               <iframe src="https://www.facebook.com/plugins/like.php?href=` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) +`&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+            </div>
+         </div>
+         <button class="boxAboutButton btn">Több info</button>
+      </div>
+      <div class="boxAboutRow row">
+         <div class="col-xs-12 slider-container">
+            <div class="slider">
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+          <!-- itt van a cucc -->
        <div class="boxHolder col-lg-3 col-md-4 col-sm-6 col-xs-12" data-id="<?php echo $value['id']; ?>">
           <div class="box">
             <div class="boxTitle">
