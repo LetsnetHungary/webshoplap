@@ -46,10 +46,10 @@
                             </div></div>
                             <?php } ?>
                         </div>
-                        <div data-width="100%" class="fb-comments" data-href="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-numposts="5"></div>
                     </div>
 
                   </div>
+                  <div data-width="100%" class="fb-comments" data-href="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-numposts="5"></div>
                 </div>
             </div>
             <div class="col-md-5 col-xs-12">
