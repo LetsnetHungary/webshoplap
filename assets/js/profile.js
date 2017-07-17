@@ -23,12 +23,8 @@ function showShop(res) {
     console.log(res.products);
     for(ind in res.products) {
         product = res.products[ind];
-        pinned = false;
-        (product['pinned']==1) ? pinned = "true" : pinned = "false";
-        $(`<li data-old="true" data-pinned="`+ pinned +`" data-id="`+ product['id'] +`" class="col-xs-6 col-sm-4 col-md-3"><div class="delete-product">
+        $(`<li data-old="true" data-id="`+ product['id'] +`" class="col-xs-6 col-sm-4 col-md-3"><div class="delete-product">
                                 <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-                            </div><div class="pin-product">
-                                <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
                             </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "assets/images/products/`+ product['imageid'] +`.jpg">
                             <div class="price"><h2>` + product['price'] + `Ft<h2></div></div>
                             </div></li>`).appendTo('#productsHolder');
@@ -168,8 +164,6 @@ $(function() {
     $('#addproduct').click(function() {
         $(`<li class="col-xs-6 col-sm-4 col-md-3"><div class="delete-product">
                                 <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-                            </div><div class="pin-product">
-                                <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
                             </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "` +
         $('#preview-img').attr('src') +`">
                             <div class="price"><h2>` + $('#prodprice').val() + `Ft<h2></div></div>
@@ -493,23 +487,5 @@ $('.container').on('click', '.delete-product', function() {
     }
     parent.remove();
     console.log($('#productsHolder').data('deleted'))
-})
-$('.container').on('click', '.pin-product', function() {
-    parent = $(this).closest('li')
-    pin = (parent.data('pinned')) ? 0 : 1;
-    $.ajax({
-        url: 'Admin_API/pinProduct',
-        type: 'POST',
-        data: { 
-            id: parent.data('id'),
-            pin: pin
-        },
-        encode: true,
-        success: function(result){
-            (pin == 1) ? parent.data('pinned',true) : parent.data('pinned',true);
-        },
-        error: function(xhr, status, error){
-        }
-    });
 })
 });

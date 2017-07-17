@@ -105,6 +105,22 @@ body {
 
 .delete-product:hover {
     color: red;
+}.pin-product {
+    z-index: 100;
+    position:absolute;
+    width: 44px;
+    height: 44px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    top:-12px;
+    left: 5px;
+}
+
+.pin-product:hover {
+    color: red;
 }
 .pin-row {
     position:absolute;
@@ -177,14 +193,6 @@ li {
   margin-left: 15px!important;
 }
 
-.product {
-    width: 190px;
-    height: 190px;
-    background-size: contain;
-    background-repeat:   no-repeat;
-    background-position: center center;
-    position: relative;
-}
 
 .price {
     position: absolute;
@@ -223,8 +231,8 @@ li {
 }
 
 #productsHolder img{
-    max-height: 100%;
-    max-width: 100%;
+    max-height: 80%;
+    max-width: 80%;
 }
 
 

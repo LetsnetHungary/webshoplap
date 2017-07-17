@@ -11,7 +11,7 @@
 	{
 		"1" : "/assets/js/jquery.min.js",
 		"2" : "/assets/bootstrap/js/bootstrap.min.js",
-		"3" : "/assets/js/admin.js",
+		"3" : "/assets/js/profile.js",
     	"4" : "/assets/jquery-ui/jquery-ui.min.js"
 	},
     "fonts" : {},

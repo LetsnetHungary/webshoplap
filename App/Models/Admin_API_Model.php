@@ -35,7 +35,7 @@
           return(json_encode($result));
       }
         public function getProducts($id) {
-          $stmt = $this->db->prepare('SELECT id,imageid, price FROM `products` WHERE shop='.$id.' ORDER BY position');
+          $stmt = $this->db->prepare('SELECT id,imageid, price,pinned FROM `products` WHERE shop='.$id.' ORDER BY position');
           $stmt->execute(array());
           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           return $result;
@@ -68,6 +68,10 @@
           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           echo('{ "name" : "'.$name.'", "id" : "'.$result[0]["id"].'"}');
           return $result[0]["id"];
+      }
+      public function pinProduct($id, $pin) {
+        $stmt = $this->db->prepare('UPDATE `products` SET pinned='.$pin.' WHERE id='.$id);
+        $stmt->execute([]);
       }
       public function addShop($shop,$bool) {
           if($bool){

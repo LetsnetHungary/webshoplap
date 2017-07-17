@@ -40,7 +40,7 @@
         <?php foreach($shops as $key => $value) {
 
        ?>
-       <!-- itt van a cucc -->
+       <!-- itt van a cucc 
  <div class="col-xs-12 boxAbout" style="height: 520px">
    <div class="box">
       <div class="boxTitle">
@@ -59,7 +59,7 @@
                <a target="_blank" href="` + shop['adress'] +`">
                   <h4><i class="fa fa-wifi icon"></i>www.index.hu</h4>
                </a>
-               <h4><i class="fa fa-phone icon"></i>06-20-123-456, 06-20-123-456</h4>
+               <h4><i class="fa fa-phone icon"></i>06-20-123-456</h4>
                <iframe src="https://www.facebook.com/plugins/like.php?href=` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) +`&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
             </div>
          </div>

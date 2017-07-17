@@ -19,6 +19,12 @@
           $this->model->removeShop($id);
           return;
         }
+        public function pinProduct() {
+          $id = $_POST["id"];
+          $pin = $_POST['pin'];
+          $this->model->pinProduct($id, $pin);
+          return;
+        }
         public function removeCategory() {
           $id = $_POST["id"];
           $this->model->removeCategory($id);
