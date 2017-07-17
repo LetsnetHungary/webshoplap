@@ -23,6 +23,11 @@
     display: flex;
     align-items: center;
 }
+.boxAboutDataHolderSmall {
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
 
 .boxAboutButton {
     background-color: #80caa5!important;
@@ -30,6 +35,14 @@
     position: absolute;
     bottom: 10px;
     right: 25px;
+}
+.boxAboutButtonSmall{
+  background-color: #80caa5!important;
+  color: white!important;
+
+}
+.fbButton{
+  padding-top: 3px;
 }
 
 .boxAboutButton:hover {
@@ -42,6 +55,19 @@
     justify-content: center;
     align-items: center;
     padding-left: 25px!important;
+}
+
+.boxAboutImgHolderSmall {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 25px!important;
+}
+
+.boxAboutTitleHolder{
+  height: 40px;
+  padding-left: 10px;
 }
 
 
@@ -59,7 +85,7 @@
     height: 190px;
     background-size: contain;
     background-repeat:   no-repeat;
-    background-position: center center;    
+    background-position: center center;
     position: relative;
 }
 
@@ -112,7 +138,7 @@
 }
 
 .pinned-row:hover {
-    background-color: darkgoldenrod; 
+    background-color: darkgoldenrod;
 }
 
 .spinner {
@@ -128,7 +154,7 @@
   height: 100%;
   width: 6px;
   display: inline-block;
-  
+
   -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
   animation: sk-stretchdelay 1.2s infinite ease-in-out;
 }
@@ -154,15 +180,15 @@
 }
 
 @-webkit-keyframes sk-stretchdelay {
-  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
   20% { -webkit-transform: scaleY(1.0) }
 }
 
 @keyframes sk-stretchdelay {
-  0%, 40%, 100% { 
+  0%, 40%, 100% {
     transform: scaleY(0.4);
     -webkit-transform: scaleY(0.4);
-  }  20% { 
+  }  20% {
     transform: scaleY(1.0);
     -webkit-transform: scaleY(1.0);
   }

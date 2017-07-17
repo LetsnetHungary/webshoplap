@@ -51,7 +51,7 @@
       </div>
       <div class="boxAboutRow row hidden-xs">
          <div class="col-xs-6 boxAboutImgHolder">
-            <img class="boxAboutIcon img-responsive" src="`+ ((shop['image'] == '') ? 'assets/images/placeholder.jpg' : shop['image']) +`">
+            <img class="boxAboutIcon img-responsive" src="http://drlupo.hu/Content/images/products/p_18305/18305_1_thumb.jpg">
          </div>
          <div class="col-xs-6 boxAboutDataHolder">
             <div class="">
@@ -66,22 +66,26 @@
          <button class="boxAboutButton btn">Több info</button>
       </div>
       <div class="boxAboutRow row hidden-sm hidden-md hidden-lg">
-      <div class="col-xs-12" style="text-align:center;">
-               <h3 style="margin-bottom: 30px;">salkdjlkd</h3>
+      <div class="col-xs-12 boxAboutTitleHolder" style="text-align:center;">
+               <h3 style="margin-bottom: 10px; margin-top: 10px;">salkdjlkd</h3>
       </div>
-         <div class="col-xs-12 boxAboutImgHolder" style="text-align:center;">
+         <div class="col-xs-12 boxAboutImgHolderSmall" style="text-align:center;">
             <img class="boxAboutIcon img-responsive" src="http://drlupo.hu/Content/images/products/p_18305/18305_1_thumb.jpg">
          </div>
-         <div class="col-xs-12 boxAboutDataHolder">
+         <div class="col-xs-12 boxAboutDataHolderSmall">
+           <div class="col-xs-8">
             <div class="dataholder">
                <a target="_blank" href="` + shop['adress'] +`">
                   <h4 class="datatext"><i class="fa fa-wifi icon"></i>www.index.hu</h4>
                </a>
                <h4 class="datatext"><i class="fa fa-phone icon"></i>06-20-123-456</h4>
-               <iframe src="https://www.facebook.com/plugins/like.php?href=` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) +`&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
             </div>
+          </div>
+          <div class="col-xs-4" style="text-align:right">
+            <button class="boxAboutButtonSmall btn">Több info</button>
+            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>
+          </div>
          </div>
-         <button class="boxAboutButton btn">Több info</button>
       </div>
       <div class="boxAboutRow row">
          <div class="col-xs-12 slider-container">
@@ -119,7 +123,7 @@
         ?>
         <!-- itt végződik a váz -->
       </div>
-      <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent 
+      <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent
       <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
 <script>
