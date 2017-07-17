@@ -22,7 +22,7 @@
 			$shops = [];
 			foreach ($search_result as $id) {
 				$id = $id['id'];
-				$stmt = $db->prepare("SELECT id, name, adress, phone,image FROM `shops` WHERE id = :id");
+				$stmt = $db->prepare("SELECT id, name, adress, phone,image, facebook FROM `shops` WHERE id = :id");
 	      $stmt->execute([
 	        ":id"=>$id
 	      ]);

@@ -1,4 +1,5 @@
-<?php $shops = $this->shops;?>
+<?php $shops = $this->shops;
+      $products = $this->products?>
 <head>
 <meta charset="utf-8">
 <title>Webshoplap.hu</title>
@@ -21,6 +22,21 @@
   <div class="container">
       <div class="row" id="mainrow">
         <!-- itt kezdődik a váz -->
+        <div class="col-xs-12 slider-container">
+                                <div id="topslider" class="slider">
+                                  <?foreach($products as $product) {?>
+                                  <div class="slide">
+                                    <div class="slide-inner">
+                                      <div class="product" style="background-image: url('assets/images/products/<?echo $product['imageid'];?>.jpg');">
+                                        <div class="price">
+                                          <h2><?echo $product['price'];?> Ft<h2>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <?}?>
+                                </div>
+                            </div>
         <?php foreach($shops as $key => $value) {
 
        ?>

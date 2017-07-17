@@ -72,15 +72,15 @@
       public function addShop($shop,$bool) {
           if($bool){
             if(property_exists($shop, 'pinned')) {
-                    $stmt = $this->db->prepare('INSERT INTO shops (id,name,adress,phone,bio,category,pinned, image) VALUES (\''.$shop->id.'\',\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->pinned.'\',\''.$shop->image.'\')');
+                    $stmt = $this->db->prepare('INSERT INTO shops (id,name,adress,phone,bio,category,pinned, image,facebook) VALUES (\''.$shop->id.'\',\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->pinned.'\',\''.$shop->image.'\',\''.$shop->facebook.'\')');
             } else {
-                    $stmt = $this->db->prepare('INSERT INTO shops (id,name,adress,phone,bio,category, image) VALUES (\''.$shop->id.'\',\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->image.'\')');
+                    $stmt = $this->db->prepare('INSERT INTO shops (id,name,adress,phone,bio,category, image, facebook) VALUES (\''.$shop->id.'\',\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->image.'\',\''.$shop->facebook.'\')');
             }
           } else {
             if(property_exists($shop, 'pinned')) {
-                    $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category,pinned, image) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->pinned.'\',\''.$shop->image.'\')');
+                    $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category,pinned, image, facebook) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->pinned.'\',\''.$shop->image.'\',\''.$shop->facebook.'\')');
             } else {
-                    $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category, image) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->image.'\')');
+                    $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category, image, facebook) VALUES (\''.$shop->name.'\',\''.$shop->adress.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->category.'\',\''.$shop->image.'\',\''.$shop->facebook.'\')');
             }
           }
           $stmt->execute([]);

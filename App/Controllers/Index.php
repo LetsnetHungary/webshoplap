@@ -6,6 +6,7 @@
 			$this->loadModel(__CLASS__);
 			$this->viewInit("Index", function() {
 				$this->view->shops = $this->model->getShops();
+				$this->view->products = $this->model->getProducts();
 			});
 		}
 	}

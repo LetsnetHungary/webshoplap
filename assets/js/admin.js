@@ -9,6 +9,7 @@ function showShop(res) {
     $('#adress').val(res.adress);
     $('#phone').val(res.phone);
     $('#image').val(res.image);
+    $('#facebook').val(res.facebook);
     $('#bio').val(res.bio);
     $('#labelholder li:not(.active)').remove();
     for(label in res.labels) {
@@ -39,6 +40,7 @@ function emptyShop() {
     $('#adress').val('');
     $('#phone').val('');
     $('#image').val('');
+    $('#facebook').val('');
     $('#bio').val('');
     $('#labelholder li:not(.active)').remove();
     $('#categoryholder li:not(.active)').remove();
@@ -326,6 +328,7 @@ $(function() {
         shop.adress = $('#adress').val();
         shop.phone = $('#phone').val();
         shop.image = $('#image').val();
+        shop.facebook = $('#facebook').val();
         shop.bio = $('#bio').val();
         shop.id = $('#newshop').data('id');
         cats = [];
@@ -388,6 +391,7 @@ $(function() {
         shop.adress = $('#adress').val();
         shop.phone = $('#phone').val();
         shop.image = $('#image').val();
+        shop.facebook = $('#facebook').val();
         shop.bio = $('#bio').val();
         shop.id = $('#newshop').data('id');
         cats = [];
@@ -433,6 +437,7 @@ $(function() {
         shop.adress = $('#adress').val();
         shop.phone = $('#phone').val();
         shop.image = $('#image').val();
+        shop.facebook = $('#facebook').val();
         shop.bio = $('#bio').val();
         shop.labels = new Array();
         $('#labelholder li:not(.active)').each(function(index,elem) {

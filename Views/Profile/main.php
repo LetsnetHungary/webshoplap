@@ -25,6 +25,10 @@ $categories = $this->categories; ?>
                             <input type="text" class="form-control" id="phone" value="<? print_r($shop['phone']); ?>">
                         </div>
                         <div class="form-group">
+                            <label for="pwd">Facebook oldal url:</label>
+                            <input type="text" class="form-control" id="facebook">
+                        </div>
+                        <div class="form-group">
                             <label for="pwd">Kép url:</label>
                             <input type="text" class="form-control" id="image">
                         </div>

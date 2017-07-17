@@ -69,7 +69,7 @@ function initShop(self,shop) {
                             <a target="_blank" href="` + shop['adress'] +`"><h4><i class="fa fa-wifi icon"></i>` + shop['adress'] +`</h4></a>
 
                             <h4><i class="fa fa-phone icon"></i>` + shop['phone'] +`</h4>
-                            <iframe src="https://www.facebook.com/plugins/like.php?href=` + shop['adress'] +`&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+                            <iframe src="https://www.facebook.com/plugins/like.php?href=` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) +`&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
                             </div>
                             </div>
                         <button class="boxAboutButton btn">Több info</button>
@@ -157,7 +157,43 @@ function initShop(self,shop) {
         });
         }
 }
+function initSlider() {
+    $('#topslider').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                breakpoint: 1170,
+                settings: {
+                    slidesToShow: 4
+                }
+                },
+                {
+                breakpoint: 970,
+                settings: {
+                    slidesToShow: 3
+                }
+                },
+                {
+                breakpoint: 750,
+                settings: {
+                    slidesToShow: 2
+                }
+                },
+                {
+                breakpoint: 500,
+                settings: {
+                    slidesToShow: 1
+                }
+                }
+            ]
+        });
+}
 $(function() {
+    initSlider();
     setBreakpoint();
     $(window).resize(function() {
         waitForFinalEvent(function() {
