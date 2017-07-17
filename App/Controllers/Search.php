@@ -14,3 +14,4 @@
       return $this->model->search($key_word);
     }
   }
+ 

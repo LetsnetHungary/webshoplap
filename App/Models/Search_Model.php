@@ -18,7 +18,7 @@
         ":key_word"=>$key_word
       ]);
       $search_result = array_merge($search_result, $stmt->fetchAll(PDO::FETCH_ASSOC));
-			$stmt = $db->prepare("SELECT `shop` FROM `products` WHERE name LIKE :key_word");
+			$stmt = $db->prepare("SELECT `shop` AS `id` FROM `products` WHERE name LIKE :key_word");
 			$stmt->execute([
         ":key_word"=>$key_word
       ]);
