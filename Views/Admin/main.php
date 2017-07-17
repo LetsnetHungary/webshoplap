@@ -2,6 +2,8 @@
 ob_start();
 $categories = $this->categories; ?>
 <body>
+  <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+
     <div class="container">
         <div class="row">
         <div class="col-xs-12">
@@ -62,6 +64,9 @@ $categories = $this->categories; ?>
               <div class="form-group">
                 <label for="blog-content">Bejegyzés tartalma</label>
                 <textarea name="blog-content" rows="10" cols="50"required></textarea>
+                <script>
+                  CKEDITOR.replace('blog-content');
+                </script>
               </div>
               <button type="submit" class="new-user-btn btn btn-success">Kész</button>
 
