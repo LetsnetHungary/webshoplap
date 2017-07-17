@@ -28,6 +28,8 @@
           <h5><span class="glyphicon glyphicon-time"></span> Közzétéve: <?php print_r($blog_post[0]['blog_date']); ?></h5>
           <h5><?php print_r($blog_post[0]['blog_subtitle']); ?></h5>
           <?php print_r($blog_post[0]['blog_content']); ?>
+          <div class="fb-comments" data-href="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-numposts="5"></div>
+
 
         </div>
       </div>
@@ -48,6 +50,7 @@
                 }
               })
             </script>
+
           <div class="blog_details">
             <h1> <?php print_r($value['blog_title']); ?></h1>
             <h4>Írta: <?php print_r($value['blog_author']); ?></h4>
