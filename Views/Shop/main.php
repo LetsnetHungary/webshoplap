@@ -40,14 +40,17 @@
             <div class="boxAboutRow row">
                     <div class="col-xs-12 slider-container">
                         <div class="slider"><?php foreach($shop["products"] as $product) { ?>
-                            <div class="slide"><div class="slide-inner"><div class="product" 
-                            style="background-image: url('assets/images/products/<?php print_r($product['imageid']); ?>.jpg');">
-                            <div class="price"><h2><?php print_r($product['price']);?> Ft<h2></div></div>
+                            <div class="slide"><div class="slide-inner">
+                              <div class="product" style="background-image: url('assets/images/products/<?php print_r($product['imageid']); ?>.jpg');">
+                                <div class="price"><h2><?php print_r($product['price']);?> Ft<h2></div>
+                              </div>
                             </div></div>
-                            <?php } ?> 
+                            <?php } ?>
                         </div>
                     </div>
+
                   </div>
+                  <div data-width="100%" class="fb-comments" data-href="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-numposts="5"></div>
                 </div>
             </div>
             <div class="col-md-5 col-xs-12">
