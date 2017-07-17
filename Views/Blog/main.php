@@ -23,15 +23,17 @@
     if (isset($_GET['post_id'])) {?>
       <div class="col-xs-12">
         <div class="box box-inner">
+          <div class="box box-text">
+            
           <h1><?php echo $blog_post[0]["blog_title"]; ?></h1>
           <h4>Írta: <?php echo $blog_post[0]['blog_author'] ?></h4>
           <h5><span class="glyphicon glyphicon-time"></span> Közzétéve: <?php print_r($blog_post[0]['blog_date']); ?></h5>
           <h5><?php print_r($blog_post[0]['blog_subtitle']); ?></h5>
           <?php print_r($blog_post[0]['blog_content']); ?>
 
+          </div>
+          <div data-width="100%" class="fb-comments" data-href="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-numposts="5"></div>
         </div>
-        <div data-width="100%" class="fb-comments" data-href="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-numposts="5"></div>
-
       </div>
     <?php }
     else{
