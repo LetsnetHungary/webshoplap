@@ -23,8 +23,8 @@
     if (isset($_GET['post_id'])) {?>
       <div class="col-xs-12">
         <div class="box box-inner">
-          <div class="box box-text">
-            
+          <div class="box-text">
+
           <h1><?php echo $blog_post[0]["blog_title"]; ?></h1>
           <h4>Írta: <?php echo $blog_post[0]['blog_author'] ?></h4>
           <h5><span class="glyphicon glyphicon-time"></span> Közzétéve: <?php print_r($blog_post[0]['blog_date']); ?></h5>
