@@ -240,7 +240,7 @@
         return;
       }
       public function addPartner($pname, $plink) {
-        $stmt = $this->db->prepare("INSERT INTO partners (:name, :link)");
+        $stmt = $this->db->prepare("INSERT INTO partners (name, image) VALUES (:name, :link)");
         $stmt->execute([
           ":name"=>$pname,
           ":link"=>$plink
