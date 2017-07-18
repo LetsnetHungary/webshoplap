@@ -71,5 +71,12 @@
           $this->model->addBlog($blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle);
           header("Location: ../Admin?blog_added");
         }
+        public function addPartner() {
+            $name = $_POST['pname'];
+            $link = $_POST['plink'];
+            $this->model->addPartner($name, $link);
+            header("Location: ../Admin?partner_added");
+            return;
+        }
 
     }

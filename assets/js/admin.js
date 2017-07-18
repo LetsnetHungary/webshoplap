@@ -65,7 +65,7 @@ function prepareCat(res, self){
                             <button type="button" class="btn btn-success" id="addshop">Új bolt hozzáadása</button>
                         </div>`).appendTo(content);
     for(shop in res) {
-        e = $(`<div class="boxRow" data-id="`+ res[shop]['id'] +`">`+ res[shop]['name'] +`
+        e = $(`<div class="boxRow" data-id="`+ res[shop]['id'] +`">`+ res[shop]['name'] +` (`+ res[shop]["id"] +`)
                             <div class="delete-row" style="display: none;">
                                 <i class="fa fa-times fa-2x" aria-hidden="true"></i>
                             </div><div class="pin-row" style="display: none;">
@@ -100,7 +100,7 @@ function addCategory() {
                         result = JSON.parse(result);
                         $('#catname').val('').focus();
                         $(`<div class="boxRow" data-id="`+ result['id'] +`">
-                                ` + result['name'] +`
+                                ` + result['name'] +`  (`+ result["id"] +`)
                                 <div class="delete-row" style="display: none">
                                     <i class="fa fa-times fa-2x" aria-hidden="true"></i>
                                 </div>
@@ -120,7 +120,7 @@ function addLabel() {
 }
 
 function addShop(name, id) {
-    $(`<div class="boxRow" data-id="`+ id +`">`+ name +`
+    $(`<div class="boxRow" data-id="`+ id +`">`+ name +` (`+ id +`)
                             <div class="delete-row" style="display: none;">
                                 <i class="fa fa-times fa-2x" aria-hidden="true"></i>
                             </div><div class="pin-row" style="display: none;">
@@ -378,7 +378,7 @@ $(function() {
             success: function(result){
                 $('.rightColumn .boxRow').each(function() {
                     if($(this).data('id') == $('#newshop').data('id')){
-                        e = $(`<div class="boxRow" data-id="`+ result["id"] +`">`+ result["name"] +`
+                        e = $(`<div class="boxRow" data-id="`+ result["id"] +`">`+ result["name"] +` (`+ result["id"] +`)
                                     <div class="delete-row" style="display: none;">
                                         <i class="fa fa-times fa-2x" aria-hidden="true"></i>
                                     </div><div class="pin-row" style="display: none;">
@@ -496,6 +496,11 @@ $('#addnewusr').click(function() {
     $('#newusrform .form-group').toggle();
     $(this).hide();
     $('#doneusr').show();
+});
+$('#addp').click(function() {
+    $('#newpform .form-group').toggle();
+    $(this).hide();
+    $('#donep').show();
 });
 $('.container').on('click', '.delete-product', function() {
     parent = $(this).closest('li')

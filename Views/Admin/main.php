@@ -27,7 +27,7 @@ $categories = $this->categories; ?>
                 <input type="password" class="form-control" id="pwd" placeholder="" name="new_pw">
               </div>
               <div class="form-group" style="display:none;">
-                <label for="pwd">Bolt neve:</label>
+                <label for="pwd">Bolt id:</label>
                 <input type="text" class="form-control" id="pwd" placeholder="" name="new_shop_name">
               </div>
                 <button id="addnewusr" type="button" class="new-user-btn btn btn-default">Új felhasználó hozzáadása</button>
@@ -74,6 +74,30 @@ $categories = $this->categories; ?>
             <!-- blog section end -->
               <?php } ?>
           </div>
+          <?php
+          if (isset($_GET['user_added'])) {
+            ?>
+            <form class="newerUser form-inline" action="Admin" method="post">
+            <? echo "Sikeresen hozzáadtad a partnert"; ?>
+              <button class="btn btn-default" type="submit">Vissza</button>
+            </form>
+            <?php
+          }
+          else {?>
+            <form id="newpform" class="form-inline" action="../Admin_API/addPartner" method="post">
+              <div class="form-group" style="display:none;">
+                <label for="email">Partner neve:</label>
+                <input type="text" class="form-control" id="pname" placeholder="" name="pname">
+              </div>
+              <div class="form-group" style="display:none;">
+                <label for="pwd">Kép linkje:</label>
+                <input type="text" class="form-control" id="plink" placeholder="" name="plink">
+              </div>
+                <button id="addp" type="button" class="new-user-btn btn btn-default">Új partner hozzáadása</button>
+                <button id="donep"  style="display:none;" type="submit" class="new-user-btn btn btn-success">Kész</button>
+            </form> <?php
+          }?>
+          
 
             <div id="newshop" class="col-xs-12" style="display: none;" data-pinned="0">
                 <div class="box">

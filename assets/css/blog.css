@@ -1,6 +1,7 @@
 .box-outer {
   height: 300px;
   padding: 10px;
+  cursor: pointer;
 }
 .box-inner{
   padding: 10px;

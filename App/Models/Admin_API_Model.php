@@ -239,4 +239,12 @@
         ]);
         return;
       }
+      public function addPartner($pname, $plink) {
+        $stmt = $this->db->prepare("INSERT INTO partners (:name, :link)");
+        $stmt->execute([
+          ":name"=>$pname,
+          ":link"=>$plink
+        ]);
+        return;
+      }
     }
