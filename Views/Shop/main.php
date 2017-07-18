@@ -36,7 +36,7 @@
                         <a href="Label?name=<?php echo $label["name"]; ?>"><?php echo $label["name"]; ?></a>
                     <?php } ?>
                     </div>
-
+                    <? if(count($shop['products']) > 0) { ?>
             <div class="boxAboutRow row">
                     <div class="col-xs-12 slider-container">
                         <div class="slider"><?php foreach($shop["products"] as $product) { ?>
@@ -50,6 +50,7 @@
                     </div>
 
                   </div>
+                  <? } ?>
                   <div data-width="100%" class="fb-comments" data-href="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-numposts="5"></div>
                 </div>
             </div>
