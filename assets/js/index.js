@@ -88,7 +88,7 @@ function initShop(self,shop) {
          </div>
          <div class="col-xs-6 boxAboutDataHolder">
             <div class="">
-               <h3 class="shopname" style="margin-bottom: 30px;">` + shop['name'] +`</h3>
+               <h3 class="shopname" style="margin-bottom: 30px;">` + shop['name'] +` </h3>
                <a target="_blank" href="` + shop['adress'] +`">
                   <h4><i class="fa fa-wifi icon"></i>` + shop['adress'] +`</h4>
                </a>
