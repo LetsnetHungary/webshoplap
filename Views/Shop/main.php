@@ -41,7 +41,7 @@
                     <div class="col-xs-12 slider-container">
                         <div class="slider"><?php foreach($shop["products"] as $product) { ?>
                             <div class="slide"><div class="slide-inner">
-                              <div class="product" style="background-image: url('assets/images/products/<?php print_r($product['imageid']); ?>.jpg');">
+                              <div class="product" style="background-image: url('assets/images/products/<?php print_r($product['imageid']); ?>.png');">
                                 <div class="price"><h2><?php print_r($product['price']);?> Ft<h2></div>
                               </div>
                             </div></div>

@@ -25,7 +25,7 @@ function showShop(res) {
         product = res.products[ind];
         $(`<li data-old="true" data-id="`+ product['id'] +`" class="col-xs-6 col-sm-4 col-md-3"><div class="delete-product">
                                 <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-                            </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "assets/images/products/`+ product['imageid'] +`.jpg">
+                            </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "assets/images/products/`+ product['imageid'] +`.png">
                             <div class="price"><h2>` + product['price'] + `Ft<h2></div></div>
                             </div></li>`).appendTo('#productsHolder');
         
@@ -135,22 +135,23 @@ function addShop(name, id) {
           rw = ratio*img.width; rh = ratio*img.height;
           canvas = $('<canvas width="500" height="500" style="display: none;"></canvas>');
           ctx = canvas[0].getContext('2d');
-          ctx.fillStyle = 'white';
-          ctx.fillRect(0, 0, 500, 500);
           console.log('rw: ' + rw +', rh: ' + rh + ', cuc: ' )
           console.log( 250 - (rw / 2))
           console.log( 250 + (rw / 2))
           ctx.drawImage(this,250 - (rw / 2),250 - (rh / 2),rw,rh);
-          dataurl = canvas[0].toDataURL('image/jpeg');
+          dataurl = canvas[0].toDataURL('image/png');
           $('#preview-img').attr('src', dataurl);
         }
         img.src = text;
     }
     reader.readAsDataURL(file);
   }
+  
   function clearImage() {
       $('#preview-img').attr('src','#');
       $('#prodprice').val('')
+      $('#prodname').val('')
+      $('#prod-imginput').replaceWith($('<input class="file" id="prod-imginput" type="file" accept="image/*">'));
   }
 $(function() {
     $('#addCat').click(function() {
@@ -167,13 +168,17 @@ $(function() {
                             </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "` +
         $('#preview-img').attr('src') +`">
                             <div class="price"><h2>` + $('#prodprice').val() + `Ft<h2></div></div>
-                            </div></li>`).data('price', $('#prodprice').val()).appendTo('#productsHolder');
+                            </div></li>`).data('price', $('#prodprice').val()).data('name', $('#prodname').val()).appendTo('#productsHolder');
                             clearImage();
     });
-  $('#prod-imginput').change(function() {
+    
+  $('.container').on('change', '#prod-imginput', function() {
     files = this.files;
       readFile(files[0]);
   });
+  $('#preview-img').click(function() {
+      $('#prod-imginput').click();
+  })
     $('#productsHolder').sortable({
         placeholder: "ui-state-highlight slide-inner placeholder col-xs-6 col-sm-4 col-md-3"
     });
@@ -349,6 +354,7 @@ $(function() {
             if($(this).attr('data-old')){ prod.type = 'old'; prod.id = $(this).data('id') }else{ prod.type = 'new'}
             prod.image = $(this).find('img').attr('src');
             prod.price = $(this).data('price')
+            prod.name = $(this).data('name')
             prod.position = i;
             i+=1;
             shop.products.push($.extend(true, {}, prod));
@@ -412,6 +418,7 @@ $(function() {
             if($(this).attr('data-old')){ prod.type = 'old'; prod.id = $(this).data('id') }else{ prod.type = 'new'}
             prod.image = $(this).find('img').attr('src');
             prod.price = $(this).data('price')
+            prod.name = $(this).data('name')
             prod.position = i;
             i+=1;
             shop.products.push($.extend(true, {}, prod));
@@ -455,6 +462,7 @@ $(function() {
             $(this).attr('data-old') ? prod.type = 'old' : prod.type = 'new';
             prod.image = $(this).find('img').attr('src');
             prod.price = $(this).data('price')
+            prod.name = $(this).data('name')
             prod.position = i;
             i+=1;
             shop.products.push($.extend(true, {}, prod));

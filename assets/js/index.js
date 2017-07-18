@@ -117,7 +117,7 @@ function initShop(self,shop) {
         }*/
         for(ind in shop['products']) {
             prod = shop['products'][ind];
-            asd = $('<div class="slide"><div class="slide-inner"><div class="product" style="background-image: url(\'assets/images/products/'+ prod['imageid'] +'.jpg\');"><div class="price"><h2>'+ prod['price'] +'Ft<h2></div></div></div></div>');
+            asd = $('<div class="slide"><div class="slide-inner"><div class="product" style="background-image: url(\'assets/images/products/'+ prod['imageid'] +'.png\');"><div class="price"><h2>'+ prod['price'] +'Ft<h2></div></div></div></div>');
             elem.find('.slider').append(asd);
             asd = '';
         }

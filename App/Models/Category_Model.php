@@ -11,6 +11,10 @@
                 $stmt->execute(array());
                 $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 if(count($shop) > 0){
+                    for($i = 0; $i < count($shop); $i++) {
+                        $products = $this->getProducts($shop[$i]['id']);
+                        $shop[$i]['products'] = $products;
+                    }
                     return $shop;
                 } else {
                     header('Location: Error');
@@ -22,6 +26,13 @@
                 exit();
                 return;
             }
+      }
+      
+      public function getProducts($id) {
+          $stmt = $this->db->prepare('SELECT imageid, price FROM `products` WHERE shop='.$id.' ORDER BY position');
+          $stmt->execute(array());
+          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          return $result;
       }
       public function getCatName() {
             if(isset($_GET['id'])) {

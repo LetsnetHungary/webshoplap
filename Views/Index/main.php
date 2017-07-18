@@ -22,6 +22,7 @@
   <div class="container">
       <div class="row" id="mainrow">
         <!-- itt kezdődik a váz -->
+        <?if(count($products) > 0){?>
         <div class="col-xs-12 slider-container">
                                 <div id="topslider" class="slider">
                                   <?foreach($products as $product) {?>
@@ -37,6 +38,7 @@
                                   <?}?>
                                 </div>
                             </div>
+                            <?}?>
         <?php foreach($shops as $key => $value) {
 
        ?>

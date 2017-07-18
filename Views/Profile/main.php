@@ -71,13 +71,25 @@ $categories = $this->categories; ?>
                                     <button type="button" class="btn btn-success form-control" id="addCat">Hozzáadás</button>
                                 </div>
                             </div>
-                            <div class="col-xs-12" id="uploadcontainer" style="margin-bottom: 20px; display: none;">
-                                <label class="control-label">Kép feltöltése</label>
-                                <img class="img-responsive" id="preview-img" src="#" alt="" />
-                                <input class="file" id="prod-imginput" type="file" accept="image/*">
-                                <div class="newLabel">
-                                        <input type="text" class="form-control" id="prodprice" placeholder="Termék ára (Ft)">
-                                        <button type="button" class="btn btn-success" id="addproduct">Hozzáadás</button>
+                            
+                            <div class="col-xs-12" id="uploadcontainer" style="display: none;">
+                                <div class="row">
+                                    <div class="col-xs-12" style="text-align:center">
+                                        <label class="control-label">Kép feltöltése</label>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="uploadholder">
+                                            <img class="img-responsive" id="preview-img" src="#" alt="" />
+                                            <input class="file" id="prod-imginput" type="file" accept="image/*">
+                                        </div>
+                                     </div>
+                                     <div class="col-xs-12 col-sm-6">   
+                                        <div class="uploadholder">
+                                                <input type="text" class="form-control" id="prodname" placeholder="Termék neve">
+                                                <input type="text" class="form-control" id="prodprice" placeholder="Termék ára (Ft)">
+                                                <button type="button" class="btn btn-success" id="addproduct">Hozzáadás</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-xs-12">

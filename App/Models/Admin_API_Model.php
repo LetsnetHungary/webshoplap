@@ -105,8 +105,8 @@
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $stmt = $this->db->prepare('DELETE FROM `products` WHERE id='.$delid);
                 $stmt->execute([]);
-                if(file_exists('assets/images/products/'.$result[0]['imageid'].'.jpg')) {
-                unlink('assets/images/products/'.$result[0]['imageid'].'.jpg');
+                if(file_exists('assets/images/products/'.$result[0]['imageid'].'.png')) {
+                unlink('assets/images/products/'.$result[0]['imageid'].'.png');
                 }
               }
           }
@@ -122,13 +122,14 @@
                 $prodmaxid = $result[0]['imageid'];
                 $uriPhp = 'data://' . substr($product->image, 5);
                 $binary = file_get_contents($uriPhp);
-                file_put_contents('assets/images/products/'.($prodmaxid+1).'.jpg',$binary);
-                $stmt = $this->db->prepare('INSERT INTO products (imageid,position,shop,price) VALUES (:imageid, :position, :shop, :price)');
+                file_put_contents('assets/images/products/'.($prodmaxid+1).'.png',$binary);
+                $stmt = $this->db->prepare('INSERT INTO products (imageid,position,shop,price, name) VALUES (:imageid, :position, :shop, :price, :name)');
                 $stmt->execute([
                     ":imageid" => $prodmaxid+1,
                     ":position" => $i,
                     ":shop" => $id,
-                    ":price" => $product->price
+                    ":price" => $product->price,
+                    ":name" => $product->name
                 ]);
               }
               $i++;
