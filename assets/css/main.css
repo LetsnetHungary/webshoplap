@@ -49,8 +49,8 @@ body {
 }
 
 .boxAboutIcon{
-    max-width: 85%!important;
-    max-height: 85%!important;
+    max-width: 140px;
+    max-height: 140px;
 }
 
 .aboutholder {
@@ -79,4 +79,9 @@ body {
 .innerimageholder {
     display: flex;
     justify-content: center;
+}
+.pinned-image {
+    height: 0.9em;
+    position: relative;
+    top: -1px;
 }

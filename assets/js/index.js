@@ -62,7 +62,7 @@ function initShop(self,shop) {
       
       <div class="boxAboutRow row hidden-sm hidden-md hidden-lg">
       <div class="col-xs-12 boxAboutTitleHolder" style="text-align:center;">
-               <h3 style="margin-bottom: 10px; margin-top: 10px;">` + shop['name'] +`</h3>
+               <h3 class="shopname" style="margin-bottom: 10px; margin-top: 10px;">` + shop['name'] +`</h3>
       </div>
          <div class="col-xs-12 boxAboutImgHolderSmall" style="text-align:center;">
             <img class="boxAboutIcon img-responsive" src="`+ ((shop['image'] == '') ? 'assets/images/placeholder.jpg' : shop['image']) +`">
@@ -88,7 +88,7 @@ function initShop(self,shop) {
          </div>
          <div class="col-xs-6 boxAboutDataHolder">
             <div class="">
-               <h3 style="margin-bottom: 30px;">` + shop['name'] +`</h3>
+               <h3 class="shopname" style="margin-bottom: 30px;">` + shop['name'] +`</h3>
                <a target="_blank" href="` + shop['adress'] +`">
                   <h4><i class="fa fa-wifi icon"></i>` + shop['adress'] +`</h4>
                </a>
@@ -106,7 +106,10 @@ function initShop(self,shop) {
       </div>
    </div>
 </div>`);
-          elem.data('id',self.data('id'));
+        elem.data('id',self.data('id'));
+        if(self.hasClass('pin')) {
+            elem.find('.shopname').append($('<img title="partner" class="pinned-image" src="assets/images/pinned.png">'));
+        }
         cc = colCount();
         parent = self.closest('.boxHolder')
         ind = $('.boxHolder').index(parent) + 1;

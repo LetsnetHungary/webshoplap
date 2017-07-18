@@ -7,9 +7,12 @@
       public function getShops() {
             if(isset($_GET['id'])) {
                 $id = $_GET["id"];
-                $stmt = $this->db->prepare("SELECT id,name,adress,phone,image, facebook FROM `shops` WHERE ((category = '".$id."') OR (category LIKE '".$id."; %') OR (category LIKE '%; ".$id."') OR (category LIKE '%; ".$id."; %'))");
+                $stmt = $this->db->prepare("SELECT id,name,adress,phone,image, facebook,pinned FROM `shops` WHERE ((category = '".$id."') OR (category LIKE '".$id."; %') OR (category LIKE '%; ".$id."') OR (category LIKE '%; ".$id."; %')) AND ((pinned = '".$id."') OR (pinned LIKE '".$id."; %') OR (pinned LIKE '%; ".$id."') OR (pinned LIKE '%; ".$id."; %'))");
                 $stmt->execute(array());
                 $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $stmt = $this->db->prepare("SELECT id,name,adress,phone,image, facebook,pinned FROM `shops` WHERE ((category = '".$id."') OR (category LIKE '".$id."; %') OR (category LIKE '%; ".$id."') OR (category LIKE '%; ".$id."; %')) AND ((pinned <> '".$id."') AND (pinned NOT LIKE '".$id."; %') AND (pinned NOT LIKE '%; ".$id."') AND (pinned NOT LIKE '%; ".$id."; %'))");
+                $stmt->execute(array());
+                $shop = array_merge($shop, $stmt->fetchAll(PDO::FETCH_ASSOC));
                 if(count($shop) > 0){
                     for($i = 0; $i < count($shop); $i++) {
                         $products = $this->getProducts($shop[$i]['id']);

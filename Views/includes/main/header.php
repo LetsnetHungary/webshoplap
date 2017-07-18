@@ -89,7 +89,7 @@ fjs.parentNode.insertBefore(js, fjs);
       		<a href="https://www.instagram.com/webshoplap/"  target="_blank">
             	<i class="fa fa-instagram"></i>
             </a>
-       		<a href="https://www.youtube.com/channel/UCPRsu_U29cLsQnLw8XD-ggw">
+       		<a href="https://www.youtube.com/channel/UCPRsu_U29cLsQnLw8XD-ggw"  target="_blank">
             	<i target="_blank" class="fa fa-youtube"></i>
             </a>
        </div>

@@ -108,8 +108,8 @@
             </div>
             <div class="boxContent">
               <?php foreach($value["pinned"] as $shop) { ?>
-                <div class="boxRow pinned-row" data-id="<?php echo $shop['id'] ?>">
-                  <p><?php echo $shop["name"]; ?></p>
+                <div class="boxRow pin" data-id="<?php echo $shop['id'] ?>">
+                  <p><?php echo $shop["name"]; ?> <img title="partner" class="pinned-image" src="assets/images/pinned.png"></p>
                 </div>
             <?php } ?>
             <?php foreach($value["unpinned"] as $shop) { ?>

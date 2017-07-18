@@ -16,7 +16,7 @@
         public function getShop() {
             if(isset($_GET['id'])) {
                 $id = $_GET["id"];
-                $stmt = $this->db->prepare('SELECT id,name,adress,phone,bio,category,image,facebook FROM `shops` WHERE id='.$id);
+                $stmt = $this->db->prepare('SELECT * FROM `shops` WHERE id='.$id);
                 $stmt->execute(array());
                 $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 if(count($shop) > 0){
