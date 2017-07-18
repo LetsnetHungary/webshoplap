@@ -125,6 +125,7 @@
 
 .rightColumn {
     margin: 0px!important;
+    max-height: 100px;
 }
 @media (min-width: 992px) {
     .rightColumn {

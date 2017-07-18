@@ -1,5 +1,25 @@
+function onElementHeightChange(elm, callback){
+    var lastHeight = elm.clientHeight, newHeight;
+    (function run(){
+        newHeight = elm.clientHeight;
+        if( lastHeight != newHeight )
+            callback();
+        lastHeight = newHeight;
+
+        if( elm.onElementHeightChangeTimer )
+            clearTimeout(elm.onElementHeightChangeTimer);
+
+        elm.onElementHeightChangeTimer = setTimeout(run, 200);
+    })();
+}
 $(function() {
-    $('.rightColumn').css('max-height', $('.leftColumn').height()-10);
+    
+        h = $('.leftColumn').height();
+        $('.rightColumn').css('max-height', h-10);
+    onElementHeightChange(document.body, function(){
+        h = $('.leftColumn').height();
+        $('.rightColumn').css('max-height', h-10);
+    });
         $('.slider').slick({
             dots: true,
             infinite: true,
@@ -28,7 +48,7 @@ $(function() {
             ]
         });
         $(window).resize(function() {
-            $('.rightColumn').css('max-height', $('.leftColumn').height()-30);
+            //$('.rightColumn').css('max-height', $('.leftColumn').height());
         });
         $('.shopHolder').on('click', function() {
             id = $(this).data('id');
