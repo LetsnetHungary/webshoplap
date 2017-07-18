@@ -39,8 +39,8 @@ body {
 }
 
 .boxRow p {
-    overflow:hidden; 
-    white-space:nowrap; 
+    overflow:hidden;
+    white-space:nowrap;
     text-overflow: ellipsis;
 }
 
@@ -49,8 +49,8 @@ body {
 }
 
 .boxAboutIcon{
-    max-width: 95%!important;
-    max-height: 95%!important;
+    max-width: 85%!important;
+    max-height: 85%!important;
 }
 
 .aboutholder {

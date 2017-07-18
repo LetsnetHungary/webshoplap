@@ -42,7 +42,7 @@
         <?php foreach($shops as $key => $value) {
 
        ?>
-       <!-- itt van a cucc 
+       <!-- itt van a cucc
  <div class="col-xs-12 boxAbout" style="height: 520px">
    <div class="box">
       <div class="boxTitle">
@@ -124,6 +124,17 @@
         }
         ?>
         <!-- itt végződik a váz -->
+      </div>
+      <div style="margin-top: 20px;" class="row">
+        <div class="col-xs-12 sponsorDiv">
+          <div class="row">
+            <?php for ($i=0; $i < 20; $i++) { ?>
+              <div style="height:20px; margin-top: 10px; display:flex; align-items:center; justify-content:center;"class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="index.hu"><img class="img-responsive" src="http://localhost/phpmyadmin/themes/pmahomme/img/logo_left.png" alt=""></a>
+              </div>
+            <?php } ?>
+          </div>
+        </div>
       </div>
       <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent
       <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
