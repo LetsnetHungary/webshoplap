@@ -37,4 +37,10 @@
           $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
           return $products;
       }
+      public function getPartners() {
+          $stmt = $this->db->prepare('SELECT * FROM `partners`');
+          $stmt->execute(array());
+          $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          return $products;
+      }
     }

@@ -218,7 +218,46 @@ function initSlider() {
             ]
         });
 }
+function initSlider2() {
+    $('.partnerslider').slick({
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                breakpoint: 1170,
+                settings: {
+                    dots: false,
+                    slidesToShow: 4
+                }
+                },
+                {
+                breakpoint: 970,
+                settings: {
+                    dots: false,
+                    slidesToShow: 3
+                }
+                },
+                {
+                breakpoint: 750,
+                settings: {
+                    dots: false,
+                    slidesToShow: 2
+                }
+                },
+                {
+                breakpoint: 500,
+                settings: {
+                    dots: false,
+                    slidesToShow: 1
+                }
+                }
+            ]
+        });
+}
 $(function() {
+    initSlider2();
     initSlider();
     setBreakpoint();
     $(window).resize(function() {

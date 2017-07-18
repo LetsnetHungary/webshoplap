@@ -19,17 +19,19 @@ fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <div class="container">
 <section class="row" >
-	<div class="col-lg-8 col-md-12">
-		<a class="logoImage" href="Index" style="text-align:left; height:100px; ">
-      	<svg id="logoSvg">
-		  <image href="/assets/images/logo.svg"  width="100%" height="100%" />
+	<div class="col-lg-6 col-md-12" style="display: flex; justify-content: center;">
+		<div class="holder">
+			<a class="logoImage" href="Index" style="text-align:left; height:100px; ">
+			<svg id="logoSvg">
+			<image href="/assets/images/logo.svg"  width="100%" />
+				
 
+			</svg>
 
-		</svg>
-
-      </a>
+		</a>
+	  </div>
 	</div>
-	<div class="col-lg-4 col-md-12">
+	<div class="col-lg-6 col-md-12">
 		<form class="keresoForm2" action="../Search" method="get">
             <button type="submit" class="keresoGomb"><i class="glyphicon glyphicon-search"></i></button>
             <input type="text" class="kereso2" placeholder="Keresés" name="search_word">

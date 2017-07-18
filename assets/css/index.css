@@ -196,3 +196,29 @@
     body {
         font-size: 1.7em; /* 1.5x default size */
     }
+    .pouter {
+        width:100%;
+        height:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+.pslide {
+    width: 170px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.pimage {
+    width: 170px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pimage_i {
+    max-width: 100%!important;
+    max-height: 100%!important;
+}

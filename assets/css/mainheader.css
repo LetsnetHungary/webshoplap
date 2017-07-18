@@ -1,43 +1,30 @@
+ .logoImage {
+	 width: 100%;
+ }
  #logoSvg{
-				width:140px;
-				height:15px;
+				width:100%;
+				height: 80px;
+		}
+		@media (min-width: 1200px) {
+
+		.holder{
+			width: 100%;
 		}
 
+	}
+	@media (max-width: 1200px) {
 
-
-	@media (min-width: 300px) {
-		#logoSvg{
-				width:300px;
-				height:30px;
-				margin-left:-20px;
+		.holder{
+			width: 700px;
 		}
 
 	}
 
-	@media (max-width: 500px) {
-		#logoSvg{
-				width:350px;
-				height:50px;
-				margin-left:0px;
-		}
-		.socialIcon{
-			display:block;
-		}
-	}
 
-	@media (min-width: 500px) {
-		#logoSvg{
-				width:500px;
-				height:60px;
-				margin-left:0px;
-		}
+	@media (max-width: 768px) {
 
-	}
-	@media (min-width: 760px) {
-		#logoSvg{
-			width:700px;
-			height:80px;
-			margin-left:0px;
+		.holder{
+			height: 11vw;
 		}
 
 	}

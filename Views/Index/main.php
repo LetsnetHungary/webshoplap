@@ -1,5 +1,6 @@
 <?php $shops = $this->shops;
-      $products = $this->products?>
+      $products = $this->products;
+      $partners = $this->partners;?>
 <head>
 <meta charset="utf-8">
 <title>Webshoplap.hu</title>
@@ -125,14 +126,32 @@
         ?>
         <!-- itt végződik a váz -->
       </div>
-      <div style="margin-top: 20px;" class="row">
+      <h3 style="margin-left: 30px">Partnereink: </h3>
+      <div style="margin-top: 20px; margin-left: 0; margin-right: 0;" class="row">
         <div class="col-xs-12 sponsorDiv">
-          <div class="row">
-            <?php for ($i=0; $i < 20; $i++) { ?>
-              <div style="height:20px; margin-top: 10px; display:flex; align-items:center; justify-content:center;"class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                <a href="index.hu"><img class="img-responsive" src="http://localhost/phpmyadmin/themes/pmahomme/img/logo_left.png" alt=""></a>
+          <div class="partnerslider">
+            <? $a = 0; 
+            if(count($partners) % 2 ==0) {
+              $a = count($partners) / 2;
+            } else {
+              $a = (count($partners) + 1) / 2;
+            }
+            for($i=0; $i<$a; $i++) {?>
+              <div>
+                <div class="pouter">
+                  <div class="pslide">
+                    <div class="pimage">
+                      <img class="img-responsive pimage_i" src="<?echo $partners[$i*2]['image'];?>" alt="">
+                    </div>
+                    <?if(count($partners) > ($i*2)+1) {?>
+                    <div class="pimage">
+                      <img class="img-responsive pimage_i" src="<?echo $partners[($i*2)+1]['image'];?>" alt="">
+                    </div>
+                    <?}?>
+                  </div>
+                </div>
               </div>
-            <?php } ?>
+            <?}?>
           </div>
         </div>
       </div>
