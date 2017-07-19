@@ -66,9 +66,10 @@
           $blog_title = $_POST['blog-title'];
           $blog_author = $_POST['blog-author'];
           $blog_content = $_POST['blog-content'];
+          $blog_dataurl = $_POST['dataurl'];
           $blog_date = date("Y-m-d");
           $blog_subtitle = $_POST['blog-subtitle'];
-          $this->model->addBlog($blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle);
+          $this->model->addBlog($blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle, $blog_dataurl);
           header("Location: ../Admin?blog_added");
         }
         public function addPartner() {
