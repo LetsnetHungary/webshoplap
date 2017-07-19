@@ -1,36 +1,93 @@
-.box-outer {
+.blog-outer {
   height: 300px;
-  padding: 10px;
   cursor: pointer;
+  position: relative;
+  z-index: 5;
 }
-.box-inner{
+
+.blogholder {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.titleholder {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.blogtext {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  color: white!important;
+  background-color:rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.blogtext h4 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.blogimage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.blurimage {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.box-inner {
   padding: 10px;
 }
+
 h1 {
   margin-top: 0px!important;
 }
-h4{
+
+h4 {
   margin-top: 50px!important;
 }
+
 h5 {
   margin-top: 20px!important;
 }
 
-.title{
+.title {
   font-size: 40px;
 }
 
-a:link{
+a:link {
   text-decoration: none!important;
 }
-a:hover{
+
+a:hover {
   text-decoration: none!important;
 }
-.fb-share-button{
+
+.fb-share-button {
   margin-left: 0!important;
   margin-top: 0!important;
 }
-.backgroundImage{
+
+.backgroundImage {
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
@@ -40,6 +97,7 @@ a:hover{
   left: 0;
   z-index: -5;
 }
-.blogSuggest{
+
+.blogSuggest {
   height: 100%;
 }
