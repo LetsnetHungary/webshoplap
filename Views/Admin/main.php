@@ -71,6 +71,7 @@
                             <div class="uploadholder">
                                 <img class="img-responsive" id="preview-img-blog" src="#" alt="" />
                                 <input class="file" id="blog-imginput" type="file" accept="image/*">
+                                <input id="dataurl" type="text" style="display:none;" name="dataurl">
                             </div>
                         </div>
                         <div class="col-xs-12">

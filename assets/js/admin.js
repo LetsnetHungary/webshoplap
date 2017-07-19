@@ -165,28 +165,14 @@ function readFile(file) {
     reader.readAsDataURL(file);
 }
 
-function readFileBlog(file) {
+function readBlogFile(file) {
     reader = new FileReader();
     reader.onload = function (e) {
         text = e.target.result;
         img = new Image();
         img.onload = function () {
-            if (img.width > img.height) {
-                ratio = 500 / img.width
-            } else {
-                ratio = 500 / img.height;
-            }
-            rw = ratio * img.width;
-            rh = ratio * img.height;
-            canvas = $('<canvas width="500" height="500" style="display: none;"></canvas>');
-            ctx = canvas[0].getContext('2d');
-            console.log('rw: ' + rw + ', rh: ' + rh + ', cuc: ')
-            console.log(250 - (rw / 2))
-            console.log(250 + (rw / 2))
-            ctx.drawImage(this, 250 - (rw / 2), 250 - (rh / 2), rw, rh);
-            dataurl = canvas[0].toDataURL('image/png');
-            console.log('hello')
-            $('#preview-img').attr('src', dataurl);
+            $('#preview-img-blog').attr('src', text);
+            $('#dataurl').val(text)
         }
         img.src = text;
     }

@@ -9,4 +9,4 @@ $(function() {
         + ' <img title="partner" class="pinned-image" src="assets/images/pinned.png"></span>');
         $(this).remove();
     });
-})
+});

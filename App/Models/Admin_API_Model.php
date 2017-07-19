@@ -228,14 +228,22 @@
         ]);
         return true;
       }
-      public function addBlog($blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle){
-        $stmt = $this->db->prepare("INSERT INTO blog (blog_title, blog_author, blog_content, blog_date, blog_subtitle) VALUES (:blog_title, :blog_author, :blog_content, :blog_date, :blog_subtitle)");
+      public function addBlog($blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle, $blog_dataurl){
+          $stmt = $this->db->prepare('SELECT imageid FROM `blog` ORDER BY imageid DESC LIMIT 1');
+                $stmt->execute([]);
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $prodmaxid = $result[0]['imageid'];
+                $uriPhp = 'data://' . substr($blog_dataurl, 5);
+                $binary = file_get_contents($uriPhp);
+                file_put_contents('assets/images/blogs/'.($prodmaxid+1).'.png',$binary);
+        $stmt = $this->db->prepare("INSERT INTO blog (blog_title, blog_author, blog_content, blog_date, blog_subtitle, imageid) VALUES (:blog_title, :blog_author, :blog_content, :blog_date, :blog_subtitle, :imageid)");
         $stmt->execute([
           ":blog_title"=>$blog_title,
           ":blog_author"=>$blog_author,
           ":blog_content"=>$blog_content,
           ":blog_date"=>$blog_date,
-          ":blog_subtitle"=>$blog_subtitle
+          ":blog_subtitle"=>$blog_subtitle,
+          ":imageid" => $prodmaxid+1
         ]);
         return;
       }
