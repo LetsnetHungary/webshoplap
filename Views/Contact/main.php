@@ -10,23 +10,25 @@
         <div class="btn-div">
 
           <div class="btn-group-vertical">
-          
+
             <button onclick="window.location='/assets/documents/felhasznalasi_feltetelek.pdf'" type="button" class="btn">Felhasználási feltételek</button>
             <button onclick="window.location='/assets/documents/adatvedelmi_szabalyzat.pdf'" type="button" class="btn">Adatvédelmi szabályzat</button>
             <button onclick="window.location='/assets/documents/mediaajanlat.pdf'" type="button" class="btn">Médiaajánlat </button>
           </div>
         </div>
-      </div>
-      <div class="impresszumholder">
-        Üzemeltető neve:  Long Grafikai Szolgáltató kft.
-        Üzemeltető képviselője: Vági Nóra
-        Cím: 1202 Budapest Vécsey utca 65
-        Tel: +36/30 611-8855
-        E-mail: farkas.zsolt@longkft.hu
-        Adószám: 10806034-3-43
-        Kamarai tagság: BKIK
-        Tárhely szolgáltató neve, elérhetősége: 
+      <div class="impresszumholder" style="font-size: 11px; margin-top: 20px;">
+        <i>
+        Üzemeltető neve:  Long Grafikai Szolgáltató kft.<br>
+        Üzemeltető képviselője: Vági Nóra <br>
+        Cím: 1202 Budapest Vécsey utca 65 <br>
+        Tel: +36/30 611-8855 <br>
+        E-mail: farkas.zsolt@longkft.hu <br>
+        Adószám: 10806034-3-43 <br>
+        Kamarai tagság: BKIK <br>
+        Tárhely szolgáltató neve, elérhetősége:
         Shirokuma kft. -1092 Budapest Baross utca 4/1
+        </i>
+      </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-8">
