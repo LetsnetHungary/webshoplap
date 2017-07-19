@@ -4,8 +4,8 @@
     <div class="col-xs-12 col-sm-6 col-lg-4 left-column">
       <div class="left-div">
         <div class="contact-info">
-          <p>info@webshoplap.hu</p>
-          <p>06-30-611-8855</p>
+          <a href="mailto:info@webshoplap.hu"><p>info@webshoplap.hu</p></a>
+          <a href="tel:06-30-611-8855"><p>06-30-611-8855</p></a>
         </div>
         <div class="btn-div">
 
@@ -17,7 +17,6 @@
           </div>
         </div>
       <div class="impresszumholder" style="font-size: 11px; margin-top: 20px;">
-        <i>
         Üzemeltető neve:  Long Grafikai Szolgáltató kft.<br>
         Üzemeltető képviselője: Vági Nóra <br>
         Cím: 1202 Budapest Vécsey utca 65 <br>
@@ -27,7 +26,6 @@
         Kamarai tagság: BKIK <br>
         Tárhely szolgáltató neve, elérhetősége:
         Shirokuma kft. -1092 Budapest Baross utca 4/1
-        </i>
       </div>
       </div>
     </div>
