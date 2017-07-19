@@ -21,7 +21,7 @@
   <div class="postholder row">
     <?php
     if (isset($_GET['post_id'])) {?>
-      <div class="col-xs-12">
+      <div class="col-xs-8">
         <div class="box box-inner">
           <div class="box-text">
 
@@ -35,6 +35,36 @@
           <div data-width="100%" class="fb-comments" data-href="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" data-numposts="5"></div>
         </div>
       </div>
+      <div class="col-xs-4 blogSuggest">
+                <div class="box" style="margin-bottom: 0px;">
+                    <div class="boxTitle">
+                        <div class="boxTitleTitle">Ajánlott blogbejegyzések</div>
+                    </div>
+                    <div class="row rightColumn">
+                        <?php foreach ($blog_post as $blog) { if($blog['blog_id']!=$_GET['post_id']){?>
+                            <div class="col-xs-4 shopHolder" data-id="<?php echo $blog_post; ?>">
+                                <div class="boxAboutRow row">
+                                <p>asdasd</p>
+                                    <!--<div class="col-xs-6 boxAboutImgHolder">-->
+                                       <!-- <img class="boxAboutIcon img-responsive" src="<? //if($other["image"] == ""){echo "assets/images/placeholder.jpg"; }else{echo $other["image"];}?>"-->
+                                    </div>
+                                    <div class="col-xs-6 boxAboutDataHolder">
+                                        <div class="aboutholder">
+                                        <h3 class="datatitle" style="margin-bottom: 30px;"><?php echo $other["name"]; ?><? if($other['pinned'] != 0){?><img title="partner" class="pinned-image" src="assets/images/pinned.png"><?} ?></h3>
+                                        <a href="http://<?php echo $other['adress']; ?>"><h4 class="datatext"><i class="fa fa-wifi icon"></i><?php echo $other["adress"]; ?></h4></a>
+                                        <h4 class="datatext"><i class="fa fa-phone icon"></i><?php echo $other["phone"]; ?></h4>
+                                        </div>
+                                        </div>
+                                    </div>
+                            </div>
+                                <?php
+                              }
+                                }
+                                ?>
+                    </div>
+                </div>
+        
+      </div>
     <?php }
     else{
       foreach ($blog_post as $value) {
@@ -43,7 +73,7 @@
 
         ?>
         <div class="col-md-6">
-          <div class="box box-outer" data-id="<?php echo $value['blog_id']; ?>">
+          <div class="box backgroundPic absolute box-outer" data-id="<?php echo $value['blog_id']; ?>">
             <script type="text/javascript">
               $(".box").click(function(l){
                 self = $(this);
