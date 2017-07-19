@@ -30,9 +30,9 @@ a:hover{
   margin-left: 0!important;
   margin-top: 0!important;
 }
-.backgroundPic{
-  background-image: url("https://static.pexels.com/photos/56875/tree-dawn-nature-bucovina-56875.jpeg");
-  overflow: auto;
+.backgroundImage{
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .blogSuggest{
   height: 100%;

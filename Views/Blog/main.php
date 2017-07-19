@@ -73,7 +73,7 @@
 
         ?>
         <div class="col-md-6">
-          <div class="box backgroundPic absolute box-outer" data-id="<?php echo $value['blog_id']; ?>">
+          <div class="box backgroundImage absolute box-outer" style="background-image: url(/assets/images/blogs/<?php echo $value['blog_id'];?>.png)">
             <script type="text/javascript">
               $(".box").click(function(l){
                 self = $(this);
