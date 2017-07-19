@@ -66,7 +66,7 @@ function humanTiming ($time)
                         <div class="boxTitleTitle">Ajánlott blogbejegyzések</div>
                     </div>-->
                     <div class="row rightColumn">
-                        <?php foreach ($blog_post as $value) { if(intval($value['blog_id'])!=intval($_GET['post_id'])){?>
+                        <?php $count = 0; foreach ($blog_post as $value) { if(intval($value['blog_id'])!=intval($_GET['post_id']) && $count < 5){?>
                         <!--<div class="col-xs-12 shopHolder" data-id="<?php echo $blog_post; ?>">
                             <div class="boxAboutRow row">
                               <div class="absolute box-outer" data-id="<?php echo $value['blog_id']; ?>">
@@ -94,7 +94,7 @@ function humanTiming ($time)
                         <div class="col-xs-12">
                             <div class="blogholder">
                                 <div class="blogimage" style="background-image: url('/assets/images/blogs/<?echo $value['blog_id'];?>.png')"></div>
-                                <div style="height: 200px;" class="blog-outer" data-id="<?echo $value['blog_id'];?>">
+                                <div class="blog-outer smallblog" data-id="<?echo $value['blog_id'];?>">
                                     <div class="blogtext">
                                         <h5 style="width: 100%; margin-top: 0!important;"><?echo humanTiming(strtotime($value['blog_date']));?></h5>
                                         <div class="titleholder">
@@ -104,6 +104,7 @@ function humanTiming ($time)
                             </div>
                         </div>
                         </div>
+                        <? $count++; ?>
                         <?php } }?>
                     </div>
                 </div>
