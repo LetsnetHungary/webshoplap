@@ -491,9 +491,10 @@ $('#addnewusr').click(function() {
 $('.container').on('click', '.delete-product', function() {
     parent = $(this).closest('li')
     if(parent.data('old')){
-        $('#productsHolder').data('delted', $('#productsHolder').data('deleted').push(parent.data('id')))
+        $('#productsHolder').data('deleted', $('#productsHolder').data('deleted').push(parent.data('id')))
     }
     parent.remove();
     console.log($('#productsHolder').data('deleted'))
 })
 });
+//.
