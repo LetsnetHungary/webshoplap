@@ -10,6 +10,7 @@
 				$this->view->categories = $this->model->getCategories();
 			});
 			$this->isLoggedIn();
+			 ob_flush();
 		}
 		public function isLoggedIn(){
 			if ($_SESSION['is_admin']!=1) {

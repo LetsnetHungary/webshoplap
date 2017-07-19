@@ -61,6 +61,8 @@ foreach($this->SEO->js as $jsdata)
 }
 }
 ?>
+
+<script type="text/javascript" src = "/assets/js/main.js"></script>
 	</head>
 	<body>
 
