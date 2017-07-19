@@ -7,6 +7,28 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <?
+function humanTiming ($time)
+{
+
+    $time = time() - $time; // to get the time since that moment
+    $time = ($time<1)? 1 : $time;
+    $tokens = array (
+        31536000 => 'éve',
+        2592000 => 'hónapja',
+        604800 => 'hete',
+        86400 => 'napja',
+        3600 => 'órája',
+        60 => 'perce',
+        1 => 'másodperce'
+    );
+
+    foreach ($tokens as $unit => $text) {
+        if ($time < $unit) continue;
+        $numberOfUnits = floor($time / $unit);
+        return $numberOfUnits.' '.$text;
+    }
+
+}
  $blog_post = $this->blog_post;   //a databaseből kiszedett postok (szerző, dátum, cím, tartalom...)
  $b_count = count($blog_post);
 ?>
@@ -71,9 +93,22 @@
         $title = $value['blog_title'];
         $url = "Blog address";
 
-        ?>
-        <div class="col-md-6">
-          <div class="box backgroundImage absolute box-outer" style="background-image: url(/assets/images/blogs/<?php echo $value['blog_id'];?>.png)">
+?>
+<div class="col-xs-12 col-md-6">
+  <div class="blogholder">
+    <div class="blogimage" style="background-image: url('/assets/images/blogs/<?echo $value['blog_id'];?>.png')"></div>
+    <div class="blog-outer" data-id="<?echo $value['blog_id'];?>">
+      <div class="blogtext">
+        <h5 style="width: 100%; margin-top: 0!important;"><?echo humanTiming(strtotime($value['blog_date']));?></h5>
+        <div class="titleholder">
+          <h4 style="width: 100%; margin: 0!important;"><?echo $value['blog_title'];?></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        <!--<div class="col-md-6">
+          <div class="box backgroundImage absolute box-outer" style="background-image: url()">
             <script type="text/javascript">
               $(".box").click(function(l){
                 self = $(this);
@@ -93,12 +128,25 @@
 
            <!--
           <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=80&layout=button_count&action=like&size=small&show_faces=false&share=false&height=21&appId" width="80" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-          https://developers.facebook.com/docs/plugins/like-button# <- facebook like gomb -->
+          https://developers.facebook.com/docs/plugins/like-button# <- facebook like gomb
         </div>
-      </div>
+      </div>-->
         <?
-      }
+}?>
+
+<script type="text/javascript">
+  $(".blog-outer").click(function(l){
+    self = $(this);
+    if (!$(l.target).hasClass("fb-share-button")) {
+      window.location = "Blog?post_id=" + self.data('id')
     }
+  }).hover(function() {
+    $(this).prev().addClass('blurimage');
+  }, function() {
+    $(this).prev().removeClass('blurimage');
+  });
+</script>
+   <? }
       ?>
   </div>
   </div>

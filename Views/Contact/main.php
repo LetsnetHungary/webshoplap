@@ -17,6 +17,17 @@
           </div>
         </div>
       </div>
+      <div class="impresszumholder">
+        Üzemeltető neve:  Long Grafikai Szolgáltató kft.
+        Üzemeltető képviselője: Vági Nóra
+        Cím: 1202 Budapest Vécsey utca 65
+        Tel: +36/30 611-8855
+        E-mail: farkas.zsolt@longkft.hu
+        Adószám: 10806034-3-43
+        Kamarai tagság: BKIK
+        Tárhely szolgáltató neve, elérhetősége: 
+        Shirokuma kft. -1092 Budapest Baross utca 4/1
+      </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-8">
       <div class="error">
