@@ -8,7 +8,8 @@
 	"js" :
 	{
 		"1" : "../../assets/js/jquery.min.js",
-		"2" : "../../assets/bootstrap/js/bootstrap.min.js"
+		"2" : "../../assets/bootstrap/js/bootstrap.min.js",
+		"3" : "../../assets/js/blog.js"
 	},
     "fonts" : {},
 	"seo" :

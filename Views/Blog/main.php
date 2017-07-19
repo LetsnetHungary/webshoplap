@@ -60,14 +60,14 @@ function humanTiming ($time)
                     <div data-width="100%" class="fb-comments" data-href="<?php echo " http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI] "; ?>" data-numposts="5"></div>
                 </div>
             </div>
-            <div class="col-md-4 blogSuggest">
+            <div class="col-md-4 col-xs-12 blogSuggest">
                 <div class="box" style="margin-bottom: 0px;">
-                    <div class="boxTitle">
+                    <!--<div class="boxTitle">
                         <div class="boxTitleTitle">Ajánlott blogbejegyzések</div>
-                    </div>
+                    </div>-->
                     <div class="row rightColumn">
-                        <?php foreach ($blog_post as $blog) { if(intval($blog['blog_id'])!=intval($_GET['post_id'])){?>
-                        <div class="col-xs-12 shopHolder" data-id="<?php echo $blog_post; ?>">
+                        <?php foreach ($blog_post as $value) { if(intval($value['blog_id'])!=intval($_GET['post_id'])){?>
+                        <!--<div class="col-xs-12 shopHolder" data-id="<?php echo $blog_post; ?>">
                             <div class="boxAboutRow row">
                               <div class="absolute box-outer" data-id="<?php echo $value['blog_id']; ?>">
                                   <script type="text/javascript">
@@ -90,6 +90,19 @@ function humanTiming ($time)
                               </div>
                             </div>
 
+                        </div>-->
+                        <div class="col-xs-12">
+                            <div class="blogholder">
+                                <div class="blogimage" style="background-image: url('/assets/images/blogs/<?echo $value['blog_id'];?>.png')"></div>
+                                <div style="height: 200px;" class="blog-outer" data-id="<?echo $value['blog_id'];?>">
+                                    <div class="blogtext">
+                                        <h5 style="width: 100%; margin-top: 0!important;"><?echo humanTiming(strtotime($value['blog_date']));?></h5>
+                                        <div class="titleholder">
+                                        <h4 style="width: 100%; margin: 0!important;"><?echo $value['blog_title'];?></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                         <?php } }?>
                     </div>
@@ -112,18 +125,6 @@ function humanTiming ($time)
 
 <?}?>
 
-<script type="text/javascript">
-  $(".blog-outer").click(function(l){
-    self = $(this);
-    if (!$(l.target).hasClass("fb-share-button")) {
-      window.location = "Blog?post_id=" + self.data('id')
-    }
-  }).hover(function() {
-    $(this).prev().addClass('blurimage');
-  }, function() {
-    $(this).prev().removeClass('blurimage');
-  });
-</script>
 <?}?>
   </div>
   </div>
