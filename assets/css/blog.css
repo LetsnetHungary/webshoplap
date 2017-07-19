@@ -32,7 +32,13 @@ a:hover{
 }
 .backgroundImage{
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  position: absolute;
+  width:100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -5;
 }
 .blogSuggest{
   height: 100%;
