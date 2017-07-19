@@ -61,7 +61,7 @@ function humanTiming ($time)
                 </div>
             </div>
             <div class="col-md-4 col-xs-12 blogSuggest">
-                <div class="box" style="margin-bottom: 0px;">
+                <div class="box rc" style="margin-bottom: 0px;">
                     <!--<div class="boxTitle">
                         <div class="boxTitleTitle">Ajánlott blogbejegyzések</div>
                     </div>-->
@@ -110,7 +110,7 @@ function humanTiming ($time)
                 </div>
                 <?php }else{
                   foreach ($blog_post as $value) {?>
-</div>
+
 <div class="col-xs-12 col-md-6">
   <div class="blogholder">
     <div class="blogimage" style="background-image: url('/assets/images/blogs/<?echo $value['blog_id'];?>.png')"></div>
@@ -122,6 +122,7 @@ function humanTiming ($time)
         </div>
       </div>
     </div>
+  </div>
   </div>
 
 <?}?>

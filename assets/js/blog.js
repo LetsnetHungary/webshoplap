@@ -14,10 +14,10 @@ function onElementHeightChange(elm, callback){
 }
 $(function() {
     h = $('.box-inner').height();
-        $('.rightColumn').css('max-height', h+22);
+        $('.rc').css('max-height', h+22);
     onElementHeightChange(document.body, function(){
         h = $('.box-inner').height();
-        $('.rightColumn').css('max-height', h+22);
+        $('.rc').css('max-height', h+22);
     });
     $(".blog-outer").click(function(l){
     self = $(this);
