@@ -34,7 +34,7 @@ fjs.parentNode.insertBefore(js, fjs);
 	<div class="col-lg-6 col-md-12">
 		<form class="keresoForm2" action="../Search" method="get">
             <button type="submit" class="keresoGomb"><i class="glyphicon glyphicon-search"></i></button>
-            <input type="text" class="kereso2" placeholder="Keresés" name="search_word">
+            <input type="text" class="kereso2" placeholder="Keresés" name="search_word" pattern=".{3,}" required title="minimum 3 karakter">
             <div class="cb"></div>
 	  </form>
 	</div>
