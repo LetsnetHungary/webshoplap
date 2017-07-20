@@ -57,7 +57,7 @@ function humanTiming ($time)
                         <?php print_r($blog_post[$id][ 'blog_content']); ?>
                         
                     </div>
-                    <div class="fb-comments" data-href="<?php echo " http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI] "; ?>" data-numposts="5"></div>
+                    <div data-width="100%" class="fb-comments" data-href="<?php echo " http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI] "; ?>" data-numposts="5"></div>
                 </div>
             </div>
             <div class="col-md-4 col-xs-12 blogSuggest">
