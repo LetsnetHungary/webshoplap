@@ -38,8 +38,8 @@ function humanTiming ($time)
 <?php if (isset($_GET[ 'post_id'])) {?>
 $('#og_title').attr('content', '<?php echo $blog_post[$id]["blog_title"]; ?>');
 $('#og_description').attr('content', 'webshoplap.hu');
-$('#og_url').attr('content', 'http://webshoplap.hu/Blog?post_id=<?php echo $_GET[ 'post_id']; ?>');
-$('#og_image').attr('content', 'http://webshoplap.hu/assets/images/blogs/<?php echo $_GET[ 'post_id']; ?>.png');
+$('#og_url').attr('content', 'http://webshoplap.graphed.hu/Blog?post_id=<?php echo $_GET[ 'post_id']; ?>');
+$('#og_image').attr('content', 'http://webshoplap.graphed.hu/assets/images/blogs/<?php echo $_GET[ 'post_id']; ?>.png');
 <?}?>
 </script>
 
@@ -75,30 +75,6 @@ $('#og_image').attr('content', 'http://webshoplap.hu/assets/images/blogs/<?php e
                     </div>-->
                     <div class="row rightColumn">
                         <?php $count = 0; foreach ($blog_post as $value) { if(intval($value['blog_id'])!=intval($_GET['post_id']) && $count < 5){?>
-                        <!--<div class="col-xs-12 shopHolder" data-id="<?php echo $blog_post; ?>">
-                            <div class="boxAboutRow row">
-                              <div class="absolute box-outer" data-id="<?php echo $value['blog_id']; ?>">
-                                  <script type="text/javascript">
-                                      $(".box-outer").click(function(l) {
-                                          self = $(this);
-                                          if (!$(l.target).hasClass("fb-share-button")) {
-                                              window.location = "Blog?post_id=" + self.data('id')
-                                          }
-                                      })
-                                  </script>
-
-                                  <div class="blog_details">
-                                      <h1> <?php print_r($blog['blog_title']); ?></h1>
-                                      <h4>Írta: <?php print_r($blog['blog_author']); ?></h4>
-                                      <h5><span class="glyphicon glyphicon-time"></span> Közzétéve: <?php print_r($blog['blog_date']); ?></h5>
-                                      <h5><?php print_r($blog['blog_subtitle']);  ?></h5>
-                                      <div class="fb-share-button" data-href="http://www.webshoplap.graphed.hu/Blog?=<?php echo $_GET['post_id']; ?>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Megosztás</a>
-                                      </div>
-                                  </div>
-                              </div>
-                            </div>
-
-                        </div>-->
                         <div class="col-xs-12">
                             <div class="blogholder">
                                 <div class="blogimage" style="background-image: url('/assets/images/blogs/<?echo $value['blog_id'];?>.png')"></div>
