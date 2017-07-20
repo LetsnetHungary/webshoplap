@@ -1,11 +1,3 @@
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/hu_HU/sdk.js#xfbml=1&version=v2.9";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <?
 function humanTiming ($time)
 {
@@ -35,8 +27,20 @@ function humanTiming ($time)
  $id = $b_count - $_GET['post_id']; }
 
 ?>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/hu_HU/sdk.js#xfbml=1&version=v2.9";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+<?php if (isset($_GET[ 'post_id'])) {?>
+$('#og_title').attr('content', '<?php echo $blog_post[$id]["blog_title"]; ?>');
+$('#og_description').attr('content', 'webshoplap.hu');
+$('#og_image').attr('content', 'htto://webshoplap.graphed.hu/assets/images/blogs/<?php echo $_GET[ 'post_id']; ?>.png');
+<?}?>
+</script>
 
 <main>
 
@@ -134,4 +138,6 @@ function humanTiming ($time)
 <?}?>
   </div>
   </div>
+  
+
 </main>
