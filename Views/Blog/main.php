@@ -38,7 +38,7 @@ function humanTiming ($time)
 <?php if (isset($_GET[ 'post_id'])) {?>
 $('#og_title').attr('content', '<?php echo $blog_post[$id]["blog_title"]; ?>');
 $('#og_description').attr('content', 'webshoplap.hu');
-$('#og_image').attr('content', 'htto://webshoplap.graphed.hu/assets/images/blogs/<?php echo $_GET[ 'post_id']; ?>.png');
+$('#og_image').attr('content', 'http://webshoplap.graphed.hu/assets/images/blogs/<?php echo $_GET[ 'post_id']; ?>.png');
 <?}?>
 </script>
 

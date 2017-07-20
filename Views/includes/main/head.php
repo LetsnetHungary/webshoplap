@@ -3,6 +3,7 @@
 	<head>
 		<link rel="stylesheet" href="/assets/css/main.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta id="og_url" property="og:url"          content="http://webshoplap.graphed.hu" />
 		<meta id="og_type" property="og:type"          content="website" />
 		<meta id="og_title" property="og:title"         content="Your Website Title" />
 		<meta id="og_description" property="og:description"   content="Your description" />
