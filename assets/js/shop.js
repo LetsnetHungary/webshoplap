@@ -16,7 +16,7 @@ $(function() {
     
         h = $('.leftColumn').height();
         $('.rightColumn').css('max-height', h-10);
-    onElementHeightChange(document.body, function(){
+        onElementHeightChange(document.body, function(){
         h = $('.leftColumn').height();
         $('.rightColumn').css('max-height', h-10);
     });

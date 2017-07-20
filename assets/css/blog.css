@@ -75,6 +75,12 @@
 
 .box-inner {
   padding: 10px;
+  position: realtive;
+}
+
+.fbholder {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 h1 {
