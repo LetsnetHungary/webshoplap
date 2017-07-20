@@ -35,11 +35,12 @@ function humanTiming ($time)
   js.src = "//connect.facebook.net/hu_HU/sdk.js#xfbml=1&version=v2.9";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-/*<?php if (isset($_GET[ 'post_id'])) {?>
+<?php if (isset($_GET[ 'post_id'])) {?>
 $('#og_title').attr('content', '<?php echo $blog_post[$id]["blog_title"]; ?>');
 $('#og_description').attr('content', 'webshoplap.hu');
-$('#og_image').attr('content', 'http://webshoplap.graphed.hu/assets/images/blogs/<?php echo $_GET[ 'post_id']; ?>.png');
-<?}?>*/
+$('#og_url').attr('content', 'http://webshoplap.hu/Blog?post_id=<?php echo $_GET[ 'post_id']; ?>');
+$('#og_image').attr('content', 'http://webshoplap.hu/assets/images/blogs/<?php echo $_GET[ 'post_id']; ?>.png');
+<?}?>
 </script>
 
 <main>
@@ -62,8 +63,7 @@ $('#og_image').attr('content', 'http://webshoplap.graphed.hu/assets/images/blogs
                         
                     </div>
                     <div class="fbholder">
-                        <!--<div class="fb-share-button" data-href="http://www.webshoplap.graphed.hu/Blog?=<?php echo $_GET['post_id']; ?>" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Megosztás</a>-->
-                        <div class="fb-share-button" data-href="<?php echo " http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI] "; ?>" data-layout="button_count" data-size="small" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwebshoplap.graphed.hu%2FBlog%3Fpost_id%3D8&amp;src=sdkpreparse">Megosztás</a></div>
+                        <div class="fb-share-button" data-href="<?php echo " http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI] "; ?>" data-layout="button_count" data-size="small" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwebshoplap.graphed.hu%2FBlog%3Fpost_id%3D<?php echo $_GET[ 'post_id']; ?>&amp;src=sdkpreparse">Megosztás</a></div>
                     </div>
                     <div data-width="100%" class="fb-comments" data-href="<?php echo " http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI] "; ?>" data-numposts="5"></div>
                 </div>
