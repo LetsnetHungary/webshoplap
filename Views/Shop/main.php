@@ -15,7 +15,7 @@
                     </div>
                     <div class="boxAboutRow row ">
                         <div class="col-xs-6 boxAboutImgHolder">
-                            <img class="boxAboutIconTop img-responsive" src="<? if($shop["image"] == ""){echo "assets/images/placeholder.jpg";  }else{echo $shop["image"];}?>">
+                            <img class="boxAboutIconTop img-responsive" src="<? if($shop["image"] == ""){echo "assets/images/placeholder.png";  }else{echo $shop["image"];}?>">
                         </div>
                         <div class="col-xs-6 boxAboutDataHolder">
                             <div class="aboutholder">
@@ -64,7 +64,7 @@
                             <div class="col-xs-12 shopHolder" data-id="<?php echo $other['id']; ?>">
                                 <div class="boxAboutRow row">
                                     <div class="col-xs-6 boxAboutImgHolder">
-                                        <img class="boxAboutIcon img-responsive" src="<? if($other["image"] == ""){echo "assets/images/placeholder.jpg"; }else{echo $other["image"];}?>">
+                                        <img class="boxAboutIcon img-responsive" src="<? if($other["image"] == ""){echo "assets/images/placeholder.png"; }else{echo $other["image"];}?>">
                                     </div>
                                     <div class="col-xs-6 boxAboutDataHolder">
                                         <div class="aboutholder">

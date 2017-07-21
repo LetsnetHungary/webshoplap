@@ -76,6 +76,7 @@ $categories = $this->categories; ?>
                                 <div class="row">
                                     <div class="col-xs-12" style="text-align:center">
                                         <label class="control-label">Kép feltöltése</label>
+                                        <p>(Csak átlátszó hátterű kép)</p>
                                     </div>
                                     <div class="col-xs-12 col-sm-6">
                                         <div class="uploadholder">

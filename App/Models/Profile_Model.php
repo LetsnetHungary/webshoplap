@@ -32,7 +32,6 @@
         }
 
 		public function getShopId() {
-		  session_start();
 		  $stmt = $this->db->prepare('SELECT shop_id FROM `users` WHERE email= :email');
           $stmt->execute([
 			  ":email" => $_SESSION["email"]

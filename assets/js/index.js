@@ -77,7 +77,7 @@ function initShop(self, shop) {
                <h3 class="shopname" style="margin-bottom: 10px; margin-top: 10px;">` + shop['name'] + `</h3>
       </div>
          <div class="col-xs-12 boxAboutImgHolderSmall" style="text-align:center;">
-            <img class="boxAboutIcon img-responsive" src="` + ((shop['image'] == '') ? 'assets/images/placeholder.jpg' : shop['image']) + `">
+            <img class="boxAboutIcon img-responsive" src="` + ((shop['image'] == '') ? 'assets/images/placeholder.png' : shop['image']) + `">
          </div>
          <div class="col-xs-12 boxAboutDataHolderSmall">
            <div class="col-xs-8">
@@ -96,7 +96,7 @@ function initShop(self, shop) {
       </div>
       <div class="boxAboutRow row hidden-xs">
          <div class="col-xs-6 boxAboutImgHolder">
-            <img class="boxAboutIcon img-responsive" src="` + ((shop['image'] == '') ? 'assets/images/placeholder.jpg' : shop['image']) + `">
+            <img class="boxAboutIcon img-responsive" src="` + ((shop['image'] == '') ? 'assets/images/placeholder.png' : shop['image']) + `">
          </div>
          <div class="col-xs-6 boxAboutDataHolder">
             <div class="">
