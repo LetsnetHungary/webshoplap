@@ -18,6 +18,13 @@
       $stmt->execute([
         ":key_word"=>$key_word
       ]);
+      $search_result = array_merge($search_result, $stmt->fetchAll(PDO::FETCH_ASSOC));
+			$stmt = $this->db->prepare("SELECT `shop` AS `id` FROM `products` WHERE name LIKE :key_word");
+			$stmt->execute([
+        ":key_word"=>$key_word
+      ]);
+			$search_result = array_merge($search_result, $stmt->fetchAll(PDO::FETCH_ASSOC));
+
 
 			$shops = [];
 			foreach ($search_result as $id) {
@@ -31,6 +38,7 @@
 				array_push($shops, $shop[0]);
 				}
 			}
+			shuffle($shops);
       return $shops;
     }
 		public function product($kw) {
@@ -39,6 +47,8 @@
 			$stmt->execute([
         ":key_word"=>$kw
       ]);
-			return $stmt->fetchAll(PDO::FETCH_ASSOC);
+			$prods = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			shuffle($prods);
+			return $prods;
 		}
   }
