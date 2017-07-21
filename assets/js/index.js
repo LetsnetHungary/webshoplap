@@ -321,6 +321,12 @@ $(function () {
         f = $('<form action="Shop" name="vote" method="get" style="display:none;"><input type="text" name="id" value="' + id + '" /></form>').appendTo('body');
         f.submit();
     })
+    
+    $('.container').on('click', '.boxAboutButtonSmall', function () {
+        id = $(this).closest('.boxAbout').data('id');
+        f = $('<form action="Shop" name="vote" method="get" style="display:none;"><input type="text" name="id" value="' + id + '" /></form>').appendTo('body');
+        f.submit();
+    })
     $('.boxHolder .boxTitle').on('click', function () {
         id = $(this).closest('.boxHolder').data('id');
         window.location = 'Category?id=' + id;
