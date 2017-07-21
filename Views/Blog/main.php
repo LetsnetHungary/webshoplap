@@ -36,10 +36,10 @@ function humanTiming ($time)
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 <?php if (isset($_GET[ 'post_id'])) {?>
-$('#og_title').attr('content', '<?php echo $blog_post[$id]["blog_title"]; ?>');
+/*$('#og_title').attr('content', '<?php echo $blog_post[$id]["blog_title"]; ?>');
 $('#og_description').attr('content', 'webshoplap.hu');
 $('#og_url').attr('content', 'http://webshoplap.graphed.hu/Blog?post_id=<?php echo $_GET[ 'post_id']; ?>');
-$('#og_image').attr('content', 'http://webshoplap.graphed.hu/assets/images/blogs/<?php echo $_GET[ 'post_id']; ?>.png');
+$('#og_image').attr('content', 'http://webshoplap.graphed.hu/assets/images/blogs/<?php echo $_GET[ 'post_id']; ?>.png');*/
 <?}?>
 </script>
 

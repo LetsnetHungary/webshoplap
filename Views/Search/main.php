@@ -55,7 +55,7 @@
                                 <div class="col-xs-5 boxAboutImgHolder vcenter">
                                     <div class="innerimageholder">
                                         <div>
-                                            <img class="boxAboutIcon" src="<? if($shop["image"] == " "){echo "assets/images/placeholder.jpg ";  }else{echo $shop["image"];}?>">
+                                            <img class="boxAboutIcon <? if($shop["image"] == ""){echo "noimg";}?>" src="<? if($shop["image"] == ""){echo "assets/images/placeholder.jpg";  }else{echo $shop["image"];}?>">
                                         </div>
                                     </div>
                                 </div><!--
