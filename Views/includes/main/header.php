@@ -55,14 +55,8 @@ fjs.parentNode.insertBefore(js, fjs);
    </div>
 
    <div class="collapse navbar-collapse"  id="mainMenu">
-		 <div class="navbar-left socialIcon homeIcon">
-			 <a href="/Index">
-				 <i class="fa-home fa"></i>
-			 </a>
-		 </div>
-
       <ul class="nav navbar-nav navNew20170213 menuBar2">
-
+				<li><a href="/Index" class=" menuBar2" role="button" aria-haspopup="true" aria-expanded="false">Főoldal</a></li>
  				<li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                		Kategóriák <span class="caret"></span>
