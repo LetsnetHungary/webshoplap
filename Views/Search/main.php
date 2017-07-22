@@ -21,8 +21,8 @@
                     <h4>Termékek:</h4>
                 </div>
                 <?} foreach ($products as $product) { ?>
-                      <div class="col-md-4 col-sm-6 col-xs-12 shopHolder" style="margin-bottom: 20px;" data-id="<?php echo $product["shop"]; ?>">
-                          <div class="shopHolderInner">
+                      <div class="col-md-4 col-sm-6 col-xs-12 shopHolder"  data-id="<?php echo $product["shop"]; ?>">
+                          <div class="shopHolderInner prodholder">
                             <div class="boxAboutRow row" style="margin: 0">
                                 <div class="col-xs-5 boxAboutImgHolder vcenter">
                                     <div class="innerimageholder">

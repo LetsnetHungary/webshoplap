@@ -34,8 +34,8 @@
    align-items: center;
 }
 
-.shopHolder {
-
+.prodholder {
+    height: 180px!important;
 }
 
 .shopHolder:hover {

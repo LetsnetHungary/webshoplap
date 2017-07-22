@@ -80,7 +80,7 @@ function initShop(self, shop) {
             <img class="boxAboutIcon img-responsive" src="` + ((shop['image'] == '') ? 'assets/images/placeholder.png' : shop['image']) + `">
          </div>
          <div class="col-xs-12 boxAboutDataHolderSmall">
-           <div class="col-xs-8">
+           <div style="padding-right: 0" class="col-xs-9">
             <div class="dataholder">
                <a target="_blank" href="` + shop['adress'] + `">
                   <h4 class="datatext"><i class="fa fa-wifi icon"></i>` + shop['adress'] + `</h4>
@@ -88,9 +88,9 @@ function initShop(self, shop) {
                <h4 class="datatext"><i class="fa fa-phone icon"></i>` + shop['phone'] + `</h4>
             </div>
           </div>
-          <div class="col-xs-4" style="text-align:right">
+          <div class="col-xs-3" style="text-align:right">
             <button class="boxAboutButtonSmall btn">Több info</button>
-            <iframe src="https://www.facebook.com/plugins/like.php?href=` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) + `&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+            <iframe style="position: relative; left: 6px;" src="https://www.facebook.com/plugins/like.php?href=` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) + `&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
         </div>
          </div>
       </div>

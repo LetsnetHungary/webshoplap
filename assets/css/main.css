@@ -48,9 +48,21 @@ body {
     background-color: #d9d8d2;
 }
 
-.boxAboutIcon{
-    max-width: 140px;
-    max-height: 140px;
+@media(max-width:450px){
+    .boxAboutIcon{
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
+@media(min-width:451px){
+    .boxAboutIcon{
+        max-width: 140px;
+        max-height: 140px;
+    }
+}
+
+.boxAboutDataHolder {
+    padding: 0;
 }
 
 .aboutholder {
