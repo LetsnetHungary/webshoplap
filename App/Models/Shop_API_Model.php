@@ -16,7 +16,7 @@
       }
 
       public function getProducts($id) {
-          $stmt = $this->db->prepare('SELECT imageid, price FROM `products` WHERE shop='.$id.' ORDER BY position');
+          $stmt = $this->db->prepare('SELECT * FROM `products` WHERE shop='.$id.' ORDER BY position');
           $stmt->execute(array());
           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           return $result;

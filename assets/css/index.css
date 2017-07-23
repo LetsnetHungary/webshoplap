@@ -18,6 +18,11 @@
     position: relative;
 }
 
+.boxAboutRowSlider {
+    height: 210px;
+    position: relative;
+}
+
 .boxAboutDataHolder {
     height: 100%;
     display: flex;
@@ -81,12 +86,13 @@
 }
 
 .product {
-    width: 190px;
-    height: 190px;
+    width: 140px;
+    height: 140px;
     background-size: contain;
     background-repeat:   no-repeat;
     background-position: center center;
     position: relative;
+    cursor: pointer;
 }
 
 .price {
@@ -100,13 +106,18 @@
     background-color:rgba(0, 0, 0, 0.5);
 }
 
+.price h3 {
+    color: white!important;
+    margin: 0!important;
+}
+
 .price h2 {
     color: white!important;
     margin: 0!important;
 }
 
 .slide-inner {
-    height: 200px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,7 +129,7 @@
 }
 
 .slider-container {
-    height: 250px;
+    height: 180px;
     padding-left: 50px;
     padding-right: 50px;
     padding-bottom: 30px;

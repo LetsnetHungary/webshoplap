@@ -23,7 +23,7 @@ fjs.parentNode.insertBefore(js, fjs);
 		<div class="holder">
 			<a class="logoImage" href="Index" style="text-align:left; height:100px; ">
 			<svg id="logoSvg">
-			<image href="/assets/images/logo.svg"  width="100%" />
+			<image href="/assets/images/logo.svg" xlink:href="/assets/images/logo.svg"   width="100%" />
 				
 
 			</svg>

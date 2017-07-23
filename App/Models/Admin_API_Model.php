@@ -123,13 +123,14 @@
                 $uriPhp = 'data://' . substr($product->image, 5);
                 $binary = file_get_contents($uriPhp);
                 file_put_contents('assets/images/products/'.($prodmaxid+1).'.png',$binary);
-                $stmt = $this->db->prepare('INSERT INTO products (imageid,position,shop,price, name) VALUES (:imageid, :position, :shop, :price, :name)');
+                $stmt = $this->db->prepare('INSERT INTO products (imageid,position,shop,price, name, link) VALUES (:imageid, :position, :shop, :price, :name, :link)');
                 $stmt->execute([
                     ":imageid" => $prodmaxid+1,
                     ":position" => $i,
                     ":shop" => $id,
                     ":price" => $product->price,
-                    ":name" => $product->name
+                    ":name" => $product->name,
+                    ":link" => $product->link
                 ]);
               }
               $i++;

@@ -110,7 +110,7 @@ function initShop(self, shop) {
          </div>
          <button class="boxAboutButton btn">Több info</button>
       </div>
-      <div class="boxAboutRow row">
+      <div class="boxAboutRowSlider row">
          <div class="col-xs-12 slider-container">
             <div class="slider">
             </div>
@@ -132,7 +132,7 @@ function initShop(self, shop) {
     elem.insertBefore($('.boxHolder').eq(ind - pos));
     hely = ind - pos;
     cucc = hely / cc;
-    scrol = 520;
+    scrol = 470;
     if (shop['products'].length == 0) {
         scrol = 300;
         elem.find('.boxAboutRow').eq(2).remove();
@@ -141,7 +141,7 @@ function initShop(self, shop) {
         height: scrol
     }, 500, 'swing', function () {});
     $("html, body").animate({
-        scrollTop: $('#mainrow').offset().top + (270 * cucc)
+        scrollTop: $('#mainrow').offset().top + (270 * cucc) +180
     }, 500, 'swing', function () {
 
     });
@@ -160,8 +160,11 @@ function initShop(self, shop) {
     }*/
     for (ind in shop['products']) {
         prod = shop['products'][ind];
-        asd = $('<div class="slide"><div class="slide-inner"><div class="product" style="background-image: url(\'assets/images/products/' + prod['imageid'] + '.png\');"><div class="price"><h2>' + prod['price'] + 'Ft<h2></div></div></div></div>');
+        asd = $('<div class="slide" data-link="'+ prod['link'] +'"><div class="slide-inner"><div class="product" style="background-image: url(\'assets/images/products/' + prod['imageid'] + '.png\');"><div class="price"><h2>' + prod['price'] + 'Ft<h2></div></div></div></div>');
         elem.find('.slider').append(asd);
+        asd.click(function() {
+            window.open($(this).data('link'), '_blank');
+        })
         asd = '';
     }
     if (shop['products'].length > 0) {
@@ -202,33 +205,37 @@ function initShop(self, shop) {
 
 function initSlider() {
     $('#topslider').slick({
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 300,
-        slidesToShow: 5,
+        slidesToShow: 6,
         slidesToScroll: 1,
         responsive: [{
                 breakpoint: 1170,
                 settings: {
-                    slidesToShow: 4
+                    slidesToShow: 5
                 }
             },
             {
                 breakpoint: 970,
                 settings: {
-                    slidesToShow: 3
+                    slidesToShow: 4
                 }
             },
             {
                 breakpoint: 750,
                 settings: {
-                    slidesToShow: 2
+                    slidesToShow: 2,              
+                    centerMode: true,
+                    arrows: false
                 }
             },
             {
                 breakpoint: 500,
                 settings: {
-                    slidesToShow: 1
+                    slidesToShow: 1,              
+                    centerMode: true,
+                    arrows: false
                 }
             }
         ]
@@ -273,6 +280,9 @@ function initSlider2() {
     });
 }
 $(function () {
+    $('#topslider .slide').click(function() {
+        window.location = "Shop?id=" + $(this).data('shop')
+    })
     initSlider2();
     initSlider();
     setBreakpoint();

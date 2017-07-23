@@ -183,6 +183,7 @@ function clearImage() {
     $('#preview-img').attr('src', '#');
     $('#prodprice').val('')
     $('#prodname').val('')
+    $('#prodlink').val('')
     $('#prod-imginput').replaceWith($('<input class="file" id="prod-imginput" type="file" accept="image/*">'));
 }
 $(function () {
@@ -202,7 +203,7 @@ $(function () {
                             </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "` +
             $('#preview-img').attr('src') + `">
                             <div class="price"><h2>` + $('#prodprice').val() + `Ft<h2></div></div>
-                            </div></li>`).data('price', $('#prodprice').val()).data('name', $('#prodname').val()).appendTo('#productsHolder');
+                            </div></li>`).data('price', $('#prodprice').val()).data('name', $('#prodname').val()).data('link', $('#prodlink').val()).appendTo('#productsHolder');
         clearImage();
     });
     $('.container').on('change', '#prod-imginput', function () {
@@ -397,6 +398,7 @@ $(function () {
             prod.image = $(this).find('img').attr('src');
             prod.price = $(this).data('price')
             prod.name = $(this).data('name')
+            prod.link = $(this).data('link')
             prod.position = i;
             i += 1;
             shop.products.push($.extend(true, {}, prod));
@@ -468,6 +470,7 @@ $(function () {
             prod.image = $(this).find('img').attr('src');
             prod.price = $(this).data('price')
             prod.name = $(this).data('name')
+            prod.link = $(this).data('link')
             prod.position = i;
             i += 1;
             shop.products.push($.extend(true, {}, prod));
@@ -514,6 +517,7 @@ $(function () {
             prod.image = $(this).find('img').attr('src');
             prod.price = $(this).data('price')
             prod.name = $(this).data('name')
+            prod.link = $(this).data('link')
             prod.position = i;
             i += 1;
             shop.products.push($.extend(true, {}, prod));

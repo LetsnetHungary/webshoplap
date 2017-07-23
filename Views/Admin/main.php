@@ -206,6 +206,7 @@
                                     <div class="col-xs-12 col-sm-6">
                                         <div class="uploadholder">
                                             <input type="text" class="form-control" id="prodname" placeholder="Termék neve">
+                                            <input type="text" class="form-control" id="prodlink" placeholder="Termék linkje">
                                             <input type="text" class="form-control" id="prodprice" placeholder="Termék ára (Ft)">
                                             <button type="button" class="btn btn-success" id="addproduct">Hozzáadás
                                             </button>

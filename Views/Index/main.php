@@ -27,11 +27,11 @@
         <div class="col-xs-12 slider-container">
                                 <div id="topslider" class="slider">
                                   <?foreach($products as $product) {?>
-                                  <div class="slide">
+                                  <div class="slide" data-shop="<?echo $product['shop'];?>">
                                     <div class="slide-inner">
-                                      <div class="product" style="background-image: url('assets/images/products/<?echo $product['imageid'];?>.jpg');">
+                                      <div class="product" style="background-image: url('assets/images/products/<?echo $product['imageid'];?>.png');">
                                         <div class="price">
-                                          <h2><?echo $product['price'];?> Ft<h2>
+                                          <h3><?echo $product['price'];?> Ft<h3>
                                         </div>
                                       </div>
                                     </div>

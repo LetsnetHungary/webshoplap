@@ -13,7 +13,9 @@ function onElementHeightChange(elm, callback){
     })();
 }
 $(function() {
-    
+        $('.slide').click(function() {
+            window.open($(this).data('link'), '_blank');
+        })
         h = $('.leftColumn').height();
         $('.rightColumn').css('max-height', h-10);
         onElementHeightChange(document.body, function(){
