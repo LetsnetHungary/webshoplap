@@ -119,7 +119,11 @@
                 $stmt = $this->db->prepare('SELECT imageid FROM `products` ORDER BY imageid DESC LIMIT 1');
                 $stmt->execute([]);
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                if(count($result) > 0) {
                 $prodmaxid = $result[0]['imageid'];
+                } else {
+                    $prodmaxid = 0;
+                }
                 $uriPhp = 'data://' . substr($product->image, 5);
                 $binary = file_get_contents($uriPhp);
                 file_put_contents('assets/images/products/'.($prodmaxid+1).'.png',$binary);

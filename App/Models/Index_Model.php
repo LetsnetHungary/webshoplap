@@ -32,9 +32,15 @@
           return $shops;
       }
       public function getProducts() {
-          $stmt = $this->db->prepare('SELECT * FROM `products` WHERE pinned=1 ORDER BY RAND()');
+          $rem = 25;
+          $stmt = $this->db->prepare('SELECT * FROM `products` WHERE pinned=1 ORDER BY RAND() LIMIT 25');
           $stmt->execute(array());
           $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          $rem = $rem - count($products);
+          $stmt = $this->db->prepare('SELECT * FROM `products` WHERE pinned=0 ORDER BY RAND() LIMIT '.$rem );
+          $stmt->execute(array());
+          $products = array_merge($products,$stmt->fetchAll(PDO::FETCH_ASSOC));
+          shuffle($products);
           return $products;
       }
       public function getPartners() {
