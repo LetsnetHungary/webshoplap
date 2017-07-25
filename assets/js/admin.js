@@ -99,7 +99,8 @@ function addCategory() {
             type: 'POST',
             url: 'Admin_API/addCategory',
             data: {
-                name: $('#catname').val()
+                name: $('#catname').val(),
+                fuckid: $('#caturlname').val()
             },
             encode: true,
             success: function (result) {

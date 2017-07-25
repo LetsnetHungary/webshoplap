@@ -339,6 +339,6 @@ $(function () {
     })
     $('.boxHolder .boxTitle').on('click', function () {
         id = $(this).closest('.boxHolder').data('id');
-        window.location = 'Category?id=' + id;
+        window.location = 'Category/' + id;
     })
 })

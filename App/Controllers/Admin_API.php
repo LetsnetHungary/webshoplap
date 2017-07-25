@@ -32,7 +32,8 @@
         }
         public function addCategory() {
             $name = $_POST["name"];
-            $this->model->addCategory($name);
+            $fuckid = $_POST['fuckid'];
+            $this->model->addCategory($name, $fuckid);
             return;
         }
         public function addShop() {
