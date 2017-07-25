@@ -21,8 +21,8 @@ fjs.parentNode.insertBefore(js, fjs);
 <section class="row" >
 	<div class="col-lg-6 col-md-12" style="display: flex; justify-content: center;">
 		<div class="holder">
-			<a class="logoImage" href="Index" style="text-align:left; height:100px; ">
-			<svg id="logoSvg">
+			<a class="logoImage" href="/Index" style="text-align:left; height:100px; ">
+
 			<img class="logologo" src="/assets/images/logo.png" alt="logo">
 		</a>
 	  </div>
