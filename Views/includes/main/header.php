@@ -59,7 +59,7 @@ fjs.parentNode.insertBefore(js, fjs);
 				<li><a href="/Index" class=" menuBar2" role="button" aria-haspopup="true" aria-expanded="false">Főoldal</a></li>
  				<li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-               		Kategóriák <span class="caret"></span>
+               		Kategóriákk <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu menuBar2" >
 									<?php
