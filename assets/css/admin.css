@@ -280,3 +280,21 @@ li {
     max-width: 100%;
     max-height: 200px;
 }
+
+.partner_holder {
+    display: flex;
+    flex-direction: column;
+}
+
+.partner_holder div {
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.partner_holder div span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+}

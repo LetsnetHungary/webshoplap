@@ -32,8 +32,7 @@
         }
         public function addCategory() {
             $name = $_POST["name"];
-            $fuckid = $_POST['fuckid'];
-            $this->model->addCategory($name, $fuckid);
+            $this->model->addCategory($name);
             return;
         }
         public function addShop() {
@@ -79,6 +78,15 @@
             $this->model->addPartner($name, $link);
             header("Location: ../Admin?partner_added");
             return;
+        }
+
+        public function showPartners() {
+            print_r($this->model->showPartners());
+        }
+
+        public function deletePartner() {
+            $id = isset($_POST['id']) ? $_POST['id'] : 'asdf';
+            return $this->model->deletePartner($id);
         }
 
     }

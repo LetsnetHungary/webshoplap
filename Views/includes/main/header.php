@@ -25,6 +25,8 @@ fjs.parentNode.insertBefore(js, fjs);
 
 			<img class="logologo" src="/assets/images/logo.png" alt="logo">
 		</a>
+
+		</a>
 	  </div>
 	</div>
 	<div class="col-lg-6 col-md-12">
@@ -60,7 +62,7 @@ fjs.parentNode.insertBefore(js, fjs);
                 <ul class="dropdown-menu menuBar2" >
 									<?php
 									for ($i=0; $i < count($category); $i++) { ?>
-										<li><a style="color:#FFF;" href="/Category/<?php print_r($category[$i]['fuckid']); ?>"><?php print_r($category[$i]['name']); ?></a></li>
+										<li><a style="color:#FFF;" href="Category?id=<?php print_r($category[$i]['id']); ?>"><?php print_r($category[$i]['name']); ?></a></li>
 									<?php }
 									?>
 

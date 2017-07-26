@@ -19,7 +19,7 @@ $(function() {
         words.splice(words.length-2, 1)
         parent.text(words.join(' '))
         parent.append('<span style="white-space: nowrap;">' + last 
-        + ' <img title="partner" class="pinned-image" src="../assets/images/pinned.png"></span>');
+        + ' <img title="partner" class="pinned-image" src="assets/images/pinned.png"></span>');
         $(this).remove();
     });
     oldsize = $('.datatitle').eq(0).css('font-size').replace('px', '')
