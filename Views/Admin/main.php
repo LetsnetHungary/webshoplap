@@ -117,7 +117,18 @@
                     </button>
                 </form>
                 <?php }?>
+            </div> <!-- Partner mutatása -->
+            <div class="col-xs-12">
+            <div class="inline-form">
+                    <div id="showpform" class="showpform">
+                        <button class='asdfasdf'>dsfgsdfg</button>
+                    </div>
+                    <button id="showp" type="button" class="new-user-btn btn btn-default">Partnerek megjelenítése
+                    </button>
+                    
             </div>
+            <!-- Partner mutatása vége -->
+
             <div id="newshop" class="col-xs-12" style="display: none;" data-pinned="0">
                 <div class="box">
                     <div class="boxTitle">

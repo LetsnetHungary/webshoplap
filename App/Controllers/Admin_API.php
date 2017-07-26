@@ -79,5 +79,13 @@
             header("Location: ../Admin?partner_added");
             return;
         }
+        public function showPartners(){
+            $this->model->showPartners();
+        }
+
+        public function deletePartner(){
+            $id = isset($_POST['id']) ? $_POST['id'] : "asdf";
+            $this->model->deletePartner($id);
+        }
 
     }

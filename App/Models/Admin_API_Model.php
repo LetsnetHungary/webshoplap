@@ -259,4 +259,16 @@
         ]);
         return;
       }
+      public function showPartners(){
+          $stmt = $this->db->prepare("SELECT * FROM `partners` WHERE 1");
+          $stmt->execute([]);
+          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          print_r(json_encode($result));
+      }
+      public function deletePartner($id){
+        $stmt = $this->db->prepare("DELETE FROM `partners` WHERE id = :id");
+        $stmt->execute([
+            ":id"=>$id
+        ]);
+      }
     }
