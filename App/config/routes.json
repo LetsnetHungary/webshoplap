@@ -1,10 +1,11 @@
 [
     {"href" : "HTTPError", "closure" : "static", "view" : "Error"},
     {"href" : "admin/login", "closure" : "static", "view" : "Login"},
+    {"href" : "Index/mvc", "closure" : "mvc", "controller" : "Index", "view" : "Index", "order" : ["{method}", "{argument}", "{argument}"]},
     {"href" : "admin/LoginAPI", "closure" : "mvc", "controller" : "LoginAPI", "order" : ["{method}"]},
     {"href" : "Index", "closure" : "mvc", "controller" : "Index", "view" : "Index", "order" : ["{method}"]},
     {"href" : "Blog", "closure" : "mvc", "controller" : "Blog", "order" : ["{method}"]},
-    {"href" : "Category", "closure" : "fuckRouting", "controller" : "Category", "order" : ["{method}"]},
+    {"href" : "Category", "closure" : "mvc", "controller" : "Category", "order" : ["{method}"]},
     {"href" : "Label", "closure" : "mvc", "controller" : "Label", "order" : ["{method}"]},
     {"href" : "Contact", "closure" : "mvc", "controller" : "Contact", "order" : ["{method}"]},
     {"href" : "Shop", "closure" : "mvc", "controller" : "Shop", "order" : ["{method}"]},
@@ -17,4 +18,5 @@
     {"href" : "Search", "closure" : "mvc", "controller" : "Search", "order" : ["{method}"]},
     {"href" : "Profile", "closure" : "mvc", "controller" : "Profile", "order" : ["{method}"]},
     {"href" : "Profile_API", "closure" : "mvc", "controller" : "Profile_API", "order" : ["{method}"]}
+
 ]

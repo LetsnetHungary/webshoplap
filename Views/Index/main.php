@@ -99,7 +99,7 @@
    </div>
 </div>
           <!-- itt van a cucc -->
-       <div class="boxHolder col-lg-3 col-md-4 col-sm-6 col-xs-12" data-id="<?php echo $value['fuckid']; ?>">
+       <div class="boxHolder col-lg-3 col-md-4 col-sm-6 col-xs-12" data-id="<?php echo $value['id']; ?>">
           <div class="box">
             <div class="boxTitle">
               <div class="boxTitleTitle"><?php echo $key; ?></div>
