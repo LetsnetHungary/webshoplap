@@ -549,60 +549,6 @@ $(function () {
         $(this).hide();
         $('#donep').show();
     });
-
-    $('.deletep').click(function() {
-        console.log('kugasdfkadgsk')
-        $.ajax({
-            url: 'Admin_API/deletePartner',
-            type: 'POST',
-            data: {
-                id: $(this).data('id')
-            },
-            encode: true,
-            success: function (result) {
-                alert("Sikeresen törölted a webshopot!")
-            },
-            error: function (xhr, status, error) {
-                alert("aksdfb,jsadh")
-            }
-        });
-    })
-
-//PARTNER CONTROLLER
-
-
-    $('.asdfasdf').on('click', function () {
-    
-        console.log("hgdhgdhgdhg")
-    })
-
-    $('#showp').click(function () {
-        $(this).hide();
-
-        $.ajax({
-            url: 'Admin_API/showPartners',
-            type: 'POST',
-            data: {
-            },
-            encode: true,
-            success: function (result) {
-                var json = JSON.parse(result)
-                json.forEach(function(element) {
-                    var html = "<button class='asdfasdf'>dsfgsdfg</button>"
-                    // var html = "<div class='partnerList'> <div class='partnerName'>" + element.name +"</div> <button id='" + element.id + "' class='deletep deletePartner'>törlés!</button> </div>"
-
-                $('#showpform').append(html)
-                $('#showpform').toggle()
-                })
-            },
-            error: function (xhr, status, error) {
-
-            }
-        });
-    });
-
-    //PARTNER CONTROLLER END
-
     $('.container').on('click', '.delete-product', function () {
         parent = $(this).closest('li')
         if (parent.data('old')) {

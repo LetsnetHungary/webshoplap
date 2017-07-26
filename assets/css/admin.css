@@ -280,12 +280,3 @@ li {
     max-width: 100%;
     max-height: 200px;
 }
-
-.showpform {
-    display: none;
-}
-.showpform div{
-    display: flex;
-    flex-direction: row;
-    width: 300px;
-}
