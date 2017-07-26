@@ -80,4 +80,13 @@
             return;
         }
 
+        public function showPartners() {
+            print_r($this->model->showPartners());
+        }
+
+        public function deletePartner() {
+            $id = isset($_POST['id']) ? $_POST['id'] : 'asdf';
+            return $this->model->deletePartner($id);
+        }
+
     }

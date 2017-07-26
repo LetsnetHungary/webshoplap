@@ -557,6 +557,43 @@ $(function () {
         parent.remove();
         console.log($('#productsHolder').data('deleted'))
     })
+
+    $('#showpartners').click(function() {
+        $(this).hide()
+        $.ajax({
+            url: 'Admin_API/showPartners',
+            type: 'POST',
+            data: {},
+            encode: true,
+            success: function (result) {
+                console.log(result)
+                var json = JSON.parse(result)
+                json.forEach(function(partner) {
+                    var html = "<div> <span>" + partner.name + "</span> <button class='deletePartner new-user-btn btn btn-danger' id='" + partner.id + "'> Törlés! </button>  </div>"
+                    $("#p_holder").append(html)
+                })
+            },
+            error: function (xhr, status, error) {}
+        });
+    })
+
+    $(document).on('click', '.deletePartner', function () {
+        $.ajax({
+            url: 'Admin_API/deletePartner',
+            type: 'POST',
+            data: {
+                id: $(this).attr('id')
+            },
+            success: function (result) {
+                alert("Sikeresen töröltél egy partnert!")
+                location.reload()
+            },
+            error: function (xhr, status, error) {}
+        });
+    })
+
+
+
     $('.container').on('click', '.pin-product', function () {
         parent = $(this).closest('li')
         pin = (parent.data('pinned')) ? 0 : 1;
