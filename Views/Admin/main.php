@@ -262,6 +262,7 @@
                     <div class="boxContent">
                         <div class="boxRowAdd">
                             <input type="text" class="form-control" id="catname" placeholder="Új kategória neve">
+                            <input type="text" class="form-control" id="caturlname" placeholder="Új kategória url címe">
                             <button type="button" class="btn btn-success" id="addcat">Hozzáadás
                             </button>
                         </div>

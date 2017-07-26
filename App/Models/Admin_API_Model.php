@@ -58,9 +58,12 @@
           ]);
           return;
       }
-      public function addCategory($name) {
-          $stmt = $this->db->prepare('INSERT INTO categories (name) VALUES (\''.$name.'\')');
-          $stmt->execute([]);
+      public function addCategory($name, $fuckid) {
+          $stmt = $this->db->prepare('INSERT INTO categories (name, fuckid) VALUES (:name, :fuckid)');
+          $stmt->execute([
+              ':name' => $name,
+              ':fuckid' => $fuckid
+          ]);
           $stmt = $this->db->prepare('SELECT id FROM `categories` WHERE name = :name');
           $stmt->execute([
               ":name" => $name

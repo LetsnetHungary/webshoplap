@@ -27,6 +27,7 @@
                 ]);
                 $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $shops[$cat["name"]]["unpinned"] = $shop;
+                $shops[$cat["name"]]["fuckid"] = $cat['fuckid'];
             }
           }
           return $shops;

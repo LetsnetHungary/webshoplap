@@ -21,13 +21,9 @@ fjs.parentNode.insertBefore(js, fjs);
 <section class="row" >
 	<div class="col-lg-6 col-md-12" style="display: flex; justify-content: center;">
 		<div class="holder">
-			<a class="logoImage" href="Index" style="text-align:left; height:100px; ">
-			<svg id="logoSvg">
-			<image href="/assets/images/logo.svg" xlink:href="/assets/images/logo.svg"   width="100%" />
-				
+			<a class="logoImage" href="/Index" style="text-align:left; height:100px; ">
 
-			</svg>
-
+			<img class="logologo" src="/assets/images/logo.png" alt="logo">
 		</a>
 	  </div>
 	</div>
@@ -64,7 +60,7 @@ fjs.parentNode.insertBefore(js, fjs);
                 <ul class="dropdown-menu menuBar2" >
 									<?php
 									for ($i=0; $i < count($category); $i++) { ?>
-										<li><a style="color:#FFF;" href="Category?id=<?php print_r($category[$i]['id']); ?>"><?php print_r($category[$i]['name']); ?></a></li>
+										<li><a style="color:#FFF;" href="/Category/<?php print_r($category[$i]['fuckid']); ?>"><?php print_r($category[$i]['name']); ?></a></li>
 									<?php }
 									?>
 
