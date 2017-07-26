@@ -116,6 +116,14 @@
                     <button id="donep" style="display:none;" type="submit" class="new-user-btn btn btn-success">Kész
                     </button>
                 </form>
+
+                <div class="partnershow">
+                     <div class="partner_holder" id = "p_holder">
+                        
+                    </div>
+                    <button class = "new-user-btn btn btn-default" id="showpartners">Partnerek mutatása!</button>
+                </div>
+
                 <?php }?>
             </div>
             <div id="newshop" class="col-xs-12" style="display: none;" data-pinned="0">
