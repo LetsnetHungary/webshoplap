@@ -273,4 +273,13 @@
             ":id" => $id
         ]);
       }
+
+      public function refreshPartnerURL($id, $url) {
+        $stmt = $this->db->prepare('UPDATE partners SET url = :url WHERE id = :id');
+        $stmt->execute([
+            ":id" => $id,
+            ':url' => $url
+        ]);
+        return;
+      }
     }
