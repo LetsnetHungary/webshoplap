@@ -111,6 +111,11 @@
                         </label>
                         <input type="text" class="form-control" id="plink" placeholder="" name="plink">
                     </div>
+                    <div class="form-group" style="display:none;">
+                        <label for="pwd">Partner linkje:
+                        </label>
+                        <input type="text" class="form-control" id="partnerlink" placeholder="" name="partnerlink">
+                    </div>
                     <button id="addp" type="button" class="new-user-btn btn btn-default">Új partner hozzáadása
                     </button>
                     <button id="donep" style="display:none;" type="submit" class="new-user-btn btn btn-success">Kész

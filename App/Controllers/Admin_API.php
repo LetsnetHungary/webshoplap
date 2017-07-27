@@ -75,7 +75,8 @@
         public function addPartner() {
             $name = $_POST['pname'];
             $link = $_POST['plink'];
-            $this->model->addPartner($name, $link);
+            $partnerlink = $_POST['partnerlink'];
+            $this->model->addPartner($name, $link, $partnerlink);
             header("Location: ../Admin?partner_added");
             return;
         }
