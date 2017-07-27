@@ -106,7 +106,7 @@ $categories = $this->categories; ?>
                                             <? foreach($shop['products'] as $product) { ?>
                                             <li data-old="true" data-id="<? echo $product['id']; ?>" class="col-xs-6 col-sm-4 col-md-3"><div class="delete-product">
                                                 <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-                                            </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "assets/images/products/<? echo $product['imageid']; ?>.jpg">
+                                            </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "assets/images/products/<? echo $product['imageid']; ?>.png">
                                             <div class="price"><h2><? echo $product['price']; ?> Ft<h2></div></div>
                                             </div></li>
                                             <?}?>
