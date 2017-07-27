@@ -97,3 +97,9 @@ body {
     position: relative;
     top: -1px;
 }
+
+@media screen and (max-width: 600px) {
+    .logologo {
+        width: 100vw;
+    }
+}
