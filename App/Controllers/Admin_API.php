@@ -96,4 +96,32 @@
             return $this->model->refreshPartnerURL($id, $url);
         }
 
+        public function handleusers() {
+            print_r($this->model->handleUsers());
+        }
+
+        public function refreshUserEmail() {
+            print_r($_POST);
+            $id = $_POST['id'];
+            $email = $_POST['email'];
+            return($this->model->refreshUserEmail($id, $email));
+        }
+
+        public function refreshUserPassword() {
+            $id = $_POST['id'];
+            $password = $_POST['password'];
+            return($this->model->refreshUserPassword($id, $password));
+        }
+
+        public function refreshUserShop() {
+            $id = $_POST['id'];
+            $shop = $_POST['shop'];
+            return($this->model->refreshUserShop($id, $shop));
+        }
+
+        public function deleteUser() {
+            $id = $_POST['id'];
+            return($this->model->deleteUser($id));
+        }
+
     }
