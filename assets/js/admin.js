@@ -608,6 +608,100 @@ $(function () {
         });
     })
 
+    $('#handleusers').click(function() {
+        $(this).hide()
+        $.ajax({
+            url: 'Admin_API/handleusers',
+            type: 'POST',
+            data: {},
+            encode: true,
+            success: function (result) {
+                console.log(result)
+                var json = JSON.parse(result)
+                json.forEach(function(user) {
+                    var html = "<li> <input type='text' class='usremailc' id='" + user.id + "' value='" + user.email + "'> <input type='password' class='usrpasswdc' id='" + user.id + "'> <input type='text' class='usrshopc' id='" + user.id + "' value='" + user.name + "'> <button id='" + user.id + "' type='submit' class='deleteusrc btn btn-danger'>Törlés!</button></li>"
+                    $("#usersholder").append(html)
+                    $("#usersholder").toggle()
+                })
+            },
+            error: function (xhr, status, error) {}
+        });
+    })
+
+    $(document).on('change', '.usremailc', function () {
+
+        $.ajax({
+            url: 'Admin_API/refreshUserEmail',
+            type: 'POST',
+            data: {
+                id: $(this).attr('id'),
+                email: $(this).val()
+            },
+            success: function (result) {
+                console.log(result)
+                alert('Sikeresen updatelted a user emailjét!')
+            },
+            error: function (xhr, status, error) {}
+        });
+    })
+
+    $(document).on('change', '.usrpasswdc', function () {
+
+        $.ajax({
+            url: 'Admin_API/refreshUserPassword',
+            type: 'POST',
+            data: {
+                id: $(this).attr('id'),
+                password: $(this).val()
+            },
+            success: function (result) {
+                console.log(result)
+                alert('Sikeresen updatelted a user jelszavát!')
+            },
+            error: function (xhr, status, error) {}
+        });
+    })
+
+    $(document).on('click', '.deleteusrc', function () {
+        $.ajax({
+            url: 'Admin_API/deleteUser',
+            type: 'POST',
+            data: {
+                id: $(this).attr('id')
+            },
+            success: function (result) {
+                console.log(result)
+                alert("Sikeresen töröltél egy usert!")
+                location.reload()
+            },
+            error: function (xhr, status, error) {}
+        });
+    })
+
+    $(document).on('change', '.usrshopc', function () {
+
+        $.ajax({
+            url: 'Admin_API/refreshUserShop',
+            type: 'POST',
+            data: {
+                id: $(this).attr('id'),
+                shop: $(this).val()
+            },
+            success: function (result) {
+                console.log(result)
+                alert('Sikeresen updatelted a userhez tartozó boltot!')
+            },
+            error: function (xhr, status, error) {}
+        });
+    })
+
+
+
+
+
+
+
+
 
 
     $('.container').on('click', '.pin-product', function () {

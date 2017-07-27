@@ -282,4 +282,49 @@
         ]);
         return;
       }
+
+      public function handleUsers() {
+          $stmt = $this->db->prepare("SELECT users.id, users.email, users.password, users.shop_id, shops.name FROM users INNER JOIN shops ON (users.shop_id = shops.id)");
+          $stmt->execute();
+          return json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+      }
+
+      public function refreshUserEmail($id, $email) {
+          echo $id; echo $email;
+            $stmt = $this->db->prepare("UPDATE users SET email = :email WHERE id = :id");
+            $stmt->execute([
+                ":email" => $email,
+                ":id" => $id
+            ]);
+        }
+
+        public function refreshUserPassword($id, $password) {
+            $stmt = $this->db->prepare("UPDATE users SET password = :password WHERE id = :id");
+            $stmt->execute([
+                ":password" => password_hash($password, PASSWORD_BCRYPT),
+                ":id" => $id
+            ]);
+        }
+
+        public function refreshUserShop($id, $shop) {
+            $stmt = $this->db->prepare("SELECT id FROM shops WHERE name = :name");
+            $stmt->execute([
+                ":name" => $shop
+            ]);
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $stmt = $this->db->prepare("UPDATE users SET shop_id = :shop_id WHERE id = :id");
+            $stmt->execute([
+                ":shop_id" => $result[0]['id'],
+                ":id" => $id
+            ]);
+        }
+
+        public function deleteUser($id) {
+            $stmt = $this->db->prepare("DELETE FROM users WHERE id = :id");
+            $stmt->execute([
+                ":id" => $id
+            ]);
+        }
     }

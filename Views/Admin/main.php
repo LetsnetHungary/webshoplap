@@ -34,8 +34,21 @@
                     <button id="doneusr" style="display:none;" type="submit" class="new-user-btn btn btn-success">Kész
                     </button>
                 </form>
+                
+                
+
                 <?php }?>
             </div>
+
+            <div class="col-xs-12">
+                <div class=""style="margin: 10px;">
+                    <button id="handleusers" type="submit" class="btn btn-default">Userek kezelése    </button>
+                </div>
+                <div class="users-container" id="usersholder">
+                    
+                </div>
+            </div>
+            
             <div class="col-xs-12">
                 <!-- blog -->
                 <?php if (isset($_GET[ 'blog_added'])) { ?>
