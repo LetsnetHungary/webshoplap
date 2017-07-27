@@ -26,11 +26,11 @@ $categories = $this->categories; ?>
                         </div>
                         <div class="form-group">
                             <label for="pwd">Facebook oldal url:</label>
-                            <input type="text" class="form-control" id="facebook">
+                            <input type="text" class="form-control" id="facebook" value="<? print_r($shop['facebook']); ?>">
                         </div>
                         <div class="form-group">
                             <label for="pwd">Kép url:</label>
-                            <input type="text" class="form-control" id="image">
+                            <input type="text" class="form-control" id="image" value="<? print_r($shop['image']); ?>">
                         </div>
                         <div class="form-group">
                             <label for="comment">Bio:</label>
