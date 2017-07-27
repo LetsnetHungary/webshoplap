@@ -145,7 +145,7 @@
                     </div>
                     <?if(count($partners) > ($i*2)+1) {?>
                     <div class="pimage">
-                      <img class="img-responsive pimage_i" src="<?echo $partners[($i*2)+1]['image'];?>" alt="">
+                      <a href = "<? print_r($partners[($i*2) + 1]['url']); ?>"  target="_blank"> <img class="img-responsive pimage_i" src="<?echo $partners[($i*2)+1]['image'];?>" alt=""> </a>
                     </div>
                     <?}?>
                   </div>
