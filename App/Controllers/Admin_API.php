@@ -90,4 +90,10 @@
             return $this->model->deletePartner($id);
         }
 
+        public function refreshPartnerURL() {
+            $id = $_POST['id'];
+            $url = $_POST['url'];
+            return $this->model->refreshPartnerURL($id, $url);
+        }
+
     }
