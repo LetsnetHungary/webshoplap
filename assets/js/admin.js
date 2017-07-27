@@ -569,7 +569,7 @@ $(function () {
                 console.log(result)
                 var json = JSON.parse(result)
                 json.forEach(function(partner) {
-                    var html = "<div> <span>" + partner.name + "</span> <button class='deletePartner new-user-btn btn btn-danger' id='" + partner.id + "'> Törlés! </button>  </div>"
+                    var html = "<div> <span>" + partner.name + "</span> <input class='partner_link' value='" + partner.url + "' id='" + partner.id + "'> <button class='deletePartner new-user-btn btn btn-danger' id='" + partner.id + "'> Törlés! </button>  </div>"
                     $("#p_holder").append(html)
                 })
             },
@@ -587,6 +587,22 @@ $(function () {
             success: function (result) {
                 alert("Sikeresen töröltél egy partnert!")
                 location.reload()
+            },
+            error: function (xhr, status, error) {}
+        });
+    })
+
+    $(document).on('change', '.partner_link', function () {
+
+        $.ajax({
+            url: 'Admin_API/refreshPartnerURL',
+            type: 'POST',
+            data: {
+                id: $(this).attr('id'),
+                url: $(this).val()
+            },
+            success: function (result) {
+                alert('Sikeresen updatelted a partner linkjét!')
             },
             error: function (xhr, status, error) {}
         });
