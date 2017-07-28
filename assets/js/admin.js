@@ -621,7 +621,7 @@ $(function () {
                 json.forEach(function(user) {
                     var html = "<li> <input type='text' class='usremailc' id='" + user.id + "' value='" + user.email + "'> <input type='password' class='usrpasswdc' id='" + user.id + "'> <input type='text' class='usrshopc' id='" + user.id + "' value='" + user.name + "'> <button id='" + user.id + "' type='submit' class='deleteusrc btn btn-danger'>Törlés!</button></li>"
                     $("#usersholder").append(html)
-                    $("#usersholder").toggle()
+                    //$("#usersholder").toggle()
                 })
             },
             error: function (xhr, status, error) {}
