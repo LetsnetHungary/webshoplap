@@ -69,7 +69,7 @@ fjs.parentNode.insertBefore(js, fjs);
                 </ul>
         </li>
 
-         <li><a href="/Blog" class=" menuBar2" role="button" aria-haspopup="true" aria-expanded="false">Blogg</a></li>
+         <li><a href="/Blog" class=" menuBar2" role="button" aria-haspopup="true" aria-expanded="false">Blog</a></li>
 		 <li><a href="/Contact" class="  menuBar2" role="button" aria-haspopup="true" aria-expanded="false">Kapcsolat</a></li>
       </ul>
 
