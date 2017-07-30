@@ -2,6 +2,7 @@
 
     $static = function($info) {
        $view = new CoreApp\View($info["view"]);
+       $view->viewJSON();
        return $view->render();
     };
 
