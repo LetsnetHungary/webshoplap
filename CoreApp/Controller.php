@@ -29,6 +29,7 @@
 
             protected function viewInit($viewName, $func="") {
                 $this->view = new View($viewName);
+                $this->view->viewJSON();
                 if(!$func==""){$func();}
                 $this->view->render($viewName);
             }
