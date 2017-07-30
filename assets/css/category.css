@@ -60,3 +60,10 @@
     color:black;
     margin-right: 5px;
 }
+
+
+.category_logo span {
+    position: absolute;
+    top: 50%;
+    font-style: bold;
+}

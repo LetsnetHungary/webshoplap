@@ -7,6 +7,7 @@
 			$this->viewInit("Category", function () {
 				$this->view->shops = $this->model->getShops();
 				$this->view->catname = $this->model->getCatName();
+				$this->view->SEO->seo->title = $this->view->catname['name'];
 			});
 		}
 	}

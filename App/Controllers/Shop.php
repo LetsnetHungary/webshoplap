@@ -6,6 +6,7 @@
 			$this->loadModel(__CLASS__);
 			$this->viewInit("Shop", function() {
 				$this->view->shop = $this->model->getShop();
+				$this->view->SEO->seo->title = $this->view->shop["name"];
 			});
 		}
 	}
