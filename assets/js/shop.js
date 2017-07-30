@@ -23,7 +23,7 @@ $(function() {
         $('.rightColumn').css('max-height', h-10);
     });
         $('.slider').slick({
-            dots: true,
+            dots: false,
             infinite: true,
             speed: 300,
             slidesToShow: 2,

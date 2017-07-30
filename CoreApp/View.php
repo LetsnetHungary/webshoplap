@@ -6,7 +6,7 @@
 
             private $vName;
             private $files;
-            private $SEO;
+            public $SEO;
 
             public function __construct($vName) {
                 $this->vName = $vName;
@@ -21,14 +21,13 @@
                 $this->files["footer"] = "Views/includes/main/footer.php";
             }
 
-            private function viewJSON() {
+            public function viewJSON() {
                 $json = "Views/$this->vName/$this->vName.json";
                 $json = file_exists($json) ? json_decode(file_get_contents($json)) : 0;
                 $this->SEO = $json ? $json : 0;
             }
 
             public function render() {
-                $this->viewJSON();
                 $this->files();
                 foreach($this->files as $file) {
                     include($file);
