@@ -142,6 +142,13 @@
           echo('{ "name" : "'.$shop->name.'", "id" : "'.$id.'"}');
           return;
       }
+
+      public function getBlog($id){
+			$stmt = $this->db->prepare("SELECT * FROM blog WHERE blog_id=".$id);
+			$stmt->execute(array());
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			return $result;
+		}
       /*public function generateRandomString($length = 10) {
             $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $charactersLength = strlen($characters);
@@ -233,7 +240,8 @@
         ]);
         return true;
       }
-      public function addBlog($blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle, $blog_dataurl){
+      public function addBlog($blog_id, $blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle, $blog_dataurl){
+          if($blog_id == 0) {
           $stmt = $this->db->prepare('SELECT id FROM `blog` ORDER BY id DESC LIMIT 1');
                 $stmt->execute([]);
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -249,6 +257,23 @@
           ":blog_date"=>$blog_date,
           ":blog_subtitle"=>$blog_subtitle
         ]);
+          } else {
+                $prodmaxid = $blog_id;
+                if(strlen($blog_dataurl) > 100) {
+                    $uriPhp = 'data://' . substr($blog_dataurl, 5);
+                    $binary = file_get_contents($uriPhp);
+                    unlink('assets/images/blogs/'.($prodmaxid+1).'.png');
+                    file_put_contents('assets/images/blogs/'.($prodmaxid+1).'.png',$binary);
+                }
+                $stmt = $this->db->prepare("UPDATE blog SET `blog_title`=:blog_title,`blog_author`=:blog_author,`blog_content`=:blog_content,`blog_date`=:blog_date,`blog_subtitle`=:blog_subtitle WHERE blog_id=".$blog_id);
+                $stmt->execute([
+                ":blog_title"=>$blog_title,
+                ":blog_author"=>$blog_author,
+                ":blog_content"=>$blog_content,
+                ":blog_date"=>$blog_date,
+                ":blog_subtitle"=>$blog_subtitle
+                ]);
+          }
         return;
       }
       public function addPartner($pname, $plink, $partnerlink) {

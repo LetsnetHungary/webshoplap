@@ -19,6 +19,11 @@
           $this->model->removeShop($id);
           return;
         }
+        public function getBlog() {
+          $id = $_POST["id"];
+          print_r(json_encode($this->model->getBlog($id)));
+          return;
+        }
         public function pinProduct() {
           $id = $_POST["id"];
           $pin = $_POST['pin'];
@@ -67,9 +72,10 @@
           $blog_author = $_POST['blog-author'];
           $blog_content = $_POST['blog-content'];
           $blog_dataurl = $_POST['dataurl'];
+          $blog_id = $_POST['id'];
           $blog_date = date("Y-m-d");
           $blog_subtitle = $_POST['blog-subtitle'];
-          $this->model->addBlog($blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle, $blog_dataurl);
+          $this->model->addBlog($blog_id, $blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle, $blog_dataurl);
           header("Location: ../Admin?blog_added");
         }
         public function addPartner() {
