@@ -29,7 +29,7 @@
 			$shops = [];
 			foreach ($search_result as $id) {
 				$id = $id['id'];
-				$stmt = $this->db->prepare("SELECT id, name, adress, phone, image, facebook FROM `shops` WHERE id = :id");
+				$stmt = $this->db->prepare("SELECT id, name, adress, phone, image, facebook, pinned FROM `shops` WHERE id = :id");
 	      $stmt->execute([
 	        ":id"=>$id
 	      ]);

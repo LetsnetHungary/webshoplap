@@ -1,4 +1,4 @@
-<?php ob_start(); $categories=$this->categories; ?>
+<?php ob_start(); $categories=$this->categories; $blogs=$this->blogs;?>
 
 <body>
     <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js">
@@ -6,6 +6,17 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
+                <form id="newpartn" class="form-inline" action="" method="post">
+                    <div class="form-group">
+                        <label for="id">Partnerbolt id:
+                        </label>
+                        <input type="text" class="form-control" id="newpid" placeholder="" name="id">
+                    </div>
+                    <button id="newps" type="button" class="btn btn-success">+
+                    </button>
+                    <button id="remps"  type="button" class="btn btn-danger">-
+                    </button>
+                </form>
                 <?php if (isset($_GET[ 'user_added'])) { ?>
                 <form class="newerUser form-inline" action="Admin" method="post">
                     <? echo "Sikeresen hozzáadtad a felhasználót"; ?>
@@ -59,45 +70,55 @@
                 </form>
                 <?php } else{ ?>
                 <!-- blog section -->
-                <button onclick="$('#blogform').show(); $('#addnewpost').hide()" id="addnewpost" type="button" class="new-user-btn blog-btn btn btn-default">Új blogbejegyzés hozzásadása
+                <button onclick="$('#blogform').show(); $('#addnewpost').hide(); resetBlog('');" id="addnewpost" type="button" class="new-user-btn blog-btn btn btn-default">Új blogbejegyzés hozzáadása
                 </button>
-                <form id="blogform" style="display:none" class="" action="../Admin_API/addBlog" method="post">
+                <form action="" class="inline-form">
+                    <select class="selectpicker">
+                        <?foreach($blogs as $blog) {?>
+                    <option data-id="<?echo $blog['blog_id'];?>"><?echo $blog['blog_title'];?></option>
+                    <?}?>
+                    </select>
+
+                    <button id="editpost" type="button" class="new-user-btn blog-btn btn btn-default">Szerkesztés
+                    </button>
+                </form>
+                
+                <form data-id="0" id="blogform" style="display:none" class="" action="../Admin_API/addBlog" method="post">
                     <div class="row">
                         <div class="col-xs-6">
                             <div class="form-group">
                                 <label for="blog-title">Bejegyzés címe
                                 </label>
-                                <input type="text" class="form-control" name="blog-title" required>
+                                <input id="blogtitle" type="text" class="form-control" name="blog-title" required>
                             </div>
                             <div class="form-group">
                                 <label for="blog-subtitle">Bejegyzés alcíme
                                 </label>
-                                <input type="text" class="form-control" name="blog-subtitle" required>
+                                <input id="blogsubtitle" type="text" class="form-control" name="blog-subtitle" required>
                             </div>
                             <div class="form-group">
                                 <label for="blog-author">Bejegyzés szerzője
                                 </label>
-                                <input type="text" class="form-control" name="blog-author" required>
+                                <input id="blogauthor" type="text" class="form-control" name="blog-author" required>
                             </div>
                         </div>
                         <div class="col-xs-6">
-                            <div class="uploadholder">
+                            <div class="uploadholder" id="blogimgholder">
                                 <img class="img-responsive" id="preview-img-blog" src="#" alt="" />
                                 <input class="file" id="blog-imginput" type="file" accept="image/*">
                                 <input id="dataurl" type="text" style="display:none;" name="dataurl">
                             </div>
                         </div>
                         <div class="col-xs-12">
-                            <div class="form-group">
+                            <div id="textareaholder" class="form-group">
                                 <label for="blog-content">Bejegyzés tartalma
                                 </label>
-                                <textarea name="blog-content" rows="10" cols="50" required>
+                                <textarea  id="blogcontent" name="blog-content" rows="10" cols="50" required>
                                 </textarea>
-                                <script>
-                                    CKEDITOR.replace('blog-content');
-                                </script>
                             </div>
-                            <button type="submit" class="new-user-btn btn btn-success">Kész
+                            
+                                <input id="blogid" type="text" style="display:none;" name="id">
+                            <button id="submitblog" type="" class="new-user-btn btn btn-success">Kész
                             </button>
                         </div>
                     </div>

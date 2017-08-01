@@ -225,17 +225,13 @@ function initSlider() {
             {
                 breakpoint: 750,
                 settings: {
-                    slidesToShow: 2,              
-                    centerMode: true,
-                    arrows: false
+                    slidesToShow: 2
                 }
             },
             {
                 breakpoint: 500,
                 settings: {
-                    slidesToShow: 1,              
-                    centerMode: true,
-                    arrows: false
+                    slidesToShow: 1
                 }
             }
         ]

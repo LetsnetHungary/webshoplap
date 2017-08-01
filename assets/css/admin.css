@@ -281,6 +281,7 @@ li {
     max-height: 200px;
 }
 
+
 .partner_holder {
     display: flex;
     flex-direction: column;
@@ -297,4 +298,18 @@ li {
     justify-content: center;
     align-items: center;
     margin: 0 5px;
+}
+
+.selectpicker {
+    width: 240px;
+   height: 34px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   border: 1px solid #ccc;
+}
+
+.selectpicker option {
+    
+   overflow: hidden;
+   text-overflow: ellipsis;
 }

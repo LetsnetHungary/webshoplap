@@ -13,14 +13,16 @@
                 $shops = [];
                 foreach($shopids as $shop) {
                     $id = $shop["shop"];
-                    $stmt = $this->db->prepare('SELECT id,name,adress,phone,image, facebook FROM `shops` WHERE id='.$id);
+                    $stmt = $this->db->prepare('SELECT id,name,adress,phone,image, facebook, pinned FROM `shops` WHERE id='.$id);
                     $stmt->execute(array());
                     $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     if(count($shop) > 0) {
                         array_push($shops, $shop[0]);
                     }
                 }
+                
                 if(count($shops) > 0){
+                    shuffle($shops);
                     return $shops;
                 } else {
                     header('Location: Error');

@@ -8,6 +8,7 @@
 			$this->loadModel(__CLASS__);
 			$this->viewInit("Admin", function() {
 				$this->view->categories = $this->model->getCategories();
+				$this->view->blogs = $this->model->getBlogs();
 			});
 			$this->isLoggedIn();
 			 ob_flush();

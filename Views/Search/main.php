@@ -61,7 +61,7 @@
                                 </div><!--
     --><div class="col-xs-7 boxAboutDataHolder vcenter">
                                     <div class="dataholder">
-                                        <h3 class="datatitle" style="margin-bottom: 30px;"><?php echo $shop["name"]; ?></h3>
+                                        <h3 class="datatitle" style="margin-bottom: 30px;"><?php echo $shop["name"]; ?> <? if($shop['pinned'] != 0){?><img title="partner" class="pinned-image" src="assets/images/pinned.png"><?} ?></h3>
                                         <a target="_blank" href="<?php echo $shop['adress']; ?>"><h5 class="datatext"><i class="fa fa-wifi icon"></i><?php echo $shop["adress"]; ?></h5></a>
                                         <h5 class="datatext"><i class="fa fa-phone icon"></i><?php echo $shop["phone"]; ?></h5>
                                     </div>

@@ -1,3 +1,40 @@
+function editpost() {
+    $('#blogform').show(); $('#editpost').hide();
+    $()
+    $.ajax({
+            type: 'POST',
+            url: 'Admin_API/getBlog',
+            data: {
+                id: $( ".selectpicker option:selected" ).data('id')
+            },
+            encode: true,
+            success: function (result) {
+                console.log(result)
+                res = JSON.parse(result)[0]
+                console.log(res)
+                resetBlog(res['blog_content'])
+                $('#blogform').data('id', res['blog_id'])
+                $('#blogtitle').val(res['blog_title'])
+                $('#blogsubtitle').val(res['blog_subtitle'])
+                $('#blogauthor').val(res['blog_author'])
+                $('#preview-img-blog').attr('src', '/assets/images/blogs/' +res['blog_id']+ '.png')
+            },
+            error: function (xhr, status, error) {}
+        });
+}
+
+function resetBlog(text) {
+    $('#blogtitle').val('')
+    $('#blogsubtitle').val('')
+    $('#blogauthor').val('')
+    $('#blogform').data('id', 0)
+    $('#preview-img-blog').attr('src', '#')
+    $('#textareaholder textarea').remove();
+    $('#textareaholder #cke_blogcontent').remove();
+    $('#textareaholder').append($('<textarea  id="blogcontent" name="blog-content" rows="10" cols="50" required></textarea>').val(text))
+    CKEDITOR.replace('blog-content');
+}
+
 function showShop(res) {
     emptyShop();
     $('#newshop').data('pinned', res.pinned);
@@ -187,6 +224,44 @@ function clearImage() {
     $('#prod-imginput').replaceWith($('<input class="file" id="prod-imginput" type="file" accept="image/*">'));
 }
 $(function () {
+    $('#newps').click(function () {
+        idp = $('#newpid').val()
+        $('#newpid').val('')
+        $.ajax({
+                type: 'POST',
+                url: 'Admin_API/addPartnerShop',
+                data: {
+                    id: idp
+                },
+                success: function (result) {
+
+                },
+                error: function (xhr, status, error) {}
+            })
+    })
+    $('#remps').click(function () {
+    idp = $('#newpid').val()
+    $('#newpid').val('')
+    $.ajax({
+            type: 'POST',
+            url: 'Admin_API/remPartnerShop',
+            data: {
+                id: idp
+            },
+            success: function (result) {
+                
+            },
+            error: function (xhr, status, error) {}
+        })
+})
+    $('#submitblog').click(function() {
+        $('#blogid').val($('#blogform').data('id'))
+        $('#blogform').submit();
+    })
+    resetBlog('')
+    $('#editpost').click(function() {
+        editpost();
+    })
     $('#addCat').click(function () {
         $('<li data-id="' + $('#catselect').val() + '" class="list-group-item"><div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>' + $('#catselect option:selected').text() + '</li>').appendTo('#categoryholder');
     });
