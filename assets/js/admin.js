@@ -224,6 +224,36 @@ function clearImage() {
     $('#prod-imginput').replaceWith($('<input class="file" id="prod-imginput" type="file" accept="image/*">'));
 }
 $(function () {
+    $('#newps').click(function () {
+        idp = $('#newpid').val()
+        $('#newpid').val('')
+        $.ajax({
+                type: 'POST',
+                url: 'Admin_API/addPartnerShop',
+                data: {
+                    id: idp
+                },
+                success: function (result) {
+
+                },
+                error: function (xhr, status, error) {}
+            })
+    })
+    $('#remps').click(function () {
+    idp = $('#newpid').val()
+    $('#newpid').val('')
+    $.ajax({
+            type: 'POST',
+            url: 'Admin_API/remPartnerShop',
+            data: {
+                id: idp
+            },
+            success: function (result) {
+                
+            },
+            error: function (xhr, status, error) {}
+        })
+})
     $('#submitblog').click(function() {
         $('#blogid').val($('#blogform').data('id'))
         $('#blogform').submit();

@@ -192,6 +192,28 @@
         return;
       }*/
 
+      public function addPartnerShop($id) {
+        $stmt = $this->db->prepare('SELECT pinned FROM `shops` WHERE id='.$id);
+        $stmt->execute([]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $result[0]['pinned'];
+        if($result == 0) {
+            $stmt = $this->db->prepare('UPDATE `shops` SET pinned=-1 WHERE id='.$id);
+            $stmt->execute([]);
+        }
+      }
+
+      public function remPartnerShop($id) {
+        $stmt = $this->db->prepare('SELECT pinned FROM `shops` WHERE id='.$id);
+        $stmt->execute([]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $result[0]['pinned'];
+        if($result == -1) {
+            $stmt = $this->db->prepare('UPDATE `shops` SET pinned=0 WHERE id='.$id);
+            $stmt->execute([]);
+        }
+      }
+
       public function pinShop($id,$pin,$cat) {
           $stmt = $this->db->prepare('SELECT pinned FROM `shops` WHERE id='.$id);
         $stmt->execute([]);

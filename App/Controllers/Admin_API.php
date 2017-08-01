@@ -67,6 +67,14 @@
           }
 
         }
+        public function addPartnerShop() {
+          $id = $_POST['id'];
+          $this->model->addPartnerShop($id);
+        }
+        public function remPartnerShop() {
+          $id = $_POST['id'];
+          $this->model->remPartnerShop($id);
+        }
         public function addBlog(){
           $blog_title = $_POST['blog-title'];
           $blog_author = $_POST['blog-author'];

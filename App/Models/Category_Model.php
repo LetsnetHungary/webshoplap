@@ -10,9 +10,12 @@
                 $stmt = $this->db->prepare("SELECT id,name,adress,phone,image, facebook,pinned FROM `shops` WHERE ((category = '".$id."') OR (category LIKE '".$id."; %') OR (category LIKE '%; ".$id."') OR (category LIKE '%; ".$id."; %')) AND ((pinned = '".$id."') OR (pinned LIKE '".$id."; %') OR (pinned LIKE '%; ".$id."') OR (pinned LIKE '%; ".$id."; %'))");
                 $stmt->execute(array());
                 $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                shuffle($shop);
                 $stmt = $this->db->prepare("SELECT id,name,adress,phone,image, facebook,pinned FROM `shops` WHERE ((category = '".$id."') OR (category LIKE '".$id."; %') OR (category LIKE '%; ".$id."') OR (category LIKE '%; ".$id."; %')) AND ((pinned <> '".$id."') AND (pinned NOT LIKE '".$id."; %') AND (pinned NOT LIKE '%; ".$id."') AND (pinned NOT LIKE '%; ".$id."; %'))");
                 $stmt->execute(array());
-                $shop = array_merge($shop, $stmt->fetchAll(PDO::FETCH_ASSOC));
+                $s2 =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+                shuffle($s2);
+                $shop = array_merge($shop, $s2);
                 if(count($shop) > 0){
                     for($i = 0; $i < count($shop); $i++) {
                         $products = $this->getProducts($shop[$i]['id']);

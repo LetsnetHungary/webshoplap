@@ -6,6 +6,17 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
+                <form id="newpartn" class="form-inline" action="" method="post">
+                    <div class="form-group">
+                        <label for="id">Partnerbolt id:
+                        </label>
+                        <input type="text" class="form-control" id="newpid" placeholder="" name="id">
+                    </div>
+                    <button id="newps" type="button" class="btn btn-success">+
+                    </button>
+                    <button id="remps"  type="button" class="btn btn-danger">-
+                    </button>
+                </form>
                 <?php if (isset($_GET[ 'user_added'])) { ?>
                 <form class="newerUser form-inline" action="Admin" method="post">
                     <? echo "Sikeresen hozzáadtad a felhasználót"; ?>
