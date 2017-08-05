@@ -127,3 +127,9 @@ a:hover {
 .blogSuggest {
   height: 100%;
 }
+
+.box-text img {
+    width: 100%!important;
+    height: auto!important;
+    margin: 20px 0!important;
+}

@@ -5,12 +5,13 @@
 			ob_start();
 			session_start();
 			parent::__construct(__CLASS__);
+			$this->isLoggedIn();
 			$this->loadModel(__CLASS__);
 			$this->viewInit("Admin", function() {
 				$this->view->categories = $this->model->getCategories();
 				$this->view->blogs = $this->model->getBlogs();
 			});
-			$this->isLoggedIn();
+			
 			 ob_flush();
 		}
 		public function isLoggedIn(){

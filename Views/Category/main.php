@@ -17,9 +17,6 @@
                             <div class="col-xs-5 boxAboutImgHolder vcenter">
                                  <div class="innerimageholder">
                                      <div class="category_logo">
-                                         <? if($shop["image"] == ""){ ?>
-                                            <span><? echo $shop['name']; ?></span>
-                                         <? }?>
                                         
                                         <img class="boxAboutIcon" src="<? if($shop["image"] == ""){echo "assets/images/placeholder.png";  }else{echo $shop["image"];}?>">
                                      </div>
