@@ -138,4 +138,12 @@
             return($this->model->deleteUser($id));
         }
 
+        public function logout() {
+            session_start();
+            unset($_SESSION["email"]);
+            unset($_SESSION["is_adminl"]);
+            unset($_SESSION["time_logged_in"]);
+            header("location: ../Login");
+        }
+
     }

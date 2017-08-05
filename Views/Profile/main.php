@@ -118,6 +118,9 @@ $categories = $this->categories; ?>
                         <div class="newLabel">
                             <button type="button" class="btn btn-success" id="editshop2">Kész</button>
                         </div>
+                        <div class="newLabel">
+                            <a href="/Admin_API/logout"><button type="button" class="btn btn-danger" id="">Kilépés!</button></a>
+                        </div>
                     </div>
                 </div>
             </div>

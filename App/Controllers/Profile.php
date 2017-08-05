@@ -5,30 +5,35 @@
 			parent::__construct(__CLASS__);
 			ob_start();
 			session_start();
+			$this->isLoggedIn();
 			$this->loadModel(__CLASS__);
+			
 			$this->viewInit("Profile", function () {
 				$this->view->shop = $this->model->getShop();
 				$this->view->categories = $this->model->getCategories();
 			});
-			$this->isLoggedIn();
+			
 			ob_flush();
 		}
 
 		public function isLoggedIn(){
-			if ($_SESSION['is_admin']!=0) {
+			if ($_SESSION['is_admin'] == 1) {
 				header('Location: ../Admin');
 				return;
 			}
 			else {
 				if (!isset($_SESSION['time_logged_in'])) {
-					header("Location: Login");
 					$_SESSION = [];
+					header("Location: Login");
+					
 				}
 				elseif ((time() - $_SESSION['time_logged_in']) > 3600) {
-					header('Location: Login?message=server_timeout');
 					$_SESSION = [];
+					header('Location: Login?message=server_timeout');
+					
 				}
-				elseif(isset($_SESSION['email'])) {
+				elseif(!isset($_SESSION['email'])) {
+					header('Location: Login?message=server_timeout');
 				}
 			}
 		}
