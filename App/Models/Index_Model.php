@@ -44,7 +44,7 @@
           return $products;
       }
       public function getPartners() {
-          $stmt = $this->db->prepare('SELECT * FROM `partners`');
+          $stmt = $this->db->prepare('SELECT * FROM `partners` ORDER BY RAND()');
           $stmt->execute(array());
           $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
           return $products;
