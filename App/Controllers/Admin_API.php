@@ -180,4 +180,12 @@
           $this->model->addBlog($blog_id, $blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle, $blog_dataurl);
         }
 
+        public function logout() {
+            session_start();
+            unset($_SESSION["email"]);
+            unset($_SESSION["is_adminl"]);
+            unset($_SESSION["time_logged_in"]);
+            header("location: ../Login");
+        }
+
     }

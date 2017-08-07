@@ -114,13 +114,14 @@
                                         </li>
                                     <?}?>
                                 </ul>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="add-button-holder">
                     <button id="shop_add-button" style="width:300px; margin-bottom: 20px;" type="button" class="btn btn-success">Hozzáadás</button>
                 </div>
+                <button type="button" class="btn btn-danger" id="logout">Kilépés!</button>
             </div>
             
             </div>

@@ -379,6 +379,10 @@
                 </di>
             </div>
             </div>
+
+            <div class="newLabel">
+                            <a href="/Admin_API/logout"><button type="button" class="btn btn-danger" id="">Kilépés!</button></a>
+                        </div>
         </div>
     </div>
 </div>
