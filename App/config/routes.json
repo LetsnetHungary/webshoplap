@@ -17,6 +17,7 @@
     {"href" : "Contact_API", "closure" : "mvc", "controller" : "Contact_API", "order" : ["{method}"]},
     {"href" : "Search", "closure" : "mvc", "controller" : "Search", "order" : ["{method}"]},
     {"href" : "Profile", "closure" : "mvc", "controller" : "Profile", "order" : ["{method}"]},
-    {"href" : "Profile_API", "closure" : "mvc", "controller" : "Profile_API", "order" : ["{method}"]}
+    {"href" : "Profile_API", "closure" : "mvc", "controller" : "Profile_API", "order" : ["{method}"]},
+    {"href" : "Logout", "closure" : "mvc", "controller" : "Logout", "order" : ["{method}"]}
 
 ]

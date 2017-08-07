@@ -3,89 +3,158 @@
 <body>
     <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js">
     </script>
-    <div class="container">
+ 
+<div class="container">
+    <div class="mainmenuholder">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <div class="tile" data-menu="users">
+                    <div class="tilerow row">
+                        <div class="col-xs-4">
+                            <div class="tileimageholder">
+                                <img src="/assets/images/icons/user.png" alt="" class="img-responsive">
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="tiletextholder">
+                                <p class="tiletext">Felhasználók kezelése</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="tile" data-menu="shops">
+                    <div class="tilerow row">
+                        <div class="col-xs-4">
+                            <div class="tileimageholder">
+                                <img src="/assets/images/icons/shopping-cart.png" alt="" class="img-responsive">
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="tiletextholder">
+                                <p class="tiletext">Webshopok kezelése</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="tile" data-menu="blogs">
+                    <div class="tilerow row">
+                        <div class="col-xs-4">
+                            <div class="tileimageholder">
+                                <img src="/assets/images/icons/blog.png" alt="" class="img-responsive">
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="tiletextholder">
+                                <p class="tiletext">Blog kezelése</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="tile" data-menu="partners">
+                    <div class="tilerow row">
+                        <div class="col-xs-4">
+                            <div class="tileimageholder">
+                                <img src="/assets/images/icons/partnership.png" alt="" class="img-responsive">
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="tiletextholder">
+                                <p class="tiletext">Partnerek kezelése</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div id="logout" class="tile">
+                    <div class="tilerow row">
+                        <div class="col-xs-4">
+                            <div class="tileimageholder">
+                                <img src="/assets/images/icons/logout.png" alt="" class="img-responsive">
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="tiletextholder">
+                                <p class="tiletext">Kijelentkezés</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="submenuholder" id="users">
         <div class="row">
             <div class="col-xs-12">
-                <form id="newpartn" class="form-inline" action="" method="post">
-                    <div class="form-group">
-                        <label for="id">Partnerbolt id:
-                        </label>
-                        <input type="text" class="form-control" id="newpid" placeholder="" name="id">
+                <button style="margin-bottom: 10px" type="button" class="btn back-btn">Vissza a főoldalra</button>
+                <h2 class="submenutitle">Új felhasználó hozzáadása:</h2>
+                <div class="row">
+                    <form>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="form-group">
+                            <label for="usr_email">Email cím:</label>
+                            <input type="email" class="form-control" id="usr_email">
+                        </div>
+                        <div class="form-group">
+                            <label for="usr_password">Jelszó:</label>
+                            <input type="password" class="form-control" id="usr_password">
+                        </div>
                     </div>
-                    <button id="newps" type="button" class="btn btn-success">+
-                    </button>
-                    <button id="remps"  type="button" class="btn btn-danger">-
-                    </button>
-                </form>
-                <?php if (isset($_GET[ 'user_added'])) { ?>
-                <form class="newerUser form-inline" action="Admin" method="post">
-                    <? echo "Sikeresen hozzáadtad a felhasználót"; ?>
-                    <button class="btn btn-default" type="submit">Vissza
-                    </button>
-                </form>
-                <?php } else {?>
-                <form id="newusrform" class="form-inline" action="../Admin_API/addUser" method="post">
-                    <div class="form-group" style="display:none;">
-                        <label for="email">Email:
-                        </label>
-                        <input type="email" class="form-control" id="email" placeholder="" name="new_mail">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="form-group">
+                            <label for="email">Hozzátartozó bolt:</label>
+                            <div class="list-group">
+                                <li class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                                        <input class="form-control search-input" type="text" placeholder="Keresés..">
+                                    </div>
+                                </li>
+                                <div class="list-holder" id="usr_shop-list-holder">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="display:none;">
-                        <label for="pwd">Jelszó:
-                        </label>
-                        <input type="password" class="form-control" id="pwd" placeholder="" name="new_pw">
-                    </div>
-                    <div class="form-group" style="display:none;">
-                        <label for="pwd">Bolt id:
-                        </label>
-                        <input type="text" class="form-control" id="pwd" placeholder="" name="new_shop_name">
-                    </div>
-                    <button id="addnewusr" type="button" class="new-user-btn btn btn-default">Új felhasználó hozzáadása
-                    </button>
-                    <button id="doneusr" style="display:none;" type="submit" class="new-user-btn btn btn-success">Kész
-                    </button>
-                </form>
-                
-                
-
-                <?php }?>
-            </div>
-
-            <div class="col-xs-12">
-                <div class=""style="margin: 10px;">
-                    <button id="handleusers" type="submit" class="btn btn-default">Userek kezelése    </button>
+                    </form>
                 </div>
-                <div class="users-container" id="usersholder">
-                    
+                <div class="add-button-holder">
+                    <button id="usr_add-button" style="width:300px; margin-bottom: 20px;" type="button" class="btn btn-success">Hozzáadás</button>
                 </div>
             </div>
-            
             <div class="col-xs-12">
-                <!-- blog -->
-                <?php if (isset($_GET[ 'blog_added'])) { ?>
-                <form class="newerUser form-inline" action="Admin" method="post">
-                    <? echo "Sikeresen hozzáadtad a blogbejegyzést"; ?>
-                    <button class="btn btn-default" type="submit">Vissza
-                    </button>
-                </form>
-                <?php } else{ ?>
-                <!-- blog section -->
-                <button onclick="$('#blogform').show(); $('#addnewpost').hide(); resetBlog('');" id="addnewpost" type="button" class="new-user-btn blog-btn btn btn-default">Új blogbejegyzés hozzáadása
-                </button>
-                <form action="" class="inline-form">
-                    <select class="selectpicker">
-                        <?foreach($blogs as $blog) {?>
-                    <option data-id="<?echo $blog['blog_id'];?>"><?echo $blog['blog_title'];?></option>
-                    <?}?>
-                    </select>
-
-                    <button id="editpost" type="button" class="new-user-btn blog-btn btn btn-default">Szerkesztés
-                    </button>
-                </form>
-                
-                <form data-id="0" id="blogform" style="display:none" class="" action="../Admin_API/addBlog" method="post">
+                <h2 class="submenutitle">Meglévő felhasználók kezelése:</h2>
+                <di class="row">
+                    <div class="col-xs-12">
+                        <div class="list-group">
+                            <li class="list-group-item">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                                    <input class="form-control search-input" type="text" placeholder="Keresés..">
+                                </div>
+                            </li>
+                            <div class="list-holder" id="usr_list-holder">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </di>
+            </div>
+        </div>
+    </div>
+    <div class="submenuholder" id="blogs">
+        <div class="row">
+            <div class="col-xs-12">
+                <button style="margin-bottom: 10px" type="button" class="btn back-btn">Vissza a főoldalra</button>
+                <h2 class="submenutitle">Új bejegyzés hozzáadása:</h2>
+                <form data-id="0" id="blogform" class="">
                     <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-xs-12 col-sm-6">
                             <div class="form-group">
                                 <label for="blog-title">Bejegyzés címe
                                 </label>
@@ -102,231 +171,217 @@
                                 <input id="blogauthor" type="text" class="form-control" name="blog-author" required>
                             </div>
                         </div>
-                        <div class="col-xs-6">
+                        <div class="col-xs-12 col-sm-6">
                             <div class="uploadholder" id="blogimgholder">
                                 <img class="img-responsive" id="preview-img-blog" src="#" alt="" />
                                 <input class="file" id="blog-imginput" type="file" accept="image/*">
-                                <input id="dataurl" type="text" style="display:none;" name="dataurl">
                             </div>
                         </div>
                         <div class="col-xs-12">
                             <div id="textareaholder" class="form-group">
                                 <label for="blog-content">Bejegyzés tartalma
                                 </label>
-                                <textarea  id="blogcontent" name="blog-content" rows="10" cols="50" required>
-                                </textarea>
+                                <textarea  id="blogcontent" name="blog-content" rows="10" cols="50" required></textarea>
                             </div>
                             
                                 <input id="blogid" type="text" style="display:none;" name="id">
-                            <button id="submitblog" type="" class="new-user-btn btn btn-success">Kész
-                            </button>
+                            
                         </div>
                     </div>
                 </form>
-                <!-- blog section end -->
-                <?php } ?>
+                
+                <div class="add-button-holder">
+                    <button id="blog_add-button" style="width:300px; margin-bottom: 20px;" type="button" class="btn btn-success">Kész</button>
+                </div>
             </div>
             <div class="col-xs-12">
-                <?php if (isset($_GET[ 'user_added'])) { ?>
-                <form class="newerUser form-inline" action="Admin" method="post">
-                    <? echo "Sikeresen hozzáadtad a partnert"; ?>
-                    <button class="btn btn-default" type="submit">Vissza
-                    </button>
-                </form>
-                <?php } else {?>
-                <form id="newpform" class="form-inline" action="../Admin_API/addPartner" method="post">
-                    <div class="form-group" style="display:none;">
-                        <label for="email">Partner neve:
-                        </label>
-                        <input type="text" class="form-control" id="pname" placeholder="" name="pname">
-                    </div>
-                    <div class="form-group" style="display:none;">
-                        <label for="pwd">Kép linkje:
-                        </label>
-                        <input type="text" class="form-control" id="plink" placeholder="" name="plink">
-                    </div>
-                    <div class="form-group" style="display:none;">
-                        <label for="pwd">Partner linkje:
-                        </label>
-                        <input type="text" class="form-control" id="partnerlink" placeholder="" name="partnerlink">
-                    </div>
-                    <button id="addp" type="button" class="new-user-btn btn btn-default">Új partner hozzáadása
-                    </button>
-                    <button id="donep" style="display:none;" type="submit" class="new-user-btn btn btn-success">Kész
-                    </button>
-                </form>
-
-                <div class="partnershow">
-                     <div class="partner_holder" id = "p_holder">
-                        
-                    </div>
-                    <button class = "new-user-btn btn btn-default" id="showpartners">Partnerek mutatása!</button>
-                </div>
-
-                <?php }?>
-            </div>
-            <div id="newshop" class="col-xs-12" style="display: none;" data-pinned="0">
-                <div class="box">
-                    <div class="boxTitle">
-                        <div id="newshoptitle" class="boxTitleTitle">
-                        </div>
-                    </div>
-                    <div class="boxContent" style="padding: 20px;">
-                        <div class="form-group">
-                            <label for="usr">Bolt neve:
-                            </label>
-                            <input type="text" class="form-control" id="shopname">
-                        </div>
-                        <div class="form-group">
-                            <label for="pwd">Webcím:
-                            </label>
-                            <input type="text" class="form-control" id="adress">
-                        </div>
-                        <div class="form-group">
-                            <label for="pwd">Telefon:
-                            </label>
-                            <input type="text" class="form-control" id="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="pwd">Facebook oldal url:
-                            </label>
-                            <input type="text" class="form-control" id="facebook">
-                        </div>
-                        <div class="form-group">
-                            <label for="pwd">Kép url:
-                            </label>
-                            <input type="text" class="form-control" id="image">
-                        </div>
-                        <div class="form-group">
-                            <label for="comment">Bio:
-                            </label>
-                            <textarea class="form-control" rows="5" id="bio">
-                            </textarea>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6">
-                                <ul id="labelholder" class="list-group">
-                                    <li class="list-group-item active">Címkék
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-12 col-sm-6" style="margin-bottom: 20px;">
-                                <div class="newLabel">
-                                    <input type="text" class="form-control" id="labelname" placeholder="Új címke neve">
-                                    <button type="button" class="btn btn-success" id="addlabel">Hozzáadás
-                                    </button>
+                <h2 class="submenutitle">Meglévő bejegyzések kezelése:</h2>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="list-group">
+                            <li class="list-group-item">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                                    <input class="form-control search-input" type="text" placeholder="Keresés..">
                                 </div>
+                            </li>
+                            <div class="list-holder" id="blog_list-holder">
+                                
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6">
-                                <ul id="categoryholder" class="list-group">
-                                    <li class="list-group-item active">Kategóriák
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-12 col-sm-6" style="margin-bottom: 20px;">
-                                <div class="newCategory form-inline">
-                                    <select id="catselect" class="form-control">
-                                        <? foreach($categories as $id=> $name) { ?>
-                                        <option value="<? echo $id; ?>">
-                                            <? echo $name; ?>
-                                        </option>
-                                        <? } ?>
-                                    </select>
-                                    <button type="button" class="btn btn-success form-control" id="addCat">Hozzáadás
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-xs-12" id="uploadcontainer" style="display: none;">
-                                <div class="row">
-                                    <div class="col-xs-12" style="text-align:center">
-                                        <label class="control-label">Kép feltöltése
-                                        </label>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="uploadholder">
-                                            <img class="img-responsive" id="preview-img" src="#" alt="" />
-                                            <input class="file" id="prod-imginput" type="file" accept="image/*">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="uploadholder">
-                                            <input type="text" class="form-control" id="prodname" placeholder="Termék neve">
-                                            <input type="text" class="form-control" id="prodlink" placeholder="Termék linkje">
-                                            <input type="text" class="form-control" id="prodprice" placeholder="Termék ára (Ft)">
-                                            <button type="button" class="btn btn-success" id="addproduct">Hozzáadás
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12">
-                                <ul id="prodholder" class="list-group">
-                                    <li class="list-group-item active">
-                                        <div class="add-row">
-                                            <i class="fa fa-plus fa-2x" aria-hidden="true">
-                                            </i>
-                                        </div>
-                                        Termékek
-                                    </li>
-                                    <li class="list-group-item">
-                                        <ul class="row noselect" id="productsHolder">
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="newLabel">
-                            <button style="display:none;" type="button" class="btn btn-success" id="doneshop">Kész
-                            </button>
-                            <button style="display:none;" type="button" class="btn btn-success" id="editshop">Kész
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-6 leftColumn" data-edit="false">
-                <div class="box">
-                    <div class="boxTitle">
-                        <div class="boxTitleTitle">Kategóriák
-                        </div>
-                        <div class="boxTitleEdit">
-                            Szerkesztés
-                        </div>
-                    </div>
-                    <div class="boxContent">
-                        <div class="boxRowAdd">
-                            <input type="text" class="form-control" id="catname" placeholder="Új kategória neve">
-                            <button type="button" class="btn btn-success" id="addcat">Hozzáadás
-                            </button>
-                        </div>
-                        <?php foreach($categories as $catid=> $catname) { ?>
-                        <div class="boxRow" data-id="<?php echo $catid ?>">
-                            <?php echo $catname; ?>
-                            <div class="delete-row" style="display: none">
-                                <i class="fa fa-times fa-2x" aria-hidden="true">
-                                </i>
-                            </div>
-                        </div>
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-6 rightColumn" data-edit="false">
-                <div class="box">
-                    <div class="boxTitle">
-                        <div class="boxTitleTitle">----
-                        </div>
-                        <div class="boxTitleEdit">
-                            Szerkesztés
-                        </div>
-                    </div>
-                    <div class="boxContent">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="submenuholder" id="partners">
+        <div class="row">
+            <div class="col-xs-12">
+                <button style="margin-bottom: 10px" type="button" class="btn back-btn">Vissza a főoldalra</button>
+                <h2 class="submenutitle">Új partner hozzáadása:</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="parnter_name">Partner neve:</label>
+                        <input type="text" class="form-control" id="partner_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="partner_link">Partner linkje:</label>
+                        <input type="text" class="form-control" id="partner_link">
+                    </div>
+                    <div class="form-group">
+                        <label for="partner_image">Kép linkje:</label>
+                        <input type="text" class="form-control" id="partner_image">
+                    </div>
+                </form>
+                <div class="add-button-holder">
+                    <button id="partner_add-button" style="width:300px; margin-bottom: 20px;" type="button" class="btn btn-success">Hozzáadás</button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <h2 class="submenutitle">Meglévő partnerek kezelése:</h2>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="list-group">
+                            <li class="list-group-item">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                                    <input class="form-control search-input" type="text" placeholder="Keresés..">
+                                </div>
+                            </li>
+                            <div class="list-holder" id="partner_list-holder">
+                                <li class="list-group-item blog-list-holder">
+                                    <p>ez a neve a partnernek</p>
+                                    <button style="width:30%" type="button" class="btn btn-danger">Törlés</button>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="submenuholder" id="shops">
+        <div class="row">
+            <div class="col-xs-12">
+                <button style="margin-bottom: 10px" type="button" class="btn back-btn">Vissza a főoldalra</button>
+                <h2 class="submenutitle">Új webshop hozzáadása:</h2>
+                <form>
+                    <div class="checkbox">
+                        <label><input id="shop_partner" type="checkbox" value="">Partner</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="shop_name">Bolt neve:</label>
+                        <input type="text" class="form-control" id="shop_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="shop_link">Webcím:</label>
+                        <input type="text" class="form-control" id="shop_link">
+                    </div>
+                    <div class="form-group">
+                        <label for="shop_phone">Telefon:</label>
+                        <input type="text" class="form-control" id="shop_phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="shop_facebook">Facebook oldal url:</label>
+                        <input type="text" class="form-control" id="shop_facebook">
+                    </div>
+                    <div class="form-group">
+                        <label for="shop_image">Kép url:</label>
+                        <input type="text" class="form-control" id="shop_image">
+                    </div>
+                    <div class="form-group">
+                        <label for="shop_bio">Bio:</label>
+                        <textarea class="form-control" rows="5" id="shop_bio"></textarea>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <ul id="label_holder" class="list-group">
+                            <li class="list-group-item active">Címkék</li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-6" style="margin-bottom: 20px;">
+                        <div class="newlabel form-inline">
+                            <input type="text" class="form-control" id="label_name" placeholder="Új címke neve">
+                            <button type="button" class="btn btn-success" id="label_add">Hozzáadás</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <ul id="cat_holder" class="list-group">
+                            <li class="list-group-item active">Kategóriák</li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-6" style="margin-bottom: 20px;">
+                        <div class="newCategory form-inline">
+                            <select id="cat_select" class="form-control">
+                            </select>
+                            <button type="button" class="btn btn-success form-control" id="cat_add">Hozzáadás</button>
+                        </div>
+                    </div>
+                    <div class="col-xs-12" id="prod_upload-holder" style="display: none;">
+                        <div class="row">
+                            <div class="col-xs-12" style="text-align:center">
+                                <label class="control-label">Kép feltöltése</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="uploadholder">
+                                    <img class="img-responsive" id="prod_preview-img" src="#" alt="" />
+                                    <input class="file" id="prod_imginput" type="file" accept="image/*">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="uploadholder">
+                                    <input type="text" class="form-control" id="prod_name" placeholder="Termék neve">
+                                    <input type="text" class="form-control" id="prod_link" placeholder="Termék linkje">
+                                    <input type="text" class="form-control" id="prod_price" placeholder="Termék ára (Ft)">
+                                    <button type="button" class="btn btn-success" id="prod_add">Hozzáadás</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <ul id="prod_wrapper" class="list-group">
+                            <li class="list-group-item active">
+                                <div class="add-row">
+                                    <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                                </div>
+                                Termékek
+                            </li>
+                            <li class="list-group-item">
+                                <ul class="row noselect" id="prod_holder">
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="add-button-holder">
+                    <button id="shop_add-button" style="width:300px; margin-bottom: 20px;" type="button" class="btn btn-success">Hozzáadás</button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <h2 class="submenutitle">Meglévő webshopok kezelése:</h2>
+                <di class="row">
+                    <div class="col-xs-12">
+                        <div class="list-group">
+                            <li class="list-group-item">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                                    <input class="form-control search-input" type="text" placeholder="Keresés..">
+                                </div>
+                            </li>
+                            <div class="list-holder" id="shop_list-holder">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </di>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
 </body>
 <?php ob_end_flush(); ?>

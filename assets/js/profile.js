@@ -1,134 +1,3 @@
-function showShop(res) {
-    emptyShop();
-    $('#newshop').data('pinned', res.pinned);
-    $('#newshoptitle').text('Bolt szerkesztése');
-    $('#doneshop').hide();
-    $('#editshop').show();
-    console.log(res)
-    $('#shopname').val(res.name);
-    $('#adress').val(res.adress);
-    $('#phone').val(res.phone);
-    $('#image').val(res.image);
-    $('#facebook').val(res.facebook);
-    $('#bio').val(res.bio);
-    $('#labelholder li:not(.active)').remove();
-    for (label in res.labels) {
-        $('<li class="list-group-item"><div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>' + res.labels[label]["name"] + '</li>').appendTo('#labelholder');
-    }
-    catsarray = res.category.split('; ')
-    for (cat in catsarray) {
-        name = $('.leftColumn .boxRow[data-id=' + catsarray[cat] + ']').text();
-        $('<li data-id="' + catsarray[cat] + '" class="list-group-item"><div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>' + name + '</li>').appendTo('#categoryholder');
-    }
-    console.log(res.products);
-    for (ind in res.products) {
-        product = res.products[ind];
-        $(`<li data-old="true" data-id="` + product['id'] + `" class="col-xs-6 col-sm-4 col-md-3"><div class="delete-product">
-                                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-                            </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "assets/images/products/` + product['imageid'] + `.png">
-                            <div class="price"><h2>` + product['price'] + `Ft<h2></div></div>
-                            </div></li>`).appendTo('#productsHolder');
-
-    }
-    $('#labelname').val('');
-    $('#newshop').show();
-    console.log('asd');
-    $("html, body").animate({
-        scrollTop: $('#newshop').offset().top
-    }, 500, 'swing');
-}
-
-function emptyShop() {
-    $('#shopname').val('');
-    $('#adress').val('');
-    $('#phone').val('');
-    $('#image').val('');
-    $('#facebook').val('');
-    $('#bio').val('');
-    $('#labelholder li:not(.active)').remove();
-    $('#categoryholder li:not(.active)').remove();
-    $('#productsHolder').empty();
-    $('#labelname').val('');
-}
-
-function prepareCat(res, self) {
-    r = $('.rightColumn');
-    r.data('edit', false);
-    r.find('.boxTitleEdit').text('Szerkesztés');
-    content = $('.rightColumn .boxContent');
-    content.empty();
-    $(`<div class="boxRowAdd">
-                            <button type="button" class="btn btn-success" id="addshop">Új bolt hozzáadása</button>
-                        </div>`).appendTo(content);
-    for (shop in res) {
-        e = $(`<div class="boxRow" data-id="` + res[shop]['id'] + `">` + res[shop]['name'] + `
-                            <div class="delete-row" style="display: none;">
-                                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-                            </div><div class="pin-row" style="display: none;">
-                                <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
-                            </div></div>`);
-
-        arr = res[shop]['pinned'].split('; ');
-        if (arr.indexOf($('.rightColumn').data('cat') + "") != -1) {
-            e.addClass('pinned-row');
-            e.find('.pin-row').addClass('pinned');
-        }
-        e.appendTo(content);
-    }
-    $('.rightColumn .boxTitleTitle').text(self.text())
-    $('.rightColumn').show().data('id', self.data('id'));
-    if ($(window).width() < 992) {
-        console.log($('.rightColumn').offset().top);
-        $("html, body").animate({
-            scrollTop: $('.rightColumn').offset().top
-        }, 500, 'swing');
-    }
-}
-
-function addCategory() {
-    if ($('#catname').val() != '') {
-        $.ajax({
-            type: 'POST',
-            url: 'Admin_API/addCategory',
-            data: {
-                name: $('#catname').val()
-            },
-            encode: true,
-            success: function (result) {
-                console.log(result)
-                result = JSON.parse(result);
-                $('#catname').val('').focus();
-                $(`<div class="boxRow" data-id="` + result['id'] + `">
-                                ` + result['name'] + `
-                                <div class="delete-row" style="display: none">
-                                    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-                                </div>
-                            </div>`).appendTo('.leftColumn .boxContent');
-            },
-            error: function (xhr, status, error) {}
-        });
-    }
-}
-
-function addLabel() {
-    if ($('#labelname').val() != '') {
-        $('<li class="list-group-item"><div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>' + $('#labelname').val() + '</li>').appendTo('#labelholder');
-        $('#labelname').val('');
-    }
-    $('#labelname').focus();
-}
-
-function addShop(name, id) {
-    $(`<div class="boxRow" data-id="` + id + `">` + name + `
-                            <div class="delete-row" style="display: none;">
-                                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-                            </div><div class="pin-row" style="display: none;">
-                                <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
-                            </div></div>`).appendTo($('.rightColumn .boxContent'));
-    emptyShop();
-    $('#newshop').hide();
-}
-
 function readFile(file) {
     reader = new FileReader();
     reader.onload = function (e) {
@@ -149,377 +18,230 @@ function readFile(file) {
             console.log(250 + (rw / 2))
             ctx.drawImage(this, 250 - (rw / 2), 250 - (rh / 2), rw, rh);
             dataurl = canvas[0].toDataURL('image/png');
-            $('#preview-img').attr('src', dataurl);
+            $('#prod_preview-img').attr('src', dataurl);
         }
         img.src = text;
     }
     reader.readAsDataURL(file);
 }
 
-function clearImage() {
-    $('#preview-img').attr('src', '#');
-    $('#prodprice').val('')
-    $('#prodname').val('')
-    $('#prodlink').val('')
-    $('#prod-imginput').replaceWith($('<input class="file" id="prod-imginput" type="file" accept="image/*">'));
-}
-$(function () {
-    $('#addCat').click(function () {
-        $('<li data-id="' + $('#catselect').val() + '" class="list-group-item"><div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>' + $('#catselect option:selected').text() + '</li>').appendTo('#categoryholder');
-    });
-    $('#productsHolder').data('deleted', []);
-    $('.add-row').click(function () {
-        clearImage();
-        $('#uploadcontainer').toggle()
-    })
-    $('#addproduct').click(function () {
-        $(`<li class="col-xs-6 col-sm-4 col-md-3"><div class="delete-product">
-                                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-                            </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "` +
-            $('#preview-img').attr('src') + `">
-                            <div class="price"><h2>` + $('#prodprice').val() + `Ft<h2></div></div>
-                            </div></li>`).data('price', $('#prodprice').val()).data('name', $('#prodname').val()).data('link', $('#prodlink').val()).appendTo('#productsHolder');
-        clearImage();
-    });
 
-    $('.container').on('change', '#prod-imginput', function () {
-        files = this.files;
-        readFile(files[0]);
-    });
-    $('#preview-img').click(function () {
-        $('#prod-imginput').click();
-    })
-    $('#productsHolder').sortable({
+function initShopSite() {
+    $('#prod_holder').sortable({
         placeholder: "ui-state-highlight slide-inner placeholder col-xs-6 col-sm-4 col-md-3"
     });
-    $('.container').on('click', '.leftColumn .boxRow', function (e) {
-        if (!$(e.target).hasClass('delete-row') && !$(e.target).hasClass('fa-times')) {
-            self = $(this)
-            $.ajax({
-                type: 'POST',
-                url: 'Admin_API/getShops',
-                data: {
-                    id: self.data('id')
-                },
-                encode: true,
-                success: function (result) {
-                    res = JSON.parse(result)
-                    $('.rightColumn').data('cat', self.data('id'));
-                    prepareCat(res, self);
-                },
-                error: function (xhr, status, error) {}
-            });
-        } else {
-            self = $(this)
-            $.ajax({
-                type: 'POST',
-                url: 'Admin_API/removeCategory',
-                data: {
-                    id: self.data('id')
-                },
-                encode: true,
-                success: function (result) {
-                    if (self.data('id') == $('.rightColumn').data('id')) {
-                        $('.rightColumn').hide();
-                    }
-                    self.closest('.boxRow').remove();
-                },
-                error: function (xhr, status, error) {}
-            });
-        }
-    });
-
-    $('.container').on('click', '.rightColumn .boxRow', function (e) {
-        if (!$(e.target).hasClass('delete-row') && !$(e.target).hasClass('fa-times') &&
-            !$(e.target).hasClass('pin-row') && !$(e.target).hasClass('fa-thumb-tack')) {
-            self = $(this)
-            $.ajax({
-                type: 'POST',
-                url: 'Admin_API/getShop',
-                data: {
-                    id: self.data('id')
-                },
-                encode: true,
-                success: function (result) {
-                    res = JSON.parse(result)
-                    showShop(res)
-                    $('#newshop').data('id', self.data('id'))
-                },
-                error: function (xhr, status, error) {}
-            });
-        } else if ($(e.target).hasClass('delete-row') || $(e.target).hasClass('fa-times')) {
-            self = $(this)
-            $.ajax({
-                type: 'POST',
-                url: 'Admin_API/removeShop',
-                data: {
-                    id: self.data('id')
-                },
-                encode: true,
-                success: function (result) {
-                    self.closest('.boxRow').remove();
-                },
-                error: function (xhr, status, error) {}
-            });
-        } else {
-            self = $(this)
-
-            $.ajax({
-                type: 'POST',
-                url: 'Admin_API/pinShop',
-                data: {
-                    id: self.data('id'),
-                    pin: self.closest('.boxRow').find('.pin-row').hasClass('pinned') ? 0 : 1,
-                    cat: $('.rightColumn').data('cat')
-                },
-                encode: true,
-                success: function (result) {
-                    console.log(result)
-                    el = self.closest('.boxRow').find('.pin-row');
-                    if (el.hasClass('pinned')) {
-                        self.closest('.boxRow').removeClass('pinned-row').find('.pin-row').removeClass('pinned')
-                    } else {
-                        self.closest('.boxRow').addClass('pinned-row').find('.pin-row').addClass('pinned');
-                        self.closest('.boxRow').clone().insertAfter('.rightColumn .boxRowAdd');
-                        self.closest('.boxRow').remove();
-                    }
-                },
-                error: function (xhr, status, error) {}
-            });
-        }
-    });
-    $('.boxTitle').on('click', function () {
-        parent = $(this).closest('.col-md-6');
-        if (parent.data('edit')) {
-            parent.find('.delete-row').hide();
-            parent.find('.pin-row').hide();
-            parent.data('edit', false);
-            $(this).find('.boxTitleEdit').text('Szerkesztés');
-        } else {
-            parent.find('.delete-row').show();
-            parent.find('.pin-row').show();
-            parent.data('edit', true);
-            $(this).find('.boxTitleEdit').text('Kész');
-        }
-    });
-    $('#addcat').on('click', function () {
-        addCategory();
-    });
-    $('#catname').keypress(function (e) {
-        if (e.which == 13) {
-            $(this).blur();
-            $('#addcat').focus().click();
-        }
-    });
-    $('.container').on('click', '#addshop', function () {
-        emptyShop();
-        $('#newshoptitle').text('Új bolt hozzáadása');
-        $('#doneshop').show();
-        $('#editshop').hide();
-        $('#newshop').show();
-        $("html, body").animate({
-            scrollTop: $('#newshop').offset().top
-        }, 500, 'swing');
-    });
-
-    $('#addlabel').on('click', function () {
-        addLabel();
-    });
-    $('#labelname').keypress(function (e) {
-        if (e.which == 13) {
-            $(this).blur();
-            $('#addlabel').focus().click();
-        }
-    });
-    $('.container').on('click', 'li .delete-row', function () {
-        $(this).closest('li').remove();
-    });
-    $('#editshop').on('click', function () {
-        shop = new Object();
-        shop.name = $('#shopname').val();
-        shop.adress = $('#adress').val();
-        shop.phone = $('#phone').val();
-        shop.image = $('#image').val();
-        shop.facebook = $('#facebook').val();
-        shop.bio = $('#bio').val();
-        shop.id = $('#newshop').data('id');
-        cats = [];
-        $('#categoryholder li:not(:first)').each(function () {
-            cats.push($(this).data('id'))
+    $.ajax({
+        type: 'POST',
+        url: 'Admin_API/getAllCategories',
+        encode: true,
+        success: function (result) {
+            result = JSON.parse(result)
+            result.forEach(function (element) {
+                $('#cat_select').append($('<option></option>').text(element['name']).attr('value', element['id']))
+            }, this)
+            $('#cat_holder').data('categories').split(';').forEach( function (element) {
+                t = $('#cat_select option[value='+element+']').text()
+                a = $(`<li class="list-group-item">
+                                <div class="delete-row">
+                                    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                                </div>`+ t +`</li>`)
+                a.data('id',element).appendTo('#cat_holder')
+            }, this)
+        },
+        error: function (xhr, status, error) {}
+    })
+    $('#prod_holder').data('deleted', [])
+    
+    $('#shop_add-button').click(function () {
+        $(this).prop('disabled', true)
+        products = []
+        $('#prod_holder li').each(function() {
+            self = $(this);
+            prod = {};
+            (self.data('old')) ? prod.type = 'old' : prod.type = 'new';
+            prod.id = self.data('id');
+            (self.hasClass('pinned-product')) ? prod.pinned = true : prod.pinned = false;
+            prod.price = self.find('.price h2').text().replace('Ft','');
+            (self.data('old')) ? prod.image = '' : prod.image = self.find('img').attr('src');
+            (self.data('old')) ? prod.name = '' : prod.name = self.data('name');
+            (self.data('old')) ? prod.link = '' : prod.link = self.data('link');
+            products.push($.extend(true, {}, prod));
+            prod = {}
         })
-        shop.category = cats.join('; ');
-        shop.pinned = $('#newshop').data('pinned');
-        shop.labels = new Array();
-        $('#labelholder li:not(.active)').each(function (index, elem) {
-            shop.labels.push($(this).text());
-        });
-        shop.deleted = $('#productsHolder').data('deleted');
-        shop.products = new Array();
-        i = 0;
-        $('#productsHolder li').each(function () {
-            prod = new Object();
-            if ($(this).attr('data-old')) {
-                prod.type = 'old';
-                prod.id = $(this).data('id')
-            } else {
-                prod.type = 'new'
-            }
-            prod.image = $(this).find('img').attr('src');
-            prod.price = $(this).data('price')
-            prod.name = $(this).data('name')
-            prod.link = $(this).data('link')
-            prod.position = i;
-            i += 1;
-            shop.products.push($.extend(true, {}, prod));
-            prod = "";
-        })
+        console.log({
+                shop: {
+                    name: $('#shop_name').val(),
+                    link: $('#shop_link').val(),
+                    phone: $('#shop_phone').val(),
+                    facebook: $('#shop_facebook').val(),
+                    image: $('#shop_image').val(),
+                    bio: $('#shop_bio').val(),
+                    labels: $.makeArray($('#label_holder li:not(.active)')).map(x => $(x).text()),
+                    pinned: $.makeArray($('#cat_holder li.pinned:not(.active)')).map(x => $(x).data('id')).join(';'),
+                    categories: $.makeArray($('#cat_holder li:not(.active)')).map(x => $(x).data('id')).join(';'),
+                    products: products,
+                    deleted: $('#prod_holder').data('deleted'),
+                    partner: $('#shop_partner').is(':checked'),
+                    edit: $('#shops').data('edit')
+                }
+            });
         $.ajax({
-            url: 'Admin_API/updateShop',
             type: 'POST',
-            data: {
-                shop: JSON.stringify(shop)
-            },
-            dataType: 'json',
-            encode: true,
-            success: function (result) {
-                $('.rightColumn .boxRow').each(function () {
-                    if ($(this).data('id') == $('#newshop').data('id')) {
-                        e = $(`<div class="boxRow" data-id="` + result["id"] + `">` + result["name"] + `
-                                    <div class="delete-row" style="display: none;">
-                                        <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-                                    </div><div class="pin-row" style="display: none;">
-                                        <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
-                                    </div></div>`).insertAfter($(this));
-                        arr = $('#newshop').data('pinned').split('; ');
-                        if (arr.indexOf($('.rightColumn').data('cat') + "") != -1) {
-                            e.addClass('pinned-row').find('.pin-row').addClass('pinned');
-                        }
-                        $(this).remove();
-                    }
-                })
-                emptyShop();
-                $('#newshop').hide();
-
-            },
-            error: function (xhr, status, error) {
-                console.log(xhr)
-            }
-        });
-    });
-    $('#editshop2').on('click', function () {
-        shop = new Object();
-        shop.name = $('#shopname').val();
-        shop.adress = $('#adress').val();
-        shop.phone = $('#phone').val();
-        shop.image = $('#image').val();
-        shop.facebook = $('#facebook').val();
-        shop.bio = $('#bio').val();
-        shop.id = $('#newshop').data('id');
-        cats = [];
-        $('#categoryholder li:not(:first)').each(function () {
-            cats.push($(this).data('id'))
-        })
-        shop.category = cats.join('; ');
-        shop.pinned = $('#newshop').data('pinned');
-        shop.labels = new Array();
-        $('#labelholder li:not(.active)').each(function (index, elem) {
-            shop.labels.push($(this).text());
-        });
-        shop.deleted = $('#productsHolder').data('deleted');
-        shop.products = new Array();
-        i = 0;
-        $('#productsHolder li').each(function () {
-            prod = new Object();
-            if ($(this).attr('data-old')) {
-                prod.type = 'old';
-                prod.id = $(this).data('id')
-            } else {
-                prod.type = 'new'
-            }
-            prod.image = $(this).find('img').attr('src');
-            prod.price = $(this).data('price')
-            prod.name = $(this).data('name')
-            prod.link = $(this).data('link')
-            prod.position = i;
-            i += 1;
-            shop.products.push($.extend(true, {}, prod));
-            prod = "";
-        })
-        $.ajax({
-            url: 'Admin_API/updateShop',
-            type: 'POST',
-            data: {
-                shop: JSON.stringify(shop)
-            },
-            dataType: 'json',
-            encode: true,
-            success: function (result) {
-
-            },
-            error: function (xhr, status, error) {
-                console.log(xhr)
-            }
-        });
-    });
-    $('#doneshop').on('click', function () {
-        shop = new Object();
-        shop.name = $('#shopname').val();
-        shop.adress = $('#adress').val();
-        shop.phone = $('#phone').val();
-        shop.image = $('#image').val();
-        shop.facebook = $('#facebook').val();
-        shop.bio = $('#bio').val();
-        shop.labels = new Array();
-        $('#labelholder li:not(.active)').each(function (index, elem) {
-            shop.labels.push($(this).text());
-        });
-        cats = [];
-        $('#categoryholder li:not(:first)').each(function () {
-            cats.push($(this).data('id'))
-        })
-        shop.category = cats.join('; ');
-        shop.products = new Array();
-        i = 0;
-        $('#productsHolder li').each(function () {
-            prod = new Object();
-            $(this).attr('data-old') ? prod.type = 'old' : prod.type = 'new';
-            prod.image = $(this).find('img').attr('src');
-            prod.price = $(this).data('price')
-            prod.link = $(this).data('link')
-            prod.name = $(this).data('name')
-            prod.position = i;
-            i += 1;
-            shop.products.push($.extend(true, {}, prod));
-            prod = "";
-        })
-        console.log('eddik ok')
-        $.ajax({
             url: 'Admin_API/addShop',
-            type: 'POST',
             data: {
-                shop: JSON.stringify(shop)
+                shop: JSON.stringify({
+                    name: $('#shop_name').val(),
+                    link: $('#shop_link').val(),
+                    phone: $('#shop_phone').val(),
+                    facebook: $('#shop_facebook').val(),
+                    image: $('#shop_image').val(),
+                    bio: $('#shop_bio').val(),
+                    labels: $.makeArray($('#label_holder li:not(.active)')).map(x => $(x).text()),
+                    pinned: $.makeArray($('#cat_holder li.pinned:not(.active)')).map(x => $(x).data('id')).join(';'),
+                    categories: $.makeArray($('#cat_holder li:not(.active)')).map(x => $(x).data('id')).join(';'),
+                    products: products,
+                    deleted: $('#prod_holder').data('deleted'),
+                    partner: $('#shop_partner').is(':checked'),
+                    edit: $('#shops').data('edit')
+                })
             },
             dataType: 'json',
             encode: true,
             success: function (result) {
-                addShop(result["name"], result["id"]);
-
+                console.log(result);
+                location.reload()
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr);
+                location.reload()
+            }
+        })
+    })
+    $('#shop_list-holder').on('click', 'button', function () {
+        $('#label_holder li:not(.active)').remove()
+        $('#cat_holder li:not(.active)').remove()
+        $('#prod_holder').empty()
+        s = $(this).closest('li').data('shop')
+        $('#shops').data('edit', s['id'])
+        $.ajax({
+            type: 'POST',
+            url: 'Admin_API/getProducts',
+            data: {
+                id: s['id']
+            },
+            encode: true,
+            success: function (result) {
+                result = JSON.parse(result)
+                result.forEach(function (element) {
+                    e = $(`<li data-old="true" data-pinned="` + element['pinned'] + `" data-id="` + element['id'] + `" class="col-xs-6 col-sm-4 col-md-3"><div class="delete-product">
+                                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                            <div class="slide-inner"><div class="product"> <img class='image-responsive' src = "assets/images/products/` + element['imageid'] + `.png">
+                            <div class="price"><h2>` + element['price'] + `Ft</h2></div></div>
+                            </div></li>`);
+                    if (element['pinned'] == 1) {
+                        e.addClass('pinned-product')
+                    }
+                    e.appendTo('#prod_holder');
+                }, this)
+                $.ajax({
+                    type: 'POST',
+                    url: 'Admin_API/getLabels',
+                    data: {
+                        id: s['id']
+                    },
+                    encode: true,
+                    success: function (result) {
+                        result = JSON.parse(result)
+                        result.forEach(function (element) {
+                            $(`<li class="list-group-item">`+ element['name'] +`</li>`).append(`<div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>`).appendTo('#label_holder')
+                        }, this)
+                    },
+                    error: function (xhr, status, error) {}
+                })
             },
             error: function (xhr, status, error) {}
-        });
+        })
+        $('#shop_name').val(s['name'])
+        $('#shop_link').val(s['adress'])
+        $('#shop_phone').val(s['phone'])
+        $('#shop_facebook').val(s['facebook'])
+        $('#shop_image').val(s['image'])
+        $('#shop_bio').val(s['bio'])
+        pins = s['pinned'].split(';')
+
     })
-    $('#addnewusr').click(function () {
-        $('#newusrform .form-group').toggle();
-        $(this).hide();
-        $('#doneusr').show();
-    });
-    $('.container').on('click', '.delete-product', function () {
-        parent = $(this).closest('li')
-        if (parent.data('old')) {
-            $('#productsHolder').data('deleted', $('#productsHolder').data('deleted').push(parent.data('id')))
+    $(document).on('click', '.delete-row', function() {
+        $(this).closest('li').remove()
+    })
+    $(document).on('click', '.delete-product', function() {
+        if($(this).closest('li').data('old')){
+            id = $(this).closest('li').data('id')
+            a = [id]
+            if($.isArray($('#prod_holder').data('deleted'))) {
+                a = $.merge(a, $('#prod_holder').data('deleted'))
+            } else {
+                a.push($('#prod_holder').data('deleted'))
+            }
+            $('#prod_holder').data('deleted', a)
         }
-        parent.remove();
-        console.log($('#productsHolder').data('deleted'))
+        $(this).closest('li').remove()
     })
-});
-//.
+    $('#label_add').click(function() {
+        $(`<li class="list-group-item">`+ $('#label_name').val() +`</li>`).append(`<div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>`).appendTo('#label_holder')
+        $('#label_name').val('')
+    })
+    $('#cat_add').click(function() {
+        t = $('#cat_select option:selected').text()
+        a = $(`<li class="list-group-item">
+                                <div class="delete-row">
+                                    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                                </div>
+                                <div class="pin-row">
+                                    <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
+                                </div>`+ t +`</li>`)
+                a.data('id',$('#cat_select').val()).appendTo('#cat_holder')
+    })
+    $('#prod_imginput').on('change', function () {
+            files = this.files;
+            readFile(files[0]);
+        });
+    $('#prod_wrapper .add-row').click(function() {
+        $('#prod_upload-holder').toggle()
+    })
+    $('#prod_add').click(function() {
+        e = $(`<li data-old="false" class="col-xs-6 col-sm-4 col-md-3"><div class="delete-product">
+                                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                            </div><div class="pin-product">
+                                <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
+                            </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "">
+                            <div class="price"><h2>` + $('#prod_price').val() + `Ft</h2></div></div>
+                            </div></li>`);
+                            e.find('img').attr('src', $('#prod_preview-img').attr('src'))
+                            e.data('name', $('#prod_name').val())
+                            e.data('link', $('#prod_link').val())
+                            e.appendTo('#prod_holder')
+        $('#prod_name').val('')
+        $('#prod_link').val('')
+        $('#prod_price').val('')
+        $('#prod_preview-img').attr('src', '#')
+    })
+}
+
+
+$(function () {
+    initShopSite()
+    $('#logout').click(function () {
+        window.location = 'Logout'
+    })
+    $('.search-input').on('keyup', function () {
+        input = $(this)
+        filter = input.val().toUpperCase()
+        $(this).closest('.list-group').find('li:not(:first)').each(function () {
+            if ($(this).text().toUpperCase().indexOf(filter) > -1) {
+                $(this).show()
+            } else {
+                $(this).hide()
+            }
+        })
+    })
+})
