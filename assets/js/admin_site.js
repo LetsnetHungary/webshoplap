@@ -420,10 +420,7 @@ function initShopSite() {
                                 <div class="pin-row">
                                     <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
                                 </div>`+ t +`</li>`)
-                                console.log(element);
-                                console.log(pins);
-                if($.inArray(element, pins) != -1) {
-                    console.log('hsad');
+                if($.inArray(element+'', pins) != -1) {
                     a.addClass('pinned')
                 }
                 a.data('id',element).appendTo('#cat_holder')
