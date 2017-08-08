@@ -27,7 +27,7 @@ a:active {
 </style>
 <hr style="border-width: 4px 0;"
 >
-        <div style="padding-bottom: 20px">
+        <div style="padding-bottom: 20px;" class="footerrrr">
             ©webshoplap.hu&nbsp;&nbsp;&nbsp;&nbsp;<a href="Contact">Kapcsolat</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="assets/documents/mediaajanlat.pdf">Mediaajánlat</a>
         </div>
 

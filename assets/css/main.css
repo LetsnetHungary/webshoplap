@@ -102,6 +102,11 @@ body {
     .logologo {
         width: 100vw;
     }
+
+    .footerrrr {
+        display: flex; 
+        flex-direction: column;
+    }
 }
 
 .pimage a {
