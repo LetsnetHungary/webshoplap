@@ -88,7 +88,7 @@ function initShop(self, shop) {
                <h4 class="datatext"><i class="fa fa-phone icon"></i>` + shop['phone'] + `</h4>
             </div>
           </div>
-          <div class="col-xs-3" style="text-align:right">
+          <div class="col-xs-3 buttonnnn" style="text-align:right">
             <button class="boxAboutButtonSmall btn">Több info</button>
             <iframe style="position: relative; left: 6px;" src="https://www.facebook.com/plugins/like.php?href=` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) + `&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
         </div>
@@ -132,9 +132,9 @@ function initShop(self, shop) {
     elem.insertBefore($('.boxHolder').eq(ind - pos));
     hely = ind - pos;
     cucc = hely / cc;
-    scrol = 470;
+    scrol = 550;
     if (shop['products'].length == 0) {
-        scrol = 300;
+        scrol -= 170;
         elem.find('.boxAboutRow').eq(2).remove();
     }
     elem.animate({
