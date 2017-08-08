@@ -92,7 +92,7 @@ function initShop(self, shop) {
                             </div>
                             <div class="dataholder">
                                 <button class="boxAboutButtonSmall btn">Több info</button>
-                                <div class="fb-like" data-width="100" data-href="` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) + `" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+                            <iframe src="https://www.facebook.com/plugins/like.php?href=` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) + `&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="78" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ function initShop(self, shop) {
                                 <h4><i class="fa fa-wifi icon"></i>` + shop['adress'] + `</h4>
                             </a>
                             <h4><i class="fa fa-phone icon"></i>` + shop['phone'] + `</h4>
-                            <div class="fb-like" data-width="100" data-href="` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) + `" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+                            <iframe src="https://www.facebook.com/plugins/like.php?href=` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) + `&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="100" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
                         </div>
                     </div>
                     <button class="boxAboutButton btn">Több info</button>
@@ -235,7 +235,8 @@ function initSlider() {
             {
                 breakpoint: 500,
                 settings: {
-                    slidesToShow: 1
+                    slidesToShow: 2,
+                    arrows: false
                 }
             }
         ]

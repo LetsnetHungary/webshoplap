@@ -47,17 +47,10 @@
 
 }
 
-@media screen and (max-width: 600px) {
-    .boxAboutRow {
-        margin: 0!important;
-    }
-
-    .boxAboutDataHolderSmall {
-        flex-direction: column;
-    }
-
-    .buttonnnn {
-        
+@media screen and (max-width: 500px) {
+    .slider-container {
+      padding-left: 30px!important;
+      padding-right: 30px!important;
     }
 }
 
