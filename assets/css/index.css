@@ -42,6 +42,8 @@
     right: 25px;
 }
 .boxAboutButtonSmall{
+  margin-bottom: 15px;
+  margin-right: 15px;
   background-color: #80caa5!important;
   color: white!important;
 
