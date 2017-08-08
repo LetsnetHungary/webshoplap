@@ -14,7 +14,7 @@
 }
 
 .boxAboutRow {
-    height: 250px;
+    height: 280px;
     position: relative;
 }
 
@@ -29,8 +29,6 @@
     align-items: center;
 }
 .boxAboutDataHolderSmall {
-    height: 60px;
-    display: flex;
     align-items: center;
 }
 
@@ -42,24 +40,16 @@
     right: 25px;
 }
 .boxAboutButtonSmall{
-  margin-bottom: 15px;
-  margin-right: 15px;
+  margin-right: 5px;
   background-color: #80caa5!important;
   color: white!important;
 
 }
 
-@media screen and (max-width: 600px) {
-    .boxAboutRow {
-        margin: 0!important;
-    }
-
-    .boxAboutDataHolderSmall {
-        flex-direction: column;
-    }
-
-    .buttonnnn {
-        
+@media screen and (max-width: 500px) {
+    .slider-container {
+      padding-left: 30px!important;
+      padding-right: 30px!important;
     }
 }
 
@@ -249,4 +239,20 @@
 .pimage_i {
     max-width: 100%!important;
     max-height: 100%!important;
+}
+.dataholder-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dataholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.dataholder .datatext {
+  margin: 0;
 }

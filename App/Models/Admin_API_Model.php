@@ -414,4 +414,20 @@
           }
           return;
       }
+
+
+      public function thumbpicture($blog_id, $data) {
+          $image = "assets/images/blogs/".$blog_id.".png";
+          $thumbimage = "assets/images/blogs/".$blog_id."_thumb.png";
+          $is = filesize($image);
+          if ($is > 80000) {
+            $percent = $is / 80000;
+          }
+
+          print_r(filesize($image));
+          echo " | ";
+
+      }
+
+
     }
