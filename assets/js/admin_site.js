@@ -25,6 +25,30 @@ function readFile(file) {
     reader.readAsDataURL(file);
 }
 
+function readFileBlog(file) {
+    reader = new FileReader();
+    reader.onload = function (e) {
+        text = e.target.result;
+        img = new Image();
+        img.onload = function () {
+            if (img.width/800 > img.height/400) {
+                ratio = 800 / img.width
+            } else {
+                ratio = 400 / img.height;
+            }
+            rw = ratio * img.width;
+            rh = ratio * img.height;
+            canvas = $('<canvas width="800" height="400" style="display: none;"></canvas>');
+            ctx = canvas[0].getContext('2d');
+            ctx.drawImage(this, 400 - (rw / 2), 200 - (rh / 2), rw, rh);
+            dataurl = canvas[0].toDataURL('image/png');
+            $('#preview-img-blog').attr('src', dataurl);
+        }
+        img.src = text;
+    }
+    reader.readAsDataURL(file);
+}
+
 function loadSite(site) {
     switch (site) {
         case 'users':
@@ -171,10 +195,13 @@ function initBlogSite() {
             },
             encode: true,
             success: function (result) {
+                console.log(result);
                 loadBlogSite()
                 $('#blog_add-button').prop('disabled', false)
             },
-            error: function (xhr, status, error) {}
+            error: function (xhr, status, error) {
+                console.log(xhr);
+            }
         })
     })
     $('#blog_list-holder').on('click', 'button', function () {
@@ -189,6 +216,10 @@ function initBlogSite() {
         $('#textareaholder').append($('<textarea  id="blogcontent" name="blog-content" rows="10" cols="50" required></textarea>').val(b['blog_content']))
         CKEDITOR.replace('blog-content')
     })
+    $('#blog-imginput').on('change', function () {
+            files = this.files;
+            readFileBlog(files[0]);
+        });
 }
 
 function loadPartnerSite() {
