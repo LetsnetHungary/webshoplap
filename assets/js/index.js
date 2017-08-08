@@ -62,62 +62,66 @@ function setBreakpoint() {
 function initShop(self, shop) {
     oldscroll = $(window).scrollTop();
     removeBox();
-    elem = $(` <div class="col-xs-12 boxAbout" style="height: 0px">
-   <div class="box">
-      <div class="boxTitle">
-         <div class="boxTitleTitle">` + shop['name'] + `</div>
-         <div class="boxTitleArrow">
-            <i class="fa fa-arrow-left"></i>
-         </div>
-      </div>
-      
-      
-      <div class="boxAboutRow row hidden-sm hidden-md hidden-lg">
-      <div class="col-xs-12 boxAboutTitleHolder" style="text-align:center;">
-               <h3 class="shopname" style="margin-bottom: 10px; margin-top: 10px;">` + shop['name'] + `</h3>
-      </div>
-         <div class="col-xs-12 boxAboutImgHolderSmall" style="text-align:center;">
-            <img class="boxAboutIcon img-responsive" src="` + ((shop['image'] == '') ? 'assets/images/placeholder.png' : shop['image']) + `">
-         </div>
-         <div class="col-xs-12 boxAboutDataHolderSmall">
-           <div style="padding-right: 0" class="col-xs-9">
-            <div class="dataholder">
-               <a target="_blank" href="` + shop['adress'] + `">
-                  <h4 class="datatext"><i class="fa fa-wifi icon"></i>` + shop['adress'] + `</h4>
-               </a>
-               <h4 class="datatext"><i class="fa fa-phone icon"></i>` + shop['phone'] + `</h4>
+    elem = $(` 
+        <div class="col-xs-12 boxAbout" style="height: 0px">
+            <div class="box">
+                <div class="boxTitle">
+                    <div class="boxTitleTitle">` + shop['name'] + `</div>
+                    <div class="boxTitleArrow">
+                        <i class="fa fa-arrow-left"></i>
+                    </div>
+                </div>
+
+
+                <div class="boxAboutRow row hidden-sm hidden-md hidden-lg">
+                    <div class="col-xs-12 boxAboutTitleHolder" style="text-align:center;">
+                        <h3 class="shopname" style="margin-bottom: 10px; margin-top: 10px;">` + shop['name'] + `</h3>
+                    </div>
+                    <div class="col-xs-12 boxAboutImgHolderSmall" style="text-align:center;">
+                        <img class="boxAboutIcon img-responsive" src="` + ((shop['image'] == '') ? 'assets/images/placeholder.png' : shop['image']) + `">
+                    </div>
+                    <div class="col-xs-12 boxAboutDataHolderSmall">
+                        <div class="dataholder-flex">
+                            <div class="dataholder">
+                                <a target="_blank" href="` + shop['adress'] + `">
+                                    <h4 class="datatext"><i class="fa fa-wifi icon"></i>` + shop['adress'] + `</h4>
+                                </a>
+                            </div>
+                            <div class="dataholder">
+                                <h4 class="datatext"><i class="fa fa-phone icon"></i>` + shop['phone'] + `</h4>
+                            </div>
+                            <div class="dataholder">
+                                <button class="boxAboutButtonSmall btn">Több info</button>
+                                <div class="fb-like" data-width="100" data-href="` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) + `" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="boxAboutRow row hidden-xs">
+                    <div class="col-xs-6 boxAboutImgHolder">
+                        <img class="boxAboutIcon img-responsive" src="` + ((shop['image'] == '') ? 'assets/images/placeholder.png' : shop['image']) + `">
+                    </div>
+                    <div class="col-xs-6 boxAboutDataHolder">
+                        <div class="">
+                            <h3 class="shopname" style="margin-bottom: 30px;">` + shop['name'] + ` </h3>
+                            <a target="_blank" href="` + shop['adress'] + `">
+                                <h4><i class="fa fa-wifi icon"></i>` + shop['adress'] + `</h4>
+                            </a>
+                            <h4><i class="fa fa-phone icon"></i>` + shop['phone'] + `</h4>
+                            <div class="fb-like" data-width="100" data-href="` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) + `" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+                        </div>
+                    </div>
+                    <button class="boxAboutButton btn">Több info</button>
+                </div>
+                <div class="boxAboutRowSlider row">
+                    <div class="col-xs-12 slider-container">
+                        <div class="slider">
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-xs-3 buttonnnn" style="text-align:right">
-            <button class="boxAboutButtonSmall btn">Több info</button>
-            <iframe style="position: relative; left: 6px;" src="https://www.facebook.com/plugins/like.php?href=` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) + `&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
         </div>
-         </div>
-      </div>
-      <div class="boxAboutRow row hidden-xs">
-         <div class="col-xs-6 boxAboutImgHolder">
-            <img class="boxAboutIcon img-responsive" src="` + ((shop['image'] == '') ? 'assets/images/placeholder.png' : shop['image']) + `">
-         </div>
-         <div class="col-xs-6 boxAboutDataHolder">
-            <div class="">
-               <h3 class="shopname" style="margin-bottom: 30px;">` + shop['name'] + ` </h3>
-               <a target="_blank" href="` + shop['adress'] + `">
-                  <h4><i class="fa fa-wifi icon"></i>` + shop['adress'] + `</h4>
-               </a>
-               <h4><i class="fa fa-phone icon"></i>` + shop['phone'] + `</h4>
-               <iframe src="https://www.facebook.com/plugins/like.php?href=` + ((shop['facebook'] != '') ? shop['facebook'] : shop['adress']) + `&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-            </div>
-         </div>
-         <button class="boxAboutButton btn">Több info</button>
-      </div>
-      <div class="boxAboutRowSlider row">
-         <div class="col-xs-12 slider-container">
-            <div class="slider">
-            </div>
-         </div>
-      </div>
-   </div>
-</div>`);
+        `);
     elem.data('id', self.data('id'));
     if (self.hasClass('pin')) {
         elem.find('.shopname').append($('<img title="partner" class="pinned-image" src="assets/images/pinned.png">'));
@@ -132,7 +136,7 @@ function initShop(self, shop) {
     elem.insertBefore($('.boxHolder').eq(ind - pos));
     hely = ind - pos;
     cucc = hely / cc;
-    scrol = 550;
+    scrol = 500;
     if (shop['products'].length == 0) {
         scrol -= 170;
         elem.find('.boxAboutRow').eq(2).remove();
