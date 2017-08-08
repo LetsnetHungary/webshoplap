@@ -179,7 +179,7 @@
           $blog_subtitle = $_POST['subtitle'];
           $this->model->addBlog($blog_id, $blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle, $blog_dataurl);
 
-          $this->model->thumbpicture($blog_id, $blod_dataurl);
+          $this->model->thumbpicture($blog_id, $blog_dataurl);
         }
 
 

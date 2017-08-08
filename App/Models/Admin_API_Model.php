@@ -299,11 +299,12 @@
 
         public function addBlog($blog_id, $blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle, $blog_dataurl){
             if($blog_id == 0) {
-                $stmt = $this->db->prepare('SELECT id FROM `blog` ORDER BY id DESC LIMIT 1');
+                $stmt = $this->db->prepare('SELECT blog_id FROM `blog` ORDER BY blog_id DESC LIMIT 1');
                 $stmt->execute([]);
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                print_r($result);
                 if(count($result) > 0) {
-                    $prodmaxid = $result[0]['id'];
+                    $prodmaxid = $result[0]['blog_id'];
                 } else {
                     $prodmaxid = 0;
                 }
@@ -323,8 +324,8 @@
                 if(strlen($blog_dataurl) > 100) {
                     $uriPhp = 'data://' . substr($blog_dataurl, 5);
                     $binary = file_get_contents($uriPhp);
-                    unlink('assets/images/blogs/'.($prodmaxid+1).'.png');
-                    file_put_contents('assets/images/blogs/'.($prodmaxid+1).'.png',$binary);
+                    unlink('assets/images/blogs/'.($prodmaxid).'.png');
+                    file_put_contents('assets/images/blogs/'.($prodmaxid).'.png',$binary);
                 }
                 $stmt = $this->db->prepare("UPDATE blog SET `blog_title`=:blog_title,`blog_author`=:blog_author,`blog_content`=:blog_content,`blog_date`=:blog_date,`blog_subtitle`=:blog_subtitle WHERE blog_id=".$blog_id);
                 $stmt->execute([
