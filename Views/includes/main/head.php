@@ -33,7 +33,7 @@ if($this->SEO->seo->og) {
 			$ogtags = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			?>
 
-			<meta property="og:url" content="http://www.webshoplap.hu/<? echo $_SERVER['REQUEST_URI']; ?>" />
+			<meta property="og:url" content="http://www.webshoplap.hu<? echo $_SERVER['REQUEST_URI']; ?>" />
 			<meta property="og:type" content="article" />
 			<meta property="og:title" content="<? echo $ogtags[0]['blog_title']; ?>" />
 			<meta property="og:description" content="<? $nszuveg = strip_tags($ogtags[0]['blog_content'], "<*>"); echo $nszuveg; ?>" />
