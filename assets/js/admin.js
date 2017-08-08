@@ -1,6 +1,5 @@
 function editpost() {
     $('#blogform').show(); $('#editpost').hide();
-    $()
     $.ajax({
             type: 'POST',
             url: 'Admin_API/getBlog',

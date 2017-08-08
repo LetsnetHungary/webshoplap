@@ -40,12 +40,6 @@
             $this->model->addCategory($name);
             return;
         }
-        public function addShop() {
-            $shop = $_POST["shop"];
-            $shop = json_decode($shop);
-            $this->model->addShop($shop,false);
-            return;
-        }
         public function pinShop() {
             $id = $_POST["id"];
             $pin = $_POST["pin"];
@@ -58,15 +52,6 @@
             $this->model->updateShop($shop);
             return;
         }
-        public function addUser(){
-          $email = $_POST['new_mail'];
-          $pw = $_POST['new_pw'];
-          $new_shop_name = $_POST['new_shop_name'];
-          if ($this->model->addUser($email, $pw, $new_shop_name)) {
-            header("Location: ../Admin?user_added");
-          }
-
-        }
         public function addPartnerShop() {
           $id = $_POST['id'];
           $this->model->addPartnerShop($id);
@@ -75,33 +60,8 @@
           $id = $_POST['id'];
           $this->model->remPartnerShop($id);
         }
-        public function addBlog(){
-          $blog_title = $_POST['blog-title'];
-          $blog_author = $_POST['blog-author'];
-          $blog_content = $_POST['blog-content'];
-          $blog_dataurl = $_POST['dataurl'];
-          $blog_id = $_POST['id'];
-          $blog_date = date("Y-m-d");
-          $blog_subtitle = $_POST['blog-subtitle'];
-          $this->model->addBlog($blog_id, $blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle, $blog_dataurl);
-          header("Location: ../Admin?blog_added");
-        }
-        public function addPartner() {
-            $name = $_POST['pname'];
-            $link = $_POST['plink'];
-            $partnerlink = $_POST['partnerlink'];
-            $this->model->addPartner($name, $link, $partnerlink);
-            header("Location: ../Admin?partner_added");
-            return;
-        }
-
         public function showPartners() {
             print_r($this->model->showPartners());
-        }
-
-        public function deletePartner() {
-            $id = isset($_POST['id']) ? $_POST['id'] : 'asdf';
-            return $this->model->deletePartner($id);
         }
 
         public function refreshPartnerURL() {
@@ -133,9 +93,91 @@
             return($this->model->refreshUserShop($id, $shop));
         }
 
-        public function deleteUser() {
+        
+
+
+
+        public function getAllShops() {
+            print_r(json_encode($this->model->getAllShops()));
+            return;
+        }
+        
+        public function addShop() {
+            $shop = $_POST["shop"];
+            $shop = json_decode($shop);
+            $this->model->addShop($shop);
+            return;
+        }
+
+        public function getProducts() {
             $id = $_POST['id'];
-            return($this->model->deleteUser($id));
+            print_r(json_encode($this->model->getProducts($id)));
+            return;
+        }
+
+        public function getLabels() {
+            $id = $_POST['id'];
+            print_r(json_encode($this->model->getLabels($id)));
+            return;
+        }
+
+        public function getAllPartners() {
+            print_r(json_encode($this->model->getAllPartners()));
+            return;
+        }
+
+        public function addPartner(){
+          $name = $_POST['name'];
+          $link = $_POST['link'];
+          $image = $_POST['image'];
+          $this->model->addPartner($name, $link, $image);
+          return;
+        }
+
+        public function deletePartner() {
+            $id = $_POST['id'];
+            $this->model->deletePartner($id);
+            return;
+        }
+
+        public function getAllCategories() {
+            print_r(json_encode($this->model->getAllCategories()));
+            return;
+        }
+
+        public function getAllUsers() {
+            print_r(json_encode($this->model->getAllUsers()));
+            return;
+        }
+
+        public function addUser(){
+          $email = $_POST['email'];
+          $pw = $_POST['password'];
+          $new_shop_name = $_POST['shop'];
+          $this->model->addUser($email, $pw, $new_shop_name);
+          return;
+        }
+
+        public function deleteUser() {
+            $email = $_POST['email'];
+            $this->model->deleteUser($email);
+            return;
+        }
+
+        public function getAllBlogs() {
+            print_r(json_encode($this->model->getAllBlogs()));
+            return;
+        }
+
+        public function addBlog(){
+          $blog_title = $_POST['title'];
+          $blog_author = $_POST['author'];
+          $blog_content = $_POST['content'];
+          $blog_dataurl = $_POST['dataurl'];
+          $blog_id = $_POST['id'];
+          $blog_date = date("Y-m-d");
+          $blog_subtitle = $_POST['subtitle'];
+          $this->model->addBlog($blog_id, $blog_title, $blog_author, $blog_content, $blog_date, $blog_subtitle, $blog_dataurl);
         }
 
         public function logout() {

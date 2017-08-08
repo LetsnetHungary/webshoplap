@@ -1,17 +1,18 @@
 {
 	"css" :
 	{
-    "1" : "/assets/css/admin.css",
-	"2" : "/assets/font-awesome/css/font-awesome.css",
-    "3" : "/assets/bootstrap/css/bootstrap.min.css",
+	"1" : "/assets/font-awesome/css/font-awesome.css",
+    "2" : "/assets/bootstrap/css/bootstrap.min.css",
+    "3" : "/assets/css/admin.css",
     "4" : "/assets/jquery-ui/jquery-ui.min.css",
-    "5" : "/assets/jquery-ui/jquery-ui-theme.min.css"
+    "5" : "/assets/jquery-ui/jquery-ui-theme.min.css",
+    "6" : "/assets/css/admin_old.css"
 	},
 	"js" :
 	{
 		"1" : "/assets/js/jquery.min.js",
 		"2" : "/assets/bootstrap/js/bootstrap.min.js",
-		"3" : "/assets/js/admin.js",
+		"3" : "/assets/js/admin_site.js",
     	"4" : "/assets/jquery-ui/jquery-ui.min.js"
 	},
     "fonts" : {},
