@@ -414,4 +414,14 @@
           }
           return;
       }
+
+
+      public function thumbpicture($blog_id, $data) {
+          $image = "assets/images/blogs/".$blog_id.".png";
+          $size = getimagesize($image);
+          print_r($size);
+
+      }
+
+
     }
