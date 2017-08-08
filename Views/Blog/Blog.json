@@ -24,6 +24,7 @@
 
 		"og" :
 		{
+			"dynamic" : "true"
 		}
 	}
 }
