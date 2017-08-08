@@ -36,7 +36,7 @@ if($this->SEO->seo->og) {
 			<meta property="og:url" content="http://www.webshoplap.hu/<? echo $_SERVER['REQUEST_URI']; ?>" />
 			<meta property="og:type" content="article" />
 			<meta property="og:title" content="<? echo $ogtags[0]['blog_title']; ?>" />
-			<meta property="og:description" content="<? echo strip_tags($ogtags[0]['blog_content'], "<*>"); ?>" />
+			<meta property="og:description" content="<? $nszuveg = strip_tags($ogtags[0]['blog_content'], "<*>"); echo $nszuveg; ?>" />
 			<meta property="og:image" content="http://www.webshoplap.hu/assets/images/blogs/<? echo $ogtags[0]['blog_id']; ?>.png" />
 			<meta property="og:image:type" content="image/png" />
 			<meta property="og:image:width" content="400" />
