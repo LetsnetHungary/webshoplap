@@ -1,5 +1,5 @@
 [
-    {"href" : "HTTPError", "closure" : "static", "view" : "Error"},
+    {"href" : "HTTPError", "closure" : "error", "view" : "Error", "controller" : "Error", "order" : ["{method}", "{argument}", "{argument}"]},
     {"href" : "admin/login", "closure" : "static", "view" : "Login"},
     {"href" : "Index/mvc", "closure" : "mvc", "controller" : "Index", "view" : "Index", "order" : ["{method}", "{argument}", "{argument}"]},
     {"href" : "admin/LoginAPI", "closure" : "mvc", "controller" : "LoginAPI", "order" : ["{method}"]},
