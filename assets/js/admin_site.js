@@ -188,7 +188,7 @@ function initBlogSite() {
             data: {
                 title: $('#blogtitle').val(),
                 author: $('#blogauthor').val(),
-                content: $('#blogcontent').val(),
+                content: CKEDITOR.instances['blogcontent'].getData(),
                 dataurl: $('#preview-img-blog').attr('src'),
                 id: $('#blogform').data('id'),
                 subtitle: $('#blogsubtitle').val()
