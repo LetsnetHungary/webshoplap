@@ -204,6 +204,30 @@ function initBlogSite() {
             }
         })
     })
+    $('#blog_delete-button').click(function () {
+        $(this).prop('disabled', true)
+        $.ajax({
+            type: 'POST',
+            url: 'Admin_API/addBlog',
+            data: {
+                title: '',
+                author: '',
+                content: '',
+                dataurl: '',
+                id: $('#blogform').data('id'),
+                subtitle: ''
+            },
+            encode: true,
+            success: function (result) {
+                console.log(result);
+                loadBlogSite()
+                $('#blog_add-button').prop('disabled', false)
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr);
+            }
+        })
+    })
     $('#blog_list-holder').on('click', 'button', function () {
         b = $(this).closest('li').data('blog')
         $('#blogtitle').val(b['blog_title'])
