@@ -62,7 +62,7 @@ fjs.parentNode.insertBefore(js, fjs);
                 <ul class="dropdown-menu menuBar2" >
 									<?php
 									for ($i=0; $i < count($category); $i++) { ?>
-										<li><a style="color:#FFF;" href="Category?id=<?php print_r($category[$i]['id']); ?>"><?php print_r($category[$i]['name']); ?></a></li>
+										<li><a style="color:#FFF;" href="../<?php print_r($category[$i]['fuckid']); ?>"><?php print_r($category[$i]['name']); ?></a></li>
 									<?php }
 									?>
 
