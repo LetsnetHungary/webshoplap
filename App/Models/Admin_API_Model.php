@@ -319,7 +319,7 @@
                     ":blog_date"=>$blog_date,
                     ":blog_subtitle"=>$blog_subtitle
                 ]);
-          } else {
+          } else if($blog_title != "" && $blog_content != ""){
                 $prodmaxid = $blog_id;
                 if(strlen($blog_dataurl) > 100) {
                     $uriPhp = 'data://' . substr($blog_dataurl, 5);
@@ -335,6 +335,9 @@
                     ":blog_date"=>$blog_date,
                     ":blog_subtitle"=>$blog_subtitle
                 ]);
+          } else {
+            $stmt = $this->db->prepare("DELETE FROM blog WHERE blog_id=".$blog_id);
+                $stmt->execute([]);
           }
         return;
       }

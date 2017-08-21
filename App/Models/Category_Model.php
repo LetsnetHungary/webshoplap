@@ -40,6 +40,7 @@
           $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           return $result;
       }
+      
       public function getCatName() {
             if(isset($_GET['id'])) {
                 $id = $_GET["id"];

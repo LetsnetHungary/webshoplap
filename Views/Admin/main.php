@@ -192,6 +192,7 @@
                 
                 <div class="add-button-holder">
                     <button id="blog_add-button" style="width:300px; margin-bottom: 20px;" type="button" class="btn btn-success">Kész</button>
+                    <button id="blog_delete-button" style="width:300px; margin-bottom: 20px;" type="button" class="btn btn-error">Törlés</button>
                 </div>
             </div>
             <div class="col-xs-12">
