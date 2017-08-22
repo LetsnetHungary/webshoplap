@@ -48,10 +48,10 @@ if($this->SEO->seo->og) {
 	}
 	else {
 		?>
-		<meta id="og_url" property="og:url"          content="http://webshoplap.hu" />
+		<meta id="og_url" property="og:url"          content="http://www.webshoplap.hu<? echo $_SERVER['REQUEST_URI']; ?>" />
 		<meta id="og_type" property="og:type"          content="website" />
 		<meta id="og_title" property="og:title"         content="<?php echo $this->SEO->seo->title; ?>" />
-		<meta id="og_description" property="og:description"   content="Your description" />
+		<meta id="og_description" property="og:description"   content="WEBSHOPLAP" />
 		<meta id="og_image" property="og:image"         content="http://webshoplap.hu/assets/images/placeholder.png" />
 		<?
 	}
@@ -95,6 +95,18 @@ foreach($this->SEO->js as $jsdata)
 ?>
 
 <script type="text/javascript" src="/assets/js/main.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-105082451-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 	</head>
 	<body>
 
