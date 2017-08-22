@@ -18,7 +18,6 @@ foreach($this->SEO->seo->meta as $meta => $data)
 		<meta name="<?php echo $meta; ?>" content = "<?php echo $data; ?>">
 <?php
 }
-echo $this->vName; die();
 if($this->vName == "Category") {
 	$db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
 	$stmt = $db->prepare("SELECT description FROM category WHERE fuckid = :fuckid"); 
