@@ -47,11 +47,11 @@ if($this->SEO->seo->og) {
 	}
 	else {
 		?>
-		<meta id="og_url" property="og:url"          content="http://webshoplap.graphed.hu" />
+		<meta id="og_url" property="og:url"          content="http://webshoplap.hu" />
 		<meta id="og_type" property="og:type"          content="website" />
-		<meta id="og_title" property="og:title"         content="Your Website Title" />
+		<meta id="og_title" property="og:title"         content="Webshoplap" />
 		<meta id="og_description" property="og:description"   content="Your description" />
-		<meta id="og_image" property="og:image"         content="http://webshoplap.hu/img/logo_empty.png" />
+		<meta id="og_image" property="og:image"         content="http://webshoplap.hu/assets/images/placeholder.png" />
 		<?
 	}
 }
