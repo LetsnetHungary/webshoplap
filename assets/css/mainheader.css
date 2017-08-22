@@ -5,20 +5,7 @@
 				width:100%;
 				height: 80px;
 		}
-		@media (min-width: 1200px) {
-
-		.holder{
-			width: 100%;
-		}
-
-	}
-	@media (max-width: 1200px) {
-
-		.holder{
-			width: 700px;
-		}
-
-	}
+		
 
 
 	@media (max-width: 768px) {
@@ -47,7 +34,6 @@
 	@media (max-width: 1200px) {
 
 		.keresoForm2{
-			margin-top:15px;
 			margin-bottom:15px;
 		}
 
@@ -57,6 +43,10 @@
 
 		.kereso2{
 			width:95%;
+		}
+
+		.logologo {
+			height: 90px;
 		}
 
 	}
@@ -188,8 +178,6 @@
 			margin-top:15px;
 		}*/
 		.navNew20170213{
-
-			margin-top:15px !important;
 		}
 		.navbar-header{
 			height: 50px;

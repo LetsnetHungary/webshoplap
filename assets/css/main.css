@@ -3,6 +3,14 @@ body {
     background-color: #f6f6f6!important;
 }
 
+.price {
+    height: 30px!important;
+}
+
+.price h3 {
+    font-size: 19px!important;
+}
+
 .box {
     width: 100%;
     background-color: #f0efed;
