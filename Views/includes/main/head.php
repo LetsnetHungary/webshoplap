@@ -18,7 +18,15 @@ foreach($this->SEO->seo->meta as $meta => $data)
 		<meta name="<?php echo $meta; ?>" content = "<?php echo $data; ?>">
 <?php
 }
-
+if($this->vName == "Category") {
+	$db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
+	$stmt = $db->prepare("SELECT description FROM categories WHERE fuckid = :fuckid"); 
+	$stmt->execute([":fuckid" => explode("/", $_GET["url"])[0]] );
+	$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	if($result) { ?>
+		<meta name="description" content = "<? echo $result[0]['description']; ?>">
+	<?}
+}
 
 }
 
