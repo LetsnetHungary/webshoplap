@@ -31,6 +31,7 @@ if($this->SEO->seo->og) {
 				":blog_id" => $_GET["post_id"]
 			]);
 			$ogtags = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 			?>
 
 			<meta property="og:url" content="http://www.webshoplap.hu<? echo $_SERVER['REQUEST_URI']; ?>" />
@@ -49,7 +50,7 @@ if($this->SEO->seo->og) {
 		?>
 		<meta id="og_url" property="og:url"          content="http://webshoplap.hu" />
 		<meta id="og_type" property="og:type"          content="website" />
-		<meta id="og_title" property="og:title"         content="Webshoplap" />
+		<meta id="og_title" property="og:title"         content="<?php echo $this->SEO->seo->title; ?>" />
 		<meta id="og_description" property="og:description"   content="Your description" />
 		<meta id="og_image" property="og:image"         content="http://webshoplap.hu/assets/images/placeholder.png" />
 		<?
