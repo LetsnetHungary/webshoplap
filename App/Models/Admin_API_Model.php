@@ -389,8 +389,12 @@
           }
             $i = 1;
           foreach($shop->products as $product) {
+            $p = 0;
+              if($product->pinned) {
+                $p = 1;
+              }
               if($product->type == 'old') {
-                $stmt = $this->db->prepare('UPDATE `products` SET position='.$i.' WHERE id='.$product->id);
+                $stmt = $this->db->prepare('UPDATE `products` SET position='.$i.', pinned='.$p.' WHERE id='.$product->id);
                 $stmt->execute([]);
               } else {
                 $stmt = $this->db->prepare('SELECT imageid FROM `products` ORDER BY imageid DESC LIMIT 1');
@@ -404,14 +408,15 @@
                 $uriPhp = 'data://' . substr($product->image, 5);
                 $binary = file_get_contents($uriPhp);
                 file_put_contents('assets/images/products/'.($prodmaxid+1).'.png',$binary);
-                $stmt = $this->db->prepare('INSERT INTO products (imageid,position,shop,price, name, link) VALUES (:imageid, :position, :shop, :price, :name, :link)');
+                $stmt = $this->db->prepare('INSERT INTO products (imageid,position,shop,price, name, link, pinned) VALUES (:imageid, :position, :shop, :price, :name, :link, :pinned)');
                 $stmt->execute([
                     ":imageid" => $prodmaxid+1,
                     ":position" => $i,
                     ":shop" => $id,
                     ":price" => $product->price,
                     ":name" => $product->name,
-                    ":link" => $product->link
+                    ":link" => $product->link,
+                    ":pinned" => $p
                 ]);
               }
               $i++;

@@ -1,9 +1,9 @@
 function readFile(file) {
     reader = new FileReader();
-    reader.onload = function (e) {
+    reader.onload = function(e) {
         text = e.target.result;
         img = new Image();
-        img.onload = function () {
+        img.onload = function() {
             if (img.width > img.height) {
                 ratio = 500 / img.width
             } else {
@@ -27,11 +27,11 @@ function readFile(file) {
 
 function readFileBlog(file) {
     reader = new FileReader();
-    reader.onload = function (e) {
+    reader.onload = function(e) {
         text = e.target.result;
         img = new Image();
-        img.onload = function () {
-            if (img.width/800 > img.height/400) {
+        img.onload = function() {
+            if (img.width / 800 > img.height / 400) {
                 ratio = 800 / img.width
             } else {
                 ratio = 400 / img.height;
@@ -83,21 +83,21 @@ function loadUserSite() {
         type: 'POST',
         url: 'Admin_API/getAllShops',
         encode: true,
-        success: function (result) {
+        success: function(result) {
             result = JSON.parse(result)
-            result.forEach(function (element) {
+            result.forEach(function(element) {
                 $('#usr_shop-list-holder').append($('<li class="list-group-item shop-list-item"></li>').text(element['name']).data('id', element['id']))
             }, this)
         },
-        error: function (xhr, status, error) {}
+        error: function(xhr, status, error) {}
     })
     $.ajax({
         type: 'POST',
         url: 'Admin_API/getAllUsers',
         encode: true,
-        success: function (result) {
+        success: function(result) {
             result = JSON.parse(result)
-            result.forEach(function (element) {
+            result.forEach(function(element) {
                 $('#usr_list-holder').append($(`
                     <li class="list-group-item user-list-holder">
                         <p>` + element['email'] + `</p>
@@ -107,12 +107,12 @@ function loadUserSite() {
                 `).data('id', element['id']))
             }, this)
         },
-        error: function (xhr, status, error) {}
+        error: function(xhr, status, error) {}
     })
 }
 
 function initUserSite() {
-    $('#usr_add-button').click(function () {
+    $('#usr_add-button').click(function() {
         $(this).prop('disabled', true)
         $.ajax({
             type: 'POST',
@@ -123,14 +123,14 @@ function initUserSite() {
                 shop: $('#usr_shop-list-holder .selected').data('id')
             },
             encode: true,
-            success: function (result) {
+            success: function(result) {
                 loadUserSite()
                 $('#usr_add-button').prop('disabled', false)
             },
-            error: function (xhr, status, error) {}
+            error: function(xhr, status, error) {}
         })
     })
-    $('#usr_list-holder').on('click', 'button', function () {
+    $('#usr_list-holder').on('click', 'button', function() {
         self = $(this)
         $(this).prop('disabled', true)
         $.ajax({
@@ -140,11 +140,11 @@ function initUserSite() {
                 email: self.siblings('p').eq(0).text()
             },
             encode: true,
-            success: function (result) {
+            success: function(result) {
                 loadUserSite()
                 self.prop('disabled', false)
             },
-            error: function (xhr, status, error) {}
+            error: function(xhr, status, error) {}
         })
     })
 }
@@ -164,9 +164,9 @@ function loadBlogSite() {
         type: 'POST',
         url: 'Admin_API/getAllBlogs',
         encode: true,
-        success: function (result) {
+        success: function(result) {
             result = JSON.parse(result)
-            result.forEach(function (element) {
+            result.forEach(function(element) {
                 $('#blog_list-holder').append($(`
                     <li class="list-group-item blog-list-holder">
                         <p>` + element['blog_title'] + `</p>
@@ -175,12 +175,12 @@ function loadBlogSite() {
                 `).data('blog', element))
             }, this)
         },
-        error: function (xhr, status, error) {}
+        error: function(xhr, status, error) {}
     })
 }
 
 function initBlogSite() {
-    $('#blog_add-button').click(function () {
+    $('#blog_add-button').click(function() {
         $(this).prop('disabled', true)
         $.ajax({
             type: 'POST',
@@ -194,17 +194,17 @@ function initBlogSite() {
                 subtitle: $('#blogsubtitle').val()
             },
             encode: true,
-            success: function (result) {
+            success: function(result) {
                 console.log(result);
                 loadBlogSite()
                 $('#blog_add-button').prop('disabled', false)
             },
-            error: function (xhr, status, error) {
+            error: function(xhr, status, error) {
                 console.log(xhr);
             }
         })
     })
-    $('#blog_delete-button').click(function () {
+    $('#blog_delete-button').click(function() {
         $(this).prop('disabled', true)
         $.ajax({
             type: 'POST',
@@ -218,17 +218,17 @@ function initBlogSite() {
                 subtitle: ''
             },
             encode: true,
-            success: function (result) {
+            success: function(result) {
                 console.log(result);
                 loadBlogSite()
-                $('#blog_add-button').prop('disabled', false)
+                $('#blog_delete-button').prop('disabled', false)
             },
-            error: function (xhr, status, error) {
+            error: function(xhr, status, error) {
                 console.log(xhr);
             }
         })
     })
-    $('#blog_list-holder').on('click', 'button', function () {
+    $('#blog_list-holder').on('click', 'button', function() {
         b = $(this).closest('li').data('blog')
         $('#blogtitle').val(b['blog_title'])
         $('#blogsubtitle').val(b['blog_subtitle'])
@@ -240,10 +240,10 @@ function initBlogSite() {
         $('#textareaholder').append($('<textarea  id="blogcontent" name="blog-content" rows="10" cols="50" required></textarea>').val(b['blog_content']))
         CKEDITOR.replace('blog-content')
     })
-    $('#blog-imginput').on('change', function () {
-            files = this.files;
-            readFileBlog(files[0]);
-        });
+    $('#blog-imginput').on('change', function() {
+        files = this.files;
+        readFileBlog(files[0]);
+    });
 }
 
 function loadPartnerSite() {
@@ -256,9 +256,9 @@ function loadPartnerSite() {
         type: 'POST',
         url: 'Admin_API/getAllPartners',
         encode: true,
-        success: function (result) {
+        success: function(result) {
             result = JSON.parse(result)
-            result.forEach(function (element) {
+            result.forEach(function(element) {
                 $('#partner_list-holder').append($(`
                     <li class="list-group-item user-list-holder">
                         <p>` + element['name'] + `</p>
@@ -267,12 +267,12 @@ function loadPartnerSite() {
                 `).data('id', element['id']))
             }, this)
         },
-        error: function (xhr, status, error) {}
+        error: function(xhr, status, error) {}
     })
 }
 
 function initPartnerSite() {
-    $('#partner_add-button').click(function () {
+    $('#partner_add-button').click(function() {
         $(this).prop('disabled', true)
         $.ajax({
             type: 'POST',
@@ -283,14 +283,14 @@ function initPartnerSite() {
                 link: $('#partner_link').val()
             },
             encode: true,
-            success: function (result) {
+            success: function(result) {
                 loadPartnerSite()
                 $('#partner_add-button').prop('disabled', false)
             },
-            error: function (xhr, status, error) {}
+            error: function(xhr, status, error) {}
         })
     })
-    $('#partner_list-holder').on('click', 'button', function () {
+    $('#partner_list-holder').on('click', 'button', function() {
         self = $(this)
         $(this).prop('disabled', true)
         $.ajax({
@@ -300,11 +300,11 @@ function initPartnerSite() {
                 id: self.closest('li').data('id')
             },
             encode: true,
-            success: function (result) {
+            success: function(result) {
                 loadPartnerSite()
                 self.prop('disabled', false)
             },
-            error: function (xhr, status, error) {}
+            error: function(xhr, status, error) {}
         })
     })
 }
@@ -318,7 +318,7 @@ function loadShopSite() {
     $('#shop_image').val('')
     $('#shop_bio').val('')
     $('#label_name').val('')
-    $('#shop_partner').prop( "checked", false )
+    $('#shop_partner').prop("checked", false)
     $('#label_holder li:not(.active)').remove()
     $('#cat_holder li:not(.active)').remove()
     $('#shop_list-holder').empty()
@@ -331,21 +331,21 @@ function loadShopSite() {
         type: 'POST',
         url: 'Admin_API/getAllCategories',
         encode: true,
-        success: function (result) {
+        success: function(result) {
             result = JSON.parse(result)
-            result.forEach(function (element) {
+            result.forEach(function(element) {
                 $('#cat_select').append($('<option></option>').text(element['name']).attr('value', element['id']))
             }, this)
         },
-        error: function (xhr, status, error) {}
+        error: function(xhr, status, error) {}
     })
     $.ajax({
         type: 'POST',
         url: 'Admin_API/getAllShops',
         encode: true,
-        success: function (result) {
+        success: function(result) {
             result = JSON.parse(result)
-            result.forEach(function (element) {
+            result.forEach(function(element) {
                 $('#shop_list-holder').append($(`
                     <li class="list-group-item blog-list-holder">
                         <p>` + element['name'] + `</p>
@@ -354,25 +354,26 @@ function loadShopSite() {
                 `).data('shop', element))
             }, this)
         },
-        error: function (xhr, status, error) {}
+        error: function(xhr, status, error) {}
     })
 }
 
 function initShopSite() {
     $('#prod_holder').data('deleted', [])
-    $('#shop_add-button').click(function () {
+    $('#shop_add-button').click(function() {
         $(this).prop('disabled', true)
         products = []
         $('#prod_holder li').each(function() {
             self = $(this);
             prod = {};
-            (self.data('old')) ? prod.type = 'old' : prod.type = 'new';
+            (self.data('old')) ? prod.type = 'old': prod.type = 'new';
             prod.id = self.data('id');
-            (self.hasClass('pinned-product')) ? prod.pinned = true : prod.pinned = false;
-            prod.price = self.find('.price h2').text().replace('Ft','');
-            (self.data('old')) ? prod.image = '' : prod.image = self.find('img').attr('src');
-            (self.data('old')) ? prod.name = '' : prod.name = self.data('name');
-            (self.data('old')) ? prod.link = '' : prod.link = self.data('link');
+            (self.hasClass('pinned-product')) ? prod.pinned = true: prod.pinned = false;
+            console.log(prod.pinned);
+            prod.price = self.find('.price h2').text().replace('Ft', '');
+            (self.data('old')) ? prod.image = '': prod.image = self.find('img').attr('src');
+            (self.data('old')) ? prod.name = '': prod.name = self.data('name');
+            (self.data('old')) ? prod.link = '': prod.link = self.data('link');
             products.push($.extend(true, {}, prod));
             prod = {}
         })
@@ -398,18 +399,18 @@ function initShopSite() {
             },
             dataType: 'json',
             encode: true,
-            success: function (result) {
+            success: function(result) {
                 console.log(result);
                 loadShopSite()
                 $('#shop_add-button').prop('disabled', false)
             },
-            error: function (xhr, status, error) {
+            error: function(xhr, status, error) {
                 loadShopSite()
                 $('#shop_add-button').prop('disabled', false)
             }
         })
     })
-    $('#shop_list-holder').on('click', 'button', function () {
+    $('#shop_list-holder').on('click', 'button', function() {
         $('#label_holder li:not(.active)').remove()
         $('#cat_holder li:not(.active)').remove()
         $('#prod_holder').empty()
@@ -422,9 +423,9 @@ function initShopSite() {
                 id: s['id']
             },
             encode: true,
-            success: function (result) {
+            success: function(result) {
                 result = JSON.parse(result)
-                result.forEach(function (element) {
+                result.forEach(function(element) {
                     e = $(`<li data-old="true" data-pinned="` + element['pinned'] + `" data-id="` + element['id'] + `" class="col-xs-6 col-sm-4 col-md-3"><div class="delete-product">
                                 <i class="fa fa-times fa-2x" aria-hidden="true"></i>
                             </div><div class="pin-product">
@@ -444,16 +445,16 @@ function initShopSite() {
                         id: s['id']
                     },
                     encode: true,
-                    success: function (result) {
+                    success: function(result) {
                         result = JSON.parse(result)
-                        result.forEach(function (element) {
-                            $(`<li class="list-group-item">`+ element['name'] +`</li>`).append(`<div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>`).appendTo('#label_holder')
+                        result.forEach(function(element) {
+                            $(`<li class="list-group-item">` + element['name'] + `</li>`).append(`<div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>`).appendTo('#label_holder')
                         }, this)
                     },
-                    error: function (xhr, status, error) {}
+                    error: function(xhr, status, error) {}
                 })
             },
-            error: function (xhr, status, error) {}
+            error: function(xhr, status, error) {}
         })
         $('#shop_name').val(s['name'])
         $('#shop_link').val(s['adress'])
@@ -461,24 +462,45 @@ function initShopSite() {
         $('#shop_facebook').val(s['facebook'])
         $('#shop_image').val(s['image'])
         $('#shop_bio').val(s['bio'])
-        if(s['pinned'] != 0) {
-            $('#shop_partner').prop( "checked", true )
+        $('#shops').data('id', s['id'])
+        console.log('dssad');
+        $('#shop_delete-button').click(function() {
+            $(this).prop('disabled', true)
+            $.ajax({
+                type: 'POST',
+                url: 'Admin_API/deleteShop',
+                data: {
+                    id: $('#shops').data('id')
+                },
+                encode: true,
+                success: function(result) {
+                    console.log(result);
+                    loadShopSite()
+                    $('#shop_delete-button').prop('disabled', false)
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr);
+                }
+            })
+        })
+        if (s['pinned'] != 0) {
+            $('#shop_partner').prop("checked", true)
         }
         pins = s['pinned'].split(';')
-        if(s['category'] != 0) {
-            s['category'].split(';').forEach( function (element) {
-                t = $('#cat_select option[value='+element+']').text()
+        if (s['category'] != 0) {
+            s['category'].split(';').forEach(function(element) {
+                t = $('#cat_select option[value=' + element + ']').text()
                 a = $(`<li class="list-group-item">
                                 <div class="delete-row">
                                     <i class="fa fa-times fa-2x" aria-hidden="true"></i>
                                 </div>
                                 <div class="pin-row">
                                     <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
-                                </div>`+ t +`</li>`)
-                if($.inArray(element+'', pins) != -1) {
+                                </div>` + t + `</li>`)
+                if ($.inArray(element + '', pins) != -1) {
                     a.addClass('pinned')
                 }
-                a.data('id',element).appendTo('#cat_holder')
+                a.data('id', element).appendTo('#cat_holder')
             }, this)
         }
     })
@@ -492,10 +514,10 @@ function initShopSite() {
         $(this).closest('li').toggleClass('pinned-product')
     })
     $(document).on('click', '.delete-product', function() {
-        if($(this).closest('li').data('old')){
+        if ($(this).closest('li').data('old')) {
             id = $(this).closest('li').data('id')
             a = [id]
-            if($.isArray($('#prod_holder').data('deleted'))) {
+            if ($.isArray($('#prod_holder').data('deleted'))) {
                 a = $.merge(a, $('#prod_holder').data('deleted'))
             } else {
                 a.push($('#prod_holder').data('deleted'))
@@ -505,7 +527,7 @@ function initShopSite() {
         $(this).closest('li').remove()
     })
     $('#label_add').click(function() {
-        $(`<li class="list-group-item">`+ $('#label_name').val() +`</li>`).append(`<div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>`).appendTo('#label_holder')
+        $(`<li class="list-group-item">` + $('#label_name').val() + `</li>`).append(`<div class="delete-row"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>`).appendTo('#label_holder')
         $('#label_name').val('')
     })
     $('#cat_add').click(function() {
@@ -516,13 +538,13 @@ function initShopSite() {
                                 </div>
                                 <div class="pin-row">
                                     <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
-                                </div>`+ t +`</li>`)
-                a.data('id',$('#cat_select').val()).appendTo('#cat_holder')
+                                </div>` + t + `</li>`)
+        a.data('id', $('#cat_select').val()).appendTo('#cat_holder')
     })
-    $('#prod_imginput').on('change', function () {
-            files = this.files;
-            readFile(files[0]);
-        });
+    $('#prod_imginput').on('change', function() {
+        files = this.files;
+        readFile(files[0]);
+    });
     $('#prod_wrapper .add-row').click(function() {
         $('#prod_upload-holder').toggle()
     })
@@ -534,10 +556,10 @@ function initShopSite() {
                             </div><div class="slide-inner"><div class="product"> <img class='image-responsive' src = "">
                             <div class="price"><h2>` + $('#prod_price').val() + `Ft</h2></div></div>
                             </div></li>`);
-                            e.find('img').attr('src', $('#prod_preview-img').attr('src'))
-                            e.data('name', $('#prod_name').val())
-                            e.data('link', $('#prod_link').val())
-                            e.appendTo('#prod_holder')
+        e.find('img').attr('src', $('#prod_preview-img').attr('src'))
+        e.data('name', $('#prod_name').val())
+        e.data('link', $('#prod_link').val())
+        e.appendTo('#prod_holder')
         $('#prod_name').val('')
         $('#prod_link').val('')
         $('#prod_price').val('')
@@ -546,20 +568,20 @@ function initShopSite() {
 }
 
 
-$(function () {
+$(function() {
     initSite()
-    $('#logout').click(function () {
+    $('#logout').click(function() {
         window.location = 'Logout'
     })
-    $('.tile').click(function () {
+    $('.tile').click(function() {
         $('.mainmenuholder').hide(300)
         $('#' + $(this).data('menu')).show(300)
         loadSite($(this).data('menu'))
     })
-    $('.search-input').on('keyup', function () {
+    $('.search-input').on('keyup', function() {
         input = $(this)
         filter = input.val().toUpperCase()
-        $(this).closest('.list-group').find('li:not(:first)').each(function () {
+        $(this).closest('.list-group').find('li:not(:first)').each(function() {
             if ($(this).text().toUpperCase().indexOf(filter) > -1) {
                 $(this).show()
             } else {
@@ -567,7 +589,7 @@ $(function () {
             }
         })
     })
-    $('.list-holder').on('click', '.shop-list-item', function () {
+    $('.list-holder').on('click', '.shop-list-item', function() {
         if (!$(this).hasClass('selected')) {
             $(this).siblings('.selected').removeClass('selected')
             $(this).addClass('selected')
@@ -575,7 +597,7 @@ $(function () {
             $(this).removeClass('selected')
         }
     })
-    $('.back-btn').click(function () {
+    $('.back-btn').click(function() {
         $('.submenuholder').hide(300)
         $('.mainmenuholder').show(300)
     })

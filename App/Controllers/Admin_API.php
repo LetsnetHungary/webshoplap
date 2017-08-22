@@ -140,6 +140,12 @@
             return;
         }
 
+        public function deleteShop() {
+          $id = $_POST['id'];
+          $this->model->removeShop($id);
+          return;
+        }
+
         public function getAllCategories() {
             print_r(json_encode($this->model->getAllCategories()));
             return;
