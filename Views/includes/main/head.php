@@ -110,7 +110,7 @@ foreach($this->SEO->js as $jsdata)
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-105082451-1', 'auto');
+  ga('create', 'UA-75887562-1', 'auto');
   ga('send', 'pageview');
 
 </script>
