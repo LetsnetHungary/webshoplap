@@ -62,8 +62,6 @@ if($this->SEO->seo->og) {
 			<meta property="og:description" content="<? echo $result[0]['description']; ?>" />
 			<meta id="og_image" property="og:image" content="http://webshoplap.hu/assets/images/facebook_logo.png" />
 			<meta property="og:image:type" content="image/png" />
-			<meta property="og:image:width" content="4269" />
-			<meta property="og:image:height" content="640" />
 
 	<?
 	}
