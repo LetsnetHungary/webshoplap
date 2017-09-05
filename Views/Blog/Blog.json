@@ -25,7 +25,7 @@
 
 		"og" :
 		{
-			"dynamic" : "true"
+			"dynamic" : "blog"
 		}
 	}
 }

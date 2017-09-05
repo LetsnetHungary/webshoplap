@@ -10,8 +10,4 @@
 			});
 
 		}
-        /*
-		public function cikkMegjelenites(){
-			$this->model->blogLekeres();
-		}*/
 	}

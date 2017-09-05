@@ -21,7 +21,7 @@
 		"meta": {},
 
 		"og": {
-
+			"dynamic" : "category"
 		}
 	}
 }
