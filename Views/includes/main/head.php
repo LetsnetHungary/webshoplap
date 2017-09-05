@@ -31,7 +31,7 @@ if($this->vName == "Category") {
 }
 
 if($this->SEO->seo->og) {
-	if(isset($this->SEO->seo->og->dynamic) && $this->SEO->seo->og->dynamic) {
+	if(isset($this->SEO->seo->og->dynamic) && $this->SEO->seo->og->dynamic == "blog") {
 		if(isset($_GET["post_id"])) {
 			$db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
 			$stmt = $db->prepare("SELECT * FROM blog WHERE blog_id = :blog_id");
@@ -54,12 +54,25 @@ if($this->SEO->seo->og) {
 			<?
 		}
 	}
+	else if(isset($this->SEO->seo->og->dynamic) && $this->SEO->seo->og->dynamic == "category") { ?>
+
+			<meta property="og:url" content="http://www.webshoplap.hu<? echo $_SERVER['REQUEST_URI']; ?>" />
+			<meta property="og:type" content="article" />
+			<meta property="og:title" content="<?php echo $this->SEO->seo->title; ?>" />
+			<meta property="og:description" content="<? echo $result[0]['description']; ?>" />
+			<meta id="og_image" property="og:image" content="http://webshoplap.hu/assets/images/placeholder.png" />
+			<meta property="og:image:type" content="image/png" />
+			<meta property="og:image:width" content="400" />
+			<meta property="og:image:height" content="300" />
+
+	<?
+	}
 	else {
 		?>
 		<meta id="og_url" property="og:url"          content="http://www.webshoplap.hu<? echo $_SERVER['REQUEST_URI']; ?>" />
 		<meta id="og_type" property="og:type"          content="website" />
 		<meta id="og_title" property="og:title"         content="<?php echo $this->SEO->seo->title; ?>" />
-		<meta id="og_description" property="og:description"   content="WEBSHOPLAP" />
+		<meta id="og_description" property="og:description"   content="Magyarország összes webshopja. Valós vásárlók által írt vélemények és értékelések, hogy garantaláltan a számodra legmegfelelőbb oldalt válaszd." />
 		<meta id="og_image" property="og:image"         content="http://webshoplap.hu/assets/images/placeholder.png" />
 		<?
 	}
