@@ -16,11 +16,6 @@
 				header("Location: ../Contact?mail_error");
 				return;
 			}
-			elseif (!preg_match("/^[a-zA-Z]*$/", $sender) || !preg_match("/^[a-zA-Z]*$/", $subject) || !preg_match("/^[a-zA-Z]*$/", $text)) {
-				echo "invalid characters have been used!";
-				header("Location: ../Contact?char_error");
-				return;
-			}
 			else{
 				$this->sendMail();
 			}
@@ -34,7 +29,7 @@
 			$text = $_POST['text'];
 			$time_sent = date("Y.m.d G:i");
 
-			$owner_mail = "kovioli@gmail.com";
+			$owner_mail = "hegel.akos@letsnet.hu";
 			//$content = str_replace("\n", " ", $content); // ide 3 paraméter kell, hogy mire cseréljen, az is ;)
 			$ending = "</br></br>" . "Sent by " . $mail . "</br>" . "Időpont: " . $time_sent;
 			$msg = $text . $ending;
