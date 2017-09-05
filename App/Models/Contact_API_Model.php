@@ -33,6 +33,7 @@
 			//$content = str_replace("\n", " ", $content); // ide 3 paraméter kell, hogy mire cseréljen, az is ;)
 			$ending = "</br></br>" . "Sent by " . $mail . "</br>" . "Időpont: " . $time_sent;
 			$msg = $text . $ending;
+			mail('hegel.akos@letsnet.hu', $subject, $msg);
 			header("location:../Index");
 
 		}
