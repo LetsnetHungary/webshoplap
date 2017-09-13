@@ -13,7 +13,7 @@
                             <i class="fa fa-arrow-left"></i>
                         </div>
                     </div>
-                    <div class="boxAboutRow row ">
+                    <div class="boxAboutRow row hidden-xs">
                         <div class="col-xs-6 boxAboutImgHolder">
                             <img class="boxAboutIconTop img-responsive" src="<? if($shop["image"] == ""){echo "assets/images/placeholder.png";  }else{echo $shop["image"];}?>">
                         </div>
@@ -25,6 +25,29 @@
                                 </a>
                                 <h4><i class="fa fa-phone icon"></i><?php echo $shop["phone"]; ?></h4>
                                 <iframe src="https://www.facebook.com/plugins/like.php?href=<?if($shop["facebook"] != ""){echo $shop['facebook'];}{echo $shop['adress'];}?>&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="120" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin: 0" class="boxAboutRow row hidden-sm hidden-md hidden-lg">
+                        <div class="col-xs-12 boxAboutTitleHolder" style="text-align:center;">
+                            <h3 class="datatitle" ><?php echo $shop["name"]; ?> <? if($shop['pinned'] != 0){?><img title="partner" class="pinned-image" src="assets/images/pinned.png"><?} ?></h3>
+                        </div>
+                        <div class="col-xs-12 boxAboutImgHolderSmall" style="text-align:center;">
+                            <img style="margin: 0" class="boxAboutIcon img-responsive" src="<? if($shop["image"] == ""){echo "assets/images/placeholder.png";  }else{echo $shop["image"];}?>">
+                        </div>
+                        <div class="col-xs-12 boxAboutDataHolderSmall">
+                            <div class="dataholder-flex">
+                                <div class="dataholder">
+                                    <a target="_blank" href="<?php echo $shop["adress"]; ?>">
+                                    <h4 style="text-align: center;" class="datatext"><i class="fa fa-wifi icon"></i><?php echo $shop["adress"]; ?></h4>
+                                </a>
+                                </div>
+                                <div class="dataholder">
+                                    <h4 style="text-align: center;" class="datatext"><i class="fa fa-phone icon"></i><?php echo $shop["phone"]; ?></h4>
+                                </div>
+                                <div class="dataholder">
+                                <iframe src="https://www.facebook.com/plugins/like.php?href=<?if($shop["facebook"] != ""){echo $shop['facebook'];}{echo $shop['adress'];}?>&amp;width=120&amp;layout=button_count&amp;action=like&amp;size=small&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=118443608242792" width="76" height="21" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+                                </div>
                             </div>
                         </div>
                     </div>
