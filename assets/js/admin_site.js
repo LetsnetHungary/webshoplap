@@ -377,6 +377,8 @@ function initShopSite() {
             products.push($.extend(true, {}, prod));
             prod = {}
         })
+        console.log(products)
+        console.log($.makeArray($('#cat_holder li:not(.active)')).map(x => $(x).data('id')).join(';'))
         $.ajax({
             type: 'POST',
             url: 'Admin_API/addShop',

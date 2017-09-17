@@ -92,7 +92,7 @@
                                     <div class="col-xs-6 boxAboutDataHolder">
                                         <div class="aboutholder">
                                         <h3 class="datatitle" style="margin-bottom: 30px;"><?php echo $other["name"]; ?> <? if($other['pinned'] != 0){?><img title="partner" class="pinned-image" src="assets/images/pinned.png"><?} ?></h3>
-                                        <a href="http://<?php echo $other['adress']; ?>"><h4 class="datatext"><i class="fa fa-wifi icon"></i><?php echo $other["adress"]; ?></h4></a>
+                                        <a href="<?php echo $other['adress']; ?>"><h4 class="datatext"><i class="fa fa-wifi icon"></i><?php echo $other["adress"]; ?></h4></a>
                                         <h4 class="datatext"><i class="fa fa-phone icon"></i><?php echo $other["phone"]; ?></h4>
                                         </div>
                                         </div>
