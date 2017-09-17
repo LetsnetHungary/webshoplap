@@ -23,7 +23,7 @@
         }
 
         public function getShops($id) {
-            echo $id;
+            //echo $id;
             $db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
             $stmt = $db->prepare("SELECT id, name, adress, phone, image, facebook, pinned FROM `shops` WHERE ((category = '".$id."') OR (category LIKE '".$id."; %') OR (category LIKE '%; ".$id."') OR (category LIKE '%; ".$id."; %')) AND ((pinned = '".$id."') OR (pinned LIKE '".$id."; %') OR (pinned LIKE '%; ".$id."') OR (pinned LIKE '%; ".$id."; %'))");
             $stmt->execute(array());
