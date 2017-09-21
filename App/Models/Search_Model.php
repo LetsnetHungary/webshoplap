@@ -9,17 +9,17 @@
 		}
     public function search($key_word){
       $key_word = "%" . $key_word . "%";
-      $stmt = $this->db->prepare("SELECT `id` FROM `shops` WHERE name LIKE :key_word");
+      $stmt = $this->db->prepare("SELECT `id` FROM `shops` WHERE name LIKE :key_word OR adress LIKE :key_word");
       $stmt->execute([
         ":key_word"=>$key_word
       ]);
       $search_result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      $stmt = $this->db->prepare("SELECT `shop` AS `id` FROM `labels` WHERE name LIKE :key_word");
+      $stmt = $this->db->prepare("SELECT `shop` AS `id` FROM `labels` WHERE name LIKE :key_word OR adress LIKE :key_word");
       $stmt->execute([
         ":key_word"=>$key_word
       ]);
       $search_result = array_merge($search_result, $stmt->fetchAll(PDO::FETCH_ASSOC));
-			$stmt = $this->db->prepare("SELECT `shop` AS `id` FROM `products` WHERE name LIKE :key_word");
+			$stmt = $this->db->prepare("SELECT `shop` AS `id` FROM `products` WHERE name LIKE :key_word OR adress LIKE :key_word");
 			$stmt->execute([
         ":key_word"=>$key_word
       ]);
