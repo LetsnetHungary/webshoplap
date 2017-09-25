@@ -65,11 +65,11 @@ if($this->SEO->seo->og) {
 	}
 	else {
 		?>
-		<meta id="og_url" property="og:url"          content="http://www.webshoplap.hu<? echo $_SERVER['REQUEST_URI']; ?>" />
-		<meta id="og_type" property="og:type"          content="website" />
-		<meta id="og_title" property="og:title"         content="<?php echo $this->SEO->seo->title; ?>" />
-		<meta id="og_description" property="og:description"   content="Magyarország összes webshopja. Valós vásárlók által írt vélemények és értékelések, hogy garantaláltan a számodra legmegfelelőbb oldalt válaszd." />
-		<meta id="og_image" property="og:image"         content="http://webshoplap.hu/assets/images/facebook_logo.png" />
+		<meta id="og_url" property="og:url" content="http://www.webshoplap.hu<? echo $_SERVER['REQUEST_URI']; ?>" />
+		<meta id="og_type" property="og:type" content="website" />
+		<meta id="og_title" property="og:title" content="<?php echo $this->SEO->seo->title; ?>" />
+		<meta id="og_description" property="og:description" content="Magyarország összes webshopja. Valós vásárlók által írt vélemények és értékelések, hogy garantaláltan a számodra legmegfelelőbb oldalt válaszd." />
+		<meta id="og_image" property="og:image" content="http://webshoplap.hu/assets/images/facebook_logo.png" />
 		<?
 	}
 }
