@@ -3,8 +3,8 @@
 	//print_r(CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap")));
 	//die();
 	print_r(is_null($db));
-	$stmt = $db->prepare("SELECT * FROM `categories` WHERE 1");
-	$stmt->execute([]);
+	$stmt = $db->prepare("SELECT * FROM `categories` WHERE active = :active ");
+	$stmt->execute([":active" => 1]);
 	$category = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <link rel="stylesheet" href="/assets/css/mainheader.css">
