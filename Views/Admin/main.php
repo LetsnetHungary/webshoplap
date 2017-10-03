@@ -319,6 +319,9 @@
                             <select id="cat_select" class="form-control">
                             </select>
                             <button type="button" class="btn btn-success form-control" id="cat_add">Hozzáadás</button>
+                            <select id="cat_remove" class="form-control">
+                            </select>
+                            <button type="button" class="btn btn-danger form-control" id="cat_rem">Törlés!</button>
                         </div>
                     </div>
                     <div class="col-xs-12" id="prod_upload-holder" style="display: none;">
