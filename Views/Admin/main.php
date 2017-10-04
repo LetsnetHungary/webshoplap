@@ -40,6 +40,22 @@
                 </div>
             </div>
             <div class="col-xs-12 col-md-6">
+                <div class="tile" data-menu="categories">
+                    <div class="tilerow row">
+                        <div class="col-xs-4">
+                            <div class="tileimageholder">
+                                <img src="/assets/images/icons/categories.png" alt="" class="img-responsive">
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="tiletextholder">
+                                <p class="tiletext">Kategóriák kezelése</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
                 <div class="tile" data-menu="blogs">
                     <div class="tilerow row">
                         <div class="col-xs-4">
@@ -144,6 +160,49 @@
                         </div>
                     </div>
                 </di>
+            </div>
+        </div>
+    </div>
+    <div class="submenuholder" id="categories">
+        <div class="row">
+            <div class="col-xs-12">
+                <button style="margin-bottom: 10px" type="button" class="btn back-btn">Vissza a főoldalra</button>
+                <h2 class="submenutitle">Új kategória hozzáadása:</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="category_name">Kategória neve:</label>
+                        <input type="text" class="form-control" id="category_name">
+                        <label for="category_name">Kategória linkje:</label>
+                        <input type="text" class="form-control" id="category_link">
+                        <label for="category_desc">Kategória leírása:</label>
+                        <input type="text" class="form-control" id="category_dsc">
+                    </div>
+                </form>
+                <div class="add-button-holder">
+                    <button id="category_add-button" style="width:300px; margin-bottom: 20px;" type="button" class="btn btn-success">Hozzáadás</button>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <h2 class="submenutitle">Meglévő kategóriák kezelése:</h2>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="list-group">
+                            <li class="list-group-item">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                                    <input class="form-control search-input" type="text" placeholder="Keresés..">
+                                </div>
+                            </li>
+                            <div class="list-holder" id="category_list-holder">
+                                <li class="list-group-item blog-list-holder">
+                                    <p>ez a neve a partnernek</p>
+                                    <button style="width:20%" type="button" class="btn btn-danger">Törlés</button>
+                                    <button style="width:20%" type="button" class="btn" data-state="0">Deaktiválás</button>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

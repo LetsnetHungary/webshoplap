@@ -30,16 +30,6 @@
           $this->model->pinProduct($id, $pin);
           return;
         }
-        public function removeCategory() {
-          $id = $_POST["id"];
-          $this->model->removeCategory($id);
-          return;
-        }
-        public function addCategory() {
-            $name = $_POST["name"];
-            $this->model->addCategory($name);
-            return;
-        }
         public function pinShop() {
             $id = $_POST["id"];
             $pin = $_POST["pin"];
@@ -137,6 +127,27 @@
         public function deletePartner() {
             $id = $_POST['id'];
             $this->model->deletePartner($id);
+            return;
+        }
+
+        public function deleteCategory() {
+          $id = $_POST["id"];
+          $this->model->removeCategory($id);
+          return;
+        }
+
+        public function addCategory() {
+            $name = $_POST["name"];
+            $link = $_POST["link"];
+            $desc = $_POST["desc"];
+            $this->model->addCategory($name, $link, $desc);
+            return;
+        }
+
+        public function changeCategory() {
+            $id = $_POST['id'];
+            $to = $_POST['to'];
+            $this->model->changeCategory($id, $to);
             return;
         }
 

@@ -38,8 +38,8 @@
           ]);
           return;
       }
-      public function addCategory($name) {
-          $stmt = $this->db->prepare('INSERT INTO categories (name) VALUES (\''.$name.'\')');
+      public function addCategory($name, $link, $desc) {
+          $stmt = $this->db->prepare('INSERT INTO categories (name, fuckid, description, active) VALUES (\''.$name.'\', \''.$link.'\', \''.$desc.'\', 1)');
           $stmt->execute([]);
           $stmt = $this->db->prepare('SELECT id FROM `categories` WHERE name = :name');
           $stmt->execute([
@@ -262,6 +262,12 @@
 
         public function getAllCategories() {
             $stmt = $this->db->prepare("SELECT * FROM categories");
+            $stmt->execute([]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function changeCategory($id, $to) {
+            $stmt = $this->db->prepare("UPDATE categories SET `active`=".$to." WHERE id=".$id);
             $stmt->execute([]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }

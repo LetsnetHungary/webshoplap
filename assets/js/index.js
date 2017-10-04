@@ -26,6 +26,7 @@ function removeBox() {
         curr = 100;
     });
 }
+
 var waitForFinalEvent = function () {
     var b = {};
     return function (c, d, a) {
@@ -73,7 +74,7 @@ function initShop(self, shop) {
                 </div>
 
 
-                <div class="boxAboutRow row hidden-sm hidden-md hidden-lg">
+                <div style="margin-left: 0" class="boxAboutRow row hidden-sm hidden-md hidden-lg">
                     <div class="col-xs-12 boxAboutTitleHolder" style="text-align:center;">
                         <h3 class="shopname" style="margin-bottom: 10px; margin-top: 10px;">` + shop['name'] + `</h3>
                     </div>
@@ -340,6 +341,6 @@ $(function () {
     })
     $('.boxHolder .boxTitle').on('click', function () {
         id = $(this).closest('.boxHolder').data('id');
-        window.location = 'Category?id=' + id;
+        window.location = id;
     })
 })

@@ -14,6 +14,7 @@
               $shops[$cat["name"]]["pinned"] = [];
               $shops[$cat["name"]]["unpinned"] = [];
               $shops[$cat["name"]]["id"] = $cat["id"];
+              $shops[$cat["name"]]["fuckid"] = $cat["fuckid"];
             $rem = 5;
             $stmt = $this->db->prepare("SELECT name, id FROM `shops` WHERE ((category = '".$cat['id']."') OR (category LIKE '".$cat['id']."; %') OR (category LIKE '%; ".$cat['id']."') OR (category LIKE '%; ".$cat['id']."; %')) AND ((pinned = '".$cat['id']."') OR (pinned LIKE '".$cat['id']."; %') OR (pinned LIKE '%; ".$cat['id']."') OR (pinned LIKE '%; ".$cat['id']."; %')) ORDER BY RAND() LIMIT 5");
             $stmt->execute();

@@ -63,6 +63,9 @@ function loadSite(site) {
         case 'shops':
             loadShopSite()
             break
+        case 'categories':
+            loadCategorySite()
+            break
     }
 }
 
@@ -71,6 +74,7 @@ function initSite() {
     initBlogSite()
     initPartnerSite()
     initShopSite()
+    initCategorySite()
 }
 
 function loadUserSite() {
@@ -302,6 +306,94 @@ function initPartnerSite() {
             encode: true,
             success: function(result) {
                 loadPartnerSite()
+                self.prop('disabled', false)
+            },
+            error: function(xhr, status, error) {}
+        })
+    })
+}
+
+function loadCategorySite() {
+    $('#category_name').val('')
+    $('#category_link').val('')
+    $('#category_desc').val('')
+    $('.search-input').val('')
+    $('#category_list-holder').empty()
+    $.ajax({
+        type: 'POST',
+        url: 'Admin_API/getAllCategories',
+        encode: true,
+        success: function(result) {
+            result = JSON.parse(result)
+            result.forEach(function(element) {
+                el = $(`
+                    <li class="list-group-item user-list-holder">
+                        <p>` + element['name'] + `</p>
+                        <button style="width:20%" type="button" class="btn btn-danger">Törlés</button>
+                        <button style="width:20%" type="button" class="btn btn-activator">Deaktiválás</button>
+                    </li>
+                `).data('id', element['id'])
+                if(element['active'] == 1) {
+                    el.find('button').eq(1).data('state', 0).text('Deaktiválás')
+                } else {
+                    el.find('button').eq(1).data('state', 1).text('Aktiválás')
+                }
+                $('#category_list-holder').append(el)
+            }, this)
+        },
+        error: function(xhr, status, error) {}
+    })
+}
+
+function initCategorySite() {
+    $('#category_add-button').click(function() {
+        $(this).prop('disabled', true)
+        $.ajax({
+            type: 'POST',
+            url: 'Admin_API/addCategory',
+            data: {
+                name: $('#category_name').val(),
+                link: $('#category_link').val(),
+                desc: $('#category_desc').val()
+            },
+            encode: true,
+            success: function(result) {
+                loadCategorySite()
+                $('#category_add-button').prop('disabled', false)
+            },
+            error: function(xhr, status, error) {}
+        })
+    })
+    $('#category_list-holder').on('click', '.btn-danger', function() {
+        self = $(this)
+        $(this).prop('disabled', true)
+        $.ajax({
+            type: 'POST',
+            url: 'Admin_API/deleteCategory',
+            data: {
+                id: self.closest('li').data('id')
+            },
+            encode: true,
+            success: function(result) {
+                loadCategorySite()
+                self.prop('disabled', false)
+            },
+            error: function(xhr, status, error) {}
+        })
+    })
+    $('#category_list-holder').on('click', '.btn-activator', function() {
+        self = $(this)
+        $(this).prop('disabled', true)
+        $.ajax({
+            type: 'POST',
+            url: 'Admin_API/changeCategory',
+            data: {
+                id: self.closest('li').data('id'),
+                to: self.data('state')
+            },
+            encode: true,
+            success: function(result) {
+                loadCategorySite()
                 self.prop('disabled', false)
             },
             error: function(xhr, status, error) {}
@@ -578,6 +670,7 @@ $(function() {
     $('.tile').click(function() {
         $('.mainmenuholder').hide(300)
         $('#' + $(this).data('menu')).show(300)
+        console.log($(this).data('menu'));
         loadSite($(this).data('menu'))
     })
     $('.search-input').on('keyup', function() {
