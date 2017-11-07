@@ -25,15 +25,21 @@
         public function getShops($id) {
             //echo $id;
             $db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
-            $stmt = $db->prepare("SELECT id, name, adress, phone, image, facebook, pinned FROM `shops` WHERE ((category = '".$id."') OR (category LIKE '".$id."; %') OR (category LIKE '%; ".$id."') OR (category LIKE '%; ".$id."; %')) AND ((pinned = '".$id."') OR (pinned LIKE '".$id."; %') OR (pinned LIKE '%; ".$id."') OR (pinned LIKE '%; ".$id."; %'))");
-            $stmt->execute(array());
+            $stmt = $db->prepare("SELECT * FROM shops WHERE category = :cat OR category LIKE concat('%', :catlike, '%') AND pinned != :cat AND pinned NOT LIKE concat('%', :catlike, '%')");
+            $stmt->execute([
+                ":cat" => $id,
+                ":catlike" => $id
+            ]);
             $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
             shuffle($shop);
-            $stmt = $db->prepare("SELECT id, name, adress, phone, image, facebook, pinned FROM `shops` WHERE ((category = '".$id."') OR (category LIKE '".$id."; %') OR (category LIKE '%; ".$id."') OR (category LIKE '%; ".$id."; %')) AND ((pinned <> '".$id."') AND (pinned NOT LIKE '".$id."; %') AND (pinned NOT LIKE '%; ".$id."') AND (pinned NOT LIKE '%; ".$id."; %'))");
-            $stmt->execute(array());
+            $stmt = $db->prepare("SELECT * FROM shops WHERE pinned = :cat OR pinned LIKE concat('%', :catlike, '%')");
+            $stmt->execute([
+                ":cat" => $id,
+                ":catlike" => $id
+            ]);
             $s2 =  $stmt->fetchAll(PDO::FETCH_ASSOC);
-            shuffle($s2);
-            $shop = array_merge($shop, $s2);
+            $shop = array_merge($s2, $shop);
+            $sc = count($shop) > count($s2) ? count($shop) : count($s2);
             if(count($shop) > 0){
                 for($i = 0; $i < count($shop); $i++) {
                     $products = $this->getProducts($shop[$i]['id']);
