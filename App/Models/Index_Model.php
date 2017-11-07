@@ -15,15 +15,17 @@
               $shops[$cat["name"]]["id"] = $cat["id"];
               $shops[$cat["name"]]["fuckid"] = $cat["fuckid"];
             $rem = 5;
-            $stmt = $this->db->prepare("SELECT name, id FROM shops WHERE ((category = '".$cat['id']."') OR (category LIKE '".$cat['id']."; %') OR (category LIKE '%; ".$cat['id']."') OR (category LIKE '%; ".$cat['id']."; %')) AND ((pinned = '".$cat['id']."') OR (pinned LIKE '".$cat['id']."; %') OR (pinned LIKE '%; ".$cat['id']."') OR (pinned LIKE '%; ".$cat['id']."; %')) ORDER BY RAND() LIMIT 5");
-            $stmt->execute();
+            $stmt = $this->db->prepare("SELECT * FROM shops WHERE (category = :cat OR category LIKE concat('%', :cat ,'%')) AND (pinned = :cat OR pinned LIKE concat('%', :cat ,'%')) AND pinned <> -1");
+            $stmt->execute([
+                ":cat" => $cat["id"] . ';'
+            ]);
             $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $rem = $rem - count($shop);
             $shops[$cat["name"]]["pinned"] = $shop;
             if($rem > 0) {
-                $stmt = $this->db->prepare("SELECT name, id FROM shops WHERE ((category = '".$cat['id']."') OR (category LIKE '".$cat['id']."; %') OR (category LIKE '%; ".$cat['id']."') OR (category LIKE '%; ".$cat['id']."; %')) AND ((pinned <> '".$cat['id']."') AND (pinned NOT LIKE '".$cat['id']."; %') AND (pinned NOT LIKE '%; ".$cat['id']."') AND (pinned NOT LIKE '%; ".$cat['id']."; %')) ORDER BY RAND() LIMIT ".$rem);
+                $stmt = $this->db->prepare("SELECT * FROM shops WHERE (category = :cat OR category LIKE concat(:cat ,'%') OR category LIKE concat('%', :cat)) AND pinned <> :cat AND pinned NOT LIKE concat('%', :cat ,'%') ORDER BY RAND() LIMIT $rem");
                 $stmt->execute([
-                    ":id" => $cat["id"]
+                    ":cat" => $cat["id"] . ';'
                 ]);
                 $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $shops[$cat["name"]]["unpinned"] = $shop;

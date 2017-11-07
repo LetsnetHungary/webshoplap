@@ -146,7 +146,7 @@
                 $newpin = implode('; ',$a);
             }
             //print_r($newpin.', '.$id);
-          $stmt = $this->db->prepare("UPDATE `shops` SET pinned='".$newpin."' WHERE id=".$id);
+          $stmt = $this->db->prepare("UPDATE `shops` SET pinned='".$newpin.';'."' WHERE id=".$id);
           $stmt->execute([]);
         return;
       }
@@ -366,9 +366,9 @@
         }
           if($shop->edit != 0){
                 $this->removeShop($shop->edit);
-                $stmt = $this->db->prepare('INSERT INTO shops (id,name,adress,phone,bio,category,pinned, image,facebook) VALUES (\''.$shop->edit.'\',\''.$shop->name.'\',\''.$shop->link.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->categories.'\',\''.$shop->pinned.'\',\''.$shop->image.'\',\''.$shop->facebook.'\')');
+                $stmt = $this->db->prepare('INSERT INTO shops (id,name,adress,phone,bio,category,pinned, image,facebook) VALUES (\''.$shop->edit.'\',\''.$shop->name.'\',\''.$shop->link.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->categories.';\',\''.$shop->pinned.';\',\''.$shop->image.'\',\''.$shop->facebook.'\')');
           } else {
-                $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category,pinned, image, facebook) VALUES (\''.$shop->name.'\',\''.$shop->link.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->categories.'\',\''.$shop->pinned.'\',\''.$shop->image.'\',\''.$shop->facebook.'\')');
+                $stmt = $this->db->prepare('INSERT INTO shops (name,adress,phone,bio,category,pinned, image, facebook) VALUES (\''.$shop->name.'\',\''.$shop->link.'\',\''.$shop->phone.'\',\''.$shop->bio.'\',\''.$shop->categories.';\',\''.$shop->pinned.';\',\''.$shop->image.'\',\''.$shop->facebook.'\')');
           }
           $stmt->execute([]);
           $stmt = $this->db->prepare('SELECT id FROM `shops` WHERE name = :name');

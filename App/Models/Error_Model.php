@@ -25,15 +25,18 @@
         public function getShops($id) {
             //echo $id;
             $db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
-            $stmt = $db->prepare("SELECT * FROM shops WHERE ((category = '".$id."') OR (category LIKE '".$id."; %') OR (category LIKE '%; ".$id."') OR (category LIKE '%; ".$id."; %')) AND ((pinned = '".$id."') OR (pinned LIKE '".$id."; %') OR (pinned LIKE '%; ".$id."') OR (pinned LIKE '%; ".$id."; %'))");
-            $stmt->execute();
-            $shop1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            $stmt = $db->prepare("SELECT * FROM shops WHERE ((category = '".$id."') OR (category LIKE '".$id."; %') OR (category LIKE '%; ".$id."') OR (category LIKE '%; ".$id."; %')) AND ((pinned <> '".$id."') AND (pinned NOT LIKE '".$id."; %') AND (pinned NOT LIKE '%; ".$id."') AND (pinned NOT LIKE '%; ".$id."; %')) ORDER BY RAND()");
+            $stmt = $db->prepare("SELECT * FROM shops WHERE (category = :cat OR category LIKE concat('%', :cat ,'%')) AND (pinned = :cat OR pinned LIKE concat('%', :cat ,'%')) AND pinned <> -1");
             $stmt->execute([
-                ":id" => $id
+                ":cat" => $id . ';'
             ]);
+            $shop1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = $db->prepare("SELECT * FROM shops WHERE (category = :cat OR category LIKE concat(:cat ,'%') OR category LIKE concat('%', :cat)) AND pinned <> :cat AND pinned NOT LIKE concat('%', :cat ,'%')");
+            $stmt->execute([
+                ":cat" => $id . ';'
+            ]);
+
             $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            shuffle($shop);
             return array_merge($shop1, $shop);
       }
 
