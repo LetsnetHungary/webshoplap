@@ -176,6 +176,7 @@
 .datatitle {
     text-overflow: ellipsis!important;
     overflow: hidden!important;
+    padding-bottom: 7px!important;
 }
 
 

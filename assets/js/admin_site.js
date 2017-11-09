@@ -583,18 +583,20 @@ function initShopSite() {
         pins = s['pinned'].split(';')
         if (s['category'] != 0) {
             s['category'].split(';').forEach(function(element) {
-                t = $('#cat_select option[value=' + element + ']').text()
-                a = $(`<li class="list-group-item">
-                                <div class="delete-row">
-                                    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-                                </div>
-                                <div class="pin-row">
-                                    <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
-                                </div>` + t + `</li>`)
-                if ($.inArray(element + '', pins) != -1) {
-                    a.addClass('pinned')
+                if(element != '') {
+                    t = $('#cat_select option[value=' + element + ']').text()
+                    a = $(`<li class="list-group-item">
+                                    <div class="delete-row">
+                                        <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="pin-row">
+                                        <i class="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
+                                    </div>` + t + `</li>`)
+                    if ($.inArray(element + '', pins) != -1) {
+                        a.addClass('pinned')
+                    }
+                    a.data('id', element).appendTo('#cat_holder')
                 }
-                a.data('id', element).appendTo('#cat_holder')
             }, this)
         }
     })

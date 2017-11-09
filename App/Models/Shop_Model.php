@@ -40,7 +40,7 @@
                 foreach(explode(';', $cat2) as $cat) {
                     $stmt = $this->db->prepare("SELECT id, name, adress, phone, pinned, category, image FROM `shops` WHERE category LIKE :category OR pinned LIKE :category ORDER BY RAND()");
                     $stmt->execute(array(
-                        ":category" => "%$cat%"
+                        ":category" => "%;$cat;%"
                     ));
                     $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     $sh = [];

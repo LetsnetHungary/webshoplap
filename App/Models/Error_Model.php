@@ -27,12 +27,12 @@
             $db = CoreApp\DB::init(CoreApp\AppConfig::getData("database=>webshoplap"));
             $stmt = $db->prepare("SELECT * FROM shops WHERE (category = :cat OR category LIKE concat('%', :cat ,'%')) AND (pinned = :cat OR pinned LIKE concat('%', :cat ,'%')) AND pinned <> -1");
             $stmt->execute([
-                ":cat" => $id . ';'
+                ":cat" => ';' .$id . ';'
             ]);
             $shop1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $stmt = $db->prepare("SELECT * FROM shops WHERE (category = :cat OR category LIKE concat(:cat ,'%') OR category LIKE concat('%', :cat)) AND pinned <> :cat AND pinned NOT LIKE concat('%', :cat ,'%')");
             $stmt->execute([
-                ":cat" => $id . ';'
+                ":cat" => ';' .$id . ';'
             ]);
 
             $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
