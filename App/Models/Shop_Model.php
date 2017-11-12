@@ -36,30 +36,23 @@
         }
 
         public function getOtherShops($id, $cat2) {
-                $shops = []; $shopids = [0];
-                foreach(explode(';', $cat2) as $cat) {
-                    $stmt = $this->db->prepare("SELECT id, name, adress, phone, pinned, category, image FROM `shops` WHERE category LIKE :category OR pinned LIKE :category ORDER BY RAND()");
-                    $stmt->execute(array(
-                        ":category" => "%;$cat;%"
-                    ));
-                    $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    $sh = [];
-                    foreach($shop as $s) {
-                        if($s["category"] == $cat) {
-                            array_push($sh, $s);
-                        }
-                        else {
-                            $categories = explode(";", $s["category"]);
-                            foreach($categories as $c) {
-                                if($c == $cat) {
-                                    array_push($sh, $s);
-                                }
-                            }
-                        }
-                    }
-                    $shops = array_merge($shops, $sh);
-                }
-                return $shops;
+            $categories = explode(";", $cat2);
+            $catn = count($categories);
+            $shops = [];
+            $i = 0;
+            foreach($categories as $cat) {
+                if($i == 0 || $i == $catn - 1) { $i++; continue;}
+                $stmt = $this->db->prepare("SELECT id, name, adress, phone, pinned, category, image FROM `shops` WHERE category LIKE :category OR pinned LIKE :category ORDER BY RAND()");
+                $stmt->execute(array(
+                    ":category" => "%;$cat;%"
+                ));
+                $shop = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $shops = array_merge($shop, $shops);
+                
+                $i++;
+            }
+            shuffle($shops);
+            return $shops;
         }
         public function getProducts($id) {
           $stmt = $this->db->prepare('SELECT * FROM `products` WHERE shop='.$id.' ORDER BY position');
